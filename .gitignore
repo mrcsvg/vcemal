@@ -1,0 +1,55 @@
+# ── DADOS: nunca versionar microdado ────────────────────────────────
+data/**
+!data/**/
+!data/**/.gitkeep
+*.dbc
+*.dbf
+*.DBC
+*.DBF
+*.parquet
+*.csv
+*.tsv
+*.xlsx
+*.zip
+*.7z
+*.sav
+*.dta
+!docs/**/*.csv
+
+# ── Saídas ─────────────────────────────────────────────────────────
+output/**
+!output/**/
+!output/**/.gitkeep
+
+# ── Segredos ───────────────────────────────────────────────────────
+.env
+.env.*
+*.pem
+*.key
+credentials*
+secrets*
+
+# ── Python ─────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.eggs/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# ── R (se entrar) ──────────────────────────────────────────────────
+.Rhistory
+.RData
+.Rproj.user/
+
+# ── SO / editor ────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

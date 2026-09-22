@@ -1,0 +1,4 @@
+municipio_ibge,uf,municipio,plataforma,evento,data_min,data_max,tipo_evidencia,confianca,fonte,url,data_acesso,trecho,buscas,observacao,codificador
+3106200,MG,Belo Horizonte,99food,entrada,2019-11,2019-11,1,A,Release da 99 sobre a estreia do 99Food,https://exemplo.invalido/release,2026-09-20,"a 99 lanca hoje em Belo Horizonte o 99Food, com entregadores parceiros",,exemplo: apagar antes de codificar,A
+4106902,PR,Curitiba,ifood,entrada,2018-06,2018-11,3,C,"Wayback: cadastro de entregadores lista Curitiba em nov/2018, nao em jun/2018",https://web.archive.org/web/2018*/exemplo,2026-09-20,,,exemplo: apagar antes de codificar,A
+2927408,BA,Salvador,keeta,entrada,,,0,N,,,2026-09-20,,"""Keeta"" Salvador; ""Keeta"" ""entregadores"" Salvador; keeta.com/br cidades",exemplo: apagar antes de codificar,A

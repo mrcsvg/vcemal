@@ -139,19 +139,31 @@ não entra.** O V2 continua sendo a maior peça, mas não é o critério.
 
 1. **P3(a) — custo.** ~~Deflacionar `val_tot` (IPCA), converter em custo
    econômico com os parâmetros do Ipea (camada F6), e escrever a série
-   nacional 2008– por ano.~~ **Feito: `make custo` (D-029).** Falta rodar
+   nacional 2008– por ano.~~ **Feito: `make custo` (D-029).** ~~Falta rodar
    sobre o painel nacional completo e conferir contra as referências externas
-   do anexo A, Bloco 5.
+   do anexo A, Bloco 5.~~ **Rodado (set/2026) sobre 2015–2025, 3.563 de 3.564
+   competências (D-036).** Motociclista em 2023: R$ 230,1 mi nominais contra
+   R$ 221,5 mi da Abramet (+3,9%); jan–nov/2024: R$ 245,0 mi contra R$ 233,3 mi
+   (+5,0%). O valor médio por AIH bate (R$ 1.575 contra R$ 1.561, +0,9%), então
+   a diferença está na contagem, não no valor. Não é a varredura de campos do
+   D-017 (0,7% das AIH) nem AIH duplicada (R$ 0,1 mi). Hipótese não verificada:
+   safra do dado — a Abramet tabulou antes de reapresentações posteriores.
 2. **P3(b) — lacuna SIH × INSS.** ~~Baixar benefícios concedidos (espécies 31 e
    91) com CID V20–V29, por UF e ano, e pôr ao lado do SIH.~~ **Feito:
-   `make lacuna` (D-030).** Falta rodar a série 2019– inteira contra o painel
-   nacional; dois meses reais já dão 6 benefícios por mil internações.
+   `make lacuna` (D-030).** ~~Falta rodar a série 2019– inteira contra o painel
+   nacional.~~ **Rodado (set/2026), 2019–2025:** de 5 a 7 benefícios com CID
+   V20–V29 por mil internações até 2023, 1 a 1,3 deles acidentário; em 2024 e
+   2025 a razão salta para 12,5 e 15,4 (acidentários 2,2 e 3,0). **O salto de
+   2024 precisa ser explicado antes de ser lido** — o número de benefícios
+   dobra de um ano para o outro, e a série do INSS mudou de lote de publicação
+   (PDA 2023–2025) nesse intervalo.
 3. **P1 — série de lucro.** ~~Tabela anual a partir dos relatórios da Prosus,
    em reais, no mesmo eixo temporal que a série de custo. Fonte nova no
    inventário (Bloco 6).~~ **Feito: `make lucro` (D-032).** FY2019–FY2026
    transcritos com citação em `docs/fontes/ifood_prosus.csv`, em reais
-   constantes, ano fiscal e ano civil. Falta pôr ao lado de `custo_por_ano`
-   rodado sobre o painel nacional.
+   constantes, ano fiscal e ano civil. ~~Falta pôr ao lado de `custo_por_ano`
+   rodado sobre o painel nacional.~~ **As duas séries existem rodadas (set/2026)**
+   em `output/tabelas/`; falta a figura que as põe no mesmo eixo.
 4. **P2 — PNAD.** ~~Baixar o módulo de 2022, 2024 e 2025 e tirar as quatro
    estatísticas (informalidade, previdência, jornada, renda-hora) por região.~~
    **Feito: `make pnad` (D-031).** Reproduz o IBGE e traz o recorte de

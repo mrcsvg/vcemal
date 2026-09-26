@@ -1,4 +1,4 @@
-.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro cronologia lint test limpar
+.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia lint test limpar
 
 PYTHON ?= python
 
@@ -36,6 +36,9 @@ pnad: ## modulo de plataformas da PNAD Continua: informalidade, previdencia, jor
 
 lucro: ## receita e resultado do iFood (Prosus) em reais constantes, ano fiscal e civil -- so baixa cambio e IPCA
 	$(PYTHON) scripts/lucro.py
+
+contraste: ## figura iFood x SUS no mesmo eixo, R$ constantes (roda so com custo e lucro prontos) -- sem rede
+	$(PYTHON) scripts/contraste.py
 
 cronologia: ## F3: concordancia e consolidacao das planilhas dos dois codificadores -- sem rede
 	$(PYTHON) scripts/cronologia.py consolidar

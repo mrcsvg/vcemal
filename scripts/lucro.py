@@ -27,7 +27,7 @@ from pathlib import Path
 import pandas as pd
 
 from vcemal import lucro as lucro_mod
-from vcemal.analyze import custo, lucro
+from vcemal.analyze import contraste, custo, lucro
 from vcemal.extract import bcb, ibge
 from vcemal.paths import FONTE_IFOOD_PROSUS, INTERIM, TABELAS, garantir
 
@@ -108,24 +108,11 @@ def main(argv: list[str] | None = None) -> int:
 
     custo_por_ano = args.saida / "custo_por_ano.csv"
     if custo_por_ano.exists():
-        c = pd.read_csv(custo_por_ano)
-        moto = c[c["grupo"] == "motociclista"].set_index("ano")
-        if str(moto["base_precos"].iloc[0]) != base:
-            log.warning(
-                "custo_por_ano esta em R$ de %s, nao %s -- rode os dois com o mesmo --base",
-                moto["base_precos"].iloc[0],
-                base,
-            )
-        lado = pd.DataFrame(
-            {
-                "receita_ifood": civil["receita_brl_real_milhoes"],
-                "resultado_ifood": civil["aebit_brl_real_milhoes"].fillna(
-                    civil["trading_profit_brl_real_milhoes"]
-                ),
-                "sus_pagou_moto": moto["val_tot_real"] / 1e6,
-                "custo_social_moto": moto["custo_social_real"] / 1e6,
-            }
-        ).dropna(how="all")
+        try:
+            lado = contraste.lado_a_lado(civil, pd.read_csv(custo_por_ano))
+        except ValueError as e:
+            log.warning("%s -- rode custo e lucro com o mesmo --base", e)
+            return 0
         print(f"\n=== Ano civil, R$ de {base}, em milhoes: iFood x internacoes de motociclista ===")
         print(lado.round(1).to_string())
     return 0

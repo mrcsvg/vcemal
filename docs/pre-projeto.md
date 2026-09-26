@@ -166,7 +166,9 @@ não entra.** O V2 continua sendo a maior peça, mas não é o critério.
    transcritos com citação em `docs/fontes/ifood_prosus.csv`, em reais
    constantes, ano fiscal e ano civil. ~~Falta pôr ao lado de `custo_por_ano`
    rodado sobre o painel nacional.~~ **As duas séries existem rodadas (set/2026)**
-   em `output/tabelas/`; falta a figura que as põe no mesmo eixo.
+   em `output/tabelas/`, e `make contraste` as põe no mesmo eixo. Em 2025 o
+   resultado operacional do iFood (R$ 1,8 bi) é seis vezes o que o SUS pagou
+   por internações de motociclista (R$ 288 mi), em R$ de dez/2025.
 4. **P2 — PNAD.** ~~Baixar o módulo de 2022, 2024 e 2025 e tirar as quatro
    estatísticas (informalidade, previdência, jornada, renda-hora) por região.~~
    **Feito: `make pnad` (D-031).** Reproduz o IBGE e traz o recorte de

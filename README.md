@@ -91,6 +91,7 @@ make custo         # o que o SUS pagou (deflacionado) e o custo social (Ipea) �
 make lacuna        # benefícios do INSS com CID V20–V29 contra internações do SIH — só HTTPS
 make pnad          # módulo de plataformas da PNAD Contínua: precariedade por rodada e região — só HTTPS
 make lucro         # receita e resultado do iFood (Prosus) em reais constantes — só baixa câmbio e IPCA
+make contraste     # figura: resultado do iFood e valor pago pelo SUS no mesmo eixo — sem rede
 make cronologia    # F3: concordância e desempate das planilhas dos codificadores — sem rede
 ```
 
@@ -121,6 +122,12 @@ e data de acesso), baixa o câmbio médio mensal do BCB e o IPCA, e escreve
 operacional, pedidos e entregadores ativos em reais constantes, no mesmo eixo
 que `custo_por_ano`. É a demonstração da parte interessada, citada como tal —
 ver D-032.
+
+`make contraste` lê `lucro_ifood_por_ano.csv` e `custo_por_ano.csv` e escreve
+`contraste_ifood_sus.csv` e a figura `contraste_ifood_sus.png`/`.svg`: resultado
+operacional do iFood e valor pago pelo SUS com internações de motociclista, no
+mesmo eixo de reais constantes. A emenda entre *trading profit* e aEBIT fica
+visível, e a nota diz que o valor do SUS não é atribuição à plataforma.
 
 `make cronologia` é o F3, o tratamento do V2: lê as planilhas dos dois
 codificadores e as decisões do adjudicador em `docs/fontes/cronologia/`, calcula

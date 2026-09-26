@@ -102,3 +102,24 @@ def test_uf_de_nome(valor, uf):
 def test_todas_as_27_ufs():
     assert len(inss.UF_SIGLA) == 27
     assert len(set(inss.UF_SIGLA.values())) == 27
+
+
+@pytest.mark.parametrize(
+    ("despacho", "canal"),
+    [
+        ("Concessao com Analise Documental", "documental"),
+        ("Revisao com Analise Documental", "documental"),
+        ("Concessão com Análise Documental", "documental"),
+        ("Conc. Base Artigo 27 Inciso Ii do Rbps", "art27_ii"),
+        ("Concessao Decorrente de Acao Judicial", "judicial"),
+        ("Concessao Normal", "normal"),
+        ("Conc. Decorrente Revisao Administrativa", "outro"),
+        ("Concessao", "outro"),
+        ("64", "outro"),
+        ("", "outro"),
+        (None, "outro"),
+    ],
+)
+def test_canal_de(despacho, canal):
+    assert inss.canal_de(despacho) == canal
+    assert canal in inss.CANAIS

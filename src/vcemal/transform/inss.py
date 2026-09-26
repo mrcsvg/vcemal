@@ -34,6 +34,7 @@ COLUNAS = [
     "uf",
     "especie",
     "classe",
+    "canal",
     "cid",
     "grupo",
     "forma_filiacao",
@@ -137,6 +138,9 @@ def normalizar(df: pd.DataFrame, ano: int, mes: int) -> pd.DataFrame:
         if col is not None:
             cid = cid.where(cid.notna(), df[col].map(inss_mod.normalizar_cid))
 
+    # Nome do despacho, nao o codigo: o XLSX traz os dois, os CSV so o nome (D-037).
+    canal = _serie(df, _coluna(df, "Despacho nome", "Despacho")).map(inss_mod.canal_de)
+
     uf = _serie(df, _coluna(df, "Mun Resid")).map(inss_mod.uf_de_municipio)
     reserva_uf = _serie(df, _coluna(df, "UF")).map(inss_mod.uf_de_nome)
     uf = uf.where(uf.notna(), reserva_uf)
@@ -156,6 +160,7 @@ def normalizar(df: pd.DataFrame, ano: int, mes: int) -> pd.DataFrame:
             "uf": uf,
             "especie": especie.astype("Int64"),
             "classe": especie.map(inss_mod.classe_de),
+            "canal": canal,
             "cid": cid,
             "grupo": cid.map(lambda c: cid_mod.grupo_de(c) if c else None),
             "forma_filiacao": _serie(df, _coluna(df, "Forma Filiação")).astype(str).str.strip(),
@@ -182,20 +187,23 @@ def _conferir_competencia(valores: pd.Series, ano: int, mes: int) -> None:
         raise ValueError(f"arquivo diz competencia {lido}, indice diz {(ano, mes)}")
 
 
-#: Contagens que `agregar` produz por uf x ano x mes x grupo x classe.
+#: Contagens que `agregar` produz por uf x ano x mes x grupo x classe x canal.
 SOMAS = ["beneficios", "sm_rmi_total"]
 
 
 def agregar(normalizado: pd.DataFrame) -> pd.DataFrame:
-    """Beneficios com CID nos grupos do projeto, por UF x mes x grupo x classe.
+    """Beneficios com CID nos grupos do projeto, por UF x mes x grupo x classe x canal.
 
     So entram linhas com `grupo` (V10-V19, V20-V29, V40-V49) **e** `classe`
     (especie de incapacidade, acidentaria ou previdenciaria). Aposentadoria por
     idade com CID V29 e ruido de preenchimento, nao evento.
+
+    O canal de concessao fica na chave porque a analise documental, que domina
+    a partir de nov/2023, registra o CID V muito mais que a pericia (D-037).
     """
     base = normalizado[normalizado["grupo"].notna() & normalizado["classe"].notna()]
     base = base[base["uf"].notna()]
-    g = base.groupby(["uf", "ano", "mes", "grupo", "classe"], dropna=False)
+    g = base.groupby(["uf", "ano", "mes", "grupo", "classe", "canal"], dropna=False)
     saida = g.agg(beneficios=("cid", "size"), sm_rmi_total=("qt_sm_rmi", "sum")).reset_index()
     saida["ano"] = saida["ano"].astype(int)
     saida["mes"] = saida["mes"].astype(int)

@@ -25,17 +25,25 @@ competencias, de forma inconsistente: 73 das 216 primeiras competencias da serie
 nacional voltaram "sem arquivo RD" quando o arquivo existia. Isso nao levanta
 erro -- produziria um painel silenciosamente incompleto. Aqui o RD e escolhido
 pelo **nome do arquivo**, unico sinal confiavel, e so ele e baixado. Ver D-034.
+
+**O espelho nao tem tudo.** Na serie nacional 2015-2025, 103 competencias
+voltaram sem RD no catalogo e existiam no FTP do DATASUS (PI 22, TO 19, MT 16,
+...). `source="origin"` nao resolve: consulta o mesmo indice, que lista ER, RJ e
+SP da competencia e nao o RD. Por isso `baixar_ano` busca o `.dbc` que faltar
+direto no FTP e o converte pelo proprio PySUS, o mesmo caminho que gerou o
+espelho -- mesmas colunas, mesmos tipos. Ver D-036.
 """
 
 from __future__ import annotations
 
+import ftplib
 import logging
 import re
 from pathlib import Path
 
 import pandas as pd
 
-from vcemal.paths import RAW_SIH
+from vcemal.paths import RAW_SIH, RAW_SIH_ORIGEM
 
 log = logging.getLogger("vcemal.extract.sih")
 
@@ -104,7 +112,7 @@ def mes_do_arquivo(nome: str) -> int | None:
     return mes if 1 <= mes <= 12 else None
 
 
-def baixar_ano(uf: str, ano: int) -> dict[int, Path]:
+def baixar_ano(uf: str, ano: int, meses: list[int] | None = None) -> dict[int, Path]:
     """Caminhos locais dos 12 RD do ano, baixados **em paralelo**. Chave = mes.
 
     E por aqui que a serie nacional roda. Pedir mes a mes custa uma consulta ao
@@ -113,24 +121,99 @@ def baixar_ano(uf: str, ano: int) -> dict[int, Path]:
     fila inteira. Pedindo o ano de uma vez, e uma consulta e o PySUS baixa os
     doze concorrentemente, o que absorve as travadas. Ver D-035.
 
-    Mes ausente no catalogo simplesmente nao aparece no dicionario.
+    Mes de `meses` (padrao: os doze) ausente do catalogo e buscado no FTP do
+    DATASUS (D-036). So some do dicionario o que tambem nao existe la -- mes
+    ainda nao publicado.
     """
     catalogo = _sih()(uf, [ano], list(range(1, 13)), download=False)
     indices = [i for i, arq in enumerate(catalogo) if e_arquivo_rd(arq)]
-    if not indices:
-        log.warning("sem arquivo RD para %s em %d", uf, ano)
-        return {}
 
-    locais = catalogo.download(indexes=indices)
     caminhos: dict[int, Path] = {}
-    for arquivo in locais:
-        nome = getattr(arquivo, "basename", None) or getattr(arquivo, "name", "")
-        mes = mes_do_arquivo(nome)
-        if mes is None:
-            log.warning("nome de arquivo RD fora do padrao, ignorado: %s", nome)
+    if indices:
+        for arquivo in catalogo.download(indexes=indices):
+            nome = getattr(arquivo, "basename", None) or getattr(arquivo, "name", "")
+            mes = mes_do_arquivo(nome)
+            if mes is None:
+                log.warning("nome de arquivo RD fora do padrao, ignorado: %s", nome)
+                continue
+            caminhos[mes] = Path(arquivo.path)
+
+    for mes in meses if meses is not None else range(1, 13):
+        if mes in caminhos:
             continue
-        caminhos[mes] = Path(arquivo.path)
+        local = baixar_da_origem(uf, ano, mes)
+        if local is None:
+            log.warning("sem arquivo RD para %s %04d-%02d, nem no FTP", uf, ano, mes)
+            continue
+        log.warning("%s %04d-%02d: RD ausente do espelho, recuperado do FTP", uf, ano, mes)
+        caminhos[mes] = local
     return caminhos
+
+
+# --- FTP do DATASUS, para o que falta no espelho (D-036) -------------------
+
+FTP_DATASUS = "ftp.datasus.gov.br"
+#: Diretorio dos RD desde 2008. A serie do projeto comeca em 2015.
+FTP_DIR_SIH = "/dissemin/publicos/SIHSUS/200801_/Dados"
+
+
+def nome_rd(uf: str, ano: int, mes: int, extensao: str = "dbc") -> str:
+    """`RDDF1604.dbc` -- como o DATASUS nomeia o RD da competencia."""
+    return f"RD{uf.upper()}{ano % 100:02d}{mes:02d}.{extensao}"
+
+
+def _baixar_ftp(nome: str, destino: Path) -> bool:
+    """Baixa `nome` do diretorio do SIH. False se o arquivo nao existe (550).
+
+    Qualquer outro erro sobe: falha de rede nao pode virar "mes sem dado".
+    """
+    parcial = destino.with_suffix(destino.suffix + ".parcial")
+    try:
+        with ftplib.FTP(FTP_DATASUS, timeout=300) as ftp:
+            ftp.login()
+            ftp.cwd(FTP_DIR_SIH)
+            with parcial.open("wb") as saida:
+                ftp.retrbinary(f"RETR {nome}", saida.write)
+    except ftplib.error_perm as e:
+        parcial.unlink(missing_ok=True)
+        if str(e).startswith("550"):
+            return False
+        raise
+    except BaseException:
+        parcial.unlink(missing_ok=True)
+        raise
+    parcial.rename(destino)
+    return True
+
+
+def _dbc_para_parquet(dbc: Path) -> Path:
+    """Converte pelo PySUS -- o mesmo caminho que produziu o espelho."""
+    import anyio
+    from pysus.api.extensions import ExtensionFactory
+
+    async def converter() -> Path:
+        arquivo = await ExtensionFactory.instantiate(dbc)
+        return Path((await arquivo.to_parquet()).path)
+
+    return anyio.run(converter)
+
+
+def baixar_da_origem(uf: str, ano: int, mes: int) -> Path | None:
+    """Parquet do RD baixado do FTP do DATASUS, ou None se ainda nao publicado.
+
+    Fica em `data/raw/sih_origem/`, separado do cache do PySUS: a procedencia
+    diferente tem que continuar visivel. Arquivo ja convertido nao volta a rede.
+    """
+    parquet = RAW_SIH_ORIGEM / nome_rd(uf, ano, mes, "parquet")
+    if parquet.exists():
+        return parquet
+    RAW_SIH_ORIGEM.mkdir(parents=True, exist_ok=True)
+    dbc = parquet.with_suffix(".dbc")
+    if not _baixar_ftp(dbc.name, dbc):
+        return None
+    convertido = _dbc_para_parquet(dbc)
+    dbc.unlink(missing_ok=True)
+    return convertido
 
 
 def salvar_bruto(df: pd.DataFrame, uf: str, ano: int, mes: int) -> Path:

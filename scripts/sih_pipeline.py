@@ -118,7 +118,7 @@ def main(argv: list[str] | None = None) -> int:
             caminhos: dict[int, Path] = {}
             if pendentes:
                 try:
-                    caminhos = baixar_ano(uf, ano)
+                    caminhos = baixar_ano(uf, ano, pendentes)
                 except Exception as e:  # noqa: BLE001
                     log.error("falhou o download de %s %d: %s", uf, ano, e)
                     falhas.extend(f"{uf} {ano:04d}-{m:02d}" for m in pendentes)

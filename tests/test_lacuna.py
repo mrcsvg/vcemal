@@ -34,18 +34,23 @@ def inss():
     linhas = []
     for mes in range(1, 13):
         linhas.append(dict(uf="SP", ano=2023, mes=mes, grupo="motociclista",
-                           classe="previdenciario", beneficios=5, sm_rmi_total=6.0))  # fmt: skip
+                           classe="previdenciario", canal="documental" if mes > 10 else "art27_ii",
+                           beneficios=5, sm_rmi_total=6.0))  # fmt: skip
         linhas.append(dict(uf="SP", ano=2023, mes=mes, grupo="motociclista",
-                           classe="acidentario", beneficios=1, sm_rmi_total=1.5))  # fmt: skip
+                           classe="acidentario", canal="normal",
+                           beneficios=1, sm_rmi_total=1.5))  # fmt: skip
         linhas.append(dict(uf="SP", ano=2023, mes=mes, grupo="ciclista",
-                           classe="previdenciario", beneficios=2, sm_rmi_total=2.0))  # fmt: skip
+                           classe="previdenciario", canal="normal",
+                           beneficios=2, sm_rmi_total=2.0))  # fmt: skip
         # RS: os 12 meses observados, mas so 3 com beneficio de motociclista
         if mes <= 3:
             linhas.append(dict(uf="RS", ano=2023, mes=mes, grupo="motociclista",
-                               classe="previdenciario", beneficios=2, sm_rmi_total=2))  # fmt: skip
+                               classe="previdenciario", canal="normal",
+                               beneficios=2, sm_rmi_total=2))  # fmt: skip
         else:
             linhas.append(dict(uf="RS", ano=2023, mes=mes, grupo="ciclista",
-                               classe="previdenciario", beneficios=1, sm_rmi_total=1))  # fmt: skip
+                               classe="previdenciario", canal="normal",
+                               beneficios=1, sm_rmi_total=1))  # fmt: skip
     return pd.DataFrame(linhas)
 
 
@@ -100,3 +105,16 @@ def test_sem_ano_nas_chaves_falha_alto(painel, inss):
 def test_painel_sem_colunas_falha_alto(painel, inss):
     with pytest.raises(KeyError, match="obitos"):
         lacuna.por_ano(painel.drop(columns="obitos"), inss)
+
+
+def test_documentais_saem_ao_lado_do_total(painel, inss):
+    """A quebra de nov/2023 (D-037) fica visivel na tabela, nao escondida no total."""
+    t = lacuna.por_uf_ano(painel, inss).loc[("SP", 2023)]
+    assert t["beneficios"] == 72
+    assert t["documentais"] == 10  # nov e dez, 5 por mes
+    assert t["pct_documental"] == pytest.approx(100 * 10 / 72)
+
+
+def test_agregado_sem_canal_falha_alto(painel, inss):
+    with pytest.raises(KeyError, match="canal"):
+        lacuna.por_ano(painel, inss.drop(columns="canal"))

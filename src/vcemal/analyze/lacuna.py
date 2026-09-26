@@ -11,6 +11,13 @@ exige contribuicao e mais de 15 dias de afastamento, e a especie acidentaria
 exige empregador. Um entregador informal nao aparece em nenhum dos dois -- e
 esse e o ponto. Por isso a taxa sai *por mil internacoes*, e nao como
 "cobertura": ninguem esta afirmando que cada AIH deveria virar beneficio.
+
+**A serie do INSS quebra em nov/2023** (D-037). A concessao por analise
+documental (Atestmed) passa a dominar, e o CID que ela registra vem do atestado,
+que traz o codigo V da causa externa muito mais que a pericia. Os beneficios de
+motociclista dobram em 2024 sem que o canal classico (art. 27, II) se mexa. Por
+isso `documentais` e `pct_documental` saem ao lado: comparar anos dos dois
+lados da quebra pelo total e ler efeito de registro como mudanca de risco.
 """
 
 from __future__ import annotations
@@ -30,10 +37,12 @@ COLUNAS = [
     "beneficios",
     "acidentarios",
     "previdenciarios",
+    "documentais",
     "beneficios_por_mil_internacoes",
     "acidentarios_por_mil_internacoes",
     "sih_nexo_por_mil_internacoes",
     "pct_acidentario",
+    "pct_documental",
 ]
 
 
@@ -54,7 +63,9 @@ def _meses_observados(df: pd.DataFrame, chaves: tuple[str, ...]) -> pd.Series:
 
 def _inss(agregado: pd.DataFrame, grupo: str, *chaves: str) -> pd.DataFrame:
     faltando = [
-        c for c in (*chaves, "mes", "grupo", "classe", "beneficios") if c not in agregado.columns
+        c
+        for c in (*chaves, "mes", "grupo", "classe", "canal", "beneficios")
+        if c not in agregado.columns
     ]
     if faltando:
         raise KeyError(f"agregado do INSS sem as colunas {faltando}")
@@ -68,6 +79,8 @@ def _inss(agregado: pd.DataFrame, grupo: str, *chaves: str) -> pd.DataFrame:
     )
     largo.columns.name = None
     largo["beneficios"] = largo["acidentarios"] + largo["previdenciarios"]
+    documental = base[base["canal"] == "documental"].groupby(list(chaves))["beneficios"].sum()
+    largo["documentais"] = documental.reindex(largo.index, fill_value=0)
     # meses cobertos pelo INSS: independe do grupo, porque um mes sem beneficio
     # de motociclista ainda e um mes observado.
     meses = _meses_observados(agregado, chaves)
@@ -99,6 +112,7 @@ def por(
         "beneficios",
         "acidentarios",
         "previdenciarios",
+        "documentais",
     ]
     t[contagens] = t[contagens].fillna(0).astype(int)
 
@@ -108,6 +122,7 @@ def por(
     t["acidentarios_por_mil_internacoes"] = 1000 * t["acidentarios"] / internacoes
     t["sih_nexo_por_mil_internacoes"] = 1000 * t["sih_nexo_ocupacional"] / internacoes
     t["pct_acidentario"] = 100 * t["acidentarios"] / beneficios
+    t["pct_documental"] = 100 * t["documentais"] / beneficios
     return t[COLUNAS]
 
 

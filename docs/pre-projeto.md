@@ -153,10 +153,13 @@ não entra.** O V2 continua sendo a maior peça, mas não é o critério.
    `make lacuna` (D-030).** ~~Falta rodar a série 2019– inteira contra o painel
    nacional.~~ **Rodado (set/2026), 2019–2025:** de 5 a 7 benefícios com CID
    V20–V29 por mil internações até 2023, 1 a 1,3 deles acidentário; em 2024 e
-   2025 a razão salta para 12,5 e 15,4 (acidentários 2,2 e 3,0). **O salto de
-   2024 precisa ser explicado antes de ser lido** — o número de benefícios
-   dobra de um ano para o outro, e a série do INSS mudou de lote de publicação
-   (PDA 2023–2025) nesse intervalo.
+   2025 a razão salta para 12,5 e 15,4 (acidentários 2,2 e 3,0). **O salto é
+   quebra de série, não risco (D-037):** a partir de nov/2023 a concessão por
+   análise documental (Atestmed) domina, e o atestado registra o CID V muito
+   mais que a perícia. Ela responde por 65% dos benefícios de motociclista em
+   2024–2025; fora dela a série fica em 853, 754 e 927 benefícios em 2023, 2024
+   e 2025. `make lacuna` agora traz `documentais` e `pct_documental` ao lado do
+   total — anos dos dois lados da quebra não se comparam pelo total.
 3. **P1 — série de lucro.** ~~Tabela anual a partir dos relatórios da Prosus,
    em reais, no mesmo eixo temporal que a série de custo. Fonte nova no
    inventário (Bloco 6).~~ **Feito: `make lucro` (D-032).** FY2019–FY2026

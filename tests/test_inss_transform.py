@@ -113,8 +113,8 @@ def xlsx_2025(tmp_path):
             "Auxílio Doenca por Acidente do Trabalho",
             "V29",
             "V29   Motociclista Traum Outr Acid",
-            "64",
-            "Concessao",
+            "70",
+            "Concessao com Analise Documental",
             "1990-01-01",
             "Masculino",
             "Urbano",
@@ -169,6 +169,7 @@ def test_2019_cid_em_duas_colunas_e_competencia_por_extenso(csv_2019):
     assert n["classe"].tolist() == ["previdenciario", "acidentario", None]
     assert n["qt_sm_rmi"].tolist() == pytest.approx([1.068, 2.5, 1.0])
     assert n["uf"].tolist() == ["AL", "SP", "AL"]
+    assert n["canal"].tolist() == ["normal", "normal", "normal"]
 
 
 def test_2021_uf_vem_do_municipio_e_nao_da_coluna_uf(csv_2021):
@@ -193,6 +194,8 @@ def test_2025_xlsx_titulo_cabecalho_duplicado_e_especie_numerica(xlsx_2025):
     assert n["cid"].tolist() == ["V299", "V29", "V299"]
     assert n["uf"].tolist() == ["SP", "MG", "SP"]
     assert n["qt_sm_rmi"].tolist() == pytest.approx([1.0, 3.0, 1.0])
+    # canal pelo nome do despacho, nao pelo codigo (D-037)
+    assert n["canal"].tolist() == ["outro", "documental", "outro"]
 
 
 def test_competencia_do_arquivo_diferente_do_indice_e_erro(csv_2023):
@@ -207,7 +210,9 @@ def test_agregar_so_conta_incapacidade_nos_grupos_do_projeto(xlsx_2025):
     assert set(a["classe"]) == {"previdenciario", "acidentario"}
     sp = a[(a["uf"] == "SP") & (a["classe"] == "previdenciario")].iloc[0]
     assert sp["beneficios"] == 1 and sp["sm_rmi_total"] == pytest.approx(1.0)
-    assert list(a.columns) == ["uf", "ano", "mes", "grupo", "classe", *tr.SOMAS]
+    assert list(a.columns) == ["uf", "ano", "mes", "grupo", "classe", "canal", *tr.SOMAS]
+    mg = a[a["uf"] == "MG"].iloc[0]
+    assert (mg["classe"], mg["canal"]) == ("acidentario", "documental")
 
 
 def test_csv_que_nao_decodifica_falha_alto(tmp_path):

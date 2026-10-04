@@ -41,6 +41,19 @@ class _Catalogo(list):
         return _Baixados(self._df)
 
 
+@pytest.fixture(autouse=True)
+def sem_ftp(monkeypatch):
+    """Nenhum teste vai ao FTP. Por padrao, o mes tambem nao existe la."""
+    pedidos: list[tuple[str, int, int]] = []
+
+    def falso(uf, ano, mes):
+        pedidos.append((uf, ano, mes))
+        return None
+
+    monkeypatch.setattr(sih, "baixar_da_origem", falso)
+    return pedidos
+
+
 @pytest.fixture
 def pysus_dublado(monkeypatch):
     """Substitui a funcao do PySUS. Devolve (registro de chamadas, catalogo mutavel)."""
@@ -199,3 +212,126 @@ def test_baixar_ano_sem_rd_devolve_vazio(pysus_dublado):
     estado["catalogo"] = _CatalogoAno(["ERDF1501.parquet"])
 
     assert sih.baixar_ano("DF", 2015) == {}
+
+
+# --- o que falta no espelho vem do FTP (D-036) -----------------------------
+
+
+def test_baixar_ano_busca_no_ftp_o_mes_ausente_do_espelho(pysus_dublado, sem_ftp, monkeypatch):
+    """Regressao do D-036: DF 2016-04 existe no DATASUS e nao no espelho."""
+    _, estado = pysus_dublado
+    estado["catalogo"] = _CatalogoAno(
+        [f"RDDF16{m:02d}.parquet" for m in range(1, 13) if m != 4] + ["ERDF1604.parquet"]
+    )
+    recuperado = sih.RAW_SIH_ORIGEM / "RDDF1604.parquet"
+
+    def origem(uf, ano, mes):
+        sem_ftp.append((uf, ano, mes))
+        return recuperado
+
+    monkeypatch.setattr(sih, "baixar_da_origem", origem)
+
+    caminhos = sih.baixar_ano("DF", 2016)
+
+    assert sem_ftp == [("DF", 2016, 4)], "so o mes que falta vai ao FTP"
+    assert sorted(caminhos) == list(range(1, 13))
+    assert caminhos[4] == recuperado
+
+
+def test_baixar_ano_sem_rd_no_espelho_tenta_o_ftp_nos_meses_pedidos(pysus_dublado, sem_ftp):
+    _, estado = pysus_dublado
+    estado["catalogo"] = _CatalogoAno(["ERDF1601.parquet"])
+
+    assert sih.baixar_ano("DF", 2016, [3, 7]) == {}
+    assert sem_ftp == [("DF", 2016, 3), ("DF", 2016, 7)]
+
+
+def test_baixar_ano_nao_vai_ao_ftp_quando_o_espelho_tem_tudo(pysus_dublado, sem_ftp):
+    _, estado = pysus_dublado
+    estado["catalogo"] = _CatalogoAno([f"RDDF15{m:02d}.parquet" for m in range(1, 13)])
+
+    sih.baixar_ano("DF", 2015)
+
+    assert sem_ftp == []
+
+
+def test_nome_rd_segue_o_padrao_do_datasus():
+    assert sih.nome_rd("df", 2016, 4) == "RDDF1604.dbc"
+    assert sih.nome_rd("SP", 2025, 12, "parquet") == "RDSP2512.parquet"
+
+
+def test_baixar_da_origem_mes_nao_publicado_vira_none(tmp_path, monkeypatch):
+    monkeypatch.undo()  # desfaz o `sem_ftp` para testar a funcao de verdade
+    monkeypatch.setattr(sih, "RAW_SIH_ORIGEM", tmp_path)
+    monkeypatch.setattr(sih, "_baixar_ftp", lambda nome, destino: False)
+
+    assert sih.baixar_da_origem("DF", 2026, 12) is None
+
+
+def test_baixar_da_origem_converte_e_apaga_o_dbc(tmp_path, monkeypatch):
+    monkeypatch.undo()
+    monkeypatch.setattr(sih, "RAW_SIH_ORIGEM", tmp_path)
+
+    def ftp(nome, destino):
+        destino.write_bytes(b"dbc")
+        return True
+
+    def converter(dbc):
+        saida = dbc.with_suffix(".parquet")
+        saida.write_bytes(b"pq")
+        return saida
+
+    monkeypatch.setattr(sih, "_baixar_ftp", ftp)
+    monkeypatch.setattr(sih, "_dbc_para_parquet", converter)
+
+    caminho = sih.baixar_da_origem("DF", 2016, 4)
+
+    assert caminho == tmp_path / "RDDF1604.parquet"
+    assert caminho.exists()
+    assert not (tmp_path / "RDDF1604.dbc").exists()
+
+
+def test_baixar_da_origem_nao_volta_a_rede_se_ja_convertido(tmp_path, monkeypatch):
+    monkeypatch.undo()
+    monkeypatch.setattr(sih, "RAW_SIH_ORIGEM", tmp_path)
+    (tmp_path / "RDDF1604.parquet").write_bytes(b"pq")
+
+    def explode(*a):
+        raise AssertionError("nao devia ir ao FTP")
+
+    monkeypatch.setattr(sih, "_baixar_ftp", explode)
+
+    assert sih.baixar_da_origem("DF", 2016, 4) == tmp_path / "RDDF1604.parquet"
+
+
+def test_erro_de_ftp_que_nao_e_550_sobe(tmp_path, monkeypatch):
+    """Arquivo inexistente e None; qualquer outra recusa do servidor e erro."""
+
+    class _FTP:
+        def __init__(self, *a, **kw):
+            pass
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def login(self):
+            pass
+
+        def cwd(self, d):
+            pass
+
+        def retrbinary(self, cmd, cb):
+            raise sih.ftplib.error_perm(self.resposta)
+
+    monkeypatch.setattr(sih.ftplib, "FTP", _FTP)
+
+    _FTP.resposta = "550 No such file"
+    assert sih._baixar_ftp("RDDF2612.dbc", tmp_path / "RDDF2612.dbc") is False
+
+    _FTP.resposta = "530 Login incorrect"
+    with pytest.raises(sih.ftplib.error_perm):
+        sih._baixar_ftp("RDDF1604.dbc", tmp_path / "RDDF1604.dbc")
+    assert list(tmp_path.iterdir()) == [], "download parcial nao pode ficar para tras"

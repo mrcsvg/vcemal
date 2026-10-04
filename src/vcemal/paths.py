@@ -9,6 +9,8 @@ RAIZ = Path(__file__).resolve().parents[2]
 
 DATA = RAIZ / "data"
 RAW_SIH = DATA / "raw" / "sih"
+#: RD que faltam no espelho do PySUS, baixados do FTP do DATASUS (D-036).
+RAW_SIH_ORIGEM = DATA / "raw" / "sih_origem"
 INTERIM = DATA / "interim"
 PAINEL = DATA / "painel"
 

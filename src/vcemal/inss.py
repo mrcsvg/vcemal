@@ -172,3 +172,32 @@ def uf_de_nome(valor: object) -> str | None:
     if len(texto) == 2 and texto.upper() in UF_SIGLA.values():
         return texto.upper()
     return _UF_POR_NOME_SIMPLES.get(texto_simples(texto))
+
+
+#: Canais de concessao, na ordem em que o nome do despacho e testado.
+CANAIS: tuple[str, ...] = ("documental", "art27_ii", "judicial", "normal", "outro")
+
+
+def canal_de(despacho: object) -> str:
+    """Canal de concessao a partir do **nome** do despacho (D-037).
+
+    * `documental` -- concessao ou revisao com analise documental (Atestmed):
+      o CID vem do atestado, sem pericia presencial, e registra a causa externa
+      (V20-V29) cinco a vinte vezes mais que a pericia.
+    * `art27_ii` -- concessao sem carencia por acidente de qualquer natureza, o
+      canal classico do motociclista antes do Atestmed.
+    * `judicial`, `normal` e `outro` -- o resto.
+
+    Codigo numerico sem nome cai em `outro`: a tabela de codigos de despacho nao
+    e publicada com os arquivos.
+    """
+    texto = texto_simples(despacho) if despacho is not None else ""
+    if "analise documental" in texto:
+        return "documental"
+    if "artigo 27" in texto and "inciso ii" in texto:
+        return "art27_ii"
+    if "acao judicial" in texto:
+        return "judicial"
+    if texto.startswith("concessao normal"):
+        return "normal"
+    return "outro"

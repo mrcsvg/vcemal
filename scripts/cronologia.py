@@ -17,6 +17,10 @@ Subcomandos:
                                               pendentes.csv
     cronologia.py prosus CONSOLIDADA.csv      municipios com iFood por ano fiscal contra as
                                               cidades que a Prosus publica (D-032)
+    cronologia.py wayback [--offline]         listas de "cidades atendidas" nos snapshots do
+                                              Wayback -> intervalo de entrada por municipio
+                                              (tipo 3), insumo dos codificadores. Rede:
+                                              web.archive.org, que recusa ambiente de nuvem
 
 `make cronologia` roda `consolidar` sobre as planilhas dos dois codificadores,
 se existirem. As regras estao em `src/vcemal/cronologia.py` e o protocolo em
@@ -27,15 +31,19 @@ cruza com o desfecho depois do pre-registro (D-006).
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import logging
 import sys
+from collections import Counter
 from pathlib import Path
 
 import pandas as pd
 
 from vcemal import cronologia as cro
 from vcemal.extract import ibge
-from vcemal.paths import FONTE_IFOOD_PROSUS, FONTES, TABELAS, garantir
+from vcemal.extract import wayback as extract_wayback
+from vcemal.paths import FONTE_IFOOD_PROSUS, FONTES, INTERIM, TABELAS, garantir
+from vcemal.transform import wayback as transform_wayback
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("cronologia")
@@ -284,6 +292,121 @@ def cmd_prosus(args) -> int:
     return 0
 
 
+def _paginas(extras: list[str]) -> dict[str, list[str]]:
+    paginas = {plat: list(urls) for plat, urls in extract_wayback.PAGINAS.items()}
+    for extra in extras:
+        plat, _, url = extra.partition("=")
+        if plat not in cro.PLATAFORMAS or not url:
+            validas = ", ".join(cro.PLATAFORMAS)
+            raise SystemExit(f"--pagina espera PLATAFORMA=URL, com PLATAFORMA em {validas}")
+        paginas.setdefault(plat, []).append(url)
+    return paginas
+
+
+def cmd_wayback(args) -> int:
+    """Listas de cobertura nos snapshots -> intervalo de entrada por municipio (tipo 3)."""
+    if not args.universo.exists():
+        log.error("sem %s -- rode `scripts/cronologia.py universo` antes", args.universo)
+        return 1
+    universo = _ler(args.universo)
+    por_codigo = {int(m["municipio_ibge"]): m for m in universo}
+    indice = transform_wayback.construir_indice(universo)
+    hoje = dt.date.today().isoformat()
+
+    linhas, resumo, nao_casados = [], [], Counter()
+    for plat, urls in _paginas(args.pagina).items():
+        linha_do_tempo = []
+        for url in urls:
+            cache = args.cache / plat / extract_wayback._caminho(url).replace("/", "_")
+            snapshots = extract_wayback.listar(url, cache=cache, offline=args.offline)
+            if args.offline:
+                arquivos = {
+                    s.digest: extract_wayback.caminho_do_cache(cache, s)
+                    for s in snapshots
+                    if extract_wayback.caminho_do_cache(cache, s).exists()
+                }
+            else:
+                arquivos = extract_wayback.baixar_snapshots(snapshots, cache, pausa=args.pausa)
+            leituras = {
+                d: transform_wayback.ler(a.read_text("utf-8", errors="replace"), indice)
+                for d, a in arquivos.items()
+            }
+            for s in snapshots:
+                leitura = leituras.get(s.digest)
+                resumo.append(
+                    {
+                        "plataforma": plat,
+                        "pagina": url,
+                        "timestamp": s.timestamp,
+                        "digest": s.digest,
+                        "baixado": leitura is not None,
+                        "cidades": len(leitura.municipios) if leitura else None,
+                        "ambiguos": len(leitura.ambiguos) if leitura else None,
+                        "legivel": bool(leitura and leitura.legivel),
+                    }
+                )
+                if leitura and leitura.legivel:
+                    linha_do_tempo.append((s.timestamp, s.url, leitura.municipios))
+            # Contado por conteudo distinto, nao por snapshot: o mesmo HTML
+            # repetido em vinte timestamps nao vira vinte avisos.
+            for leitura in leituras.values():
+                if leitura.legivel:
+                    nao_casados.update((plat, "ambiguo", i) for i in leitura.ambiguos)
+                    nao_casados.update((plat, "sem_par", i) for i in leitura.sem_par)
+        linha_do_tempo.sort(key=lambda t: t[0])
+        linhas += transform_wayback.intervalos(plat, linha_do_tempo, por_codigo, hoje)
+
+    garantir(args.saida)
+    if linhas:
+        cro.validar(linhas)
+    pd.DataFrame(linhas, columns=list(cro.COLUNAS)).to_csv(
+        args.saida / "cronologia_wayback.csv", index=False
+    )
+    pd.DataFrame(resumo).to_csv(args.saida / "wayback_snapshots.csv", index=False)
+    pd.DataFrame(
+        [
+            {"plataforma": p, "tipo": t, "item": i, "conteudos": n}
+            for (p, t, i), n in nao_casados.most_common()
+        ],
+        columns=["plataforma", "tipo", "item", "conteudos"],
+    ).to_csv(args.saida / "wayback_nao_casados.csv", index=False)
+
+    tab = pd.DataFrame(resumo)
+    print("\n=== Snapshots por plataforma ===")
+    if tab.empty:
+        print("nenhum snapshot encontrado")
+    else:
+        print(
+            tab.groupby("plataforma")
+            .agg(
+                snapshots=("timestamp", "size"),
+                conteudos=("digest", "nunique"),
+                legiveis=("legivel", "sum"),
+                primeiro=("timestamp", "min"),
+                ultimo=("timestamp", "max"),
+            )
+            .to_string()
+        )
+        leg = tab[tab["legivel"]].copy()
+        if not leg.empty:
+            leg["ano"] = leg["timestamp"].str[:4]
+            print("\n=== Municipios do universo na lista, ultimo snapshot legivel de cada ano ===")
+            ultimo = leg.sort_values("timestamp").groupby(["plataforma", "ano"])["cidades"].last()
+            print(ultimo.to_string())
+    out = pd.DataFrame(linhas, columns=list(cro.COLUNAS))
+    if not out.empty:
+        print("\n=== Entradas datadas (tipo 3) ===")
+        print(out.groupby(["plataforma", "confianca"]).size().to_string())
+    ambiguos = sum(1 for k in nao_casados if k[1] == "ambiguo")
+    sem_par = sum(1 for k in nao_casados if k[1] == "sem_par")
+    print(
+        f"\nitens ambiguos (homonimo sem UF): {ambiguos}; itens sem par: {sem_par} "
+        f"-> {args.saida / 'wayback_nao_casados.csv'}"
+    )
+    print("Leia wayback_nao_casados.csv antes de usar: cidade que nao casou nao some, fica la.")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description="Cronologia de entrada das plataformas (F3)")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -325,6 +448,21 @@ def main(argv: list[str] | None = None) -> int:
     s.add_argument("consolidada", type=Path)
     s.add_argument("--fonte", type=Path, default=FONTE_IFOOD_PROSUS)
     s.set_defaults(func=cmd_prosus)
+
+    s = sub.add_parser("wayback")
+    s.add_argument("--universo", type=Path, default=UNIVERSO)
+    s.add_argument(
+        "--pagina",
+        action="append",
+        default=[],
+        metavar="PLATAFORMA=URL",
+        help="pagina de cobertura a mais, alem das de vcemal.extract.wayback.PAGINAS",
+    )
+    s.add_argument("--cache", type=Path, default=INTERIM / "wayback")
+    s.add_argument("--pausa", type=float, default=extract_wayback.PAUSA)
+    s.add_argument("--offline", action="store_true", help="so o que ja esta no cache")
+    s.add_argument("--saida", type=Path, default=TABELAS)
+    s.set_defaults(func=cmd_wayback)
 
     args = p.parse_args(argv)
     if args.cmd == "consolidar" and not (args.a.exists() and args.b.exists()):

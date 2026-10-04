@@ -178,6 +178,9 @@ não entra.** O V2 continua sendo a maior peça, mas não é o critério.
    de 1.710 municípios gerado, planilhas-modelo, validação, concordância e
    desempate por regra em `make cronologia`. **Falta a codificação em si**: dois
    codificadores, piloto de 60 municípios, 8 a 11 semanas de uma pessoa. Não é
-   trabalho de sessão automática.
+   trabalho de sessão automática. **O passo 1 do roteiro existe (D-038):**
+   `make wayback` data por intervalo os municípios que aparecem na lista de
+   cidades atendidas do iFood arquivada no Wayback; falta rodar fora da nuvem e
+   conferir os relatórios.
 6. Migrar aqui o documento original `pre-projeto-remuneracao-entrega-acidentes.md`
    (fases F0–F4, desenhos A e B, cronograma), que não está no repositório.

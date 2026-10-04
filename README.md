@@ -93,6 +93,7 @@ make pnad          # módulo de plataformas da PNAD Contínua: precariedade por 
 make lucro         # receita e resultado do iFood (Prosus) em reais constantes — só baixa câmbio e IPCA
 make contraste     # figura: resultado do iFood e valor pago pelo SUS no mesmo eixo — sem rede
 make cronologia    # F3: concordância e desempate das planilhas dos codificadores — sem rede
+make wayback       # F3: lista de cidades atendidas nos snapshots do Wayback — rodar fora da nuvem
 ```
 
 `make diagnostico` lê o painel já montado e escreve `car_int_por_ano.csv`,
@@ -135,6 +136,14 @@ kappa e concordância de data, aplica as regras de desempate e escreve
 `cronologia_entrada.csv`, `tratamento_municipio.csv` e `pendentes.csv`. O
 protocolo humano está em `docs/protocolo-cronologia-entrada.md`; a codificação
 em si ainda não começou — ver D-033.
+
+`make wayback` é o passo 1 do roteiro de busca do F3: baixa do Wayback os
+snapshots da página de cidades atendidas do portal de entregadores, casa cada
+item da lista com o universo e escreve `cronologia_wayback.csv` (entrada por
+intervalo, tipo 3, no esquema da planilha), `wayback_snapshots.csv` e
+`wayback_nao_casados.csv`. O Wayback recusa conexão de ambiente de nuvem: rode
+na sua máquina. Confira os dois relatórios antes de entregar as linhas aos
+codificadores — ver D-038.
 
 Os alvos passam pelo interpretador ativo (`$(PYTHON)`, padrão `python`). Para
 apontar outro: `make test PYTHON=python3.11`.

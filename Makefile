@@ -1,4 +1,4 @@
-.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia lint test limpar
+.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback lint test limpar
 
 PYTHON ?= python
 
@@ -42,6 +42,9 @@ contraste: ## figura iFood x SUS no mesmo eixo, R$ constantes (roda so com custo
 
 cronologia: ## F3: concordancia e consolidacao das planilhas dos dois codificadores -- sem rede
 	$(PYTHON) scripts/cronologia.py consolidar
+
+wayback: ## F3: listas de cidades atendidas no Wayback -> intervalo de entrada (tipo 3) -- rodar fora da nuvem
+	$(PYTHON) scripts/cronologia.py wayback
 
 lint:
 	ruff check . && ruff format --check .

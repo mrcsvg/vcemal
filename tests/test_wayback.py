@@ -199,6 +199,20 @@ def test_cidades_separadas_por_virgula_e_texto_de_script_ignorado():
     assert set(leitura.municipios) == {4106902, 4113700, 4115200}
 
 
+def test_apostrofo_sem_espaco_e_grafia_alternativa_casam():
+    """A lista de 2019 escreve "Santa Barbara Doeste", "Dias Davila" e "Açu"."""
+    universo = UNIVERSO + [
+        {"municipio_ibge": "3545803", "uf": "SP", "municipio": "Santa Bárbara d'Oeste"},
+        {"municipio_ibge": "2910057", "uf": "BA", "municipio": "Dias d'Ávila"},
+        {"municipio_ibge": "2400208", "uf": "RN", "municipio": "Assú"},
+    ]
+    html = """<li>Santa Barbara Doeste</li><li>Santa Bárbara d'Oeste</li>
+    <li>Dias Davila</li><li>Açu</li>"""
+    leitura = tw.ler(html, tw.construir_indice(universo))
+    assert set(leitura.municipios) == {3545803, 2910057, 2400208}
+    assert leitura.sem_par == []
+
+
 def test_sao_paulo_e_titulo_e_capital_ao_mesmo_tempo():
     leitura = tw.ler("<h3>São Paulo</h3><li>Curitiba</li>", INDICE)
     assert 3550308 in leitura.municipios

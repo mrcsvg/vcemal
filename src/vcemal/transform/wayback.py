@@ -81,6 +81,24 @@ TIPO_EVIDENCIA = 3
 _IGNORAR = {"script", "style", "noscript", "template", "head", "title"}
 _SUFIXO_UF = re.compile(r"^(?P<nome>.+?)\s*(?:[-–/,]\s*|\()(?P<uf>[A-Za-z]{2})\)?\s*$")
 _SEPARADORES = re.compile(r"[,;|•\n]+")
+_D_APOSTROFO = re.compile(r"\bD (?=[AEIOU])")
+
+#: Grafia da lista -> grafia do IBGE, ja normalizadas. Revisado a mao, como os
+#: `APELIDOS` de `vcemal.municipios`: nada de fuzzy match.
+GRAFIAS: dict[str, str] = {
+    "ACU": "ASSU",  # RN; a lista de 2019 escreve Acu, o IBGE Assu
+}
+
+
+def _chave(nome: str) -> str:
+    """Nome normalizado para casar lista com universo.
+
+    Alem de `normalizar`, cola o "d'" do apostrofo ("D OESTE" -> "DOESTE"), porque
+    a lista escreve "Santa Barbara Doeste" e "Dias Davila", e aplica `GRAFIAS`.
+    Fica aqui e nao em `normalizar`, que os `APELIDOS` do Senatran usam.
+    """
+    chave = _D_APOSTROFO.sub("D", normalizar(nome))
+    return GRAFIAS.get(chave, chave)
 
 
 class _Textos(HTMLParser):
@@ -153,7 +171,7 @@ def construir_indice(universo: list[dict]) -> dict[str, list[tuple[int, str]]]:
     """Nome normalizado -> [(codigo IBGE, UF)], a partir de `universo.csv`."""
     indice: dict[str, list[tuple[int, str]]] = defaultdict(list)
     for m in universo:
-        indice[normalizar(m["municipio"])].append((int(m["municipio_ibge"]), m["uf"]))
+        indice[_chave(m["municipio"])].append((int(m["municipio_ibge"]), m["uf"]))
     return dict(indice)
 
 
@@ -163,7 +181,7 @@ def ler(html: str, indice: dict[str, list[tuple[int, str]]]) -> Leitura:
     uf_corrente: str | None = None
     for item in itens(html):
         nome, uf_item = _separar_uf(item)
-        candidatos = indice.get(normalizar(nome), [])
+        candidatos = indice.get(_chave(nome), [])
         titulo = _uf_do_titulo(item)
         if titulo:
             # "Sao Paulo" e "Rio de Janeiro" sao titulo de estado e capital ao

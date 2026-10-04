@@ -29,20 +29,25 @@ log = logging.getLogger("vcemal.transform.denominadores")
 LIMITE_SEM_PAR = 20
 
 
-def _linha_do_cabecalho(caminho: Path, limite: int = 12) -> int:
-    """Indice da linha que traz UF e MUNICIPIO. Varia entre os anos da serie."""
-    topo = pd.read_excel(caminho, sheet_name=0, header=None, nrows=limite)
-    for i, linha in topo.iterrows():
-        celulas = {str(v).strip().upper() for v in linha.tolist()}
-        if "UF" in celulas and any(c.startswith("MUNIC") for c in celulas):
-            return int(i)
+def _localizar_cabecalho(caminho: Path, limite: int = 12) -> tuple[str | int, int]:
+    """Aba e indice da linha que traz UF e MUNICIPIO. Variam entre os anos da serie.
+
+    Em 2016 a primeira aba e um "Glossario" e o dado vem na segunda (`JUL_2016`),
+    entao a aba nao pode ser fixa: vale a primeira que tiver o cabecalho.
+    """
+    abas = pd.read_excel(caminho, sheet_name=None, header=None, nrows=limite)
+    for aba, topo in abas.items():
+        for i, linha in topo.iterrows():
+            celulas = {str(v).strip().upper() for v in linha.tolist()}
+            if "UF" in celulas and any(c.startswith("MUNIC") for c in celulas):
+                return aba, int(i)
     raise ValueError(f"nao achei o cabecalho (UF, MUNICIPIO) em {caminho}")
 
 
 def ler_frota(caminho: Path) -> pd.DataFrame:
     """Le uma planilha "Frota por Municipio e Tipo" e devolve as linhas de dado."""
-    cabecalho = _linha_do_cabecalho(caminho)
-    df = pd.read_excel(caminho, sheet_name=0, header=cabecalho)
+    aba, cabecalho = _localizar_cabecalho(caminho)
+    df = pd.read_excel(caminho, sheet_name=aba, header=cabecalho)
     df.columns = [str(c).strip().upper() for c in df.columns]
 
     coluna_municipio = next(c for c in df.columns if c.startswith("MUNIC"))

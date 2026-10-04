@@ -63,6 +63,20 @@ def test_ler_frota_acha_cabecalho_deslocado(arquivo):
     assert set(df["UF"]) == {"PR", "SP", "BA"}
 
 
+def test_ler_frota_acha_o_dado_fora_da_primeira_aba(tmp_path, arquivo):
+    """2016: a primeira aba e um glossario; o dado vem na segunda."""
+    dado = pd.read_excel(arquivo, header=None)
+    caminho = tmp_path / "frota_2016.xlsx"
+    with pd.ExcelWriter(caminho) as xl:
+        pd.DataFrame([[None, "Automovel", "veiculo automotor"]]).to_excel(
+            xl, sheet_name="Glossario", index=False, header=False
+        )
+        dado.to_excel(xl, sheet_name="JUL_2016", index=False, header=False)
+    df = den.ler_frota(caminho)
+    assert len(df) == 4
+    assert set(df["UF"]) == {"PR", "SP", "BA"}
+
+
 def test_ler_frota_falha_alto_se_faltar_tipo(tmp_path):
     grade = [["UF", "MUNICIPIO", "TOTAL", "MOTOCICLETA"], ["PR", "CURITIBA", 10, 5]]
     caminho = tmp_path / "incompleto.xlsx"

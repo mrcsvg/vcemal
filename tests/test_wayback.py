@@ -200,16 +200,17 @@ def test_cidades_separadas_por_virgula_e_texto_de_script_ignorado():
 
 
 def test_apostrofo_sem_espaco_e_grafia_alternativa_casam():
-    """A lista de 2019 escreve "Santa Barbara Doeste", "Dias Davila" e "Açu"."""
+    """A lista de 2019 escreve "Santa Barbara Doeste", "Dias Davila", "Açu" e "Santa Isabel"."""
     universo = UNIVERSO + [
         {"municipio_ibge": "3545803", "uf": "SP", "municipio": "Santa Bárbara d'Oeste"},
         {"municipio_ibge": "2910057", "uf": "BA", "municipio": "Dias d'Ávila"},
         {"municipio_ibge": "2400208", "uf": "RN", "municipio": "Assú"},
+        {"municipio_ibge": "1506500", "uf": "PA", "municipio": "Santa Izabel do Pará"},
     ]
     html = """<li>Santa Barbara Doeste</li><li>Santa Bárbara d'Oeste</li>
-    <li>Dias Davila</li><li>Açu</li>"""
+    <li>Dias Davila</li><li>Açu</li><li>Santa Isabel do Pará</li>"""
     leitura = tw.ler(html, tw.construir_indice(universo))
-    assert set(leitura.municipios) == {3545803, 2910057, 2400208}
+    assert set(leitura.municipios) == {3545803, 2910057, 2400208, 1506500}
     assert leitura.sem_par == []
 
 

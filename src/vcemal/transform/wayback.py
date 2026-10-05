@@ -87,6 +87,7 @@ _D_APOSTROFO = re.compile(r"\bD (?=[AEIOU])")
 #: `APELIDOS` de `vcemal.municipios`: nada de fuzzy match.
 GRAFIAS: dict[str, str] = {
     "ACU": "ASSU",  # RN; a lista de 2019 escreve Acu, o IBGE Assu
+    "SANTA ISABEL DO PARA": "SANTA IZABEL DO PARA",  # PA; com z no IBGE
 }
 
 

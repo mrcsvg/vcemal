@@ -1,9 +1,16 @@
 """Wayback Machine: snapshots das paginas de cobertura das plataformas (F3, tipo 3).
 
-A pagina de "cidades atendidas" do portal de entregadores lista onde a
-plataforma recruta entregador proprio. Comparar a lista entre snapshots data a
-entrada de centenas de municipios de uma vez, como intervalo -- e o caminho
-escalavel da secao 3 do protocolo (`docs/protocolo-cronologia-entrada.md`).
+Uma pagina que lista as cidades onde a plataforma opera **com entregador
+proprio** data, comparada entre snapshots, a entrada de centenas de municipios
+de uma vez, como intervalo -- e o caminho escalavel da secao 3 do protocolo
+(`docs/protocolo-cronologia-entrada.md`).
+
+**A pagina tem de ser do lado do entregador, e isso se confere no HTML, nao no
+dominio** (D-039). `entregador.ifood.com.br/cidades-atendidas` parece do
+portal de entregadores, mas o snapshot de 2019 e o site do consumidor ("iFood
+atende todas as cidades abaixo", canonical `www.ifood.com.br`, cada cidade
+apontando para `/delivery/<cidade>`): onde o app tinha restaurante, o que a
+secao 1 do protocolo exclui.
 
 Duas chamadas, ambas so leitura:
 
@@ -45,10 +52,18 @@ BRUTO = "https://web.archive.org/web/{timestamp}id_/{original}"
 VISIVEL = "https://web.archive.org/web/{timestamp}/{original}"
 
 #: Paginas de cobertura com frota propria, por plataforma. So entra aqui pagina
-#: cujo snapshot foi visto no indice: a do iFood aparece em set/2019. As das
-#: demais plataformas ficam para o piloto confirmar (`--pagina` acrescenta).
+#: cujo snapshot foi lido e e do lado do entregador (D-039). A do iFood e a
+#: lista de cidades com os termos do entregador, arquivada de dez/2023 em
+#: diante. Rappi e Uber Eats sempre operaram com entregador proprio, entao a
+#: lista de cidades do site do cliente serve: o seletor da home da Rappi (legivel
+#: de meados de 2019 a meados de 2020) e o diretorio de cidades da Uber Eats
+#: (2020 a 2023; o que vem depois da saida, em 2022-03, nao conta). Fora daqui,
+#: de proposito: `ubereats.com/pt-BR/cities/` (2019) e global e casa Colombo,
+#: Toledo e Santiago estrangeiros. `--pagina` acrescenta outras.
 PAGINAS: dict[str, tuple[str, ...]] = {
-    "ifood": ("entregador.ifood.com.br/cidades-atendidas",),
+    "ifood": ("entregador.ifood.com.br/cidades-com-os-novos-termos-e-condicoes",),
+    "rappi": ("rappi.com.br/",),
+    "uber_eats": ("ubereats.com/br/location",),
 }
 
 #: Pausa entre downloads, em segundos.
@@ -137,10 +152,13 @@ def listar(
             raise FileNotFoundError(f"sem indice guardado para {pagina} em {guardado}")
         corpo = guardado.read_bytes()
     else:
+        # Raiz de dominio (a home da Rappi) vai exata: por prefixo traria o site
+        # inteiro. Pagina com caminho vai por prefixo, e `e_a_pagina` filtra.
+        raiz = "/" not in _caminho(pagina)
         consulta = urllib.parse.urlencode(
             {
                 "url": pagina,
-                "matchType": "prefix",
+                "matchType": "exact" if raiz else "prefix",
                 "output": "json",
                 "fl": "timestamp,original,statuscode,digest",
                 "filter": "statuscode:200",

@@ -90,6 +90,25 @@ def test_listar_guarda_o_indice_e_le_offline(tmp_path, monkeypatch):
     assert len(chamadas) == 1, "offline nao vai a rede"
 
 
+def test_raiz_do_dominio_e_consultada_exata_e_nao_por_prefixo(monkeypatch):
+    """Por prefixo, `rappi.com.br/` traria o site inteiro: cada restaurante."""
+    resposta = [
+        ["timestamp", "original", "statuscode", "digest"],
+        ["20190615000000", "https://www.rappi.com.br/", "200", "A"],
+        ["20190616000000", "https://www.rappi.com.br/restaurantes", "200", "R"],
+    ]
+    chamadas = []
+
+    def falso(url, timeout):
+        chamadas.append(url)
+        return json.dumps(resposta).encode()
+
+    monkeypatch.setattr(ew, "baixar", falso)
+    snaps = ew.listar("rappi.com.br/")
+    assert "matchType=exact" in chamadas[0]
+    assert [s.digest for s in snaps] == ["A"]
+
+
 def test_offline_sem_indice_guardado_e_erro(tmp_path):
     with pytest.raises(FileNotFoundError):
         ew.listar("x", cache=tmp_path, offline=True)
@@ -214,6 +233,20 @@ def test_apostrofo_sem_espaco_e_grafia_alternativa_casam():
     assert leitura.sem_par == []
 
 
+def test_lista_de_termos_do_entregador_uf_antes_de_cada_cidade():
+    """Formato da lista do iFood de 2023 em diante: sigla, cidade, sigla, cidade."""
+    universo = UNIVERSO + [
+        {"municipio_ibge": "2900702", "uf": "BA", "municipio": "Alagoinhas"},
+        {"municipio_ibge": "4317103", "uf": "RS", "municipio": "Sant'Ana do Livramento"},
+    ]
+    html = """<p>PR</p><p>CASCAVEL</p><p>CE</p><p>CASCAVEL</p><p>BA</p><p>ALAGOINHAS_BA</p>
+    <p>RS</p><p>SANTANA DO LIVRAMENTO</p><p>RJ</p><p>RIO – BARRA</p>"""
+    leitura = tw.ler(html, tw.construir_indice(universo))
+    assert set(leitura.municipios) == {4104808, 2303501, 2900702, 4317103}
+    assert leitura.ambiguos == []
+    assert leitura.sem_par == ["RIO – BARRA"]
+
+
 def test_sao_paulo_e_titulo_e_capital_ao_mesmo_tempo():
     leitura = tw.ler("<h3>São Paulo</h3><li>Curitiba</li>", INDICE)
     assert 3550308 in leitura.municipios
@@ -279,6 +312,29 @@ def test_sumico_posterior_vai_para_observacao_e_nao_vira_saida():
     assert all(r["evento"] == "entrada" for r in linhas)
 
 
+def test_snapshot_depois_da_saida_nacional_nao_data_entrada():
+    """Uber Eats saiu em 2022-03: a pagina seguiu no ar, mas nao e entrada."""
+    tl = _tl(
+        ("20220101000000", {CWB: "Curitiba"}),
+        ("20230601000000", {CWB: "Curitiba", LDA: "Londrina"}),
+    )
+    linhas = tw.intervalos("uber_eats", tl, POR_CODIGO, "x")
+    assert [r["municipio_ibge"] for r in linhas] == [str(CWB)]
+
+
+def test_salto_de_cidades_novas_fica_d_com_aviso(monkeypatch):
+    """Lista que passa de polos a regioes metropolitanas nao e rollout de dois meses."""
+    monkeypatch.setattr(tw, "SALTO_MINIMO", 2)
+    tl = _tl(
+        ("20201101000000", {CWB: "Curitiba"}),
+        ("20210101000000", {CWB: "Curitiba", LDA: "Londrina", MGA: "Maringá"}),
+    )
+    linhas = {int(r["municipio_ibge"]): r for r in tw.intervalos("ifood", tl, POR_CODIGO, "x")}
+    assert linhas[LDA]["data_max"] == "2021-01"
+    assert linhas[LDA]["confianca"] == "D", "intervalo curto, mas num salto"
+    assert "salto de 2 cidades" in linhas[LDA]["observacao"]
+
+
 def test_linhas_passam_na_validacao_da_planilha():
     tl = _tl(
         ("20190922000000", {CWB: "Curitiba"}),
@@ -309,6 +365,7 @@ def test_subcomando_offline_do_cache_a_tabela(tmp_path, monkeypatch):
 
     universo = tmp_path / "universo.csv"
     pd.DataFrame(UNIVERSO).to_csv(universo, index=False)
+    monkeypatch.setattr(ew, "PAGINAS", {"ifood": ew.PAGINAS["ifood"]})
     pagina = ew.PAGINAS["ifood"][0]
     cache = tmp_path / "cache" / "ifood" / ew._caminho(pagina).replace("/", "_")
     cache.mkdir(parents=True)

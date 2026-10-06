@@ -138,12 +138,14 @@ protocolo humano está em `docs/protocolo-cronologia-entrada.md`; a codificaçã
 em si ainda não começou — ver D-033.
 
 `make wayback` é o passo 1 do roteiro de busca do F3: baixa do Wayback os
-snapshots da página de cidades atendidas do portal de entregadores, casa cada
-item da lista com o universo e escreve `cronologia_wayback.csv` (entrada por
+snapshots das listas de cidades com entregador próprio (iFood: cidades com os
+termos do entregador; Rappi: seletor da home; Uber Eats: diretório de cidades),
+casa cada item com o universo e escreve `cronologia_wayback.csv` (entrada por
 intervalo, tipo 3, no esquema da planilha), `wayback_snapshots.csv` e
 `wayback_nao_casados.csv`. O Wayback recusa conexão de ambiente de nuvem: rode
-na sua máquina. Confira os dois relatórios antes de entregar as linhas aos
-codificadores — ver D-038.
+na sua máquina; a home da Rappi são ~630 downloads, perto de uma hora. Confira
+os dois relatórios antes de entregar as linhas aos codificadores — ver D-038 e
+D-039.
 
 Os alvos passam pelo interpretador ativo (`$(PYTHON)`, padrão `python`). Para
 apontar outro: `make test PYTHON=python3.11`.

@@ -10,7 +10,7 @@ Tres passos, todos sem rede:
    **inteiro** do item, normalizado, e o nome do municipio -- nunca por
    substring, senao "Serra" casaria em "Serra Talhada" e "Natal" em qualquer
    aviso de feriado. A UF vem do proprio item (`Palmas - TO`, `Palmas/TO`,
-   `Palmas (TO)`) ou do ultimo titulo de estado visto antes dele. Nome que
+   `Palmas (TO)`, `ALAGOINHAS_BA`) ou do ultimo titulo de estado visto antes dele. Nome que
    existe em duas UFs do universo e fica sem UF (31 casos, de Palmas a
    Cascavel) **nao casa**: vai para o relatorio de ambiguos, nunca para o
    municipio errado (a mesma regra de D-014).
@@ -75,11 +75,19 @@ MINIMO_CIDADES = 20
 #: Item mais longo que isto e paragrafo, nao nome de cidade.
 TAMANHO_MAXIMO_ITEM = 60
 
+#: Um snapshot que traz de uma vez pelo menos `SALTO_MINIMO` cidades novas, e
+#: mais que `SALTO_FRACAO` da lista anterior, e lido como possivel mudanca de
+#: layout, nao como rollout: a lista da Uber Eats passou de 63 polos (nov/2020)
+#: a 187 municipios com as regioes metropolitanas (jan/2021). As cidades novas
+#: desse snapshot ficam com confianca D e aviso, mesmo com intervalo curto (D-039).
+SALTO_MINIMO = 10
+SALTO_FRACAO = 0.5
+
 CODIFICADOR = "W"
 TIPO_EVIDENCIA = 3
 
 _IGNORAR = {"script", "style", "noscript", "template", "head", "title"}
-_SUFIXO_UF = re.compile(r"^(?P<nome>.+?)\s*(?:[-–/,]\s*|\()(?P<uf>[A-Za-z]{2})\)?\s*$")
+_SUFIXO_UF = re.compile(r"^(?P<nome>.+?)\s*(?:[-–/,_]\s*|\()(?P<uf>[A-Za-z]{2})\)?\s*$")
 _SEPARADORES = re.compile(r"[,;|•\n]+")
 _D_APOSTROFO = re.compile(r"\bD (?=[AEIOU])")
 
@@ -88,6 +96,7 @@ _D_APOSTROFO = re.compile(r"\bD (?=[AEIOU])")
 GRAFIAS: dict[str, str] = {
     "ACU": "ASSU",  # RN; a lista de 2019 escreve Acu, o IBGE Assu
     "SANTA ISABEL DO PARA": "SANTA IZABEL DO PARA",  # PA; com z no IBGE
+    "SANTANA DO LIVRAMENTO": "SANT ANA DO LIVRAMENTO",  # RS; Sant'Ana no IBGE
 }
 
 
@@ -228,11 +237,28 @@ def intervalos(
     # Snapshot anterior a frota propria nacional e marketplace por definicao
     # (D-020): nao data entrada nem serve de "ultimo sem".
     linha_do_tempo = [t for t in linha_do_tempo if mes_indice(f"{t[0][:4]}-{t[0][4:6]}") >= piso]
+    # Depois da saida nacional a pagina pode seguir no ar (a da Uber Eats seguiu,
+    # com mercado e farmacia), mas cidade que aparece ali nao e entrada.
+    saida = PLATAFORMAS[plataforma].saida_nacional
+    if saida is not None:
+        teto = mes_indice(saida)
+        linha_do_tempo = [
+            t for t in linha_do_tempo if mes_indice(f"{t[0][:4]}-{t[0][4:6]}") <= teto
+        ]
     if not linha_do_tempo:
         return []
     pagina = re.sub(r"^https://web\.archive\.org/web/\d+/", "", linha_do_tempo[0][1])
     linhas = []
-    codigos = sorted({c for _, _, presentes in linha_do_tempo for c in presentes})
+    vistos: set[int] = set()
+    saltos: dict[int, int] = {}  # posicao do snapshot -> cidades novas, quando e salto
+    for k, (_, _, presentes) in enumerate(linha_do_tempo):
+        novas = len(set(presentes) - vistos)
+        if k > 0:
+            anterior = len(linha_do_tempo[k - 1][2])
+            if novas >= SALTO_MINIMO and novas > SALTO_FRACAO * anterior:
+                saltos[k] = novas
+        vistos |= set(presentes)
+    codigos = sorted(vistos)
     for codigo in codigos:
         k = next(i for i, (_, _, p) in enumerate(linha_do_tempo) if codigo in p)
         ts_com, url_com, presentes = linha_do_tempo[k]
@@ -253,6 +279,11 @@ def intervalos(
         if sumicos:
             notas.append(f"ausente em {sumicos} snapshot(s) legivel(is) posterior(es)")
         largura = fim - inicio
+        if k in saltos:
+            notas.append(
+                f"salto de {saltos[k]} cidades novas num so snapshot: "
+                "pode ser mudanca de layout, conferir"
+            )
         m = universo[codigo]
         linhas.append(
             {
@@ -264,7 +295,7 @@ def intervalos(
                 "data_min": indice_mes(inicio),
                 "data_max": indice_mes(fim),
                 "tipo_evidencia": TIPO_EVIDENCIA,
-                "confianca": "C" if k > 0 and largura <= 6 else "D",
+                "confianca": "C" if k > 0 and largura <= 6 and k not in saltos else "D",
                 "fonte": fonte,
                 "url": url_com,
                 "data_acesso": data_acesso,

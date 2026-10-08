@@ -11,6 +11,8 @@ DATA = RAIZ / "data"
 RAW_SIH = DATA / "raw" / "sih"
 #: RD que faltam no espelho do PySUS, baixados do FTP do DATASUS (D-036).
 RAW_SIH_ORIGEM = DATA / "raw" / "sih_origem"
+#: Dados abertos do CNPJ da Receita, uma pasta por publicacao mensal (D-040).
+RAW_CNPJ = DATA / "raw" / "cnpj"
 INTERIM = DATA / "interim"
 PAINEL = DATA / "painel"
 

@@ -184,6 +184,11 @@ não entra.** O V2 continua sendo a maior peça, mas não é o critério.
    iFood que se usava era do marketplace e saiu; a do entregador dá 453
    municípios com frota até dez/2023, sem datar entrada. Rappi (160 municípios,
    2019–2021) e Uber Eats (191, 2020–2022) datam por intervalo, 65 deles com
-   confiança C. Para o iFood, a cronologia depende da busca dos codificadores.
+   confiança C. ~~Para o iFood, a cronologia depende da busca dos codificadores.~~
+   **O tratamento passa a ser datado pelo CNPJ (D-040):** `make mei` acha a
+   quebra nas aberturas de MEI de entrega (CNAE 5320-2/02) por município e mês.
+   640 municípios abaixo de 100 mil habitantes ficam datados, de 2017 a 2025;
+   os 319 de 100 mil+ são coorte precoce (até 2018). A codificação vira
+   auditoria de 30 a 50 municípios; falta o protocolo 1.1 dizer isso.
 6. Migrar aqui o documento original `pre-projeto-remuneracao-entrega-acidentes.md`
    (fases F0–F4, desenhos A e B, cronograma), que não está no repositório.

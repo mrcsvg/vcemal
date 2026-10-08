@@ -1,4 +1,4 @@
-.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback lint test limpar
+.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei lint test limpar
 
 PYTHON ?= python
 
@@ -45,6 +45,9 @@ cronologia: ## F3: concordancia e consolidacao das planilhas dos dois codificado
 
 wayback: ## F3: listas de cidades atendidas no Wayback -> intervalo de entrada (tipo 3) -- rodar fora da nuvem
 	$(PYTHON) scripts/cronologia.py wayback
+
+mei: ## F3: mes de chegada do entregador pela quebra nas aberturas de MEI de entrega (D-040) -- ~6 GB de HTTPS
+	$(PYTHON) scripts/mei.py $(ARGS)
 
 lint:
 	ruff check . && ruff format --check .

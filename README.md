@@ -162,8 +162,9 @@ e imprime o placebo de 2016 e a concordância com o Wayback. Não lê o SIH.
 O tratamento que vale é a cópia congelada em
 `docs/fontes/cronologia/tratamento_mei_municipio.csv`, cujo hash está no plano de
 análise (D-041); rodar `make mei` de novo não a altera. `make auditoria`
-consolida as planilhas da auditoria (`auditoria_a.csv`, `auditoria_b.csv`, 48
-municípios sorteados por `scripts/cronologia.py auditoria-amostra`) e compara a
+consolida as planilhas da auditoria (`auditoria_a.csv`, `auditoria_b.csv`: 48
+municípios sorteados por `scripts/cronologia.py auditoria-amostra` e as 27
+capitais) e compara a
 cronologia codificada com a quebra, estrato por estrato, pela regra declarada na
 seção 4 do plano.
 

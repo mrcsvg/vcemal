@@ -108,19 +108,23 @@ neles.
 
 `[x]` **Auditoria por busca independente, com consequência declarada antes
 (D-041).** Uma amostra sorteada com semente fixa (`vcemal.auditoria`, semente
-20261011) de 12 municípios `datado` em cada estrato de ano da quebra — `2017`,
-`2018-2020`, `2021-2025` — e 12 iscas `sem_quebra`, misturados numa lista só
-(`docs/fontes/cronologia/auditoria_municipios.csv`). Dois codificadores buscam a
+20261011) de 6 municípios `datado` por faixa de população (20–50 mil, 50–100
+mil) em cada estrato de ano da quebra — `2017`, `2018-2020`, `2021-2025` —, 6
+iscas `sem_quebra` por faixa e, obrigatoriamente, as 27 capitais: 75 municípios
+misturados numa lista só (`docs/fontes/cronologia/auditoria_municipios.csv`). Dois codificadores buscam a
 entrada das plataformas pelo protocolo `docs/protocolo-cronologia-entrada.md`,
 versão 1.1, cegos ao SIH, à quebra e ao estrato; desempate por regra e
 adjudicação como no protocolo.
 
 - **Concordância:** a quebra cai no intervalo codificado `[data_min, data_max]`
-  da entrada mais antiga, alargado 6 meses para cada lado. Município sem
+  da entrada mais antiga, alargado 6 meses para cada lado. Nas capitais, que são
+  `coorte_precoce` e não têm a quebra como data, o teste é a premissa da coorte:
+  o intervalo codificado, alargado igual, começa até dez/2018. Município sem
   evidência encontrada (`N`) não conta contra nem a favor.
 - **Veredito por estrato:** *passa* com ao menos 2/3 dos achados concordando;
-  *falha* abaixo disso; *inconclusivo* com menos de 6 achados. Iscas são só
-  descritas: a fração delas com plataforma encontrada é reportada.
+  *falha* abaixo disso; *inconclusivo* com menos de 6 achados. O veredito é por
+  estrato de ano; o resultado por faixa é reportado ao lado, sem veredito. Iscas
+  são só descritas: a fração delas com plataforma encontrada é reportada.
 - **Consequência, aplicada mecanicamente:**
   - `2017` falha → as quebras de 2017 saem da estimação principal (nem tratadas
     nem comparação) e voltam só como robustez;
@@ -129,6 +133,8 @@ adjudicação como no protocolo.
     mais importa. A estimação roda como declarada, mas o resultado é reportado
     como efeito da chegada de entregador formalizado, e a leitura "efeito da
     plataforma" é declarada não sustentada;
+  - `capital` falha → a premissa "coorte precoce tratada até 2018" cai, e a
+    robustez que usa a `coorte_precoce` como coorte de 2018 não é rodada;
   - inconclusivo → a regra fica como está, e o estrato é dito não auditado.
 - **Robustez pré-declarada, qualquer que seja o veredito:** excluir as quebras
   anteriores a 2018-01 e, separadamente, as posteriores a 2020-12.

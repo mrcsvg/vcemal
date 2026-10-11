@@ -353,14 +353,18 @@ def cmd_auditoria_avaliar(args) -> int:
     if aud.lista_cega(chave)["municipio_ibge"].tolist() != lista:
         log.error("%s nao bate com o sorteio de %s", args.lista, args.tratamento)
         return 1
-    por_mun, resumo = aud.avaliar(
+    por_mun, resumo, por_faixa = aud.avaliar(
         chave, tratamento, pd.read_csv(args.codificado, dtype={"mes_tratamento": str})
     )
     garantir(args.saida)
     por_mun.to_csv(args.saida / "auditoria_por_municipio.csv", index=False)
     resumo.to_csv(args.saida / "auditoria_resumo.csv", index=False)
+    por_faixa.to_csv(args.saida / "auditoria_por_faixa.csv", index=False)
     print(f"\n=== Auditoria do MEI (D-041): quebra no intervalo +-{aud.TOLERANCIA} meses ===")
     print(resumo.to_string(index=False))
+    print(f"capital: intervalo codificado comeca ate {aud.LIMITE_PRECOCE} (+-{aud.TOLERANCIA})")
+    print("\n--- por faixa, so descritivo ---")
+    print(por_faixa.to_string(index=False))
     print(
         f"passa: >= {aud.LIMIAR:.0%} dos achados concordam; "
         f"inconclusivo: menos de {aud.MINIMO_ACHADOS} achados. "

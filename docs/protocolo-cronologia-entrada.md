@@ -9,8 +9,8 @@ onde o texto e o código divergirem, o código é o que vale e o texto está err
 
 > **O que mudou na 1.1 (D-041).** A codificação deixou de ser a fonte do
 > tratamento do V2: o mês de chegada sai da quebra nas aberturas de MEI de
-> entrega (D-040). Este protocolo passa a reger a **auditoria** dessa quebra — 48
-> municípios sorteados, não os 1.710 do universo (seções 2, 8, 10 e 13) — e
+> entrega (D-040). Este protocolo passa a reger a **auditoria** dessa quebra — 75
+> municípios, 48 sorteados e as 27 capitais, não os 1.710 do universo (seções 2, 8, 10 e 13) — e
 > incorpora a correção do D-039: a lista do iFood que a versão 1.0 tomava como
 > página do entregador era do consumidor (seção 3). As regras de evento,
 > evidência, confiança e desempate (seções 1, 3 a 7 e 9) não mudam. A versão 1.0
@@ -52,10 +52,11 @@ o município reaparece no próximo bloco de revisão se surgir evidência melhor
 - **Unidade:** município (código IBGE de 7 dígitos) × plataforma × evento
   (`entrada` ou `saida`). Reentrada (99Food em 2025) é uma segunda linha de
   `entrada`, com a `saida` entre as duas.
-- **Na versão 1.1, o que se codifica é a amostra de auditoria:** os 48 municípios
-  de `docs/fontes/cronologia/auditoria_municipios.csv`, sorteados por
-  `scripts/cronologia.py auditoria-amostra` (D-041), nas cinco plataformas. A
-  lista mistura municípios com e sem quebra no MEI, de propósito: o codificador
+- **Na versão 1.1, o que se codifica é a amostra de auditoria:** os 75 municípios
+  de `docs/fontes/cronologia/auditoria_municipios.csv` — 48 sorteados por
+  `scripts/cronologia.py auditoria-amostra` e as 27 capitais (D-041, D-042) —,
+  nas cinco plataformas. A lista mistura municípios com e sem quebra no MEI, de
+  propósito: o codificador
   não sabe, e não deve tentar adivinhar, quais são quais. O universo abaixo
   continua sendo o da análise e o de onde a amostra sai.
 - **Universo:** os **1.710 municípios com 20 mil habitantes ou mais no Censo
@@ -74,7 +75,7 @@ o município reaparece no próximo bloco de revisão se surgir evidência melhor
 - **Ordem de trabalho:** a planilha sai de `scripts/cronologia.py planilha` em
   ordem **sorteada com semente fixa**, a mesma para os dois codificadores. Na
   auditoria (1.1) a ordem é a da lista sorteada (`planilha --municipios`), num
-  bloco só de 48 municípios, codificado na ordem da planilha. Na codificação do
+  bloco só de 75 municípios, codificado na ordem da planilha. Na codificação do
   universo (1.0), o trabalho andava em **blocos de 100 municípios**, com a
   concordância calculada ao fim de cada bloco, para os dois não codificarem
   capitais primeiro e treinarem só no caso fácil.
@@ -193,7 +194,7 @@ Ao fim de cada bloco, `scripts/cronologia.py comparar A.csv B.csv` calcula:
   cruzam;
 - a lista de discordâncias com o motivo (`existencia` ou `data`).
 
-**Auditoria (1.1):** um bloco só, os 48 municípios da amostra. Não há piloto
+**Auditoria (1.1):** um bloco só, os 75 municípios da amostra. Não há piloto
 separado nem bloco seguinte: a amostra é fixa e não se troca. Kappa e
 concordância de datas são calculados e reportados; com **kappa < 0,70 ou menos
 de 80% de datas concordantes**, todas as discordâncias vão para adjudicação,
@@ -255,7 +256,7 @@ Robustez por plataforma (só iFood) sai do mesmo consolidado filtrando
 
 ## 11. Validação externa, antes de fechar
 
-Na auditoria (1.1) a comparação com a Prosus não se aplica: 48 municípios não
+Na auditoria (1.1) a comparação com a Prosus não se aplica: 75 municípios não
 somam o país. Vale só a terceira validação (marcos nacionais).
 
 - `scripts/cronologia.py prosus` conta os municípios com entrada do iFood até
@@ -282,7 +283,7 @@ análise exploratória declarada em `docs/decisoes.md`.
 ```
 docs/fontes/cronologia/universo.csv          1.710 municípios (gerado, versionado)
 docs/fontes/cronologia/tratamento_mei_municipio.csv  tratamento do MEI congelado (não abrir)
-docs/fontes/cronologia/auditoria_municipios.csv      48 municípios da auditoria, em ordem
+docs/fontes/cronologia/auditoria_municipios.csv      75 municípios da auditoria, em ordem
 docs/fontes/cronologia/auditoria_a.csv       planilha do codificador A na auditoria
 docs/fontes/cronologia/auditoria_b.csv       planilha do codificador B na auditoria
 docs/fontes/cronologia/auditoria_desempates.csv      decisões do adjudicador na auditoria
@@ -314,9 +315,10 @@ python scripts/cronologia.py planilha --codificador A \
 make auditoria                                         # consolida e dá o veredito
 ```
 
-**Esforço estimado na auditoria (1.1).** 48 municípios × 5 plataformas = 240
-pares por codificador; a 15 minutos cada, cerca de 60 horas por codificador,
-uma a duas semanas. É teto: o par que termina em `N` antes dos 15 minutos
+**Esforço estimado na auditoria (1.1).** 75 municípios × 5 plataformas = 375
+pares por codificador; a 15 minutos cada, cerca de 94 horas por codificador,
+duas a três semanas. As capitais são 135 desses pares e as mais fáceis de
+documentar. É teto: o par que termina em `N` antes dos 15 minutos
 custa menos.
 
 **Esforço estimado na codificação do universo (1.0, suspensa).** 8.550 pares município × plataforma por codificador. Se
@@ -334,4 +336,4 @@ aceitável (C/D) quando a busca fina não render nada em 15 minutos.
 | Versão | Data | Mudança |
 |---|---|---|
 | 1.0 | 2026-09-20 | Versão inicial, antes do piloto |
-| 1.1 | 2026-10-11 | Codificação vira auditoria de 48 municípios do tratamento do MEI (D-040, D-041); lista do iFood corrigida para o lado do entregador e regra "página só entra depois de lida" (D-039); cegamento estendido aos arquivos do MEI; James Delivery fora |
+| 1.1 | 2026-10-11 | Codificação vira auditoria de 75 municípios do tratamento do MEI — 48 sorteados por estrato de ano × faixa e as 27 capitais (D-040, D-041, D-042); lista do iFood corrigida para o lado do entregador e regra "página só entra depois de lida" (D-039); cegamento estendido aos arquivos do MEI; James Delivery fora |

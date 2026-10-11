@@ -188,7 +188,12 @@ não entra.** O V2 continua sendo a maior peça, mas não é o critério.
    **O tratamento passa a ser datado pelo CNPJ (D-040):** `make mei` acha a
    quebra nas aberturas de MEI de entrega (CNAE 5320-2/02) por município e mês.
    640 municípios abaixo de 100 mil habitantes ficam datados, de 2017 a 2025;
-   os 319 de 100 mil+ são coorte precoce (até 2018). A codificação vira
-   auditoria de 30 a 50 municípios; falta o protocolo 1.1 dizer isso.
+   os 319 de 100 mil+ são coorte precoce (até 2018). ~~A codificação vira
+   auditoria de 30 a 50 municípios; falta o protocolo 1.1 dizer isso.~~
+   **Congelado e auditável (D-041):** o tratamento tem hash na seção 4 do plano
+   de análise; protocolo 1.1 escrito; amostra de 48 municípios sorteada (36
+   `datado` em três estratos de ano, 12 iscas) e planilhas dos dois
+   codificadores geradas. **Falta:** depositar o plano no OSF e, depois, a
+   busca em si (~60 h por codificador) e `make auditoria`.
 6. Migrar aqui o documento original `pre-projeto-remuneracao-entrega-acidentes.md`
    (fases F0–F4, desenhos A e B, cronograma), que não está no repositório.

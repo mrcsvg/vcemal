@@ -1,0 +1,1711 @@
+municipio_ibge,uf,municipio,populacao_2022,faixa,mes_quebra,aberturas_base_mes,placebo_2016,grupo,mes_tratamento
+1100015,RO,Alta Floresta D'Oeste,21494,20-50 mil,,0.0,False,sem_quebra,
+1100023,RO,Ariquemes,96833,50-100 mil,2020-01,0.125,False,datado,2020-01
+1100049,RO,Cacoal,86887,50-100 mil,2017-09,0.292,False,datado,2017-09
+1100098,RO,Espigão D'Oeste,29414,20-50 mil,,0.042,False,sem_quebra,
+1100106,RO,Guajará-Mirim,39387,20-50 mil,,0.042,False,sem_quebra,
+1100114,RO,Jaru,50591,50-100 mil,2020-09,0.083,False,datado,2020-09
+1100122,RO,Ji-Paraná,124333,100-250 mil,2017-05,0.25,False,coorte_precoce,
+1100130,RO,Machadinho D'Oeste,30707,20-50 mil,,0.0,False,sem_quebra,
+1100155,RO,Ouro Preto do Oeste,35044,20-50 mil,2025-05,0.0,False,datado,2025-05
+1100189,RO,Pimenta Bueno,35079,20-50 mil,2023-05,0.042,False,datado,2023-05
+1100205,RO,Porto Velho,460434,250 mil+,2018-01,1.333,False,coorte_precoce,
+1100288,RO,Rolim de Moura,56406,50-100 mil,2020-11,0.167,False,datado,2020-11
+1100304,RO,Vilhena,95832,50-100 mil,2018-10,0.208,False,datado,2018-10
+1100320,RO,São Miguel do Guaporé,21635,20-50 mil,,0.0,False,sem_quebra,
+1100338,RO,Nova Mamoré,25444,20-50 mil,,0.0,False,sem_quebra,
+1100452,RO,Buritis,27992,20-50 mil,,0.0,False,sem_quebra,
+1100809,RO,Candeias do Jamari,22310,20-50 mil,,0.042,False,sem_quebra,
+1200104,AC,Brasiléia,26000,20-50 mil,,0.0,False,sem_quebra,
+1200203,AC,Cruzeiro do Sul,91888,50-100 mil,2019-12,0.125,False,datado,2019-12
+1200302,AC,Feijó,35426,20-50 mil,,0.0,False,sem_quebra,
+1200401,AC,Rio Branco,364756,250 mil+,2018-11,0.542,False,coorte_precoce,
+1200450,AC,Senador Guiomard,21454,20-50 mil,,0.0,False,sem_quebra,
+1200500,AC,Sena Madureira,41343,20-50 mil,,0.042,False,sem_quebra,
+1200609,AC,Tarauacá,43467,20-50 mil,,0.0,False,sem_quebra,
+1300144,AM,Apuí,20647,20-50 mil,,0.042,False,sem_quebra,
+1300300,AM,Autazes,41564,20-50 mil,,0.125,False,sem_quebra,
+1300508,AM,Barreirinha,31051,20-50 mil,,0.0,False,sem_quebra,
+1300607,AM,Benjamin Constant,37648,20-50 mil,,0.042,False,sem_quebra,
+1300631,AM,Beruri,20718,20-50 mil,,0.042,False,sem_quebra,
+1300680,AM,Boa Vista do Ramos,23785,20-50 mil,,0.0,False,sem_quebra,
+1300706,AM,Boca do Acre,35447,20-50 mil,,0.0,False,sem_quebra,
+1300805,AM,Borba,33080,20-50 mil,,0.083,False,sem_quebra,
+1301001,AM,Carauari,28742,20-50 mil,,0.042,False,sem_quebra,
+1301100,AM,Careiro,30792,20-50 mil,,0.083,False,sem_quebra,
+1301209,AM,Coari,70616,50-100 mil,,0.0,False,sem_quebra,
+1301308,AM,Codajás,23549,20-50 mil,,0.0,False,sem_quebra,
+1301407,AM,Eirunepé,33170,20-50 mil,,0.0,False,sem_quebra,
+1301605,AM,Fonte Boa,25871,20-50 mil,,0.042,False,sem_quebra,
+1301704,AM,Humaitá,57473,50-100 mil,2023-08,0.083,False,datado,2023-08
+1301803,AM,Ipixuna,24311,20-50 mil,,0.042,False,sem_quebra,
+1301852,AM,Iranduba,61163,50-100 mil,,0.125,False,sem_quebra,
+1301902,AM,Itacoatiara,103598,100-250 mil,,0.0,False,coorte_precoce,
+1302306,AM,Jutaí,25172,20-50 mil,,0.042,False,sem_quebra,
+1302405,AM,Lábrea,45448,20-50 mil,,0.042,False,sem_quebra,
+1302504,AM,Manacapuru,101883,100-250 mil,2025-08,0.125,False,coorte_precoce,
+1302603,AM,Manaus,2063689,250 mil+,2017-01,5.458,True,coorte_precoce,
+1302702,AM,Manicoré,53914,50-100 mil,,0.042,False,sem_quebra,
+1302900,AM,Maués,61204,50-100 mil,,0.042,False,sem_quebra,
+1303007,AM,Nhamundá,20136,20-50 mil,,0.0,False,sem_quebra,
+1303106,AM,Nova Olinda do Norte,27062,20-50 mil,,0.125,False,sem_quebra,
+1303304,AM,Novo Aripuanã,23818,20-50 mil,,0.0,False,sem_quebra,
+1303403,AM,Parintins,96372,50-100 mil,2021-05,0.125,False,datado,2021-05
+1303536,AM,Presidente Figueiredo,30668,20-50 mil,,0.083,False,sem_quebra,
+1303569,AM,Rio Preto da Eva,24936,20-50 mil,,0.042,False,sem_quebra,
+1303700,AM,Santo Antônio do Içá,28211,20-50 mil,,0.042,False,sem_quebra,
+1303809,AM,São Gabriel da Cachoeira,51795,50-100 mil,,0.0,False,sem_quebra,
+1303908,AM,São Paulo de Olivença,32967,20-50 mil,,0.0,False,sem_quebra,
+1304062,AM,Tabatinga,66764,50-100 mil,,0.083,False,sem_quebra,
+1304203,AM,Tefé,73669,50-100 mil,2025-03,0.0,False,datado,2025-03
+1304401,AM,Urucurituba,23945,20-50 mil,,0.0,False,sem_quebra,
+1400050,RR,Alto Alegre,21096,20-50 mil,,0.0,False,sem_quebra,
+1400100,RR,Boa Vista,413486,250 mil+,2018-01,1.125,False,coorte_precoce,
+1400209,RR,Caracaraí,20957,20-50 mil,,0.0,False,sem_quebra,
+1400472,RR,Rorainópolis,32647,20-50 mil,,0.0,False,sem_quebra,
+1500107,PA,Abaetetuba,158188,100-250 mil,2021-06,0.083,False,coorte_precoce,
+1500206,PA,Acará,59023,50-100 mil,,0.0,False,sem_quebra,
+1500305,PA,Afuá,37765,20-50 mil,,0.0,False,sem_quebra,
+1500404,PA,Alenquer,69377,50-100 mil,,0.0,False,sem_quebra,
+1500503,PA,Almeirim,34280,20-50 mil,,0.0,False,sem_quebra,
+1500602,PA,Altamira,126279,100-250 mil,2019-07,0.042,False,coorte_precoce,
+1500701,PA,Anajás,28011,20-50 mil,,0.0,False,sem_quebra,
+1500800,PA,Ananindeua,478778,250 mil+,2018-06,1.5,False,coorte_precoce,
+1500859,PA,Anapu,31850,20-50 mil,,0.042,False,sem_quebra,
+1500909,PA,Augusto Corrêa,44573,20-50 mil,,0.0,False,sem_quebra,
+1500958,PA,Aurora do Pará,23774,20-50 mil,,0.0,False,sem_quebra,
+1501105,PA,Bagre,31892,20-50 mil,,0.0,False,sem_quebra,
+1501204,PA,Baião,51641,50-100 mil,,0.0,False,sem_quebra,
+1501303,PA,Barcarena,126650,100-250 mil,2021-03,0.125,False,coorte_precoce,
+1501402,PA,Belém,1303403,250 mil+,2017-03,4.208,False,coorte_precoce,
+1501501,PA,Benevides,63567,50-100 mil,2020-08,0.042,False,datado,2020-08
+1501709,PA,Bragança,123082,100-250 mil,2018-10,0.083,False,coorte_precoce,
+1501725,PA,Brasil Novo,24718,20-50 mil,,0.0,False,sem_quebra,
+1501782,PA,Breu Branco,45712,20-50 mil,,0.0,False,sem_quebra,
+1501808,PA,Breves,106968,100-250 mil,,0.042,False,coorte_precoce,
+1501907,PA,Bujaru,24383,20-50 mil,,0.0,False,sem_quebra,
+1502004,PA,Cachoeira do Arari,23981,20-50 mil,,0.0,False,sem_quebra,
+1502103,PA,Cametá,134184,100-250 mil,,0.042,False,coorte_precoce,
+1502152,PA,Canaã dos Carajás,77079,50-100 mil,2021-05,0.208,False,datado,2021-05
+1502202,PA,Capanema,70394,50-100 mil,,0.0,False,sem_quebra,
+1502301,PA,Capitão Poço,56506,50-100 mil,,0.0,False,sem_quebra,
+1502400,PA,Castanhal,192256,100-250 mil,2020-12,0.083,False,coorte_precoce,
+1502509,PA,Chaves,20757,20-50 mil,,0.0,False,sem_quebra,
+1502707,PA,Conceição do Araguaia,44617,20-50 mil,2025-04,0.0,False,datado,2025-04
+1502756,PA,Concórdia do Pará,26881,20-50 mil,,0.0,False,sem_quebra,
+1502806,PA,Curralinho,33903,20-50 mil,,0.0,False,sem_quebra,
+1502905,PA,Curuçá,41262,20-50 mil,,0.0,False,sem_quebra,
+1502939,PA,Dom Eliseu,58484,50-100 mil,,0.0,False,sem_quebra,
+1502954,PA,Eldorado do Carajás,28192,20-50 mil,,0.0,False,sem_quebra,
+1503077,PA,Garrafão do Norte,24703,20-50 mil,,0.0,False,sem_quebra,
+1503093,PA,Goianésia do Pará,26362,20-50 mil,,0.042,False,sem_quebra,
+1503101,PA,Gurupá,31786,20-50 mil,,0.0,False,sem_quebra,
+1503200,PA,Igarapé-Açu,35797,20-50 mil,,0.0,False,sem_quebra,
+1503309,PA,Igarapé-Miri,64831,50-100 mil,,0.042,False,sem_quebra,
+1503457,PA,Ipixuna do Pará,30329,20-50 mil,,0.0,False,sem_quebra,
+1503507,PA,Irituia,30955,20-50 mil,,0.0,False,sem_quebra,
+1503606,PA,Itaituba,123314,100-250 mil,2020-07,0.0,False,coorte_precoce,
+1503705,PA,Itupiranga,49754,20-50 mil,,0.0,False,sem_quebra,
+1503754,PA,Jacareacanga,24042,20-50 mil,,0.042,False,sem_quebra,
+1503804,PA,Jacundá,37707,20-50 mil,,0.0,False,sem_quebra,
+1503903,PA,Juruti,50881,50-100 mil,,0.0,False,sem_quebra,
+1504000,PA,Limoeiro do Ajuru,29569,20-50 mil,,0.0,False,sem_quebra,
+1504059,PA,Mãe do Rio,34353,20-50 mil,,0.0,False,sem_quebra,
+1504208,PA,Marabá,266533,250 mil+,2018-02,0.25,False,coorte_precoce,
+1504307,PA,Maracanã,25971,20-50 mil,,0.0,False,sem_quebra,
+1504406,PA,Marapanim,26573,20-50 mil,,0.0,False,sem_quebra,
+1504422,PA,Marituba,111785,100-250 mil,2019-01,0.042,False,coorte_precoce,
+1504455,PA,Medicilândia,27094,20-50 mil,,0.0,False,sem_quebra,
+1504505,PA,Melgaço,27881,20-50 mil,,0.0,False,sem_quebra,
+1504604,PA,Mocajuba,27198,20-50 mil,,0.0,False,sem_quebra,
+1504703,PA,Moju,84094,50-100 mil,,0.0,False,sem_quebra,
+1504752,PA,Mojuí dos Campos,23501,20-50 mil,,0.0,False,sem_quebra,
+1504802,PA,Monte Alegre,60012,50-100 mil,,0.0,False,sem_quebra,
+1504901,PA,Muaná,45368,20-50 mil,,0.0,False,sem_quebra,
+1504950,PA,Nova Esperança do Piriá,20478,20-50 mil,,0.0,False,sem_quebra,
+1505031,PA,Novo Progresso,33638,20-50 mil,,0.042,False,sem_quebra,
+1505064,PA,Novo Repartimento,60732,50-100 mil,,0.0,False,sem_quebra,
+1505106,PA,Óbidos,52229,50-100 mil,,0.0,False,sem_quebra,
+1505205,PA,Oeiras do Pará,33844,20-50 mil,,0.0,False,sem_quebra,
+1505304,PA,Oriximiná,68294,50-100 mil,,0.042,False,sem_quebra,
+1505437,PA,Ourilândia do Norte,32467,20-50 mil,,0.0,False,sem_quebra,
+1505486,PA,Pacajá,41097,20-50 mil,,0.0,False,sem_quebra,
+1505502,PA,Paragominas,105550,100-250 mil,2021-01,0.042,False,coorte_precoce,
+1505536,PA,Parauapebas,267836,250 mil+,2017-08,0.125,False,coorte_precoce,
+1505700,PA,Ponta de Pedras,24984,20-50 mil,,0.042,False,sem_quebra,
+1505809,PA,Portel,62503,50-100 mil,,0.042,False,sem_quebra,
+1505908,PA,Porto de Moz,40597,20-50 mil,,0.0,False,sem_quebra,
+1506005,PA,Prainha,35577,20-50 mil,,0.0,False,sem_quebra,
+1506138,PA,Redenção,85597,50-100 mil,2017-09,0.0,False,datado,2017-09
+1506187,PA,Rondon do Pará,53143,50-100 mil,,0.125,False,sem_quebra,
+1506195,PA,Rurópolis,35769,20-50 mil,,0.0,False,sem_quebra,
+1506203,PA,Salinópolis,44772,20-50 mil,,0.0,False,sem_quebra,
+1506302,PA,Salvaterra,24129,20-50 mil,,0.0,False,sem_quebra,
+1506351,PA,Santa Bárbara do Pará,21087,20-50 mil,,0.042,False,sem_quebra,
+1506500,PA,Santa Izabel do Pará,73019,50-100 mil,2023-07,0.083,False,datado,2023-07
+1506559,PA,Santa Luzia do Pará,20370,20-50 mil,,0.0,False,sem_quebra,
+1506609,PA,Santa Maria do Pará,24624,20-50 mil,,0.0,False,sem_quebra,
+1506708,PA,Santana do Araguaia,32413,20-50 mil,,0.042,False,sem_quebra,
+1506807,PA,Santarém,331942,250 mil+,2020-04,0.375,False,coorte_precoce,
+1507003,PA,Santo Antônio do Tauá,27461,20-50 mil,,0.0,False,sem_quebra,
+1507151,PA,São Domingos do Araguaia,21092,20-50 mil,,0.0,False,sem_quebra,
+1507201,PA,São Domingos do Capim,30599,20-50 mil,,0.0,False,sem_quebra,
+1507300,PA,São Félix do Xingu,65418,50-100 mil,2020-05,0.042,False,datado,2020-05
+1507458,PA,São Geraldo do Araguaia,24255,20-50 mil,,0.0,False,sem_quebra,
+1507474,PA,São João de Pirabas,20689,20-50 mil,,0.0,False,sem_quebra,
+1507607,PA,São Miguel do Guamá,52894,50-100 mil,,0.083,False,sem_quebra,
+1507706,PA,São Sebastião da Boa Vista,25643,20-50 mil,,0.0,False,sem_quebra,
+1507805,PA,Senador José Porfírio,22576,20-50 mil,,0.0,False,sem_quebra,
+1507904,PA,Soure,24204,20-50 mil,,0.0,False,sem_quebra,
+1507953,PA,Tailândia,72493,50-100 mil,,0.0,False,sem_quebra,
+1508001,PA,Tomé-Açu,67585,50-100 mil,,0.0,False,sem_quebra,
+1508035,PA,Tracuateua,28595,20-50 mil,,0.0,False,sem_quebra,
+1508084,PA,Tucumã,39550,20-50 mil,,0.083,False,sem_quebra,
+1508100,PA,Tucuruí,91306,50-100 mil,2024-04,0.083,False,datado,2024-04
+1508126,PA,Ulianópolis,37972,20-50 mil,,0.0,False,sem_quebra,
+1508159,PA,Uruará,43558,20-50 mil,,0.042,False,sem_quebra,
+1508209,PA,Vigia,50832,50-100 mil,,0.042,False,sem_quebra,
+1508308,PA,Viseu,58692,50-100 mil,,0.042,False,sem_quebra,
+1508407,PA,Xinguara,52893,50-100 mil,2020-11,0.042,False,datado,2020-11
+1600279,AP,Laranjal do Jari,35114,20-50 mil,,0.0,False,sem_quebra,
+1600303,AP,Macapá,442933,250 mil+,2017-01,0.25,False,coorte_precoce,
+1600402,AP,Mazagão,21924,20-50 mil,,0.0,False,sem_quebra,
+1600501,AP,Oiapoque,27482,20-50 mil,,0.0,False,sem_quebra,
+1600600,AP,Santana,107618,100-250 mil,2025-06,0.042,False,coorte_precoce,
+1702109,TO,Araguaína,171301,100-250 mil,2017-08,0.292,True,coorte_precoce,
+1702208,TO,Araguatins,31918,20-50 mil,2024-10,0.0,False,datado,2024-10
+1705508,TO,Colinas do Tocantins,34233,20-50 mil,2021-05,0.042,False,datado,2021-05
+1709302,TO,Guaraí,24775,20-50 mil,,0.125,False,sem_quebra,
+1709500,TO,Gurupi,85125,50-100 mil,2018-03,0.0,False,datado,2018-03
+1716109,TO,Paraíso do Tocantins,52360,50-100 mil,2021-01,0.0,False,datado,2021-01
+1718204,TO,Porto Nacional,64418,50-100 mil,2018-05,0.167,False,datado,2018-05
+1721000,TO,Palmas,302692,250 mil+,2017-05,1.917,True,coorte_precoce,
+1721208,TO,Tocantinópolis,22615,20-50 mil,,0.0,False,sem_quebra,
+2100055,MA,Açailândia,106550,100-250 mil,2019-11,0.042,False,coorte_precoce,
+2100303,MA,Aldeias Altas,23286,20-50 mil,,0.0,False,sem_quebra,
+2100436,MA,Alto Alegre do Maranhão,24048,20-50 mil,,0.0,False,sem_quebra,
+2100477,MA,Alto Alegre do Pindaré,25710,20-50 mil,,0.0,False,sem_quebra,
+2100600,MA,Amarante do Maranhão,37085,20-50 mil,,0.0,False,sem_quebra,
+2100709,MA,Anajatuba,25322,20-50 mil,,0.0,False,sem_quebra,
+2100907,MA,Araioses,39052,20-50 mil,,0.0,False,sem_quebra,
+2100956,MA,Arame,25517,20-50 mil,,0.0,False,sem_quebra,
+2101004,MA,Arari,29472,20-50 mil,,0.0,False,sem_quebra,
+2101202,MA,Bacabal,103711,100-250 mil,2021-07,0.083,False,coorte_precoce,
+2101400,MA,Balsas,101767,100-250 mil,2024-10,0.042,False,coorte_precoce,
+2101608,MA,Barra do Corda,84532,50-100 mil,2021-07,0.042,False,datado,2021-07
+2101707,MA,Barreirinhas,65589,50-100 mil,,0.0,False,sem_quebra,
+2102002,MA,Bom Jardim,33100,20-50 mil,,0.0,False,sem_quebra,
+2102036,MA,Bom Jesus das Selvas,28599,20-50 mil,,0.167,False,sem_quebra,
+2102101,MA,Brejo,34120,20-50 mil,,0.0,False,sem_quebra,
+2102200,MA,Buriti,29685,20-50 mil,,0.0,False,sem_quebra,
+2102309,MA,Buriti Bravo,22455,20-50 mil,,0.0,False,sem_quebra,
+2102325,MA,Buriticupu,55499,50-100 mil,,0.0,False,sem_quebra,
+2102705,MA,Cantanhede,24303,20-50 mil,,0.0,False,sem_quebra,
+2102804,MA,Carolina,24062,20-50 mil,,0.0,False,sem_quebra,
+2102903,MA,Carutapera,24238,20-50 mil,,0.0,False,sem_quebra,
+2103000,MA,Caxias,156973,100-250 mil,2024-09,0.0,False,coorte_precoce,
+2103208,MA,Chapadinha,81386,50-100 mil,,0.0,False,sem_quebra,
+2103307,MA,Codó,114275,100-250 mil,,0.0,False,coorte_precoce,
+2103406,MA,Coelho Neto,41658,20-50 mil,,0.0,False,sem_quebra,
+2103505,MA,Colinas,40316,20-50 mil,,0.0,False,sem_quebra,
+2103604,MA,Coroatá,59566,50-100 mil,,0.0,False,sem_quebra,
+2103703,MA,Cururupu,31558,20-50 mil,,0.0,False,sem_quebra,
+2103802,MA,Dom Pedro,23053,20-50 mil,,0.0,False,sem_quebra,
+2104057,MA,Estreito,33294,20-50 mil,,0.0,False,sem_quebra,
+2104677,MA,Governador Nunes Freire,23128,20-50 mil,,0.0,False,sem_quebra,
+2104800,MA,Grajaú,73872,50-100 mil,2022-09,0.0,False,datado,2022-09
+2105005,MA,Humberto de Campos,25680,20-50 mil,,0.0,False,sem_quebra,
+2105104,MA,Icatu,24794,20-50 mil,,0.042,False,sem_quebra,
+2105302,MA,Imperatriz,273110,250 mil+,2018-01,0.25,False,coorte_precoce,
+2105401,MA,Itapecuru Mirim,60440,50-100 mil,2025-08,0.083,False,datado,2025-08
+2105427,MA,Itinga do Maranhão,22513,20-50 mil,,0.0,False,sem_quebra,
+2105500,MA,João Lisboa,24709,20-50 mil,,0.0,False,sem_quebra,
+2105708,MA,Lago da Pedra,44403,20-50 mil,,0.042,False,sem_quebra,
+2106326,MA,Maracaçumé,21149,20-50 mil,,0.0,False,sem_quebra,
+2106508,MA,Matinha,22034,20-50 mil,,0.0,False,sem_quebra,
+2106607,MA,Matões,32174,20-50 mil,,0.0,False,sem_quebra,
+2106706,MA,Mirador,21030,20-50 mil,,0.0,False,sem_quebra,
+2106755,MA,Miranda do Norte,23864,20-50 mil,,0.0,False,sem_quebra,
+2106904,MA,Monção,27751,20-50 mil,,0.0,False,sem_quebra,
+2107506,MA,Paço do Lumiar,145643,100-250 mil,2018-04,0.125,False,coorte_precoce,
+2107605,MA,Palmeirândia,21059,20-50 mil,,0.0,False,sem_quebra,
+2107803,MA,Parnarama,31250,20-50 mil,,0.0,False,sem_quebra,
+2108108,MA,Paulo Ramos,20341,20-50 mil,,0.0,False,sem_quebra,
+2108207,MA,Pedreiras,37050,20-50 mil,,0.0,False,sem_quebra,
+2108256,MA,Pedro do Rosário,24320,20-50 mil,,0.0,False,sem_quebra,
+2108306,MA,Penalva,32511,20-50 mil,,0.0,False,sem_quebra,
+2108454,MA,Peritoró,20479,20-50 mil,,0.0,False,sem_quebra,
+2108504,MA,Pindaré-Mirim,31429,20-50 mil,,0.0,False,sem_quebra,
+2108603,MA,Pinheiro,84621,50-100 mil,,0.0,False,sem_quebra,
+2108702,MA,Pio XII,21886,20-50 mil,,0.0,False,sem_quebra,
+2109007,MA,Porto Franco,23903,20-50 mil,,0.0,False,sem_quebra,
+2109106,MA,Presidente Dutra,45155,20-50 mil,,0.042,False,sem_quebra,
+2109452,MA,Raposa,30839,20-50 mil,,0.083,False,sem_quebra,
+2109502,MA,Riachão,22145,20-50 mil,,0.0,False,sem_quebra,
+2109601,MA,Rosário,38475,20-50 mil,,0.0,False,sem_quebra,
+2109809,MA,Santa Helena,41561,20-50 mil,,0.042,False,sem_quebra,
+2109908,MA,Santa Inês,85014,50-100 mil,2025-05,0.042,False,datado,2025-05
+2110005,MA,Santa Luzia,57635,50-100 mil,,0.0,False,sem_quebra,
+2110039,MA,Santa Luzia do Paruá,24307,20-50 mil,,0.0,False,sem_quebra,
+2110104,MA,Santa Quitéria do Maranhão,23957,20-50 mil,,0.0,False,sem_quebra,
+2110203,MA,Santa Rita,37035,20-50 mil,,0.0,False,sem_quebra,
+2110500,MA,São Bento,46395,20-50 mil,,0.0,False,sem_quebra,
+2110609,MA,São Bernardo,26943,20-50 mil,,0.0,False,sem_quebra,
+2110708,MA,São Domingos do Maranhão,34034,20-50 mil,,0.0,False,sem_quebra,
+2111102,MA,São João dos Patos,25020,20-50 mil,,0.042,False,sem_quebra,
+2111201,MA,São José de Ribamar,244579,100-250 mil,2018-05,0.25,False,coorte_precoce,
+2111300,MA,São Luís,1037775,250 mil+,2017-05,1.917,False,coorte_precoce,
+2111508,MA,São Mateus do Maranhão,38829,20-50 mil,,0.0,False,sem_quebra,
+2112100,MA,Timbiras,26484,20-50 mil,,0.0,False,sem_quebra,
+2112209,MA,Timon,174465,100-250 mil,2018-10,0.125,False,coorte_precoce,
+2112233,MA,Trizidela do Vale,22484,20-50 mil,,0.0,False,sem_quebra,
+2112308,MA,Tuntum,36251,20-50 mil,,0.0,False,sem_quebra,
+2112407,MA,Turiaçu,37491,20-50 mil,,0.0,False,sem_quebra,
+2112456,MA,Turilândia,31638,20-50 mil,,0.0,False,sem_quebra,
+2112506,MA,Tutóia,53356,50-100 mil,,0.0,False,sem_quebra,
+2112605,MA,Urbano Santos,32812,20-50 mil,,0.0,False,sem_quebra,
+2112704,MA,Vargem Grande,43261,20-50 mil,,0.083,False,sem_quebra,
+2112803,MA,Viana,51442,50-100 mil,,0.0,False,sem_quebra,
+2112902,MA,Vitória do Mearim,30805,20-50 mil,,0.0,False,sem_quebra,
+2113009,MA,Vitorino Freire,30845,20-50 mil,,0.042,False,sem_quebra,
+2114007,MA,Zé Doca,40801,20-50 mil,,0.0,False,sem_quebra,
+2200400,PI,Altos,47453,20-50 mil,,0.0,False,sem_quebra,
+2201200,PI,Barras,47938,20-50 mil,,0.083,False,sem_quebra,
+2201507,PI,Batalha,26300,20-50 mil,,0.042,False,sem_quebra,
+2201903,PI,Bom Jesus,28796,20-50 mil,,0.0,False,sem_quebra,
+2202208,PI,Campo Maior,45793,20-50 mil,,0.083,False,sem_quebra,
+2202703,PI,Cocal,28212,20-50 mil,,0.0,False,sem_quebra,
+2202901,PI,Corrente,27278,20-50 mil,,0.0,False,sem_quebra,
+2203701,PI,Esperantina,40970,20-50 mil,,0.0,False,sem_quebra,
+2203909,PI,Floriano,62036,50-100 mil,2021-03,0.0,False,datado,2021-03
+2205508,PI,José de Freitas,42559,20-50 mil,,0.042,False,sem_quebra,
+2205706,PI,Luís Correia,30641,20-50 mil,,0.0,False,sem_quebra,
+2205805,PI,Luzilândia,25375,20-50 mil,,0.0,False,sem_quebra,
+2206209,PI,Miguel Alves,32150,20-50 mil,,0.042,False,sem_quebra,
+2207009,PI,Oeiras,38161,20-50 mil,,0.042,False,sem_quebra,
+2207702,PI,Parnaíba,162159,100-250 mil,2019-09,0.25,False,coorte_precoce,
+2207801,PI,Paulistana,21055,20-50 mil,,0.0,False,sem_quebra,
+2207900,PI,Pedro II,37894,20-50 mil,,0.042,False,sem_quebra,
+2208007,PI,Picos,83090,50-100 mil,2020-01,0.125,False,datado,2020-01
+2208304,PI,Piracuruca,28846,20-50 mil,,0.042,False,sem_quebra,
+2208403,PI,Piripiri,65538,50-100 mil,,0.083,False,sem_quebra,
+2210003,PI,São João do Piauí,21421,20-50 mil,,0.0,False,sem_quebra,
+2210607,PI,São Raimundo Nonato,38934,20-50 mil,,0.0,False,sem_quebra,
+2211001,PI,Teresina,866300,250 mil+,,1.667,False,coorte_precoce,
+2211100,PI,União,46119,20-50 mil,,0.042,False,sem_quebra,
+2211209,PI,Uruçuí,25203,20-50 mil,,0.042,False,sem_quebra,
+2211308,PI,Valença do Piauí,22279,20-50 mil,,0.0,False,sem_quebra,
+2300200,CE,Acaraú,65264,50-100 mil,,0.0,False,sem_quebra,
+2300309,CE,Acopiara,44962,20-50 mil,,0.083,False,sem_quebra,
+2300754,CE,Amontada,42156,20-50 mil,,0.0,False,sem_quebra,
+2301000,CE,Aquiraz,80645,50-100 mil,2018-05,0.083,False,datado,2018-05
+2301109,CE,Aracati,75113,50-100 mil,2019-10,0.042,False,datado,2019-10
+2301208,CE,Aracoiaba,25553,20-50 mil,,0.0,False,sem_quebra,
+2301604,CE,Assaré,21697,20-50 mil,,0.0,False,sem_quebra,
+2301703,CE,Aurora,23714,20-50 mil,,0.0,False,sem_quebra,
+2301901,CE,Barbalha,75033,50-100 mil,2021-07,0.083,False,datado,2021-07
+2301950,CE,Barreira,22392,20-50 mil,,0.0,False,sem_quebra,
+2302107,CE,Baturité,35218,20-50 mil,,0.042,False,sem_quebra,
+2302206,CE,Beberibe,53114,50-100 mil,,0.0,False,sem_quebra,
+2302305,CE,Bela Cruz,32775,20-50 mil,,0.0,False,sem_quebra,
+2302404,CE,Boa Viagem,50411,50-100 mil,,0.0,False,sem_quebra,
+2302503,CE,Brejo Santo,51090,50-100 mil,,0.0,False,sem_quebra,
+2302602,CE,Camocim,62326,50-100 mil,,0.042,False,sem_quebra,
+2302701,CE,Campos Sales,25135,20-50 mil,,0.083,False,sem_quebra,
+2302800,CE,Canindé,74174,50-100 mil,2022-11,0.0,False,datado,2022-11
+2303204,CE,Caririaçu,26320,20-50 mil,,0.0,False,sem_quebra,
+2303501,CE,Cascavel,72720,50-100 mil,2025-07,0.0,False,datado,2025-07
+2303709,CE,Caucaia,355679,250 mil+,2017-01,0.792,False,coorte_precoce,
+2303808,CE,Cedro,22344,20-50 mil,,0.0,False,sem_quebra,
+2303956,CE,Chorozinho,20163,20-50 mil,,0.042,False,sem_quebra,
+2304004,CE,Coreaú,20953,20-50 mil,,0.042,False,sem_quebra,
+2304103,CE,Crateús,76390,50-100 mil,2025-02,0.0,False,datado,2025-02
+2304202,CE,Crato,131050,100-250 mil,2017-07,0.083,False,coorte_precoce,
+2304251,CE,Cruz,29761,20-50 mil,,0.042,False,sem_quebra,
+2304285,CE,Eusébio,74170,50-100 mil,2017-01,0.25,False,datado,2017-01
+2304350,CE,Forquilha,24173,20-50 mil,,0.042,False,sem_quebra,
+2304400,CE,Fortaleza,2428708,250 mil+,2017-01,15.708,False,coorte_precoce,
+2304707,CE,Granja,53344,50-100 mil,,0.0,False,sem_quebra,
+2304954,CE,Guaiúba,24325,20-50 mil,2025-06,0.0,False,datado,2025-06
+2305001,CE,Guaraciaba do Norte,42053,20-50 mil,,0.0,False,sem_quebra,
+2305233,CE,Horizonte,74755,50-100 mil,2022-03,0.167,False,datado,2022-03
+2305308,CE,Ibiapina,23965,20-50 mil,2024-11,0.0,False,datado,2024-11
+2305357,CE,Icapuí,21433,20-50 mil,,0.0,False,sem_quebra,
+2305407,CE,Icó,62642,50-100 mil,,0.0,False,sem_quebra,
+2305506,CE,Iguatu,98064,50-100 mil,2022-03,0.042,False,datado,2022-03
+2305605,CE,Independência,24024,20-50 mil,,0.0,False,sem_quebra,
+2305803,CE,Ipu,41081,20-50 mil,,0.0,False,sem_quebra,
+2305902,CE,Ipueiras,36798,20-50 mil,,0.0,False,sem_quebra,
+2306108,CE,Irauçuba,23915,20-50 mil,,0.0,False,sem_quebra,
+2306256,CE,Itaitinga,64650,50-100 mil,2018-01,0.042,False,datado,2018-01
+2306306,CE,Itapajé,46426,20-50 mil,2024-01,0.042,False,datado,2024-01
+2306405,CE,Itapipoca,131123,100-250 mil,2018-02,0.125,False,coorte_precoce,
+2306553,CE,Itarema,42957,20-50 mil,,0.0,False,sem_quebra,
+2306603,CE,Itatira,20424,20-50 mil,,0.0,False,sem_quebra,
+2306900,CE,Jaguaribe,33726,20-50 mil,,0.0,False,sem_quebra,
+2307007,CE,Jaguaruana,31701,20-50 mil,,0.0,False,sem_quebra,
+2307106,CE,Jardim,27411,20-50 mil,,0.0,False,sem_quebra,
+2307254,CE,Jijoca de Jericoacoara,25555,20-50 mil,,0.042,False,sem_quebra,
+2307304,CE,Juazeiro do Norte,286120,250 mil+,2017-11,0.375,False,coorte_precoce,
+2307403,CE,Jucás,23922,20-50 mil,,0.0,False,sem_quebra,
+2307502,CE,Lavras da Mangabeira,30802,20-50 mil,,0.0,False,sem_quebra,
+2307601,CE,Limoeiro do Norte,59560,50-100 mil,2020-06,0.042,False,datado,2020-06
+2307650,CE,Maracanaú,234509,100-250 mil,2017-12,0.792,False,coorte_precoce,
+2307700,CE,Maranguape,105093,100-250 mil,2019-05,0.25,False,coorte_precoce,
+2307809,CE,Marco,25799,20-50 mil,,0.042,False,sem_quebra,
+2308005,CE,Massapê,37697,20-50 mil,,0.0,False,sem_quebra,
+2308104,CE,Mauriti,45561,20-50 mil,,0.0,False,sem_quebra,
+2308302,CE,Milagres,25900,20-50 mil,,0.0,False,sem_quebra,
+2308401,CE,Missão Velha,36822,20-50 mil,,0.0,False,sem_quebra,
+2308500,CE,Mombaça,37735,20-50 mil,2025-02,0.0,False,datado,2025-02
+2308708,CE,Morada Nova,61443,50-100 mil,2019-11,0.0,False,datado,2019-11
+2308906,CE,Morrinhos,22753,20-50 mil,,0.0,False,sem_quebra,
+2309300,CE,Nova Russas,30699,20-50 mil,,0.0,False,sem_quebra,
+2309409,CE,Novo Oriente,27545,20-50 mil,,0.0,False,sem_quebra,
+2309458,CE,Ocara,24493,20-50 mil,,0.0,False,sem_quebra,
+2309607,CE,Pacajus,70983,50-100 mil,2019-05,0.125,False,datado,2019-05
+2309706,CE,Pacatuba,81524,50-100 mil,2017-04,0.208,False,datado,2017-04
+2310209,CE,Paracuru,38980,20-50 mil,,0.083,False,sem_quebra,
+2310258,CE,Paraipaba,32216,20-50 mil,,0.0,False,sem_quebra,
+2310308,CE,Parambu,31445,20-50 mil,,0.0,False,sem_quebra,
+2310506,CE,Pedra Branca,40187,20-50 mil,,0.0,False,sem_quebra,
+2310704,CE,Pentecoste,37813,20-50 mil,,0.083,False,sem_quebra,
+2310852,CE,Pindoretama,23391,20-50 mil,,0.0,False,sem_quebra,
+2311264,CE,Quiterianópolis,20213,20-50 mil,,0.0,False,sem_quebra,
+2311306,CE,Quixadá,84168,50-100 mil,,0.125,False,sem_quebra,
+2311405,CE,Quixeramobim,82177,50-100 mil,2021-07,0.042,False,datado,2021-07
+2311504,CE,Quixeré,20874,20-50 mil,2023-04,0.042,False,datado,2023-04
+2311603,CE,Redenção,27214,20-50 mil,,0.0,False,sem_quebra,
+2311801,CE,Russas,72928,50-100 mil,2025-03,0.125,False,datado,2025-03
+2312007,CE,Santana do Acaraú,30628,20-50 mil,,0.0,False,sem_quebra,
+2312205,CE,Santa Quitéria,40183,20-50 mil,,0.0,False,sem_quebra,
+2312304,CE,São Benedito,47640,20-50 mil,2020-01,0.042,False,datado,2020-01
+2312403,CE,São Gonçalo do Amarante,54143,50-100 mil,2022-09,0.042,False,datado,2022-09
+2312700,CE,Senador Pompeu,24266,20-50 mil,,0.0,False,sem_quebra,
+2312908,CE,Sobral,203023,100-250 mil,2017-12,0.5,False,coorte_precoce,
+2313104,CE,Tabuleiro do Norte,30652,20-50 mil,,0.0,False,sem_quebra,
+2313203,CE,Tamboril,24815,20-50 mil,,0.0,False,sem_quebra,
+2313302,CE,Tauá,61227,50-100 mil,,0.0,False,sem_quebra,
+2313401,CE,Tianguá,81506,50-100 mil,2019-02,0.417,True,datado,2019-02
+2313500,CE,Trairi,58415,50-100 mil,,0.0,False,sem_quebra,
+2313609,CE,Ubajara,32767,20-50 mil,,0.0,False,sem_quebra,
+2313807,CE,Uruburetama,20189,20-50 mil,,0.0,False,sem_quebra,
+2314003,CE,Várzea Alegre,38984,20-50 mil,,0.042,False,sem_quebra,
+2314102,CE,Viçosa do Ceará,59712,50-100 mil,,0.042,False,sem_quebra,
+2400208,RN,Assú,56496,50-100 mil,2021-09,0.083,False,datado,2021-09
+2401008,RN,Apodi,36093,20-50 mil,,0.0,False,sem_quebra,
+2401107,RN,Areia Branca,24093,20-50 mil,,0.0,False,sem_quebra,
+2401453,RN,Baraúna,26913,20-50 mil,,0.0,False,sem_quebra,
+2402006,RN,Caicó,61146,50-100 mil,2022-04,0.25,False,datado,2022-04
+2402204,RN,Canguaretama,29668,20-50 mil,,0.0,False,sem_quebra,
+2402600,RN,Ceará-Mirim,79115,50-100 mil,2020-05,0.083,False,datado,2020-05
+2403103,RN,Currais Novos,41313,20-50 mil,2020-04,0.042,False,datado,2020-04
+2403251,RN,Parnamirim,252716,250 mil+,2017-11,0.833,False,coorte_precoce,
+2403608,RN,Extremoz,61635,50-100 mil,2021-06,0.292,False,datado,2021-06
+2404200,RN,Goianinha,26741,20-50 mil,,0.042,False,sem_quebra,
+2405801,RN,João Câmara,33290,20-50 mil,,0.083,False,sem_quebra,
+2407104,RN,Macaíba,82249,50-100 mil,2019-01,0.0,False,datado,2019-01
+2407203,RN,Macau,27369,20-50 mil,,0.042,False,sem_quebra,
+2407807,RN,Monte Alegre,23031,20-50 mil,,0.083,False,sem_quebra,
+2408003,RN,Mossoró,264577,250 mil+,2017-02,0.5,False,coorte_precoce,
+2408102,RN,Natal,751300,250 mil+,2018-01,3.958,False,coorte_precoce,
+2408201,RN,Nísia Floresta,31942,20-50 mil,,0.042,False,sem_quebra,
+2408300,RN,Nova Cruz,34269,20-50 mil,,0.0,False,sem_quebra,
+2408904,RN,Parelhas,21499,20-50 mil,,0.042,False,sem_quebra,
+2409407,RN,Pau dos Ferros,30479,20-50 mil,,0.0,False,sem_quebra,
+2411205,RN,Santa Cruz,37313,20-50 mil,2020-09,0.042,False,datado,2020-09
+2411502,RN,Santo Antônio,22177,20-50 mil,,0.0,False,sem_quebra,
+2412005,RN,São Gonçalo do Amarante,115838,100-250 mil,2020-03,0.375,False,coorte_precoce,
+2412203,RN,São José de Mipibu,47286,20-50 mil,2023-03,0.042,False,datado,2023-03
+2412500,RN,São Miguel,23537,20-50 mil,2017-06,0.042,False,datado,2017-06
+2414407,RN,Touros,33035,20-50 mil,,0.0,False,sem_quebra,
+2500304,PB,Alagoa Grande,26062,20-50 mil,,0.0,False,sem_quebra,
+2500403,PB,Alagoa Nova,21013,20-50 mil,,0.0,False,sem_quebra,
+2500601,PB,Alhandra,21730,20-50 mil,,0.0,False,sem_quebra,
+2501104,PB,Areia,22633,20-50 mil,,0.0,False,sem_quebra,
+2501500,PB,Bananeiras,23134,20-50 mil,,0.042,False,sem_quebra,
+2501807,PB,Bayeux,82742,50-100 mil,2017-10,0.25,False,datado,2017-10
+2503001,PB,Caaporã,21193,20-50 mil,,0.0,False,sem_quebra,
+2503209,PB,Cabedelo,66519,50-100 mil,2017-03,0.083,False,datado,2017-03
+2503704,PB,Cajazeiras,63239,50-100 mil,2018-08,0.042,False,datado,2018-08
+2504009,PB,Campina Grande,419379,250 mil+,2017-01,1.542,False,coorte_precoce,
+2504306,PB,Catolé do Rocha,30661,20-50 mil,,0.0,False,sem_quebra,
+2504603,PB,Conde,27605,20-50 mil,,0.0,False,sem_quebra,
+2506004,PB,Esperança,31231,20-50 mil,,0.0,False,sem_quebra,
+2506301,PB,Guarabira,57484,50-100 mil,,0.083,False,sem_quebra,
+2506905,PB,Itabaiana,23182,20-50 mil,,0.042,False,sem_quebra,
+2507002,PB,Itaporanga,23940,20-50 mil,,0.0,False,sem_quebra,
+2507507,PB,João Pessoa,833932,250 mil+,2017-01,4.0,True,coorte_precoce,
+2508307,PB,Lagoa Seca,27730,20-50 mil,2025-03,0.042,False,datado,2025-03
+2508901,PB,Mamanguape,44599,20-50 mil,,0.042,False,sem_quebra,
+2509107,PB,Mari,21512,20-50 mil,,0.0,False,sem_quebra,
+2509701,PB,Monteiro,32277,20-50 mil,,0.0,False,sem_quebra,
+2510808,PB,Patos,103165,100-250 mil,2020-01,0.0,False,coorte_precoce,
+2511202,PB,Pedras de Fogo,29662,20-50 mil,,0.0,False,sem_quebra,
+2512101,PB,Pombal,32473,20-50 mil,,0.042,False,sem_quebra,
+2512309,PB,Princesa Isabel,21114,20-50 mil,,0.0,False,sem_quebra,
+2512507,PB,Queimadas,47658,20-50 mil,,0.083,False,sem_quebra,
+2512903,PB,Rio Tinto,24581,20-50 mil,,0.042,False,sem_quebra,
+2513703,PB,Santa Rita,149910,100-250 mil,2017-03,0.083,False,coorte_precoce,
+2513901,PB,São Bento,32235,20-50 mil,,0.0,False,sem_quebra,
+2515302,PB,Sapé,51306,50-100 mil,2025-01,0.0,False,datado,2025-01
+2516003,PB,Solânea,26774,20-50 mil,2017-05,0.208,False,datado,2017-05
+2516201,PB,Sousa,67259,50-100 mil,,0.083,False,sem_quebra,
+2600054,PE,Abreu e Lima,98462,50-100 mil,2017-01,0.125,False,datado,2017-01
+2600104,PE,Afogados da Ingazeira,40241,20-50 mil,,0.042,False,sem_quebra,
+2600302,PE,Agrestina,23779,20-50 mil,,0.083,False,sem_quebra,
+2600401,PE,Água Preta,26461,20-50 mil,,0.0,False,sem_quebra,
+2600500,PE,Águas Belas,41548,20-50 mil,,0.083,False,sem_quebra,
+2600708,PE,Aliança,35741,20-50 mil,,0.042,False,sem_quebra,
+2600807,PE,Altinho,20674,20-50 mil,,0.0,False,sem_quebra,
+2601102,PE,Araripina,85088,50-100 mil,2025-04,0.042,False,datado,2025-04
+2601201,PE,Arcoverde,77742,50-100 mil,2021-06,0.333,False,datado,2021-06
+2601409,PE,Barreiros,40121,20-50 mil,,0.042,False,sem_quebra,
+2601706,PE,Belo Jardim,79507,50-100 mil,2023-03,0.042,False,datado,2023-03
+2601904,PE,Bezerros,61694,50-100 mil,2023-04,0.083,False,datado,2023-04
+2602001,PE,Bodocó,34478,20-50 mil,,0.042,False,sem_quebra,
+2602100,PE,Bom Conselho,44294,20-50 mil,,0.042,False,sem_quebra,
+2602209,PE,Bom Jardim,37629,20-50 mil,,0.0,False,sem_quebra,
+2602308,PE,Bonito,37474,20-50 mil,2024-01,0.083,False,datado,2024-01
+2602605,PE,Brejo da Madre de Deus,48648,20-50 mil,,0.042,False,sem_quebra,
+2602803,PE,Buíque,52097,50-100 mil,2018-10,0.125,False,datado,2018-10
+2602902,PE,Cabo de Santo Agostinho,203440,100-250 mil,2018-06,0.375,False,coorte_precoce,
+2603009,PE,Cabrobó,30294,20-50 mil,,0.042,False,sem_quebra,
+2603207,PE,Caetés,28827,20-50 mil,,0.0,False,sem_quebra,
+2603454,PE,Camaragibe,147771,100-250 mil,2018-04,0.875,True,coorte_precoce,
+2603702,PE,Canhotinho,24329,20-50 mil,,0.042,False,sem_quebra,
+2604007,PE,Carpina,79293,50-100 mil,2021-06,0.125,False,datado,2021-06
+2604106,PE,Caruaru,378048,250 mil+,2017-01,1.583,False,coorte_precoce,
+2604205,PE,Catende,32156,20-50 mil,,0.0,False,sem_quebra,
+2604502,PE,Chã Grande,20546,20-50 mil,,0.0,False,sem_quebra,
+2604601,PE,Condado,24587,20-50 mil,,0.0,False,sem_quebra,
+2605004,PE,Cupira,23518,20-50 mil,,0.0,False,sem_quebra,
+2605103,PE,Custódia,37699,20-50 mil,2025-02,0.0,False,datado,2025-02
+2605202,PE,Escada,59891,50-100 mil,,0.083,False,sem_quebra,
+2605301,PE,Exu,31843,20-50 mil,,0.0,False,sem_quebra,
+2605400,PE,Feira Nova,21427,20-50 mil,,0.0,False,sem_quebra,
+2605608,PE,Flores,20347,20-50 mil,,0.0,False,sem_quebra,
+2605707,PE,Floresta,30137,20-50 mil,,0.083,False,sem_quebra,
+2606002,PE,Garanhuns,142506,100-250 mil,2019-09,0.375,False,coorte_precoce,
+2606101,PE,Glória do Goitá,29347,20-50 mil,,0.0,False,sem_quebra,
+2606200,PE,Goiana,81055,50-100 mil,2024-01,0.125,False,datado,2024-01
+2606408,PE,Gravatá,86516,50-100 mil,2021-04,0.25,False,datado,2021-04
+2606606,PE,Ibimirim,26593,20-50 mil,,0.042,False,sem_quebra,
+2606804,PE,Igarassu,115196,100-250 mil,2019-04,0.25,False,coorte_precoce,
+2607000,PE,Inajá,25603,20-50 mil,,0.0,False,sem_quebra,
+2607208,PE,Ipojuca,98932,50-100 mil,2021-06,0.125,False,datado,2021-06
+2607307,PE,Ipubi,29009,20-50 mil,,0.042,False,sem_quebra,
+2607505,PE,Itaíba,32650,20-50 mil,,0.0,False,sem_quebra,
+2607604,PE,Ilha de Itamaracá,24540,20-50 mil,,0.0,False,sem_quebra,
+2607653,PE,Itambé,34935,20-50 mil,,0.042,False,sem_quebra,
+2607752,PE,Itapissuma,27749,20-50 mil,,0.0,False,sem_quebra,
+2607901,PE,Jaboatão dos Guararapes,644037,250 mil+,2017-01,5.083,False,coorte_precoce,
+2608107,PE,João Alfredo,27725,20-50 mil,,0.0,False,sem_quebra,
+2608750,PE,Lagoa Grande,24088,20-50 mil,,0.0,False,sem_quebra,
+2608800,PE,Lajedo,39582,20-50 mil,,0.042,False,sem_quebra,
+2608909,PE,Limoeiro,56510,50-100 mil,2021-09,0.125,False,datado,2021-09
+2609006,PE,Macaparana,23879,20-50 mil,,0.0,False,sem_quebra,
+2609154,PE,Manari,23763,20-50 mil,,0.0,False,sem_quebra,
+2609402,PE,Moreno,55292,50-100 mil,2024-03,0.125,False,datado,2024-03
+2609501,PE,Nazaré da Mata,30648,20-50 mil,,0.0,False,sem_quebra,
+2609600,PE,Olinda,349976,250 mil+,2017-05,2.667,False,coorte_precoce,
+2609709,PE,Orobó,21808,20-50 mil,,0.0,False,sem_quebra,
+2609907,PE,Ouricuri,65245,50-100 mil,2025-07,0.0,False,datado,2025-07
+2610004,PE,Palmares,54584,50-100 mil,,0.0,False,sem_quebra,
+2610202,PE,Panelas,22991,20-50 mil,,0.0,False,sem_quebra,
+2610509,PE,Passira,28340,20-50 mil,,0.125,False,sem_quebra,
+2610608,PE,Paudalho,56665,50-100 mil,2022-02,0.083,False,datado,2022-02
+2610707,PE,Paulista,342167,250 mil+,2017-04,1.708,False,coorte_precoce,
+2610806,PE,Pedra,22795,20-50 mil,,0.0,False,sem_quebra,
+2610905,PE,Pesqueira,62722,50-100 mil,,0.042,False,sem_quebra,
+2611002,PE,Petrolândia,34161,20-50 mil,,0.0,False,sem_quebra,
+2611101,PE,Petrolina,386791,250 mil+,2017-10,1.208,True,coorte_precoce,
+2611309,PE,Pombos,27552,20-50 mil,,0.0,False,sem_quebra,
+2611606,PE,Recife,1488920,250 mil+,2018-02,13.125,False,coorte_precoce,
+2611705,PE,Riacho das Almas,20639,20-50 mil,,0.0,False,sem_quebra,
+2611804,PE,Ribeirão,33507,20-50 mil,,0.083,False,sem_quebra,
+2611903,PE,Rio Formoso,20009,20-50 mil,,0.0,False,sem_quebra,
+2612208,PE,Salgueiro,62372,50-100 mil,2022-04,0.167,False,datado,2022-04
+2612505,PE,Santa Cruz do Capibaribe,98254,50-100 mil,2023-04,0.083,False,datado,2023-04
+2612604,PE,Santa Maria da Boa Vista,40578,20-50 mil,,0.042,False,sem_quebra,
+2613008,PE,São Bento do Una,49449,20-50 mil,,0.0,False,sem_quebra,
+2613107,PE,São Caitano,37126,20-50 mil,,0.333,False,sem_quebra,
+2613206,PE,São João,23837,20-50 mil,,0.042,False,sem_quebra,
+2613305,PE,São Joaquim do Monte,20037,20-50 mil,,0.0,False,sem_quebra,
+2613503,PE,São José do Belmonte,34843,20-50 mil,,0.0,False,sem_quebra,
+2613602,PE,São José do Egito,31004,20-50 mil,,0.0,False,sem_quebra,
+2613701,PE,São Lourenço da Mata,111249,100-250 mil,2018-06,0.25,False,coorte_precoce,
+2613909,PE,Serra Talhada,92228,50-100 mil,2017-01,0.292,False,datado,2017-01
+2614105,PE,Sertânia,32811,20-50 mil,,0.083,False,sem_quebra,
+2614204,PE,Sirinhaém,37596,20-50 mil,,0.0,False,sem_quebra,
+2614501,PE,Surubim,64120,50-100 mil,2017-06,0.042,False,datado,2017-06
+2614600,PE,Tabira,27681,20-50 mil,,0.0,False,sem_quebra,
+2614808,PE,Tacaratu,23902,20-50 mil,,0.0,False,sem_quebra,
+2614857,PE,Tamandaré,23561,20-50 mil,,0.0,False,sem_quebra,
+2615003,PE,Taquaritinga do Norte,24736,20-50 mil,,0.042,False,sem_quebra,
+2615300,PE,Timbaúba,46147,20-50 mil,,0.042,False,sem_quebra,
+2615409,PE,Toritama,41137,20-50 mil,2025-04,0.042,False,datado,2025-04
+2615607,PE,Trindade,30321,20-50 mil,,0.0,False,sem_quebra,
+2615805,PE,Tupanatinga,26937,20-50 mil,,0.0,False,sem_quebra,
+2616209,PE,Vertentes,21959,20-50 mil,,0.0,False,sem_quebra,
+2616308,PE,Vicência,26359,20-50 mil,,0.0,False,sem_quebra,
+2616407,PE,Vitória de Santo Antão,134084,100-250 mil,2021-06,0.167,False,coorte_precoce,
+2700300,AL,Arapiraca,234696,100-250 mil,2019-05,0.542,False,coorte_precoce,
+2700409,AL,Atalaia,37512,20-50 mil,,0.0,False,sem_quebra,
+2701001,AL,Boca da Mata,21187,20-50 mil,,0.0,False,sem_quebra,
+2701407,AL,Campo Alegre,32106,20-50 mil,,0.042,False,sem_quebra,
+2702306,AL,Coruripe,50414,50-100 mil,2023-02,0.042,False,datado,2023-02
+2702355,AL,Craíbas,25397,20-50 mil,,0.0,False,sem_quebra,
+2702405,AL,Delmiro Gouveia,51318,50-100 mil,2023-03,0.042,False,datado,2023-03
+2702603,AL,Feira Grande,22712,20-50 mil,,0.0,False,sem_quebra,
+2702900,AL,Girau do Ponciano,36102,20-50 mil,,0.0,False,sem_quebra,
+2703106,AL,Igaci,23995,20-50 mil,,0.0,False,sem_quebra,
+2703205,AL,Igreja Nova,21372,20-50 mil,,0.0,False,sem_quebra,
+2704005,AL,Junqueiro,23907,20-50 mil,,0.0,False,sem_quebra,
+2704203,AL,Limoeiro de Anadia,24740,20-50 mil,,0.0,False,sem_quebra,
+2704302,AL,Maceió,957916,250 mil+,2017-01,2.458,False,coorte_precoce,
+2704500,AL,Maragogi,32174,20-50 mil,,0.0,False,sem_quebra,
+2704708,AL,Marechal Deodoro,60370,50-100 mil,,0.042,False,sem_quebra,
+2705002,AL,Mata Grande,21844,20-50 mil,,0.0,False,sem_quebra,
+2705101,AL,Matriz de Camaragibe,23857,20-50 mil,2025-07,0.0,False,datado,2025-07
+2705507,AL,Murici,25187,20-50 mil,,0.0,False,sem_quebra,
+2705705,AL,Olho d'Água das Flores,20695,20-50 mil,,0.0,False,sem_quebra,
+2706307,AL,Palmeira dos Índios,71574,50-100 mil,2021-03,0.083,False,datado,2021-03
+2706406,AL,Pão de Açúcar,23823,20-50 mil,,0.042,False,sem_quebra,
+2706703,AL,Penedo,58650,50-100 mil,2017-10,0.0,False,datado,2017-10
+2706901,AL,Pilar,35370,20-50 mil,,0.0,False,sem_quebra,
+2707107,AL,Piranhas,22609,20-50 mil,,0.0,False,sem_quebra,
+2707305,AL,Porto Calvo,24071,20-50 mil,,0.0,False,sem_quebra,
+2707503,AL,Porto Real do Colégio,20082,20-50 mil,,0.0,False,sem_quebra,
+2707701,AL,Rio Largo,93927,50-100 mil,2018-09,0.125,False,datado,2018-09
+2708006,AL,Santana do Ipanema,46220,20-50 mil,2023-03,0.125,False,datado,2023-03
+2708303,AL,São José da Laje,20813,20-50 mil,,0.0,False,sem_quebra,
+2708402,AL,São José da Tapera,30604,20-50 mil,,0.0,False,sem_quebra,
+2708501,AL,São Luís do Quitunde,30873,20-50 mil,,0.0,False,sem_quebra,
+2708600,AL,São Miguel dos Campos,51990,50-100 mil,2025-05,0.0,False,datado,2025-05
+2708808,AL,São Sebastião,31786,20-50 mil,,0.0,False,sem_quebra,
+2708907,AL,Satuba,24278,20-50 mil,2022-01,0.0,False,datado,2022-01
+2709152,AL,Teotônio Vilela,38053,20-50 mil,2025-05,0.042,False,datado,2025-05
+2709202,AL,Traipu,23565,20-50 mil,,0.0,False,sem_quebra,
+2709301,AL,União dos Palmares,59280,50-100 mil,2023-03,0.0,False,datado,2023-03
+2709400,AL,Viçosa,24092,20-50 mil,,0.0,False,sem_quebra,
+2800209,SE,Aquidabã,20131,20-50 mil,,0.0,False,sem_quebra,
+2800308,SE,Aracaju,602757,250 mil+,,5.667,False,coorte_precoce,
+2800605,SE,Barra dos Coqueiros,41511,20-50 mil,2020-08,0.083,False,datado,2020-08
+2800670,SE,Boquim,24636,20-50 mil,,0.0,False,sem_quebra,
+2801207,SE,Canindé de São Francisco,26834,20-50 mil,,0.0,False,sem_quebra,
+2801306,SE,Capela,31645,20-50 mil,2023-03,0.0,False,datado,2023-03
+2802106,SE,Estância,65078,50-100 mil,,0.083,False,sem_quebra,
+2802908,SE,Itabaiana,103440,100-250 mil,2023-01,0.0,False,coorte_precoce,
+2803005,SE,Itabaianinha,40678,20-50 mil,,0.0,False,sem_quebra,
+2803203,SE,Itaporanga d'Ajuda,34411,20-50 mil,,0.0,False,sem_quebra,
+2803500,SE,Lagarto,101579,100-250 mil,2020-03,0.083,False,coorte_precoce,
+2803609,SE,Laranjeiras,23975,20-50 mil,,0.0,False,sem_quebra,
+2804508,SE,Nossa Senhora da Glória,41212,20-50 mil,,0.0,False,sem_quebra,
+2804607,SE,Nossa Senhora das Dores,24996,20-50 mil,,0.0,False,sem_quebra,
+2804805,SE,Nossa Senhora do Socorro,192330,100-250 mil,2018-09,0.625,False,coorte_precoce,
+2805406,SE,Poço Redondo,33439,20-50 mil,,0.0,False,sem_quebra,
+2805505,SE,Poço Verde,21794,20-50 mil,,0.0,False,sem_quebra,
+2805604,SE,Porto da Folha,26576,20-50 mil,,0.0,False,sem_quebra,
+2805703,SE,Propriá,26618,20-50 mil,,0.042,False,sem_quebra,
+2806206,SE,Salgado,20279,20-50 mil,,0.0,False,sem_quebra,
+2806701,SE,São Cristóvão,95612,50-100 mil,2017-05,0.458,False,datado,2017-05
+2807105,SE,Simão Dias,42578,20-50 mil,,0.0,False,sem_quebra,
+2807402,SE,Tobias Barreto,50905,50-100 mil,2020-06,0.0,False,datado,2020-06
+2807600,SE,Umbaúba,23917,20-50 mil,,0.125,False,sem_quebra,
+2900702,BA,Alagoinhas,151055,100-250 mil,2020-07,0.083,False,coorte_precoce,
+2900801,BA,Alcobaça,24530,20-50 mil,,0.0,False,sem_quebra,
+2901007,BA,Amargosa,36521,20-50 mil,,0.042,False,sem_quebra,
+2901106,BA,Amélia Rodrigues,24138,20-50 mil,,0.042,False,sem_quebra,
+2901205,BA,Anagé,25438,20-50 mil,,0.0,False,sem_quebra,
+2902104,BA,Araci,48294,20-50 mil,,0.0,False,sem_quebra,
+2902708,BA,Barra,51092,50-100 mil,,0.0,False,sem_quebra,
+2902807,BA,Barra da Estiva,26026,20-50 mil,2025-02,0.0,False,datado,2025-02
+2902906,BA,Barra do Choça,36539,20-50 mil,,0.0,False,sem_quebra,
+2903201,BA,Barreiras,159734,100-250 mil,2019-10,0.167,False,coorte_precoce,
+2903409,BA,Belmonte,20121,20-50 mil,,0.0,False,sem_quebra,
+2903904,BA,Bom Jesus da Lapa,65550,50-100 mil,,0.042,False,sem_quebra,
+2904605,BA,Brumado,70510,50-100 mil,2021-05,0.625,False,datado,2021-05
+2904902,BA,Cachoeira,29250,20-50 mil,2017-03,0.0,False,datado,2017-03
+2905008,BA,Caculé,22462,20-50 mil,,0.0,False,sem_quebra,
+2905206,BA,Caetité,52012,50-100 mil,2024-12,0.458,True,datado,2024-12
+2905602,BA,Camacan,22579,20-50 mil,2025-01,0.0,False,datado,2025-01
+2905701,BA,Camaçari,300372,250 mil+,2018-10,0.333,True,coorte_precoce,
+2905800,BA,Camamu,30469,20-50 mil,,0.0,False,sem_quebra,
+2905909,BA,Campo Alegre de Lourdes,30671,20-50 mil,,0.0,False,sem_quebra,
+2906006,BA,Campo Formoso,71377,50-100 mil,2025-03,0.125,False,datado,2025-03
+2906204,BA,Canarana,24206,20-50 mil,,0.0,False,sem_quebra,
+2906303,BA,Canavieiras,32683,20-50 mil,,0.042,False,sem_quebra,
+2906501,BA,Candeias,72382,50-100 mil,2021-04,0.0,False,datado,2021-04
+2906709,BA,Cândido Sales,25247,20-50 mil,,0.0,False,sem_quebra,
+2906808,BA,Cansanção,37439,20-50 mil,,0.0,False,sem_quebra,
+2906873,BA,Capim Grosso,33235,20-50 mil,,0.042,False,sem_quebra,
+2906907,BA,Caravelas,20580,20-50 mil,,0.042,False,sem_quebra,
+2907103,BA,Carinhanha,28869,20-50 mil,,0.0,False,sem_quebra,
+2907202,BA,Casa Nova,72086,50-100 mil,,0.042,False,sem_quebra,
+2907301,BA,Castro Alves,24712,20-50 mil,,0.0,False,sem_quebra,
+2907509,BA,Catu,48148,20-50 mil,,0.0,False,sem_quebra,
+2907806,BA,Cícero Dantas,30907,20-50 mil,,0.0,False,sem_quebra,
+2908200,BA,Conceição da Feira,20800,20-50 mil,,0.0,False,sem_quebra,
+2908408,BA,Conceição do Coité,67825,50-100 mil,,0.042,False,sem_quebra,
+2908507,BA,Conceição do Jacuípe,35308,20-50 mil,2023-11,0.083,False,datado,2023-11
+2908606,BA,Conde,23654,20-50 mil,,0.0,False,sem_quebra,
+2908903,BA,Coração de Maria,26692,20-50 mil,,0.0,False,sem_quebra,
+2909307,BA,Correntina,32457,20-50 mil,,0.0,False,sem_quebra,
+2909802,BA,Cruz das Almas,60348,50-100 mil,2019-12,0.0,False,datado,2019-12
+2909901,BA,Curaçá,34180,20-50 mil,,0.0,False,sem_quebra,
+2910057,BA,Dias d'Ávila,71485,50-100 mil,2021-05,0.125,False,datado,2021-05
+2910503,BA,Entre Rios,38098,20-50 mil,,0.125,False,sem_quebra,
+2910602,BA,Esplanada,32554,20-50 mil,,0.042,False,sem_quebra,
+2910701,BA,Euclides da Cunha,61456,50-100 mil,,0.0,False,sem_quebra,
+2910727,BA,Eunápolis,113710,100-250 mil,2019-12,0.167,False,coorte_precoce,
+2910800,BA,Feira de Santana,616272,250 mil+,2017-10,1.25,False,coorte_precoce,
+2911105,BA,Formosa do Rio Preto,25899,20-50 mil,,0.0,False,sem_quebra,
+2911204,BA,Gandu,32178,20-50 mil,,0.125,False,sem_quebra,
+2911600,BA,Governador Mangabeira,20605,20-50 mil,,0.0,False,sem_quebra,
+2911709,BA,Guanambi,87817,50-100 mil,2024-01,0.042,False,datado,2024-01
+2911907,BA,Iaçu,24607,20-50 mil,,0.042,False,sem_quebra,
+2912103,BA,Ibicaraí,21665,20-50 mil,,0.0,False,sem_quebra,
+2912202,BA,Ibicoara,20785,20-50 mil,,0.0,False,sem_quebra,
+2912707,BA,Ibirapitanga,25344,20-50 mil,,0.0,False,sem_quebra,
+2913200,BA,Ibotirama,26309,20-50 mil,,0.0,False,sem_quebra,
+2913507,BA,Iguaí,21491,20-50 mil,,0.0,False,sem_quebra,
+2913606,BA,Ilhéus,178649,100-250 mil,2018-07,1.458,False,coorte_precoce,
+2913705,BA,Inhambupe,33790,20-50 mil,,0.0,False,sem_quebra,
+2913903,BA,Ipiaú,40706,20-50 mil,,0.5,True,sem_quebra,
+2914000,BA,Ipirá,56876,50-100 mil,,0.0,False,sem_quebra,
+2914406,BA,Iraquara,23879,20-50 mil,,0.0,False,sem_quebra,
+2914505,BA,Irará,28043,20-50 mil,,0.042,False,sem_quebra,
+2914604,BA,Irecê,74507,50-100 mil,2024-07,0.042,False,datado,2024-07
+2914653,BA,Itabela,28165,20-50 mil,,0.0,False,sem_quebra,
+2914703,BA,Itaberaba,65073,50-100 mil,2025-05,0.208,False,datado,2025-05
+2914802,BA,Itabuna,186708,100-250 mil,2021-02,0.25,False,coorte_precoce,
+2914901,BA,Itacaré,27704,20-50 mil,,0.0,False,sem_quebra,
+2915601,BA,Itamaraju,59605,50-100 mil,2022-11,0.167,False,datado,2022-11
+2915809,BA,Itambé,24394,20-50 mil,,0.042,False,sem_quebra,
+2916401,BA,Itapetinga,65897,50-100 mil,2024-09,0.375,False,datado,2024-09
+2916500,BA,Itapicuru,31679,20-50 mil,,0.0,False,sem_quebra,
+2917003,BA,Itiúba,33872,20-50 mil,,0.0,False,sem_quebra,
+2917300,BA,Ituberá,21902,20-50 mil,,0.0,False,sem_quebra,
+2917508,BA,Jacobina,82590,50-100 mil,2020-04,0.042,False,datado,2020-04
+2917607,BA,Jaguaquara,45964,20-50 mil,,0.042,False,sem_quebra,
+2917706,BA,Jaguarari,32703,20-50 mil,,0.0,False,sem_quebra,
+2918001,BA,Jequié,158813,100-250 mil,2017-04,0.208,False,coorte_precoce,
+2918100,BA,Jeremoabo,37626,20-50 mil,,0.0,False,sem_quebra,
+2918357,BA,João Dourado,24854,20-50 mil,,0.0,False,sem_quebra,
+2918407,BA,Juazeiro,237821,100-250 mil,2017-01,0.292,False,coorte_precoce,
+2918803,BA,Laje,21052,20-50 mil,,0.0,False,sem_quebra,
+2919157,BA,Lapão,25736,20-50 mil,,0.0,False,sem_quebra,
+2919207,BA,Lauro de Freitas,203331,100-250 mil,2017-05,1.125,False,coorte_precoce,
+2919504,BA,Livramento de Nossa Senhora,43903,20-50 mil,,0.042,False,sem_quebra,
+2919553,BA,Luís Eduardo Magalhães,107909,100-250 mil,2018-02,0.292,True,coorte_precoce,
+2919702,BA,Macarani,21599,20-50 mil,,0.0,False,sem_quebra,
+2919801,BA,Macaúbas,41859,20-50 mil,,0.0,False,sem_quebra,
+2920502,BA,Maracás,27620,20-50 mil,,0.0,False,sem_quebra,
+2920601,BA,Maragogipe,35859,20-50 mil,,0.042,False,sem_quebra,
+2920700,BA,Maraú,24527,20-50 mil,,0.0,False,sem_quebra,
+2921005,BA,Mata de São João,42566,20-50 mil,,0.083,False,sem_quebra,
+2921104,BA,Medeiros Neto,22194,20-50 mil,,0.042,False,sem_quebra,
+2921203,BA,Miguel Calmon,24661,20-50 mil,,0.0,False,sem_quebra,
+2921500,BA,Monte Santo,47780,20-50 mil,,0.0,False,sem_quebra,
+2921708,BA,Morro do Chapéu,33594,20-50 mil,,0.0,False,sem_quebra,
+2922003,BA,Mucuri,37977,20-50 mil,2020-04,0.0,False,datado,2020-04
+2922300,BA,Muritiba,28707,20-50 mil,,0.042,False,sem_quebra,
+2922409,BA,Mutuípe,20037,20-50 mil,,0.0,False,sem_quebra,
+2922508,BA,Nazaré,27060,20-50 mil,,0.042,False,sem_quebra,
+2922904,BA,Nova Soure,24236,20-50 mil,,0.0,False,sem_quebra,
+2923001,BA,Nova Viçosa,39509,20-50 mil,2025-06,0.0,False,datado,2025-06
+2923100,BA,Olindina,22633,20-50 mil,,0.0,False,sem_quebra,
+2923209,BA,Oliveira dos Brejinhos,20715,20-50 mil,,0.0,False,sem_quebra,
+2923407,BA,Palmas de Monte Alto,20078,20-50 mil,,0.042,False,sem_quebra,
+2923605,BA,Paramirim,20351,20-50 mil,,0.0,False,sem_quebra,
+2923704,BA,Paratinga,29252,20-50 mil,,0.0,False,sem_quebra,
+2923803,BA,Paripiranga,26604,20-50 mil,,0.0,False,sem_quebra,
+2924009,BA,Paulo Afonso,112870,100-250 mil,2017-05,0.167,False,coorte_precoce,
+2924306,BA,Piatã,20086,20-50 mil,,0.0,False,sem_quebra,
+2924405,BA,Pilão Arcado,35357,20-50 mil,,0.0,False,sem_quebra,
+2925006,BA,Planalto,23334,20-50 mil,,0.0,False,sem_quebra,
+2925105,BA,Poções,48293,20-50 mil,2023-06,0.042,False,datado,2023-06
+2925204,BA,Pojuca,32136,20-50 mil,,0.042,False,sem_quebra,
+2925303,BA,Porto Seguro,168326,100-250 mil,2019-05,0.208,False,coorte_precoce,
+2925501,BA,Prado,35003,20-50 mil,,0.042,False,sem_quebra,
+2925758,BA,Presidente Tancredo Neves,27734,20-50 mil,,0.0,False,sem_quebra,
+2925808,BA,Queimadas,25988,20-50 mil,,0.0,False,sem_quebra,
+2925907,BA,Quijingue,25272,20-50 mil,,0.0,False,sem_quebra,
+2926004,BA,Remanso,40586,20-50 mil,,0.0,False,sem_quebra,
+2926202,BA,Riachão das Neves,21642,20-50 mil,,0.0,False,sem_quebra,
+2926301,BA,Riachão do Jacuípe,33386,20-50 mil,,0.083,False,sem_quebra,
+2926400,BA,Riacho de Santana,30711,20-50 mil,,0.042,False,sem_quebra,
+2926608,BA,Ribeira do Pombal,54010,50-100 mil,2025-08,0.042,False,datado,2025-08
+2927002,BA,Rio Real,35362,20-50 mil,2023-05,0.0,False,datado,2023-05
+2927200,BA,Ruy Barbosa,28282,20-50 mil,,0.0,False,sem_quebra,
+2927408,BA,Salvador,2417678,250 mil+,2017-01,13.375,False,coorte_precoce,
+2927507,BA,Santa Bárbara,20952,20-50 mil,,0.0,False,sem_quebra,
+2927705,BA,Santa Cruz Cabrália,29185,20-50 mil,,0.375,False,sem_quebra,
+2928000,BA,Santaluz,37834,20-50 mil,,0.0,False,sem_quebra,
+2928109,BA,Santa Maria da Vitória,38604,20-50 mil,,0.0,False,sem_quebra,
+2928208,BA,Santana,24755,20-50 mil,,0.0,False,sem_quebra,
+2928406,BA,Santa Rita de Cássia,27390,20-50 mil,,0.0,False,sem_quebra,
+2928604,BA,Santo Amaro,56012,50-100 mil,2023-04,0.042,False,datado,2023-04
+2928703,BA,Santo Antônio de Jesus,103055,100-250 mil,2020-11,0.375,False,coorte_precoce,
+2928802,BA,Santo Estêvão,52276,50-100 mil,,0.0,False,sem_quebra,
+2928901,BA,São Desidério,32828,20-50 mil,,0.0,False,sem_quebra,
+2929107,BA,São Felipe,20283,20-50 mil,,0.042,False,sem_quebra,
+2929206,BA,São Francisco do Conde,38733,20-50 mil,2025-05,0.0,False,datado,2025-05
+2929305,BA,São Gonçalo dos Campos,39513,20-50 mil,,0.0,False,sem_quebra,
+2929503,BA,São Sebastião do Passé,40958,20-50 mil,,0.042,False,sem_quebra,
+2929909,BA,Seabra,46160,20-50 mil,2025-07,0.042,False,datado,2025-07
+2930105,BA,Senhor do Bonfim,74523,50-100 mil,,0.0,False,sem_quebra,
+2930154,BA,Serra do Ramalho,34222,20-50 mil,,0.0,False,sem_quebra,
+2930204,BA,Sento Sé,38154,20-50 mil,,0.0,False,sem_quebra,
+2930501,BA,Serrinha,80435,50-100 mil,,0.125,False,sem_quebra,
+2930709,BA,Simões Filho,114559,100-250 mil,2017-06,0.333,False,coorte_precoce,
+2930774,BA,Sobradinho,25475,20-50 mil,,0.0,False,sem_quebra,
+2931004,BA,Tanhaçu,21006,20-50 mil,,0.042,False,sem_quebra,
+2931350,BA,Teixeira de Freitas,145216,100-250 mil,2018-11,0.542,True,coorte_precoce,
+2931509,BA,Teofilândia,21176,20-50 mil,,0.0,False,sem_quebra,
+2931905,BA,Tucano,48736,20-50 mil,,0.0,False,sem_quebra,
+2932002,BA,Uauá,24665,20-50 mil,,0.042,False,sem_quebra,
+2932705,BA,Uruçuca,21420,20-50 mil,,0.0,False,sem_quebra,
+2932903,BA,Valença,85655,50-100 mil,2020-11,0.042,False,datado,2020-11
+2933000,BA,Valente,24362,20-50 mil,,0.0,False,sem_quebra,
+2933208,BA,Vera Cruz,42529,20-50 mil,,0.042,False,sem_quebra,
+2933307,BA,Vitória da Conquista,370879,250 mil+,2017-01,0.833,False,coorte_precoce,
+2933505,BA,Wenceslau Guimarães,24474,20-50 mil,,0.0,False,sem_quebra,
+2933604,BA,Xique-Xique,44757,20-50 mil,,0.0,False,sem_quebra,
+3100203,MG,Abaeté,22675,20-50 mil,2022-03,0.0,False,datado,2022-03
+3101102,MG,Aimorés,25269,20-50 mil,,0.0,False,sem_quebra,
+3101508,MG,Além Paraíba,30717,20-50 mil,,0.125,False,sem_quebra,
+3101607,MG,Alfenas,78970,50-100 mil,2018-08,0.708,False,datado,2018-08
+3101706,MG,Almenara,40364,20-50 mil,2022-02,0.083,False,datado,2022-02
+3102605,MG,Andradas,40553,20-50 mil,2023-02,0.083,False,datado,2023-02
+3103405,MG,Araçuaí,34297,20-50 mil,,0.208,False,sem_quebra,
+3103504,MG,Araguari,117808,100-250 mil,2017-05,0.333,False,coorte_precoce,
+3104007,MG,Araxá,111691,100-250 mil,2019-05,0.667,False,coorte_precoce,
+3104205,MG,Arcos,41416,20-50 mil,2022-01,0.083,False,datado,2022-01
+3105103,MG,Bambuí,23546,20-50 mil,2025-08,0.0,False,datado,2025-08
+3105400,MG,Barão de Cocais,30778,20-50 mil,,0.042,False,sem_quebra,
+3105608,MG,Barbacena,125317,100-250 mil,2017-03,0.375,False,coorte_precoce,
+3105905,MG,Barroso,20080,20-50 mil,,0.0,False,sem_quebra,
+3106200,MG,Belo Horizonte,2315560,250 mil+,2018-03,48.0,False,coorte_precoce,
+3106309,MG,Belo Oriente,23928,20-50 mil,,0.0,False,sem_quebra,
+3106705,MG,Betim,411846,250 mil+,2018-03,4.625,False,coorte_precoce,
+3107109,MG,Boa Esperança,39848,20-50 mil,2021-01,0.042,False,datado,2021-01
+3107307,MG,Bocaiúva,48032,20-50 mil,2024-01,0.042,False,datado,2024-01
+3107406,MG,Bom Despacho,51737,50-100 mil,2019-04,0.083,False,datado,2019-04
+3108602,MG,Brasília de Minas,32025,20-50 mil,,0.0,False,sem_quebra,
+3109006,MG,Brumadinho,38915,20-50 mil,2024-03,0.083,False,datado,2024-03
+3109303,MG,Buritis,24030,20-50 mil,,0.0,False,sem_quebra,
+3109402,MG,Buritizeiro,23910,20-50 mil,2023-11,0.0,False,datado,2023-11
+3110004,MG,Caeté,38776,20-50 mil,2018-01,0.333,False,datado,2018-01
+3110509,MG,Camanducaia,26097,20-50 mil,2019-03,0.0,False,datado,2019-03
+3110608,MG,Cambuí,29536,20-50 mil,2019-01,0.208,False,datado,2019-01
+3111002,MG,Campestre,20696,20-50 mil,,0.0,False,sem_quebra,
+3111200,MG,Campo Belo,52277,50-100 mil,2018-10,0.25,False,datado,2018-10
+3111606,MG,Campos Gerais,26105,20-50 mil,2022-04,0.208,False,datado,2022-04
+3112307,MG,Capelinha,39626,20-50 mil,,0.167,False,sem_quebra,
+3113206,MG,Carandaí,23812,20-50 mil,,0.042,False,sem_quebra,
+3113305,MG,Carangola,31240,20-50 mil,,0.083,False,sem_quebra,
+3113404,MG,Caratinga,87360,50-100 mil,2018-03,0.292,False,datado,2018-03
+3114204,MG,Carmo do Cajuru,23479,20-50 mil,2019-10,0.125,False,datado,2019-10
+3114303,MG,Carmo do Paranaíba,29011,20-50 mil,,0.167,False,sem_quebra,
+3114402,MG,Carmo do Rio Claro,20954,20-50 mil,2019-05,0.083,False,datado,2019-05
+3115300,MG,Cataguases,66261,50-100 mil,2018-01,0.167,False,datado,2018-01
+3115508,MG,Caxambu,21056,20-50 mil,2017-01,0.333,False,datado,2017-01
+3116605,MG,Cláudio,30159,20-50 mil,,0.0,False,sem_quebra,
+3117306,MG,Conceição das Alagoas,28381,20-50 mil,2024-12,0.042,False,datado,2024-12
+3117504,MG,Conceição do Mato Dentro,23163,20-50 mil,2024-09,0.0,False,datado,2024-09
+3118007,MG,Congonhas,52890,50-100 mil,2019-03,0.125,False,datado,2019-03
+3118304,MG,Conselheiro Lafaiete,131621,100-250 mil,2017-01,0.292,False,coorte_precoce,
+3118403,MG,Conselheiro Pena,20824,20-50 mil,,0.042,False,sem_quebra,
+3118601,MG,Contagem,621863,250 mil+,2018-02,6.667,False,coorte_precoce,
+3118809,MG,Coração de Jesus,25377,20-50 mil,,0.0,False,sem_quebra,
+3119104,MG,Corinto,23532,20-50 mil,2019-05,0.042,False,datado,2019-05
+3119302,MG,Coromandel,28894,20-50 mil,2025-06,0.042,False,datado,2025-06
+3119401,MG,Coronel Fabriciano,104736,100-250 mil,2022-03,0.458,False,coorte_precoce,
+3120904,MG,Curvelo,80665,50-100 mil,2019-04,0.25,False,datado,2019-04
+3121605,MG,Diamantina,47702,20-50 mil,2019-05,0.208,False,datado,2019-05
+3122009,MG,Divino,20706,20-50 mil,,0.042,False,sem_quebra,
+3122306,MG,Divinópolis,231091,100-250 mil,2017-01,1.125,False,coorte_precoce,
+3123601,MG,Elói Mendes,26336,20-50 mil,2017-05,0.292,False,datado,2017-05
+3124005,MG,Ervália,20255,20-50 mil,,0.125,False,sem_quebra,
+3124104,MG,Esmeraldas,85598,50-100 mil,2017-04,0.333,False,datado,2017-04
+3124203,MG,Espera Feliz,24102,20-50 mil,2022-01,0.0,False,datado,2022-01
+3124302,MG,Espinosa,30443,20-50 mil,2025-01,0.042,False,datado,2025-01
+3125101,MG,Extrema,53482,50-100 mil,2017-07,0.083,False,datado,2017-07
+3126109,MG,Formiga,68248,50-100 mil,2019-03,0.625,True,datado,2019-03
+3126703,MG,Francisco Sá,23476,20-50 mil,,0.042,False,sem_quebra,
+3127107,MG,Frutal,58588,50-100 mil,2018-02,0.083,False,datado,2018-02
+3127701,MG,Governador Valadares,257171,250 mil+,2017-02,0.875,False,coorte_precoce,
+3128006,MG,Guanhães,32244,20-50 mil,2018-01,0.0,False,datado,2018-01
+3128709,MG,Guaxupé,50911,50-100 mil,2020-05,0.167,False,datado,2020-05
+3129509,MG,Ibiá,22229,20-50 mil,,0.083,False,sem_quebra,
+3129806,MG,Ibirité,170537,100-250 mil,2018-01,2.333,True,coorte_precoce,
+3130101,MG,Igarapé,45847,20-50 mil,2017-11,0.25,False,datado,2017-11
+3130903,MG,Inhapim,22692,20-50 mil,,0.0,False,sem_quebra,
+3131307,MG,Ipatinga,227731,100-250 mil,2017-10,2.0,True,coorte_precoce,
+3131703,MG,Itabira,113343,100-250 mil,2018-02,1.0,True,coorte_precoce,
+3131901,MG,Itabirito,53365,50-100 mil,2018-05,0.042,False,datado,2018-05
+3132404,MG,Itajubá,93073,50-100 mil,2017-01,1.208,True,datado,2017-01
+3132503,MG,Itamarandiba,32948,20-50 mil,2020-06,0.0,False,datado,2020-06
+3132701,MG,Itambacuri,21042,20-50 mil,,0.0,False,sem_quebra,
+3133501,MG,Itapecerica,21046,20-50 mil,,0.0,False,sem_quebra,
+3133808,MG,Itaúna,97669,50-100 mil,2018-03,0.5,False,datado,2018-03
+3134202,MG,Ituiutaba,102217,100-250 mil,2017-03,0.083,False,coorte_precoce,
+3134400,MG,Iturama,38295,20-50 mil,2020-09,0.083,False,datado,2020-09
+3134608,MG,Jaboticatubas,20406,20-50 mil,2023-02,0.042,False,datado,2023-02
+3134905,MG,Jacutinga,25525,20-50 mil,2025-05,0.125,False,datado,2025-05
+3135050,MG,Jaíba,37660,20-50 mil,,0.0,False,sem_quebra,
+3135100,MG,Janaúba,70699,50-100 mil,,0.125,False,sem_quebra,
+3135209,MG,Januária,65150,50-100 mil,,0.042,False,sem_quebra,
+3135803,MG,Jequitinhonha,24007,20-50 mil,,0.0,False,sem_quebra,
+3136207,MG,João Monlevade,80187,50-100 mil,2018-04,0.917,False,datado,2018-04
+3136306,MG,João Pinheiro,46801,20-50 mil,2020-11,0.0,False,datado,2020-11
+3136652,MG,Juatuba,30716,20-50 mil,2018-03,0.083,False,datado,2018-03
+3136702,MG,Juiz de Fora,540756,250 mil+,,8.917,False,coorte_precoce,
+3137205,MG,Lagoa da Prata,51412,50-100 mil,2023-09,0.125,False,datado,2023-09
+3137601,MG,Lagoa Santa,75145,50-100 mil,2020-10,1.0,False,datado,2020-10
+3137700,MG,Lajinha,20835,20-50 mil,,0.0,False,sem_quebra,
+3137809,MG,Lambari,20414,20-50 mil,,0.125,False,sem_quebra,
+3138203,MG,Lavras,104761,100-250 mil,2019-03,1.292,False,coorte_precoce,
+3138401,MG,Leopoldina,51145,50-100 mil,2018-03,0.083,False,datado,2018-03
+3139003,MG,Machado,37684,20-50 mil,2018-12,0.333,False,datado,2018-12
+3139409,MG,Manhuaçu,91886,50-100 mil,2017-01,0.292,False,datado,2017-01
+3139508,MG,Manhumirim,20613,20-50 mil,2024-06,0.0,False,datado,2024-06
+3139607,MG,Mantena,26535,20-50 mil,,0.042,False,sem_quebra,
+3140001,MG,Mariana,61387,50-100 mil,2019-04,0.25,False,datado,2019-04
+3140704,MG,Mateus Leme,37841,20-50 mil,2019-04,0.208,False,datado,2019-04
+3141108,MG,Matozinhos,37618,20-50 mil,2022-02,0.375,False,datado,2022-02
+3141405,MG,Medina,20156,20-50 mil,,0.0,False,sem_quebra,
+3141801,MG,Minas Novas,24405,20-50 mil,,0.042,False,sem_quebra,
+3142809,MG,Monte Alegre de Minas,20170,20-50 mil,,0.0,False,sem_quebra,
+3142908,MG,Monte Azul,20328,20-50 mil,,0.0,False,sem_quebra,
+3143104,MG,Monte Carmelo,47692,20-50 mil,2021-01,0.083,False,datado,2021-01
+3143203,MG,Monte Santo de Minas,20890,20-50 mil,2017-10,0.042,False,datado,2017-10
+3143302,MG,Montes Claros,414240,250 mil+,2018-04,1.958,True,coorte_precoce,
+3143401,MG,Monte Sião,24089,20-50 mil,2023-10,0.042,False,datado,2023-10
+3143906,MG,Muriaé,104108,100-250 mil,2017-01,0.542,False,coorte_precoce,
+3144003,MG,Mutum,27635,20-50 mil,,0.0,False,sem_quebra,
+3144102,MG,Muzambinho,21891,20-50 mil,2024-05,0.042,False,datado,2024-05
+3144300,MG,Nanuque,35038,20-50 mil,2018-04,0.083,False,datado,2018-04
+3144607,MG,Nepomuceno,25018,20-50 mil,2021-03,0.083,False,datado,2021-03
+3144805,MG,Nova Lima,111697,100-250 mil,2018-07,0.583,False,coorte_precoce,
+3145208,MG,Nova Serrana,105552,100-250 mil,2019-07,0.25,False,coorte_precoce,
+3145307,MG,Novo Cruzeiro,26975,20-50 mil,,0.083,False,sem_quebra,
+3145604,MG,Oliveira,39262,20-50 mil,2018-04,0.083,False,datado,2018-04
+3145901,MG,Ouro Branco,38724,20-50 mil,,0.0,False,sem_quebra,
+3146008,MG,Ouro Fino,32094,20-50 mil,2021-07,0.125,False,datado,2021-07
+3146107,MG,Ouro Preto,74821,50-100 mil,2020-06,0.417,False,datado,2020-06
+3147006,MG,Paracatu,94023,50-100 mil,2019-10,0.375,False,datado,2019-10
+3147105,MG,Pará de Minas,97139,50-100 mil,2017-12,0.958,False,datado,2017-12
+3147204,MG,Paraguaçu,21723,20-50 mil,2021-10,0.167,False,datado,2021-10
+3147303,MG,Paraisópolis,20445,20-50 mil,2020-04,0.125,False,datado,2020-04
+3147402,MG,Paraopeba,24107,20-50 mil,2021-03,0.0,False,datado,2021-03
+3147907,MG,Passos,111939,100-250 mil,2018-09,0.333,True,coorte_precoce,
+3148004,MG,Patos de Minas,159235,100-250 mil,2017-03,0.667,False,coorte_precoce,
+3148103,MG,Patrocínio,89826,50-100 mil,2020-04,0.167,False,datado,2020-04
+3148707,MG,Pedra Azul,24410,20-50 mil,2022-09,0.208,False,datado,2022-09
+3149309,MG,Pedro Leopoldo,62580,50-100 mil,2017-05,0.083,False,datado,2017-05
+3149903,MG,Perdões,21384,20-50 mil,2021-01,0.25,True,datado,2021-01
+3151206,MG,Pirapora,55606,50-100 mil,2019-04,0.042,False,datado,2019-04
+3151404,MG,Pitangui,26685,20-50 mil,2022-06,0.208,False,datado,2022-06
+3151503,MG,Piumhi,36062,20-50 mil,2019-05,0.167,False,datado,2019-05
+3151800,MG,Poços de Caldas,163742,100-250 mil,2017-08,0.875,False,coorte_precoce,
+3152006,MG,Pompéu,31047,20-50 mil,2024-05,0.292,False,datado,2024-05
+3152105,MG,Ponte Nova,57776,50-100 mil,2018-01,1.25,True,datado,2018-01
+3152204,MG,Porteirinha,37438,20-50 mil,,0.0,False,sem_quebra,
+3152501,MG,Pouso Alegre,152217,100-250 mil,2019-01,1.167,False,coorte_precoce,
+3152808,MG,Prata,28342,20-50 mil,,0.042,False,sem_quebra,
+3154002,MG,Raul Soares,23423,20-50 mil,,0.0,False,sem_quebra,
+3154606,MG,Ribeirão das Neves,329794,250 mil+,2017-12,3.625,False,coorte_precoce,
+3155603,MG,Rio Pardo de Minas,28271,20-50 mil,,0.0,False,sem_quebra,
+3156700,MG,Sabará,129380,100-250 mil,2018-01,1.833,False,coorte_precoce,
+3156908,MG,Sacramento,26670,20-50 mil,,0.042,False,sem_quebra,
+3157005,MG,Salinas,40178,20-50 mil,,0.125,False,sem_quebra,
+3157203,MG,Santa Bárbara,30466,20-50 mil,2023-01,0.0,False,datado,2023-01
+3157807,MG,Santa Luzia,219132,100-250 mil,2017-01,2.083,False,coorte_precoce,
+3158953,MG,Santana do Paraíso,44800,20-50 mil,2017-02,0.167,False,datado,2017-02
+3159605,MG,Santa Rita do Sapucaí,40635,20-50 mil,2020-03,0.208,False,datado,2020-03
+3159803,MG,Santa Vitória,20973,20-50 mil,,0.042,False,sem_quebra,
+3160405,MG,Santo Antônio do Monte,27295,20-50 mil,2024-02,0.083,False,datado,2024-02
+3160702,MG,Santos Dumont,42406,20-50 mil,2023-04,0.25,False,datado,2023-04
+3161106,MG,São Francisco,52762,50-100 mil,2022-09,0.0,False,datado,2022-09
+3162005,MG,São Gonçalo do Sapucaí,23959,20-50 mil,,0.125,False,sem_quebra,
+3162104,MG,São Gotardo,40910,20-50 mil,,0.125,False,sem_quebra,
+3162401,MG,São João da Ponte,23930,20-50 mil,,0.0,False,sem_quebra,
+3162500,MG,São João del Rei,90225,50-100 mil,2020-08,0.375,False,datado,2020-08
+3162708,MG,São João do Paraíso,23910,20-50 mil,,0.0,False,sem_quebra,
+3162906,MG,São João Nepomuceno,25565,20-50 mil,2021-02,0.083,False,datado,2021-02
+3162922,MG,São Joaquim de Bicas,34348,20-50 mil,,0.125,False,sem_quebra,
+3162955,MG,São José da Lapa,26090,20-50 mil,2017-03,0.333,False,datado,2017-03
+3163706,MG,São Lourenço,44798,20-50 mil,2019-02,0.625,False,datado,2019-02
+3164704,MG,São Sebastião do Paraíso,71796,50-100 mil,2017-02,0.208,False,datado,2017-02
+3165537,MG,Sarzedo,36844,20-50 mil,2018-10,0.417,False,datado,2018-10
+3167103,MG,Serro,21952,20-50 mil,2025-05,0.0,False,datado,2025-05
+3167202,MG,Sete Lagoas,227397,100-250 mil,2018-01,0.958,False,coorte_precoce,
+3168002,MG,Taiobeiras,33050,20-50 mil,2025-02,0.0,False,datado,2025-02
+3168606,MG,Teófilo Otoni,137418,100-250 mil,2018-01,0.292,False,coorte_precoce,
+3168705,MG,Timóteo,81579,50-100 mil,2017-02,0.208,False,datado,2017-02
+3169307,MG,Três Corações,75485,50-100 mil,2017-02,0.333,False,datado,2017-02
+3169356,MG,Três Marias,28895,20-50 mil,2021-07,0.125,False,datado,2021-07
+3169406,MG,Três Pontas,55255,50-100 mil,2018-09,0.667,False,datado,2018-09
+3169604,MG,Tupaciguara,25470,20-50 mil,,0.042,False,sem_quebra,
+3169703,MG,Turmalina,20000,20-50 mil,,0.0,False,sem_quebra,
+3169901,MG,Ubá,103365,100-250 mil,2017-11,0.125,False,coorte_precoce,
+3170107,MG,Uberaba,337836,250 mil+,2017-02,1.0,False,coorte_precoce,
+3170206,MG,Uberlândia,713224,250 mil+,2018-03,5.958,False,coorte_precoce,
+3170404,MG,Unaí,86619,50-100 mil,2018-01,0.125,False,datado,2018-01
+3170701,MG,Varginha,136467,100-250 mil,2021-01,2.708,False,coorte_precoce,
+3170800,MG,Várzea da Palma,33744,20-50 mil,2021-09,0.125,False,datado,2021-09
+3171204,MG,Vespasiano,129246,100-250 mil,2017-02,1.083,False,coorte_precoce,
+3171303,MG,Viçosa,76430,50-100 mil,2017-10,0.708,False,datado,2017-10
+3172004,MG,Visconde do Rio Branco,39160,20-50 mil,,0.083,False,sem_quebra,
+3200102,ES,Afonso Cláudio,30684,20-50 mil,2017-06,0.0,False,datado,2017-06
+3200201,ES,Alegre,29177,20-50 mil,,0.0,False,sem_quebra,
+3200409,ES,Anchieta,29984,20-50 mil,2021-04,0.083,False,datado,2021-04
+3200607,ES,Aracruz,94765,50-100 mil,2025-05,0.208,False,datado,2025-05
+3200805,ES,Baixo Guandu,30674,20-50 mil,2023-02,0.083,False,datado,2023-02
+3200904,ES,Barra de São Francisco,42498,20-50 mil,2018-02,0.125,False,datado,2018-02
+3201209,ES,Cachoeiro de Itapemirim,185786,100-250 mil,2017-06,1.208,True,coorte_precoce,
+3201308,ES,Cariacica,353491,250 mil+,,3.917,False,coorte_precoce,
+3201407,ES,Castelo,36930,20-50 mil,2024-06,0.125,False,datado,2024-06
+3201506,ES,Colatina,120033,100-250 mil,2017-02,0.458,True,coorte_precoce,
+3201605,ES,Conceição da Barra,27458,20-50 mil,,0.042,False,sem_quebra,
+3201902,ES,Domingos Martins,35416,20-50 mil,2022-04,0.083,False,datado,2022-04
+3202108,ES,Ecoporanga,21992,20-50 mil,,0.0,False,sem_quebra,
+3202306,ES,Guaçuí,29358,20-50 mil,,0.125,False,sem_quebra,
+3202405,ES,Guarapari,124656,100-250 mil,2018-02,0.958,False,coorte_precoce,
+3202454,ES,Ibatiba,25380,20-50 mil,2021-11,0.0,False,datado,2021-11
+3202801,ES,Itapemirim,39832,20-50 mil,2021-01,0.0,False,datado,2021-01
+3203007,ES,Iúna,28590,20-50 mil,2023-11,0.083,False,datado,2023-11
+3203056,ES,Jaguaré,28931,20-50 mil,,0.042,False,sem_quebra,
+3203205,ES,Linhares,166786,100-250 mil,2018-05,0.625,False,coorte_precoce,
+3203320,ES,Marataízes,41929,20-50 mil,2019-06,0.125,False,datado,2019-06
+3203403,ES,Mimoso do Sul,24475,20-50 mil,,0.0,False,sem_quebra,
+3203908,ES,Nova Venécia,49065,20-50 mil,2018-02,0.125,False,datado,2018-02
+3204054,ES,Pedro Canário,21522,20-50 mil,,0.083,False,sem_quebra,
+3204104,ES,Pinheiros,23915,20-50 mil,2024-11,0.125,False,datado,2024-11
+3204203,ES,Piúma,22300,20-50 mil,2021-08,0.125,False,datado,2021-08
+3204559,ES,Santa Maria de Jetibá,41636,20-50 mil,,0.042,False,sem_quebra,
+3204609,ES,Santa Teresa,22808,20-50 mil,,0.042,False,sem_quebra,
+3204708,ES,São Gabriel da Palha,32252,20-50 mil,,0.125,False,sem_quebra,
+3204906,ES,São Mateus,123752,100-250 mil,2020-11,0.542,True,coorte_precoce,
+3205002,ES,Serra,520653,250 mil+,2017-05,3.458,False,coorte_precoce,
+3205010,ES,Sooretama,26502,20-50 mil,,0.083,False,sem_quebra,
+3205069,ES,Venda Nova do Imigrante,23831,20-50 mil,,0.0,False,sem_quebra,
+3205101,ES,Viana,73423,50-100 mil,2020-02,0.542,False,datado,2020-02
+3205200,ES,Vila Velha,467722,250 mil+,2018-01,3.958,False,coorte_precoce,
+3205309,ES,Vitória,322869,250 mil+,,4.0,False,coorte_precoce,
+3300100,RJ,Angra dos Reis,167434,100-250 mil,2017-11,0.333,False,coorte_precoce,
+3300209,RJ,Araruama,129671,100-250 mil,2019-03,0.292,False,coorte_precoce,
+3300233,RJ,Armação dos Búzios,40006,20-50 mil,2020-04,0.208,False,datado,2020-04
+3300258,RJ,Arraial do Cabo,30986,20-50 mil,2020-04,0.0,False,datado,2020-04
+3300308,RJ,Barra do Piraí,92883,50-100 mil,2019-03,0.583,False,datado,2019-03
+3300407,RJ,Barra Mansa,169894,100-250 mil,2018-08,0.833,True,coorte_precoce,
+3300456,RJ,Belford Roxo,483087,250 mil+,2018-04,2.792,False,coorte_precoce,
+3300506,RJ,Bom Jardim,28102,20-50 mil,,0.042,False,sem_quebra,
+3300605,RJ,Bom Jesus do Itabapoana,35173,20-50 mil,,0.083,False,sem_quebra,
+3300704,RJ,Cabo Frio,222161,100-250 mil,2017-06,1.167,True,coorte_precoce,
+3300803,RJ,Cachoeiras de Macacu,56943,50-100 mil,2017-11,0.083,False,datado,2017-11
+3301009,RJ,Campos dos Goytacazes,483540,250 mil+,2017-11,2.0,False,coorte_precoce,
+3301306,RJ,Casimiro de Abreu,46110,20-50 mil,2018-09,0.167,False,datado,2018-09
+3301405,RJ,Conceição de Macabu,21104,20-50 mil,,0.042,False,sem_quebra,
+3301504,RJ,Cordeiro,20783,20-50 mil,2024-01,0.208,False,datado,2024-01
+3301702,RJ,Duque de Caxias,808161,250 mil+,2018-05,6.167,True,coorte_precoce,
+3301850,RJ,Guapimirim,51696,50-100 mil,2020-08,0.167,False,datado,2020-08
+3301876,RJ,Iguaba Grande,27920,20-50 mil,2019-09,0.0,False,datado,2019-09
+3301900,RJ,Itaboraí,224267,100-250 mil,2017-12,0.833,False,coorte_precoce,
+3302007,RJ,Itaguaí,116841,100-250 mil,2022-12,0.708,False,coorte_precoce,
+3302106,RJ,Itaocara,22919,20-50 mil,,0.042,False,sem_quebra,
+3302205,RJ,Itaperuna,101041,100-250 mil,2018-04,0.542,False,coorte_precoce,
+3302254,RJ,Itatiaia,30908,20-50 mil,2023-02,0.0,False,datado,2023-02
+3302270,RJ,Japeri,96289,50-100 mil,2020-04,0.333,True,datado,2020-04
+3302403,RJ,Macaé,246391,100-250 mil,2017-04,1.333,True,coorte_precoce,
+3302502,RJ,Magé,228127,100-250 mil,2018-04,0.875,False,coorte_precoce,
+3302601,RJ,Mangaratiba,41220,20-50 mil,2020-08,0.0,False,datado,2020-08
+3302700,RJ,Maricá,197277,100-250 mil,2017-11,1.042,True,coorte_precoce,
+3302858,RJ,Mesquita,167127,100-250 mil,2018-03,0.833,False,coorte_precoce,
+3302908,RJ,Miguel Pereira,26582,20-50 mil,2017-10,0.083,False,datado,2017-10
+3303005,RJ,Miracema,26881,20-50 mil,2020-09,0.0,False,datado,2020-09
+3303203,RJ,Nilópolis,146774,100-250 mil,2018-07,1.042,True,coorte_precoce,
+3303302,RJ,Niterói,481749,250 mil+,2017-12,3.792,False,coorte_precoce,
+3303401,RJ,Nova Friburgo,189939,100-250 mil,2018-05,1.208,False,coorte_precoce,
+3303500,RJ,Nova Iguaçu,785867,250 mil+,2018-03,3.458,True,coorte_precoce,
+3303609,RJ,Paracambi,41375,20-50 mil,2020-02,0.083,False,datado,2020-02
+3303708,RJ,Paraíba do Sul,42063,20-50 mil,2019-03,0.083,False,datado,2019-03
+3303807,RJ,Paraty,45243,20-50 mil,2019-09,0.0,False,datado,2019-09
+3303856,RJ,Paty do Alferes,29619,20-50 mil,2025-05,0.042,False,datado,2025-05
+3303906,RJ,Petrópolis,278881,250 mil+,2017-11,2.125,False,coorte_precoce,
+3303955,RJ,Pinheiral,24298,20-50 mil,,0.042,False,sem_quebra,
+3304003,RJ,Piraí,27474,20-50 mil,2021-12,0.042,False,datado,2021-12
+3304110,RJ,Porto Real,20373,20-50 mil,,0.042,False,sem_quebra,
+3304144,RJ,Queimados,140523,100-250 mil,2019-07,0.833,True,coorte_precoce,
+3304151,RJ,Quissamã,22393,20-50 mil,2023-01,0.042,False,datado,2023-01
+3304201,RJ,Resende,129612,100-250 mil,2018-11,0.792,False,coorte_precoce,
+3304300,RJ,Rio Bonito,56276,50-100 mil,2019-06,0.125,False,datado,2019-06
+3304524,RJ,Rio das Ostras,156491,100-250 mil,2017-09,0.625,False,coorte_precoce,
+3304557,RJ,Rio de Janeiro,6211223,250 mil+,2018-03,73.625,False,coorte_precoce,
+3304706,RJ,Santo Antônio de Pádua,41325,20-50 mil,2022-08,0.0,False,datado,2022-08
+3304755,RJ,São Francisco de Itabapoana,45059,20-50 mil,2022-08,0.042,False,datado,2022-08
+3304805,RJ,São Fidélis,38961,20-50 mil,2025-07,0.042,False,datado,2025-07
+3304904,RJ,São Gonçalo,896744,250 mil+,,7.208,False,coorte_precoce,
+3305000,RJ,São João da Barra,36573,20-50 mil,2024-08,0.0,False,datado,2024-08
+3305109,RJ,São João de Meriti,440962,250 mil+,,4.458,True,coorte_precoce,
+3305158,RJ,São José do Vale do Rio Preto,22080,20-50 mil,,0.0,False,sem_quebra,
+3305208,RJ,São Pedro da Aldeia,104029,100-250 mil,2018-05,0.292,False,coorte_precoce,
+3305505,RJ,Saquarema,89559,50-100 mil,2021-07,0.333,False,datado,2021-07
+3305554,RJ,Seropédica,80596,50-100 mil,2017-03,0.125,False,datado,2017-03
+3305604,RJ,Silva Jardim,21352,20-50 mil,2024-06,0.0,False,datado,2024-06
+3305752,RJ,Tanguá,31086,20-50 mil,2023-01,0.042,False,datado,2023-01
+3305802,RJ,Teresópolis,165123,100-250 mil,2017-01,0.667,False,coorte_precoce,
+3306008,RJ,Três Rios,78346,50-100 mil,2018-01,0.25,False,datado,2018-01
+3306107,RJ,Valença,68088,50-100 mil,2018-01,0.25,False,datado,2018-01
+3306206,RJ,Vassouras,33976,20-50 mil,2019-08,0.208,False,datado,2019-08
+3306305,RJ,Volta Redonda,261563,250 mil+,2017-03,0.958,True,coorte_precoce,
+3500105,SP,Adamantina,34687,20-50 mil,2021-11,0.125,False,datado,2021-11
+3500303,SP,Aguaí,32072,20-50 mil,2021-11,0.083,False,datado,2021-11
+3500709,SP,Agudos,37680,20-50 mil,2025-05,0.125,False,datado,2025-05
+3501301,SP,Álvares Machado,27255,20-50 mil,2025-05,0.0,False,datado,2025-05
+3501608,SP,Americana,237240,100-250 mil,2018-04,1.333,True,coorte_precoce,
+3501707,SP,Américo Brasiliense,33019,20-50 mil,2021-07,0.083,False,datado,2021-07
+3501905,SP,Amparo,68008,50-100 mil,2019-01,0.458,False,datado,2019-01
+3502101,SP,Andradina,59783,50-100 mil,2021-11,0.083,False,datado,2021-11
+3502200,SP,Angatuba,24022,20-50 mil,2021-01,0.0,False,datado,2021-01
+3502507,SP,Aparecida,32569,20-50 mil,2020-06,0.292,False,datado,2020-06
+3502705,SP,Apiaí,24585,20-50 mil,2023-12,0.167,False,datado,2023-12
+3502754,SP,Araçariguama,21522,20-50 mil,2019-05,0.042,False,datado,2019-05
+3502804,SP,Araçatuba,200124,100-250 mil,2017-07,0.375,False,coorte_precoce,
+3502903,SP,Araçoiaba da Serra,32443,20-50 mil,2018-05,0.083,False,datado,2018-05
+3503208,SP,Araraquara,242228,100-250 mil,2017-12,1.167,False,coorte_precoce,
+3503307,SP,Araras,130866,100-250 mil,2020-03,0.417,False,coorte_precoce,
+3503802,SP,Artur Nogueira,51456,50-100 mil,2019-03,0.125,False,datado,2019-03
+3503901,SP,Arujá,86678,50-100 mil,2017-01,0.417,True,datado,2017-01
+3504008,SP,Assis,101409,100-250 mil,2017-01,0.208,False,coorte_precoce,
+3504107,SP,Atibaia,158647,100-250 mil,2017-04,1.125,False,coorte_precoce,
+3504503,SP,Avaré,92805,50-100 mil,2018-05,0.208,False,datado,2018-05
+3504602,SP,Bady Bassitt,27260,20-50 mil,2018-04,0.042,False,datado,2018-04
+3505203,SP,Bariri,31595,20-50 mil,2021-08,0.0,False,datado,2021-08
+3505302,SP,Barra Bonita,34346,20-50 mil,2018-04,0.083,False,datado,2018-04
+3505500,SP,Barretos,122485,100-250 mil,2020-04,0.25,False,coorte_precoce,
+3505609,SP,Barrinha,32092,20-50 mil,2021-05,0.083,False,datado,2021-05
+3505708,SP,Barueri,316473,250 mil+,2018-01,3.083,False,coorte_precoce,
+3505807,SP,Bastos,21503,20-50 mil,,0.0,False,sem_quebra,
+3505906,SP,Batatais,58402,50-100 mil,2017-05,0.292,False,datado,2017-05
+3506003,SP,Bauru,379146,250 mil+,2017-03,3.708,True,coorte_precoce,
+3506102,SP,Bebedouro,76373,50-100 mil,2017-12,0.292,False,datado,2017-12
+3506359,SP,Bertioga,64188,50-100 mil,2018-09,0.208,False,datado,2018-09
+3506508,SP,Birigui,118979,100-250 mil,2019-02,0.5,False,coorte_precoce,
+3506607,SP,Biritiba Mirim,29683,20-50 mil,2020-09,0.25,False,datado,2020-09
+3507001,SP,Boituva,61081,50-100 mil,2017-01,0.167,False,datado,2017-01
+3507100,SP,Bom Jesus dos Perdões,22006,20-50 mil,2023-01,0.083,False,datado,2023-01
+3507506,SP,Botucatu,145155,100-250 mil,2017-01,1.542,False,coorte_precoce,
+3507605,SP,Bragança Paulista,176811,100-250 mil,,1.25,True,coorte_precoce,
+3507803,SP,Brodowski,25201,20-50 mil,,0.292,True,sem_quebra,
+3507902,SP,Brotas,23898,20-50 mil,2019-10,0.042,False,datado,2019-10
+3508009,SP,Buri,20250,20-50 mil,2020-10,0.0,False,datado,2020-10
+3508405,SP,Cabreúva,47011,20-50 mil,2018-07,0.458,False,datado,2018-07
+3508504,SP,Caçapava,96202,50-100 mil,2017-01,0.292,False,datado,2017-01
+3508603,SP,Cachoeira Paulista,31564,20-50 mil,2021-04,0.125,False,datado,2021-04
+3509007,SP,Caieiras,95032,50-100 mil,2019-01,0.917,False,datado,2019-01
+3509205,SP,Cajamar,92689,50-100 mil,2018-09,0.5,False,datado,2018-09
+3509254,SP,Cajati,28515,20-50 mil,2023-08,0.125,False,datado,2023-08
+3509403,SP,Cajuru,23830,20-50 mil,,0.0,False,sem_quebra,
+3509502,SP,Campinas,1139047,250 mil+,2018-01,11.708,False,coorte_precoce,
+3509601,SP,Campo Limpo Paulista,77632,50-100 mil,2019-02,0.25,False,datado,2019-02
+3509700,SP,Campos do Jordão,46974,20-50 mil,2020-08,0.5,False,datado,2020-08
+3510005,SP,Cândido Mota,29449,20-50 mil,2023-04,0.0,False,datado,2023-04
+3510203,SP,Capão Bonito,46337,20-50 mil,2017-06,0.125,False,datado,2017-06
+3510302,SP,Capela do Alto,22866,20-50 mil,,0.0,False,sem_quebra,
+3510401,SP,Capivari,50068,50-100 mil,,0.417,False,sem_quebra,
+3510500,SP,Caraguatatuba,134873,100-250 mil,2018-01,0.917,False,coorte_precoce,
+3510609,SP,Carapicuíba,386984,250 mil+,2018-01,4.292,True,coorte_precoce,
+3510807,SP,Casa Branca,28083,20-50 mil,2019-04,0.417,False,datado,2019-04
+3511102,SP,Catanduva,115791,100-250 mil,2018-03,0.708,True,coorte_precoce,
+3511409,SP,Cerqueira César,21469,20-50 mil,,0.083,False,sem_quebra,
+3511508,SP,Cerquilho,44695,20-50 mil,2020-09,0.0,False,datado,2020-09
+3512209,SP,Conchal,28101,20-50 mil,2023-02,0.0,False,datado,2023-02
+3512407,SP,Cordeirópolis,24514,20-50 mil,2020-03,0.0,False,datado,2020-03
+3512803,SP,Cosmópolis,59773,50-100 mil,2018-02,0.125,False,datado,2018-02
+3513009,SP,Cotia,274413,250 mil+,2017-11,2.375,True,coorte_precoce,
+3513108,SP,Cravinhos,33281,20-50 mil,2020-05,0.125,False,datado,2020-05
+3513405,SP,Cruzeiro,74961,50-100 mil,2018-12,0.5,False,datado,2018-12
+3513504,SP,Cubatão,112476,100-250 mil,2019-04,0.458,True,coorte_precoce,
+3513603,SP,Cunha,22110,20-50 mil,,0.0,False,sem_quebra,
+3513702,SP,Descalvado,31756,20-50 mil,2017-02,0.167,False,datado,2017-02
+3513801,SP,Diadema,393237,250 mil+,2018-01,6.208,False,coorte_precoce,
+3514106,SP,Dois Córregos,24510,20-50 mil,,0.0,False,sem_quebra,
+3514403,SP,Dracena,45474,20-50 mil,2022-07,0.208,False,datado,2022-07
+3515004,SP,Embu das Artes,250691,250 mil+,2017-10,2.958,False,coorte_precoce,
+3515103,SP,Embu-Guaçu,66970,50-100 mil,2018-01,0.292,False,datado,2018-01
+3515186,SP,Espírito Santo do Pinhal,39816,20-50 mil,2022-03,0.375,False,datado,2022-03
+3515509,SP,Fernandópolis,71186,50-100 mil,2017-01,0.083,False,datado,2017-01
+3515707,SP,Ferraz de Vasconcelos,179198,100-250 mil,2017-01,0.75,True,coorte_precoce,
+3516200,SP,Franca,352536,250 mil+,2017-08,1.208,True,coorte_precoce,
+3516309,SP,Francisco Morato,165139,100-250 mil,2017-05,0.792,False,coorte_precoce,
+3516408,SP,Franco da Rocha,144849,100-250 mil,2018-01,0.833,True,coorte_precoce,
+3516705,SP,Garça,42110,20-50 mil,2021-02,0.125,False,datado,2021-02
+3517406,SP,Guaíra,39279,20-50 mil,2018-08,0.0,False,datado,2018-08
+3517505,SP,Guapiaçu,21711,20-50 mil,,0.042,False,sem_quebra,
+3518206,SP,Guararapes,31043,20-50 mil,2021-11,0.083,False,datado,2021-11
+3518305,SP,Guararema,31236,20-50 mil,2021-11,0.083,False,datado,2021-11
+3518404,SP,Guaratinguetá,118044,100-250 mil,,0.75,False,coorte_precoce,
+3518602,SP,Guariba,37498,20-50 mil,2019-06,0.125,False,datado,2019-06
+3518701,SP,Guarujá,287634,250 mil+,2018-08,2.0,False,coorte_precoce,
+3518800,SP,Guarulhos,1291771,250 mil+,2018-05,10.625,False,coorte_precoce,
+3519071,SP,Hortolândia,236641,100-250 mil,2017-02,1.708,False,coorte_precoce,
+3519303,SP,Ibaté,32178,20-50 mil,2025-04,0.083,False,datado,2025-04
+3519600,SP,Ibitinga,60033,50-100 mil,2021-09,0.208,False,datado,2021-09
+3519709,SP,Ibiúna,75605,50-100 mil,2017-05,0.167,False,datado,2017-05
+3520004,SP,Igaraçu do Tietê,23106,20-50 mil,,0.0,False,sem_quebra,
+3520103,SP,Igarapava,26212,20-50 mil,,0.042,False,sem_quebra,
+3520301,SP,Iguape,29115,20-50 mil,2022-04,0.0,False,datado,2022-04
+3520400,SP,Ilhabela,34934,20-50 mil,,0.042,False,sem_quebra,
+3520442,SP,Ilha Solteira,25549,20-50 mil,,0.125,False,sem_quebra,
+3520509,SP,Indaiatuba,255748,250 mil+,2018-03,1.375,False,coorte_precoce,
+3521002,SP,Iperó,36459,20-50 mil,2022-01,0.292,False,datado,2022-01
+3521408,SP,Iracemápolis,21967,20-50 mil,,0.042,False,sem_quebra,
+3521804,SP,Itaí,25180,20-50 mil,,0.042,False,sem_quebra,
+3522109,SP,Itanhaém,112476,100-250 mil,2018-09,0.667,False,coorte_precoce,
+3522208,SP,Itapecerica da Serra,158522,100-250 mil,2017-06,1.792,False,coorte_precoce,
+3522307,SP,Itapetininga,157790,100-250 mil,2018-03,0.75,False,coorte_precoce,
+3522406,SP,Itapeva,89728,50-100 mil,2020-01,0.625,False,datado,2020-01
+3522505,SP,Itapevi,232297,100-250 mil,2017-11,1.583,False,coorte_precoce,
+3522604,SP,Itapira,72022,50-100 mil,2019-12,0.25,False,datado,2019-12
+3522703,SP,Itápolis,39493,20-50 mil,2020-07,0.083,False,datado,2020-07
+3523107,SP,Itaquaquecetuba,369275,250 mil+,2018-12,2.042,True,coorte_precoce,
+3523206,SP,Itararé,44438,20-50 mil,2018-04,0.375,False,datado,2018-04
+3523404,SP,Itatiba,121590,100-250 mil,2020-03,0.667,False,coorte_precoce,
+3523909,SP,Itu,168240,100-250 mil,2018-04,0.875,False,coorte_precoce,
+3524006,SP,Itupeva,70616,50-100 mil,2018-02,0.5,False,datado,2018-02
+3524105,SP,Ituverava,37571,20-50 mil,2020-11,0.0,False,datado,2020-11
+3524303,SP,Jaboticabal,71821,50-100 mil,2019-01,0.125,False,datado,2019-01
+3524402,SP,Jacareí,240275,100-250 mil,2017-10,1.25,False,coorte_precoce,
+3524709,SP,Jaguariúna,59347,50-100 mil,,1.333,False,sem_quebra,
+3524808,SP,Jales,48776,20-50 mil,2018-08,0.25,False,datado,2018-08
+3525003,SP,Jandira,118045,100-250 mil,2017-12,0.875,False,coorte_precoce,
+3525102,SP,Jardinópolis,45282,20-50 mil,2024-03,0.125,False,datado,2024-03
+3525201,SP,Jarinu,37535,20-50 mil,2018-08,0.167,False,datado,2018-08
+3525300,SP,Jaú,133497,100-250 mil,2018-02,0.458,False,coorte_precoce,
+3525706,SP,José Bonifácio,36633,20-50 mil,2021-04,0.042,False,datado,2021-04
+3525904,SP,Jundiaí,443221,250 mil+,2019-01,1.875,True,coorte_precoce,
+3526001,SP,Junqueirópolis,20448,20-50 mil,2021-11,0.042,False,datado,2021-11
+3526209,SP,Juquitiba,27404,20-50 mil,2024-02,0.042,False,datado,2024-02
+3526407,SP,Laranjal Paulista,26261,20-50 mil,2021-01,0.083,False,datado,2021-01
+3526704,SP,Leme,98161,50-100 mil,2019-07,0.625,False,datado,2019-07
+3526803,SP,Lençóis Paulista,66505,50-100 mil,2021-08,0.042,False,datado,2021-08
+3526902,SP,Limeira,291869,250 mil+,2017-02,1.292,True,coorte_precoce,
+3527108,SP,Lins,74779,50-100 mil,2021-03,0.042,False,datado,2021-03
+3527207,SP,Lorena,84855,50-100 mil,2017-04,0.167,False,datado,2017-04
+3527306,SP,Louveira,51847,50-100 mil,2018-10,0.083,False,datado,2018-10
+3527405,SP,Lucélia,20061,20-50 mil,2025-04,0.083,False,datado,2025-04
+3528403,SP,Mairinque,50027,50-100 mil,,0.167,False,sem_quebra,
+3528502,SP,Mairiporã,93853,50-100 mil,2018-05,0.375,False,datado,2018-05
+3529005,SP,Marília,237627,100-250 mil,2020-03,2.125,True,coorte_precoce,
+3529203,SP,Martinópolis,24881,20-50 mil,,0.0,False,sem_quebra,
+3529302,SP,Matão,79033,50-100 mil,2018-11,0.167,False,datado,2018-11
+3529401,SP,Mauá,418261,250 mil+,2018-02,2.375,False,coorte_precoce,
+3530102,SP,Mirandópolis,27983,20-50 mil,2025-03,0.0,False,datado,2025-03
+3530300,SP,Mirassol,63337,50-100 mil,2019-04,0.083,False,datado,2019-04
+3530508,SP,Mococa,67681,50-100 mil,2017-05,0.25,False,datado,2017-05
+3530607,SP,Mogi das Cruzes,451505,250 mil+,2019-03,3.083,False,coorte_precoce,
+3530706,SP,Mogi Guaçu,153658,100-250 mil,2017-10,1.208,True,coorte_precoce,
+3530805,SP,Mogi Mirim,92558,50-100 mil,2017-02,0.917,False,datado,2017-02
+3531100,SP,Mongaguá,61951,50-100 mil,2018-10,0.583,False,datado,2018-10
+3531308,SP,Monte Alto,47574,20-50 mil,2017-02,0.25,False,datado,2017-02
+3531407,SP,Monte Aprazível,22280,20-50 mil,,0.042,False,sem_quebra,
+3531803,SP,Monte Mor,64662,50-100 mil,2017-08,0.292,False,datado,2017-08
+3531902,SP,Morro Agudo,27933,20-50 mil,2022-02,0.083,False,datado,2022-02
+3533403,SP,Nova Odessa,62019,50-100 mil,2017-08,0.292,False,datado,2017-08
+3533502,SP,Novo Horizonte,38324,20-50 mil,2021-04,0.0,False,datado,2021-04
+3533908,SP,Olímpia,55074,50-100 mil,2019-04,0.042,False,datado,2019-04
+3534302,SP,Orlândia,38319,20-50 mil,2018-03,0.125,False,datado,2018-03
+3534401,SP,Osasco,728615,250 mil+,2018-02,9.0,False,coorte_precoce,
+3534609,SP,Osvaldo Cruz,31272,20-50 mil,2025-04,0.083,False,datado,2025-04
+3534708,SP,Ourinhos,103970,100-250 mil,2022-06,0.708,True,coorte_precoce,
+3535507,SP,Paraguaçu Paulista,41120,20-50 mil,2019-05,0.167,False,datado,2019-05
+3536505,SP,Paulínia,110537,100-250 mil,2018-04,0.667,False,coorte_precoce,
+3536703,SP,Pederneiras,44827,20-50 mil,2017-10,0.375,False,datado,2017-10
+3537107,SP,Pedreira,43112,20-50 mil,2020-03,0.083,False,datado,2020-03
+3537305,SP,Penápolis,61679,50-100 mil,2019-07,0.042,False,datado,2019-07
+3537404,SP,Pereira Barreto,24095,20-50 mil,,0.0,False,sem_quebra,
+3537602,SP,Peruíbe,68352,50-100 mil,2017-11,0.375,True,datado,2017-11
+3537800,SP,Piedade,52970,50-100 mil,2019-05,0.292,False,datado,2019-05
+3537909,SP,Pilar do Sul,27619,20-50 mil,2019-01,0.042,False,datado,2019-01
+3538006,SP,Pindamonhangaba,165428,100-250 mil,2018-01,1.292,True,coorte_precoce,
+3538600,SP,Piracaia,26029,20-50 mil,2021-04,0.0,False,datado,2021-04
+3538709,SP,Piracicaba,423323,250 mil+,2019-01,2.167,True,coorte_precoce,
+3538808,SP,Piraju,29436,20-50 mil,,0.042,False,sem_quebra,
+3538907,SP,Pirajuí,22431,20-50 mil,,0.083,False,sem_quebra,
+3539202,SP,Pirapozinho,25348,20-50 mil,2021-10,0.083,False,datado,2021-10
+3539301,SP,Pirassununga,73545,50-100 mil,2019-12,0.375,False,datado,2019-12
+3539509,SP,Pitangueiras,33674,20-50 mil,2018-01,0.0,False,datado,2018-01
+3539806,SP,Poá,103765,100-250 mil,2019-02,0.583,False,coorte_precoce,
+3540002,SP,Pompéia,20196,20-50 mil,2019-08,0.125,False,datado,2019-08
+3540200,SP,Pontal,37607,20-50 mil,2024-04,0.0,False,datado,2024-04
+3540606,SP,Porto Feliz,56497,50-100 mil,2021-11,0.375,True,datado,2021-11
+3540705,SP,Porto Ferreira,52649,50-100 mil,,0.25,False,sem_quebra,
+3540754,SP,Potim,20392,20-50 mil,2022-03,0.083,False,datado,2022-03
+3541000,SP,Praia Grande,349935,250 mil+,2018-09,3.125,False,coorte_precoce,
+3541307,SP,Presidente Epitácio,39505,20-50 mil,,0.0,False,sem_quebra,
+3541406,SP,Presidente Prudente,225668,100-250 mil,2018-08,0.792,True,coorte_precoce,
+3541505,SP,Presidente Venceslau,35201,20-50 mil,2019-05,0.125,False,datado,2019-05
+3541604,SP,Promissão,35131,20-50 mil,,0.0,False,sem_quebra,
+3542206,SP,Rancharia,28588,20-50 mil,2022-05,0.042,False,datado,2022-05
+3542404,SP,Regente Feijó,20145,20-50 mil,,0.0,False,sem_quebra,
+3542602,SP,Registro,59947,50-100 mil,2017-04,0.208,False,datado,2017-04
+3543303,SP,Ribeirão Pires,115559,100-250 mil,2018-01,0.958,True,coorte_precoce,
+3543402,SP,Ribeirão Preto,698642,250 mil+,2018-05,7.792,False,coorte_precoce,
+3543907,SP,Rio Claro,201418,100-250 mil,2019-06,1.333,False,coorte_precoce,
+3544004,SP,Rio das Pedras,31328,20-50 mil,2025-01,0.042,False,datado,2025-01
+3544103,SP,Rio Grande da Serra,44170,20-50 mil,2019-02,0.042,False,datado,2019-02
+3545209,SP,Salto,134319,100-250 mil,2019-02,0.917,False,coorte_precoce,
+3545308,SP,Salto de Pirapora,43748,20-50 mil,2019-04,0.167,False,datado,2019-04
+3545803,SP,Santa Bárbara d'Oeste,183347,100-250 mil,2017-01,1.458,False,coorte_precoce,
+3546306,SP,Santa Cruz das Palmeiras,28864,20-50 mil,2022-04,0.0,False,datado,2022-04
+3546405,SP,Santa Cruz do Rio Pardo,46442,20-50 mil,2020-01,0.083,False,datado,2020-01
+3546603,SP,Santa Fé do Sul,34794,20-50 mil,2020-07,0.0,False,datado,2020-07
+3546702,SP,Santa Gertrudes,23611,20-50 mil,2021-04,0.083,False,datado,2021-04
+3546801,SP,Santa Isabel,53174,50-100 mil,2019-01,0.083,False,datado,2019-01
+3547304,SP,Santana de Parnaíba,154105,100-250 mil,2018-01,1.25,True,coorte_precoce,
+3547502,SP,Santa Rita do Passa Quatro,24833,20-50 mil,,0.083,False,sem_quebra,
+3547601,SP,Santa Rosa de Viterbo,23411,20-50 mil,2021-06,0.083,False,datado,2021-06
+3547809,SP,Santo André,748919,250 mil+,2017-01,6.292,False,coorte_precoce,
+3548005,SP,Santo Antônio de Posse,23244,20-50 mil,2019-09,0.167,False,datado,2019-09
+3548500,SP,Santos,418608,250 mil+,2018-04,6.0,True,coorte_precoce,
+3548708,SP,São Bernardo do Campo,810729,250 mil+,2018-05,8.417,False,coorte_precoce,
+3548807,SP,São Caetano do Sul,165655,100-250 mil,2018-02,1.458,False,coorte_precoce,
+3548906,SP,São Carlos,254857,250 mil+,2018-12,1.792,False,coorte_precoce,
+3549102,SP,São João da Boa Vista,92547,50-100 mil,2018-01,0.75,False,datado,2018-01
+3549409,SP,São Joaquim da Barra,48558,20-50 mil,2025-03,0.125,False,datado,2025-03
+3549706,SP,São José do Rio Pardo,52205,50-100 mil,2023-09,0.458,False,datado,2023-09
+3549805,SP,São José do Rio Preto,480393,250 mil+,2017-05,2.167,False,coorte_precoce,
+3549904,SP,São José dos Campos,697054,250 mil+,2017-01,3.292,False,coorte_precoce,
+3550100,SP,São Manuel,37289,20-50 mil,2020-07,0.042,False,datado,2020-07
+3550209,SP,São Miguel Arcanjo,32039,20-50 mil,2021-02,0.0,False,datado,2021-02
+3550308,SP,São Paulo,11451999,250 mil+,2017-11,213.25,False,coorte_precoce,
+3550407,SP,São Pedro,38256,20-50 mil,,0.458,True,sem_quebra,
+3550605,SP,São Roque,79484,50-100 mil,2017-03,0.417,False,datado,2017-03
+3550704,SP,São Sebastião,81595,50-100 mil,2020-03,0.292,False,datado,2020-03
+3551009,SP,São Vicente,329911,250 mil+,2018-04,3.542,True,coorte_precoce,
+3551504,SP,Serrana,43909,20-50 mil,2018-08,0.208,False,datado,2018-08
+3551603,SP,Serra Negra,29894,20-50 mil,,0.083,False,sem_quebra,
+3551702,SP,Sertãozinho,126887,100-250 mil,2017-01,0.25,False,coorte_precoce,
+3552106,SP,Socorro,40122,20-50 mil,2024-09,0.083,False,datado,2024-09
+3552205,SP,Sorocaba,723682,250 mil+,,8.708,True,coorte_precoce,
+3552403,SP,Sumaré,279545,250 mil+,2017-01,1.792,False,coorte_precoce,
+3552502,SP,Suzano,307429,250 mil+,2019-03,1.917,True,coorte_precoce,
+3552809,SP,Taboão da Serra,273542,250 mil+,2017-11,3.542,True,coorte_precoce,
+3553302,SP,Tambaú,21435,20-50 mil,,0.042,False,sem_quebra,
+3553401,SP,Tanabi,25265,20-50 mil,,0.0,False,sem_quebra,
+3553708,SP,Taquaritinga,52260,50-100 mil,2020-09,0.333,False,datado,2020-09
+3553807,SP,Taquarituba,24350,20-50 mil,,0.042,False,sem_quebra,
+3554003,SP,Tatuí,123942,100-250 mil,2020-01,0.542,False,coorte_precoce,
+3554102,SP,Taubaté,310739,250 mil+,2017-11,2.042,False,coorte_precoce,
+3554300,SP,Teodoro Sampaio,22173,20-50 mil,2022-01,0.083,False,datado,2022-01
+3554508,SP,Tietê,37663,20-50 mil,2020-09,0.75,False,datado,2020-09
+3554805,SP,Tremembé,51173,50-100 mil,2023-02,0.458,False,datado,2023-02
+3555000,SP,Tupã,63928,50-100 mil,2021-11,0.125,False,datado,2021-11
+3555406,SP,Ubatuba,92981,50-100 mil,2018-05,0.417,False,datado,2018-05
+3556206,SP,Valinhos,126373,100-250 mil,2017-01,0.625,False,coorte_precoce,
+3556305,SP,Valparaíso,24241,20-50 mil,,0.0,False,sem_quebra,
+3556404,SP,Vargem Grande do Sul,40133,20-50 mil,2024-01,0.125,False,datado,2024-01
+3556453,SP,Vargem Grande Paulista,50415,50-100 mil,2018-03,0.292,False,datado,2018-03
+3556503,SP,Várzea Paulista,115771,100-250 mil,2017-01,0.833,True,coorte_precoce,
+3556701,SP,Vinhedo,76540,50-100 mil,2017-04,0.125,False,datado,2017-04
+3557006,SP,Votorantim,127923,100-250 mil,2017-01,1.708,True,coorte_precoce,
+3557105,SP,Votuporanga,96634,50-100 mil,2020-08,0.25,False,datado,2020-08
+4100400,PR,Almirante Tamandaré,119825,100-250 mil,2017-02,1.458,True,coorte_precoce,
+4101408,PR,Apucarana,130134,100-250 mil,2021-02,1.167,True,coorte_precoce,
+4101507,PR,Arapongas,119138,100-250 mil,2018-08,0.417,False,coorte_precoce,
+4101606,PR,Arapoti,25777,20-50 mil,,0.208,False,sem_quebra,
+4101804,PR,Araucária,151666,100-250 mil,2017-01,1.083,False,coorte_precoce,
+4102000,PR,Assis Chateaubriand,36808,20-50 mil,,0.125,False,sem_quebra,
+4102109,PR,Astorga,25475,20-50 mil,2017-07,0.125,False,datado,2017-07
+4102406,PR,Bandeirantes,31273,20-50 mil,2020-01,0.042,False,datado,2020-01
+4103602,PR,Cambará,23212,20-50 mil,2021-05,0.167,False,datado,2021-05
+4103701,PR,Cambé,107208,100-250 mil,2018-04,0.25,False,coorte_precoce,
+4104006,PR,Campina Grande do Sul,47825,20-50 mil,2019-01,0.375,False,datado,2019-01
+4104204,PR,Campo Largo,136327,100-250 mil,2017-12,0.833,True,coorte_precoce,
+4104253,PR,Campo Magro,30160,20-50 mil,2018-04,0.375,False,datado,2018-04
+4104303,PR,Campo Mourão,99432,50-100 mil,2017-06,0.375,False,datado,2017-06
+4104501,PR,Capanema,20481,20-50 mil,,0.0,False,sem_quebra,
+4104659,PR,Carambeí,23283,20-50 mil,,0.125,False,sem_quebra,
+4104808,PR,Cascavel,348051,250 mil+,2018-12,0.625,False,coorte_precoce,
+4104907,PR,Castro,73075,50-100 mil,2018-07,0.208,False,datado,2018-07
+4105409,PR,Chopinzinho,21085,20-50 mil,2024-10,0.083,False,datado,2024-10
+4105508,PR,Cianorte,79527,50-100 mil,2018-05,0.625,False,datado,2018-05
+4105805,PR,Colombo,232212,100-250 mil,2017-01,2.958,True,coorte_precoce,
+4105904,PR,Colorado,22896,20-50 mil,2025-07,0.0,False,datado,2025-07
+4106407,PR,Cornélio Procópio,45206,20-50 mil,2018-06,0.292,False,datado,2018-06
+4106506,PR,Coronel Vivida,23331,20-50 mil,,0.042,False,sem_quebra,
+4106605,PR,Cruzeiro do Oeste,23831,20-50 mil,2024-10,0.0,False,datado,2024-10
+4106902,PR,Curitiba,1773718,250 mil+,2018-01,26.167,False,coorte_precoce,
+4107207,PR,Dois Vizinhos,44869,20-50 mil,2022-03,0.167,False,datado,2022-03
+4107652,PR,Fazenda Rio Grande,148873,100-250 mil,2017-01,1.333,True,coorte_precoce,
+4108304,PR,Foz do Iguaçu,285415,250 mil+,2019-07,1.333,True,coorte_precoce,
+4108403,PR,Francisco Beltrão,96666,50-100 mil,2017-01,0.375,False,datado,2017-01
+4108601,PR,Goioerê,28437,20-50 mil,2021-03,0.125,False,datado,2021-03
+4108809,PR,Guaíra,32097,20-50 mil,2023-05,0.0,False,datado,2023-05
+4109401,PR,Guarapuava,182093,100-250 mil,2021-11,1.333,False,coorte_precoce,
+4109609,PR,Guaratuba,42062,20-50 mil,2022-01,0.333,False,datado,2022-01
+4109708,PR,Ibaiti,28830,20-50 mil,2020-07,0.167,False,datado,2020-07
+4109807,PR,Ibiporã,51603,50-100 mil,2020-05,0.292,False,datado,2020-05
+4110102,PR,Imbituva,29924,20-50 mil,,0.042,False,sem_quebra,
+4110706,PR,Irati,59250,50-100 mil,,0.125,False,sem_quebra,
+4111258,PR,Itaperuçu,31217,20-50 mil,2019-07,0.042,False,datado,2019-07
+4111506,PR,Ivaiporã,32720,20-50 mil,2024-10,0.083,False,datado,2024-10
+4111803,PR,Jacarezinho,40375,20-50 mil,2018-06,0.208,False,datado,2018-06
+4112009,PR,Jaguariaíva,35141,20-50 mil,,0.0,False,sem_quebra,
+4112108,PR,Jandaia do Sul,21408,20-50 mil,,0.083,False,sem_quebra,
+4113205,PR,Lapa,45003,20-50 mil,2019-12,0.0,False,datado,2019-12
+4113304,PR,Laranjeiras do Sul,32227,20-50 mil,2017-12,0.167,False,datado,2017-12
+4113502,PR,Loanda,23225,20-50 mil,2025-04,0.0,False,datado,2025-04
+4113700,PR,Londrina,555965,250 mil+,2019-09,4.458,False,coorte_precoce,
+4114104,PR,Mandaguaçu,31457,20-50 mil,2020-07,0.167,False,datado,2020-07
+4114203,PR,Mandaguari,36716,20-50 mil,2020-06,0.125,False,datado,2020-06
+4114302,PR,Mandirituba,27439,20-50 mil,,0.0,False,sem_quebra,
+4114609,PR,Marechal Cândido Rondon,55836,50-100 mil,2020-09,0.292,False,datado,2020-09
+4114807,PR,Marialva,41851,20-50 mil,2019-04,0.292,False,datado,2019-04
+4115200,PR,Maringá,409657,250 mil+,2017-09,2.542,True,coorte_precoce,
+4115705,PR,Matinhos,39259,20-50 mil,2020-01,0.417,False,datado,2020-01
+4115804,PR,Medianeira,54369,50-100 mil,2023-07,0.208,False,datado,2023-07
+4116901,PR,Nova Esperança,26585,20-50 mil,2018-02,0.042,False,datado,2018-02
+4117305,PR,Ortigueira,24192,20-50 mil,,0.0,False,sem_quebra,
+4117503,PR,Paiçandu,45962,20-50 mil,2020-03,0.208,False,datado,2020-03
+4117602,PR,Palmas,48247,20-50 mil,2018-04,0.167,False,datado,2018-04
+4117701,PR,Palmeira,33855,20-50 mil,2020-06,0.042,False,datado,2020-06
+4117909,PR,Palotina,35011,20-50 mil,2018-08,0.167,False,datado,2018-08
+4118204,PR,Paranaguá,145829,100-250 mil,2017-08,0.667,False,coorte_precoce,
+4118402,PR,Paranavaí,92001,50-100 mil,2017-07,0.25,False,datado,2017-07
+4118501,PR,Pato Branco,91836,50-100 mil,2018-09,0.667,False,datado,2018-09
+4119152,PR,Pinhais,127019,100-250 mil,2018-04,2.917,False,coorte_precoce,
+4119301,PR,Pinhão,29886,20-50 mil,2018-04,0.083,False,datado,2018-04
+4119400,PR,Piraí do Sul,23651,20-50 mil,,0.0,False,sem_quebra,
+4119509,PR,Piraquara,118730,100-250 mil,2017-02,1.417,True,coorte_precoce,
+4119608,PR,Pitanga,33567,20-50 mil,2024-05,0.0,False,datado,2024-05
+4119905,PR,Ponta Grossa,358371,250 mil+,2020-03,2.333,False,coorte_precoce,
+4119954,PR,Pontal do Paraná,30425,20-50 mil,2022-02,0.417,False,datado,2022-02
+4120606,PR,Prudentópolis,49393,20-50 mil,,0.125,False,sem_quebra,
+4120804,PR,Quatro Barras,24191,20-50 mil,2018-04,0.125,False,datado,2018-04
+4120903,PR,Quedas do Iguaçu,30738,20-50 mil,,0.0,False,sem_quebra,
+4121703,PR,Reserva,24573,20-50 mil,,0.0,False,sem_quebra,
+4122206,PR,Rio Branco do Sul,37558,20-50 mil,2020-08,0.042,False,datado,2020-08
+4122305,PR,Rio Negro,31324,20-50 mil,2020-11,0.125,False,datado,2020-11
+4122404,PR,Rolândia,71670,50-100 mil,2018-06,0.292,False,datado,2018-06
+4123501,PR,Santa Helena,25492,20-50 mil,,0.042,False,sem_quebra,
+4124053,PR,Santa Terezinha de Itaipu,24262,20-50 mil,2025-05,0.125,False,datado,2025-05
+4124103,PR,Santo Antônio da Platina,44369,20-50 mil,2022-05,0.125,False,datado,2022-05
+4124400,PR,Santo Antônio do Sudoeste,23673,20-50 mil,,0.042,False,sem_quebra,
+4125506,PR,São José dos Pinhais,329628,250 mil+,2018-01,3.0,True,coorte_precoce,
+4125605,PR,São Mateus do Sul,42366,20-50 mil,2020-10,0.125,False,datado,2020-10
+4125704,PR,São Miguel do Iguaçu,29122,20-50 mil,,0.0,False,sem_quebra,
+4126256,PR,Sarandi,118455,100-250 mil,2018-08,0.667,False,coorte_precoce,
+4126603,PR,Siqueira Campos,22811,20-50 mil,,0.125,False,sem_quebra,
+4127106,PR,Telêmaco Borba,75042,50-100 mil,2017-03,0.167,False,datado,2017-03
+4127700,PR,Toledo,150470,100-250 mil,2018-07,1.167,True,coorte_precoce,
+4128005,PR,Ubiratã,24749,20-50 mil,,0.042,False,sem_quebra,
+4128104,PR,Umuarama,117095,100-250 mil,2017-08,0.333,False,coorte_precoce,
+4128203,PR,União da Vitória,55033,50-100 mil,2018-01,0.25,False,datado,2018-01
+4201307,SC,Araquari,45283,20-50 mil,2020-03,0.25,False,datado,2020-03
+4201406,SC,Araranguá,71922,50-100 mil,2018-01,0.375,False,datado,2018-01
+4202008,SC,Balneário Camboriú,139155,100-250 mil,2017-01,1.25,False,coorte_precoce,
+4202107,SC,Barra Velha,45369,20-50 mil,2018-08,0.25,False,datado,2018-08
+4202305,SC,Biguaçu,76773,50-100 mil,2018-01,1.125,True,datado,2018-01
+4202404,SC,Blumenau,361261,250 mil+,2017-10,3.792,True,coorte_precoce,
+4202453,SC,Bombinhas,25058,20-50 mil,2023-06,0.167,False,datado,2023-06
+4202800,SC,Braço do Norte,33773,20-50 mil,2023-07,0.083,False,datado,2023-07
+4202909,SC,Brusque,141385,100-250 mil,2020-02,0.542,False,coorte_precoce,
+4203006,SC,Caçador,73720,50-100 mil,2022-01,0.417,False,datado,2022-01
+4203204,SC,Camboriú,103074,100-250 mil,2018-04,1.208,True,coorte_precoce,
+4203600,SC,Campos Novos,36932,20-50 mil,2020-04,0.042,False,datado,2020-04
+4203808,SC,Canoinhas,55016,50-100 mil,2020-03,0.208,False,datado,2020-03
+4203907,SC,Capinzal,23314,20-50 mil,2021-03,0.0,False,datado,2021-03
+4203956,SC,Capivari de Baixo,23975,20-50 mil,2020-01,0.125,False,datado,2020-01
+4204202,SC,Chapecó,254785,250 mil+,,2.917,True,coorte_precoce,
+4204301,SC,Concórdia,81646,50-100 mil,2020-07,0.375,True,datado,2020-07
+4204608,SC,Criciúma,214493,100-250 mil,2019-01,0.792,False,coorte_precoce,
+4204806,SC,Curitibanos,40045,20-50 mil,2018-08,0.208,False,datado,2018-08
+4205407,SC,Florianópolis,537211,250 mil+,2018-06,5.625,True,coorte_precoce,
+4205456,SC,Forquilhinha,31431,20-50 mil,2020-05,0.083,False,datado,2020-05
+4205506,SC,Fraiburgo,33481,20-50 mil,2022-08,0.208,False,datado,2022-08
+4205704,SC,Garopaba,29959,20-50 mil,2020-05,0.125,False,datado,2020-05
+4205902,SC,Gaspar,72570,50-100 mil,2018-11,0.458,False,datado,2018-11
+4206306,SC,Guabiruba,24543,20-50 mil,2021-03,0.042,False,datado,2021-03
+4206504,SC,Guaramirim,46711,20-50 mil,2019-08,0.083,False,datado,2019-08
+4206702,SC,Herval d'Oeste,21724,20-50 mil,2019-08,0.083,False,datado,2019-08
+4207007,SC,Içara,59035,50-100 mil,2018-02,0.25,False,datado,2018-02
+4207304,SC,Imbituba,52579,50-100 mil,2019-02,0.25,True,datado,2019-02
+4207502,SC,Indaial,71549,50-100 mil,2017-11,0.417,False,datado,2017-11
+4208104,SC,Itaiópolis,22051,20-50 mil,,0.0,False,sem_quebra,
+4208203,SC,Itajaí,264054,250 mil+,2017-10,1.875,False,coorte_precoce,
+4208302,SC,Itapema,75940,50-100 mil,2018-06,0.583,False,datado,2018-06
+4208450,SC,Itapoá,30750,20-50 mil,2022-05,0.125,False,datado,2022-05
+4208500,SC,Ituporanga,26525,20-50 mil,,0.042,False,sem_quebra,
+4208807,SC,Jaguaruna,20375,20-50 mil,,0.0,False,sem_quebra,
+4208906,SC,Jaraguá do Sul,182660,100-250 mil,2017-11,1.167,True,coorte_precoce,
+4209003,SC,Joaçaba,30146,20-50 mil,2018-09,0.292,False,datado,2018-09
+4209102,SC,Joinville,616317,250 mil+,,8.167,False,coorte_precoce,
+4209300,SC,Lages,164981,100-250 mil,2018-03,0.5,False,coorte_precoce,
+4209409,SC,Laguna,42785,20-50 mil,2020-09,0.125,False,datado,2020-09
+4210100,SC,Mafra,55286,50-100 mil,2020-05,0.125,False,datado,2020-05
+4210506,SC,Maravilha,28251,20-50 mil,2024-08,0.042,False,datado,2024-08
+4211306,SC,Navegantes,86401,50-100 mil,2017-08,0.417,False,datado,2017-08
+4211702,SC,Orleans,23661,20-50 mil,2024-01,0.083,False,datado,2024-01
+4211900,SC,Palhoça,222598,100-250 mil,2017-11,1.708,True,coorte_precoce,
+4212502,SC,Penha,33663,20-50 mil,2020-03,0.042,False,datado,2020-03
+4212809,SC,Balneário Piçarras,27127,20-50 mil,2017-07,0.125,False,datado,2017-07
+4212908,SC,Pinhalzinho,21972,20-50 mil,2023-02,0.208,False,datado,2023-02
+4213203,SC,Pomerode,34289,20-50 mil,2020-12,0.25,False,datado,2020-12
+4213500,SC,Porto Belo,27688,20-50 mil,2018-06,0.0,False,datado,2018-06
+4213609,SC,Porto União,32970,20-50 mil,2020-10,0.208,False,datado,2020-10
+4214003,SC,Presidente Getúlio,20010,20-50 mil,,0.083,False,sem_quebra,
+4214805,SC,Rio do Sul,72587,50-100 mil,2017-11,0.25,False,datado,2017-11
+4215000,SC,Rio Negrinho,39261,20-50 mil,2025-02,0.042,False,datado,2025-02
+4215703,SC,Santo Amaro da Imperatriz,27272,20-50 mil,2020-06,0.042,False,datado,2020-06
+4215802,SC,São Bento do Sul,83277,50-100 mil,2019-09,0.708,False,datado,2019-09
+4216206,SC,São Francisco do Sul,52674,50-100 mil,2017-01,0.125,False,datado,2017-01
+4216305,SC,São João Batista,32687,20-50 mil,2020-08,0.042,False,datado,2020-08
+4216503,SC,São Joaquim,25939,20-50 mil,,0.042,False,sem_quebra,
+4216602,SC,São José,270299,250 mil+,2017-01,1.75,False,coorte_precoce,
+4216909,SC,São Lourenço do Oeste,24791,20-50 mil,2019-05,0.0,False,datado,2019-05
+4217204,SC,São Miguel do Oeste,44330,20-50 mil,2019-02,0.333,True,datado,2019-02
+4217402,SC,Schroeder,20061,20-50 mil,,0.125,False,sem_quebra,
+4217709,SC,Sombrio,29991,20-50 mil,2020-12,0.208,False,datado,2020-12
+4218004,SC,Tijucas,51592,50-100 mil,2019-10,0.167,False,datado,2019-10
+4218202,SC,Timbó,46099,20-50 mil,2017-03,0.458,True,datado,2017-03
+4218707,SC,Tubarão,110088,100-250 mil,2018-02,0.375,False,coorte_precoce,
+4219002,SC,Urussanga,20919,20-50 mil,,0.0,False,sem_quebra,
+4219309,SC,Videira,55466,50-100 mil,2017-12,0.25,False,datado,2017-12
+4219507,SC,Xanxerê,51607,50-100 mil,,0.25,False,sem_quebra,
+4219705,SC,Xaxim,31918,20-50 mil,,0.0,False,sem_quebra,
+4300406,RS,Alegrete,72409,50-100 mil,,0.042,False,sem_quebra,
+4300604,RS,Alvorada,187315,100-250 mil,2017-12,3.0,True,coorte_precoce,
+4301008,RS,Arroio do Meio,21958,20-50 mil,2024-12,0.083,False,datado,2024-12
+4301602,RS,Bagé,117938,100-250 mil,2022-03,0.625,False,coorte_precoce,
+4302105,RS,Bento Gonçalves,123151,100-250 mil,2018-10,0.667,False,coorte_precoce,
+4302808,RS,Caçapava do Sul,32515,20-50 mil,2025-01,0.0,False,datado,2025-01
+4303004,RS,Cachoeira do Sul,80070,50-100 mil,2017-03,0.417,False,datado,2017-03
+4303103,RS,Cachoeirinha,136258,100-250 mil,2017-01,1.333,False,coorte_precoce,
+4303509,RS,Camaquã,62200,50-100 mil,2021-05,0.167,False,datado,2021-05
+4303905,RS,Campo Bom,62886,50-100 mil,2021-04,0.875,False,datado,2021-04
+4304200,RS,Candelária,28906,20-50 mil,,0.0,False,sem_quebra,
+4304408,RS,Canela,48946,20-50 mil,2017-11,0.208,False,datado,2017-11
+4304507,RS,Canguçu,49680,20-50 mil,2022-08,0.083,False,datado,2022-08
+4304606,RS,Canoas,347657,250 mil+,2018-03,4.083,False,coorte_precoce,
+4304630,RS,Capão da Canoa,63594,50-100 mil,2017-12,0.292,False,datado,2017-12
+4304663,RS,Capão do Leão,26487,20-50 mil,2023-05,0.0,False,datado,2023-05
+4304705,RS,Carazinho,61804,50-100 mil,2020-02,0.667,False,datado,2020-02
+4304804,RS,Carlos Barbosa,30420,20-50 mil,,0.083,False,sem_quebra,
+4305108,RS,Caxias do Sul,463501,250 mil+,2018-03,2.958,False,coorte_precoce,
+4305355,RS,Charqueadas,35012,20-50 mil,2020-01,0.208,False,datado,2020-01
+4306106,RS,Cruz Alta,58913,50-100 mil,2017-05,0.25,False,datado,2017-05
+4306403,RS,Dois Irmãos,30709,20-50 mil,2020-08,0.25,False,datado,2020-08
+4306601,RS,Dom Pedrito,36981,20-50 mil,2021-06,0.042,False,datado,2021-06
+4306767,RS,Eldorado do Sul,39559,20-50 mil,2017-08,0.625,False,datado,2017-08
+4306809,RS,Encantado,22962,20-50 mil,2023-09,0.0,False,datado,2023-09
+4306908,RS,Encruzilhada do Sul,23819,20-50 mil,,0.083,False,sem_quebra,
+4307005,RS,Erechim,105705,100-250 mil,2019-08,0.542,False,coorte_precoce,
+4307609,RS,Estância Velha,47924,20-50 mil,2019-01,0.042,False,datado,2019-01
+4307708,RS,Esteio,76137,50-100 mil,2017-12,0.292,False,datado,2017-12
+4307807,RS,Estrela,32183,20-50 mil,2022-09,0.125,False,datado,2022-09
+4307906,RS,Farroupilha,70286,50-100 mil,2017-05,0.25,False,datado,2017-05
+4308201,RS,Flores da Cunha,30892,20-50 mil,2019-08,0.167,False,datado,2019-08
+4308508,RS,Frederico Westphalen,32627,20-50 mil,2023-07,0.083,False,datado,2023-07
+4308607,RS,Garibaldi,34335,20-50 mil,2024-06,0.167,False,datado,2024-06
+4309100,RS,Gramado,40134,20-50 mil,2020-06,0.292,True,datado,2020-06
+4309209,RS,Gravataí,265074,250 mil+,2018-01,2.458,False,coorte_precoce,
+4309308,RS,Guaíba,92924,50-100 mil,2019-05,0.75,False,datado,2019-05
+4309407,RS,Guaporé,25268,20-50 mil,2021-03,0.083,False,datado,2021-03
+4310009,RS,Ibirubá,21583,20-50 mil,,0.292,False,sem_quebra,
+4310108,RS,Igrejinha,32808,20-50 mil,2017-11,0.167,False,datado,2017-11
+4310207,RS,Ijuí,84780,50-100 mil,2017-05,0.708,False,datado,2017-05
+4310330,RS,Imbé,26824,20-50 mil,2024-10,0.083,False,datado,2024-10
+4310603,RS,Itaqui,35768,20-50 mil,,0.125,False,sem_quebra,
+4310801,RS,Ivoti,22983,20-50 mil,2024-06,0.167,False,datado,2024-06
+4311007,RS,Jaguarão,26603,20-50 mil,2020-10,0.417,False,datado,2020-10
+4311304,RS,Lagoa Vermelha,27659,20-50 mil,2024-12,0.083,False,datado,2024-12
+4311403,RS,Lajeado,93646,50-100 mil,2018-09,0.792,False,datado,2018-09
+4311809,RS,Marau,45124,20-50 mil,2025-02,0.125,False,datado,2025-02
+4312401,RS,Montenegro,64322,50-100 mil,2020-08,0.542,False,datado,2020-08
+4313060,RS,Nova Hartz,20088,20-50 mil,,0.083,False,sem_quebra,
+4313201,RS,Nova Petrópolis,23300,20-50 mil,,0.0,False,sem_quebra,
+4313300,RS,Nova Prata,25692,20-50 mil,2020-10,0.0,False,datado,2020-10
+4313375,RS,Nova Santa Rita,29024,20-50 mil,2021-12,0.125,False,datado,2021-12
+4313409,RS,Novo Hamburgo,227646,100-250 mil,2020-11,2.125,False,coorte_precoce,
+4313508,RS,Osório,47396,20-50 mil,2020-11,0.375,False,datado,2020-11
+4313706,RS,Palmeira das Missões,33216,20-50 mil,2023-03,0.042,False,datado,2023-03
+4313904,RS,Panambi,43515,20-50 mil,2023-02,0.167,False,datado,2023-02
+4314050,RS,Parobé,52058,50-100 mil,2018-06,0.5,False,datado,2018-06
+4314100,RS,Passo Fundo,206215,100-250 mil,2017-02,1.333,False,coorte_precoce,
+4314407,RS,Pelotas,325685,250 mil+,2018-12,2.958,True,coorte_precoce,
+4314803,RS,Portão,34071,20-50 mil,2021-01,0.083,False,datado,2021-01
+4314902,RS,Porto Alegre,1332845,250 mil+,2018-01,16.083,False,coorte_precoce,
+4315305,RS,Quaraí,23500,20-50 mil,,0.042,False,sem_quebra,
+4315602,RS,Rio Grande,191900,100-250 mil,2018-07,0.667,False,coorte_precoce,
+4315701,RS,Rio Pardo,34654,20-50 mil,2024-10,0.208,False,datado,2024-10
+4316006,RS,Rolante,21253,20-50 mil,2024-04,0.042,False,datado,2024-04
+4316402,RS,Rosário do Sul,36630,20-50 mil,2022-04,0.042,False,datado,2022-04
+4316808,RS,Santa Cruz do Sul,133230,100-250 mil,2018-01,0.917,False,coorte_precoce,
+4316907,RS,Santa Maria,271735,250 mil+,2017-04,0.708,False,coorte_precoce,
+4317103,RS,Sant'Ana do Livramento,84421,50-100 mil,2018-02,0.208,False,datado,2018-02
+4317202,RS,Santa Rosa,76963,50-100 mil,2018-01,0.167,False,datado,2018-01
+4317301,RS,Santa Vitória do Palmar,30983,20-50 mil,2018-10,0.25,False,datado,2018-10
+4317400,RS,Santiago,48938,20-50 mil,2017-12,0.208,False,datado,2017-12
+4317509,RS,Santo Ângelo,76917,50-100 mil,2017-11,0.208,False,datado,2017-11
+4317608,RS,Santo Antônio da Patrulha,42947,20-50 mil,2020-05,0.125,False,datado,2020-05
+4318002,RS,São Borja,59676,50-100 mil,2018-10,0.167,False,datado,2018-10
+4318200,RS,São Francisco de Paula,21893,20-50 mil,,0.042,False,sem_quebra,
+4318309,RS,São Gabriel,58487,50-100 mil,2021-08,0.25,False,datado,2021-08
+4318408,RS,São Jerônimo,21028,20-50 mil,,0.042,False,sem_quebra,
+4318507,RS,São José do Norte,25443,20-50 mil,,0.042,False,sem_quebra,
+4318705,RS,São Leopoldo,217409,100-250 mil,2024-06,2.0,False,coorte_precoce,
+4318804,RS,São Lourenço do Sul,41989,20-50 mil,,0.125,False,sem_quebra,
+4318903,RS,São Luiz Gonzaga,34752,20-50 mil,2021-01,0.083,False,datado,2021-01
+4319000,RS,São Marcos,21084,20-50 mil,,0.042,False,sem_quebra,
+4319505,RS,São Sebastião do Caí,24428,20-50 mil,2020-07,0.042,False,datado,2020-07
+4319604,RS,São Sepé,21219,20-50 mil,,0.0,False,sem_quebra,
+4319901,RS,Sapiranga,75648,50-100 mil,2023-09,0.708,False,datado,2023-09
+4320008,RS,Sapucaia do Sul,132107,100-250 mil,2018-05,0.5,True,coorte_precoce,
+4320107,RS,Sarandi,22851,20-50 mil,2025-01,0.292,False,datado,2025-01
+4320800,RS,Soledade,29991,20-50 mil,2023-06,0.125,False,datado,2023-06
+4320909,RS,Tapejara,24557,20-50 mil,,0.0,False,sem_quebra,
+4321204,RS,Taquara,53242,50-100 mil,2025-05,0.25,False,datado,2025-05
+4321303,RS,Taquari,25198,20-50 mil,,0.125,False,sem_quebra,
+4321451,RS,Teutônia,32797,20-50 mil,2018-04,0.083,False,datado,2018-04
+4321501,RS,Torres,41751,20-50 mil,2019-04,0.167,False,datado,2019-04
+4321600,RS,Tramandaí,54387,50-100 mil,2018-01,0.542,False,datado,2018-01
+4321709,RS,Três Coroas,24425,20-50 mil,2021-10,0.125,False,datado,2021-10
+4321808,RS,Três de Maio,24916,20-50 mil,2024-06,0.042,False,datado,2024-06
+4321907,RS,Três Passos,25436,20-50 mil,2021-07,0.083,False,datado,2021-07
+4322004,RS,Triunfo,27498,20-50 mil,2022-07,0.083,False,datado,2022-07
+4322202,RS,Tupanciretã,20005,20-50 mil,,0.208,False,sem_quebra,
+4322400,RS,Uruguaiana,117210,100-250 mil,2017-05,0.667,False,coorte_precoce,
+4322509,RS,Vacaria,64197,50-100 mil,2019-12,0.083,False,datado,2019-12
+4322608,RS,Venâncio Aires,68763,50-100 mil,2023-01,0.167,False,datado,2023-01
+4322707,RS,Vera Cruz,26710,20-50 mil,,0.083,False,sem_quebra,
+4322806,RS,Veranópolis,24021,20-50 mil,2025-01,0.083,False,datado,2025-01
+4323002,RS,Viamão,224112,100-250 mil,2017-05,3.25,True,coorte_precoce,
+5000609,MS,Amambai,39325,20-50 mil,2024-01,0.083,False,datado,2024-01
+5000708,MS,Anastácio,24114,20-50 mil,2024-09,0.0,False,datado,2024-09
+5001003,MS,Aparecida do Taboado,27674,20-50 mil,,0.0,False,sem_quebra,
+5001102,MS,Aquidauana,46803,20-50 mil,,0.083,False,sem_quebra,
+5001904,MS,Bataguassu,23031,20-50 mil,2024-11,0.042,False,datado,2024-11
+5002100,MS,Bela Vista,21613,20-50 mil,,0.042,False,sem_quebra,
+5002209,MS,Bonito,23659,20-50 mil,,0.0,False,sem_quebra,
+5002407,MS,Caarapó,30612,20-50 mil,,0.0,False,sem_quebra,
+5002704,MS,Campo Grande,898100,250 mil+,,7.083,False,coorte_precoce,
+5002902,MS,Cassilândia,20988,20-50 mil,,0.042,False,sem_quebra,
+5002951,MS,Chapadão do Sul,30993,20-50 mil,2021-09,0.042,False,datado,2021-09
+5003207,MS,Corumbá,96268,50-100 mil,2020-02,0.0,False,datado,2020-02
+5003256,MS,Costa Rica,26037,20-50 mil,,0.042,False,sem_quebra,
+5003306,MS,Coxim,32151,20-50 mil,2021-03,0.0,False,datado,2021-03
+5003702,MS,Dourados,243367,100-250 mil,2020-07,1.25,False,coorte_precoce,
+5003801,MS,Fátima do Sul,20609,20-50 mil,,0.0,False,sem_quebra,
+5004502,MS,Itaporã,24137,20-50 mil,,0.0,False,sem_quebra,
+5004700,MS,Ivinhema,27821,20-50 mil,,0.0,False,sem_quebra,
+5005004,MS,Jardim,23981,20-50 mil,,0.0,False,sem_quebra,
+5005202,MS,Ladário,21522,20-50 mil,,0.0,False,sem_quebra,
+5005400,MS,Maracaju,45047,20-50 mil,2021-05,0.0,False,datado,2021-05
+5005608,MS,Miranda,25536,20-50 mil,,0.0,False,sem_quebra,
+5005707,MS,Naviraí,50457,50-100 mil,2018-06,0.0,False,datado,2018-06
+5006002,MS,Nova Alvorada do Sul,21822,20-50 mil,,0.042,False,sem_quebra,
+5006200,MS,Nova Andradina,48563,20-50 mil,2022-05,0.125,False,datado,2022-05
+5006309,MS,Paranaíba,40957,20-50 mil,2024-03,0.042,False,datado,2024-03
+5006606,MS,Ponta Porã,92017,50-100 mil,,0.042,False,sem_quebra,
+5007109,MS,Ribas do Rio Pardo,23150,20-50 mil,,0.083,False,sem_quebra,
+5007208,MS,Rio Brilhante,37601,20-50 mil,2023-03,0.042,False,datado,2023-03
+5007695,MS,São Gabriel do Oeste,29579,20-50 mil,2024-04,0.167,False,datado,2024-04
+5007901,MS,Sidrolândia,47118,20-50 mil,2018-07,0.042,False,datado,2018-07
+5008305,MS,Três Lagoas,132152,100-250 mil,2023-05,0.208,False,coorte_precoce,
+5100201,MT,Água Boa,29219,20-50 mil,2024-09,0.042,False,datado,2024-09
+5100250,MT,Alta Floresta,58613,50-100 mil,2019-06,0.042,False,datado,2019-06
+5101407,MT,Aripuanã,24626,20-50 mil,,0.0,False,sem_quebra,
+5101704,MT,Barra do Bugres,29403,20-50 mil,2020-08,0.0,False,datado,2020-08
+5101803,MT,Barra do Garças,69210,50-100 mil,2017-01,0.167,False,datado,2017-01
+5102504,MT,Cáceres,89681,50-100 mil,2019-02,0.167,False,datado,2019-02
+5102637,MT,Campo Novo do Parecis,45899,20-50 mil,2020-09,0.0,False,datado,2020-09
+5102678,MT,Campo Verde,44585,20-50 mil,2019-03,0.0,False,datado,2019-03
+5102702,MT,Canarana,25858,20-50 mil,,0.0,False,sem_quebra,
+5103205,MT,Colíder,31370,20-50 mil,2021-05,0.042,False,datado,2021-05
+5103254,MT,Colniza,25766,20-50 mil,,0.0,False,sem_quebra,
+5103353,MT,Confresa,35075,20-50 mil,2021-01,0.0,False,datado,2021-01
+5103403,MT,Cuiabá,650877,250 mil+,2021-01,4.083,False,coorte_precoce,
+5103502,MT,Diamantino,21941,20-50 mil,,0.167,False,sem_quebra,
+5104104,MT,Guarantã do Norte,31024,20-50 mil,2023-08,0.083,False,datado,2023-08
+5104807,MT,Jaciara,28569,20-50 mil,,0.083,False,sem_quebra,
+5105101,MT,Juara,34906,20-50 mil,2021-10,0.042,False,datado,2021-10
+5105150,MT,Juína,45869,20-50 mil,2018-01,0.333,False,datado,2018-01
+5105259,MT,Lucas do Rio Verde,83798,50-100 mil,2017-10,0.333,False,datado,2017-10
+5105606,MT,Matupá,20091,20-50 mil,,0.0,False,sem_quebra,
+5105622,MT,Mirassol d'Oeste,26785,20-50 mil,,0.0,False,sem_quebra,
+5106224,MT,Nova Mutum,55839,50-100 mil,2020-07,0.125,False,datado,2020-07
+5106257,MT,Nova Xavantina,24345,20-50 mil,,0.0,False,sem_quebra,
+5106307,MT,Paranatinga,26423,20-50 mil,,0.0,False,sem_quebra,
+5106422,MT,Peixoto de Azevedo,32714,20-50 mil,,0.042,False,sem_quebra,
+5106505,MT,Poconé,31217,20-50 mil,,0.0,False,sem_quebra,
+5106752,MT,Pontes e Lacerda,52018,50-100 mil,2020-10,0.125,False,datado,2020-10
+5107008,MT,Poxoréu,23283,20-50 mil,,0.0,False,sem_quebra,
+5107040,MT,Primavera do Leste,85146,50-100 mil,2018-06,0.5,True,datado,2018-06
+5107065,MT,Querência,26769,20-50 mil,2025-06,0.0,False,datado,2025-06
+5107602,MT,Rondonópolis,244911,100-250 mil,2017-05,0.542,False,coorte_precoce,
+5107875,MT,Sapezal,28944,20-50 mil,2024-04,0.083,False,datado,2024-04
+5107909,MT,Sinop,196312,100-250 mil,2017-11,1.292,True,coorte_precoce,
+5107925,MT,Sorriso,110635,100-250 mil,2018-06,0.292,False,coorte_precoce,
+5107958,MT,Tangará da Serra,106434,100-250 mil,2018-02,0.458,False,coorte_precoce,
+5108402,MT,Várzea Grande,300078,250 mil+,2020-12,1.0,False,coorte_precoce,
+5200134,GO,Acreúna,21568,20-50 mil,2025-07,0.0,False,datado,2025-07
+5200258,GO,Águas Lindas de Goiás,225693,100-250 mil,2018-05,0.583,False,coorte_precoce,
+5200308,GO,Alexânia,27008,20-50 mil,2025-05,0.042,False,datado,2025-05
+5201108,GO,Anápolis,398869,250 mil+,2017-07,1.25,False,coorte_precoce,
+5201405,GO,Aparecida de Goiânia,527796,250 mil+,2017-11,2.417,False,coorte_precoce,
+5203302,GO,Bela Vista de Goiás,34445,20-50 mil,,0.0,False,sem_quebra,
+5203500,GO,Bom Jesus de Goiás,23958,20-50 mil,,0.0,False,sem_quebra,
+5204508,GO,Caldas Novas,98622,50-100 mil,2017-01,0.125,False,datado,2017-01
+5205109,GO,Catalão,114427,100-250 mil,2017-09,0.292,False,coorte_precoce,
+5205406,GO,Ceres,22046,20-50 mil,2020-03,0.0,False,datado,2020-03
+5205497,GO,Cidade Ocidental,91767,50-100 mil,2018-07,0.333,False,datado,2018-07
+5205513,GO,Cocalzinho de Goiás,25016,20-50 mil,,0.0,False,sem_quebra,
+5206206,GO,Cristalina,62337,50-100 mil,2025-06,0.042,False,datado,2025-06
+5208004,GO,Formosa,115901,100-250 mil,2018-03,0.292,False,coorte_precoce,
+5208608,GO,Goianésia,73707,50-100 mil,2020-02,0.042,False,datado,2020-02
+5208707,GO,Goiânia,1437366,250 mil+,2018-04,10.042,False,coorte_precoce,
+5208806,GO,Goianira,71916,50-100 mil,2018-10,0.083,False,datado,2018-10
+5208905,GO,Goiás,24071,20-50 mil,,0.042,False,sem_quebra,
+5209101,GO,Goiatuba,35664,20-50 mil,2024-12,0.042,False,datado,2024-12
+5209705,GO,Hidrolândia,27742,20-50 mil,2023-04,0.042,False,datado,2023-04
+5210000,GO,Inhumas,52204,50-100 mil,,0.042,False,sem_quebra,
+5210109,GO,Ipameri,25548,20-50 mil,,0.042,False,sem_quebra,
+5210208,GO,Iporá,35684,20-50 mil,,0.0,False,sem_quebra,
+5210406,GO,Itaberaí,44734,20-50 mil,,0.042,False,sem_quebra,
+5210901,GO,Itapaci,21087,20-50 mil,,0.0,False,sem_quebra,
+5211206,GO,Itapuranga,26113,20-50 mil,,0.0,False,sem_quebra,
+5211503,GO,Itumbiara,107970,100-250 mil,2018-01,0.5,False,coorte_precoce,
+5211800,GO,Jaraguá,45223,20-50 mil,2025-08,0.042,False,datado,2025-08
+5211909,GO,Jataí,105729,100-250 mil,2017-02,0.458,True,coorte_precoce,
+5212501,GO,Luziânia,209129,100-250 mil,2017-06,0.5,False,coorte_precoce,
+5213087,GO,Minaçu,27075,20-50 mil,2025-02,0.0,False,datado,2025-02
+5213103,GO,Mineiros,70081,50-100 mil,2018-05,0.125,False,datado,2018-05
+5213806,GO,Morrinhos,51351,50-100 mil,,0.0,False,sem_quebra,
+5214507,GO,Nerópolis,31932,20-50 mil,2024-09,0.0,False,datado,2024-09
+5214606,GO,Niquelândia,34964,20-50 mil,,0.042,False,sem_quebra,
+5215231,GO,Novo Gama,103804,100-250 mil,2017-07,0.125,False,coorte_precoce,
+5215603,GO,Padre Bernardo,34967,20-50 mil,,0.0,False,sem_quebra,
+5215702,GO,Palmeiras de Goiás,31858,20-50 mil,2023-05,0.0,False,datado,2023-05
+5217104,GO,Piracanjuba,24883,20-50 mil,,0.0,False,sem_quebra,
+5217302,GO,Pirenópolis,26690,20-50 mil,,0.0,False,sem_quebra,
+5217401,GO,Pires do Rio,32373,20-50 mil,2019-06,0.042,False,datado,2019-06
+5217609,GO,Planaltina,105031,100-250 mil,2018-03,0.125,False,coorte_precoce,
+5218003,GO,Porangatu,44317,20-50 mil,2020-12,0.0,False,datado,2020-12
+5218300,GO,Posse,34914,20-50 mil,2020-08,0.0,False,datado,2020-08
+5218508,GO,Quirinópolis,48447,20-50 mil,2017-01,0.208,False,datado,2017-01
+5218805,GO,Rio Verde,225696,100-250 mil,2018-04,0.542,False,coorte_precoce,
+5219308,GO,Santa Helena de Goiás,38492,20-50 mil,2022-01,0.042,False,datado,2022-01
+5219753,GO,Santo Antônio do Descoberto,72127,50-100 mil,2017-09,0.125,False,datado,2017-09
+5220108,GO,São Luís de Montes Belos,33852,20-50 mil,2024-05,0.0,False,datado,2024-05
+5220207,GO,São Miguel do Araguaia,21900,20-50 mil,,0.0,False,sem_quebra,
+5220454,GO,Senador Canedo,155635,100-250 mil,2018-04,0.5,False,coorte_precoce,
+5220603,GO,Silvânia,22245,20-50 mil,,0.0,False,sem_quebra,
+5221403,GO,Trindade,142431,100-250 mil,2018-08,0.375,True,coorte_precoce,
+5221601,GO,Uruaçu,42546,20-50 mil,2023-02,0.0,False,datado,2023-02
+5221858,GO,Valparaíso de Goiás,198861,100-250 mil,2017-09,0.875,True,coorte_precoce,
+5300108,DF,Brasília,2817381,250 mil+,2018-05,17.583,False,coorte_precoce,

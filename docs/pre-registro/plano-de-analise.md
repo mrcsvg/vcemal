@@ -33,8 +33,8 @@
 ## 2. Dados
 
 Ver `docs/anexo-a-inventario-fontes-de-dados.md`. Fontes da estimação principal:
-SIH/SUS (desfecho), RENAVAM (denominador), IBGE (população), cronologia de entrada
-por município (tratamento, construída — ver seção 4).
+SIH/SUS (desfecho), RENAVAM (denominador), IBGE (população), dados abertos do
+CNPJ (tratamento: quebra nas aberturas de MEI de entrega — ver seção 4).
 
 ## 3. Definição de caso
 
@@ -58,32 +58,95 @@ como recorte secundário declarado (ver H3), nunca como desfecho principal.
 
 ## 4. Construção do tratamento
 
-**O evento é a entrada da logística própria, não a do aplicativo.** O iFood
-operou como marketplace de 2011 a 2017 — pedido pelo app, entrega pelo motoboy
-do restaurante — e só passou a entregar com frota própria em 2018. Remuneração
-por corrida, que é a hipótese do projeto, só existe a partir daí. Ver D-020.
+**O evento é a chegada do entregador remunerado por corrida, não a do aplicativo.**
+O iFood operou como marketplace de 2011 a 2017 — pedido pelo app, entrega pelo
+motoboy do restaurante — e só passou a entregar com frota própria em 2018.
+Remuneração por corrida, que é a hipótese do projeto, só existe a partir daí.
+Ver D-020.
 
-`[x]` Data de início de **operação de frota própria** de cada plataforma em cada
-município, pelo protocolo `docs/protocolo-cronologia-entrada.md` (versão 1.0,
-D-033): universo dos 1.710 municípios com 20 mil habitantes ou mais no Censo
-2022; dois codificadores independentes e cegos ao SIH; evidência com endereço e
-grau de confiança A–D/N; kappa e concordância de data por bloco; desempate por
-regra (`vcemal.cronologia.consolidar`) e adjudicação registrada em arquivo
-versionado. Tratamento = `data_max` da entrada mais antiga; robustez exclui
-`incerteza_meses > 3`. O hash da cronologia fechada entra neste depósito.
-`[ ]` Codificação executada e cronologia fechada (`pendentes.csv` vazio).
+`[x]` **Fonte: a quebra nas aberturas de MEI de entrega (D-040).** Por município
+de residência e mês, as aberturas de estabelecimento-matriz com CNAE principal
+5320-2/02 nos dados abertos do CNPJ (publicação de set/2026, com os CNPJs
+baixados). O tratamento é o mês da **quebra**: o primeiro mês candidato `t`, de
+2017-01 a 2025-06, em que as aberturas de `[t, t+5]` são ao menos 5, ao menos o
+dobro da linha de base dos 24 meses anteriores e improváveis sob ela
+(Poisson, p < 0,01); a quebra é o primeiro mês da janela com abertura. Regra e
+parâmetros em `vcemal.mei`, escolhidos só contra placebo de 2016 e contra o
+Wayback, nunca contra internação. O que se mede é a chegada de oferta de
+entregador formalizado — usa-se a data da quebra, não o nível, porque o MEI cobre
+a minoria dos entregadores (D-031).
 
-**⚠️ Risco específico deste desenho:** a imprensa local noticia a chegada do
-*aplicativo*, não a da frota. "iFood chega a [cidade]" em 2016 é marketplace.
-Dois codificadores podem concordar — com kappa alto — sobre o evento errado.
-O protocolo precisa de regra explícita para distinguir os dois e de critério de
-desempate declarado antes da codificação; kappa alto não protege contra viés
-comum aos dois codificadores.
+`[x]` **Arquivo congelado.** `docs/fontes/cronologia/tratamento_mei_municipio.csv`,
+SHA-256 `128999bd21de00854c717e181657f5d1832ce78222ec9ef6dd99a3bd8a7654a2`,
+gerado por `make mei` antes de qualquer cruzamento com o SIH (D-006, D-041).
+Depois do depósito, nenhuma data muda.
 
-`[x]` **Saídas também são evento.** Uber Eats saiu do Brasil em março/2022 e a
-99Food em 2023. Onde a saída deixou o município sem operação própria, é
-tratamento reverso — variação rara e valiosa, a codificar, não a ignorar.
-Regra na seção 7 do protocolo; `mes_saida_total` na tabela de tratamento.
+**Grupos, por município do universo (1.710 com 20 mil habitantes ou mais):**
+
+| Grupo | N | Regra | Papel |
+|---|---|---|---|
+| `datado` | 640 | abaixo de 100 mil habitantes, com quebra | tratados; `mes_tratamento` = mês da quebra. É daqui que vem a variação no tempo |
+| `sem_quebra` | 751 | abaixo de 100 mil, sem quebra | não tratados até onde se vê — **não** "nunca tratados": pode haver plataforma com poucos entregadores MEI para o teste ver. Entram no grupo de comparação; robustez os exclui |
+| `coorte_precoce` | 319 | 100 mil ou mais | fora da estimação principal. Todas tinham iFood em 2019 (D-038, D-039) e o placebo dispara em um quarto delas: a quebra não as data |
+
+Municípios abaixo de 20 mil habitantes não entram: a regra não foi validada
+neles.
+
+**Riscos específicos desta fonte, e o que cada um aciona:**
+
+- **Quebra espúria.** O placebo (quebra em jan–jun/2016, antes de qualquer
+  plataforma) dispara em 0,7% dos municípios de 20–50 mil e em 3,8% dos de
+  50–100 mil. A regra pega a *primeira* quebra: uma espúria precoce esconde a
+  verdadeira. É o risco de **2017**: 83 quebras antes da frota própria do iFood
+  (2018-01), num ano em que só Uber Eats e Rappi tinham frota, e só em capitais.
+- **Contaminação tardia.** Depois de 2021 o CNAE vizinho 5320-2/01 explode com a
+  entrega de comércio eletrônico; o 5320-2/02 pode ter o mesmo canal. Pesa nas
+  quebras de **2021 a 2025**.
+- **Não é a plataforma X.** A quebra data a chegada da oferta de entregador
+  formalizado, de qualquer plataforma. Robustez por plataforma não existe nesta
+  fonte.
+
+`[x]` **Auditoria por busca independente, com consequência declarada antes
+(D-041).** Uma amostra sorteada com semente fixa (`vcemal.auditoria`, semente
+20261011) de 12 municípios `datado` em cada estrato de ano da quebra — `2017`,
+`2018-2020`, `2021-2025` — e 12 iscas `sem_quebra`, misturados numa lista só
+(`docs/fontes/cronologia/auditoria_municipios.csv`). Dois codificadores buscam a
+entrada das plataformas pelo protocolo `docs/protocolo-cronologia-entrada.md`,
+versão 1.1, cegos ao SIH, à quebra e ao estrato; desempate por regra e
+adjudicação como no protocolo.
+
+- **Concordância:** a quebra cai no intervalo codificado `[data_min, data_max]`
+  da entrada mais antiga, alargado 6 meses para cada lado. Município sem
+  evidência encontrada (`N`) não conta contra nem a favor.
+- **Veredito por estrato:** *passa* com ao menos 2/3 dos achados concordando;
+  *falha* abaixo disso; *inconclusivo* com menos de 6 achados. Iscas são só
+  descritas: a fração delas com plataforma encontrada é reportada.
+- **Consequência, aplicada mecanicamente:**
+  - `2017` falha → as quebras de 2017 saem da estimação principal (nem tratadas
+    nem comparação) e voltam só como robustez;
+  - `2021-2025` falha → idem para as quebras de 2021 em diante;
+  - `2018-2020` falha → a quebra não data a chegada das plataformas onde ela
+    mais importa. A estimação roda como declarada, mas o resultado é reportado
+    como efeito da chegada de entregador formalizado, e a leitura "efeito da
+    plataforma" é declarada não sustentada;
+  - inconclusivo → a regra fica como está, e o estrato é dito não auditado.
+- **Robustez pré-declarada, qualquer que seja o veredito:** excluir as quebras
+  anteriores a 2018-01 e, separadamente, as posteriores a 2020-12.
+
+O plano é depositado **antes** da auditoria começar; o veredito só aplica a
+consequência já escrita aqui. `make auditoria` consolida as planilhas e imprime o
+veredito.
+
+**A codificação município a município (protocolo 1.0, D-033) deixou de ser a
+fonte do tratamento.** O risco que ela tinha — dois codificadores concordarem,
+com kappa alto, sobre a chegada do *aplicativo* em vez da *frota* — continua
+valendo dentro da auditoria, e é tratado pela seção 1 do protocolo.
+
+**Saídas não são observáveis nesta fonte.** A quebra data entradas; a saída da
+Uber Eats (março/2022) e da 99Food (2023) não aparece no CNPJ. O tratamento
+reverso previsto na versão anterior deste plano sai da estimação: um município
+que perdeu uma plataforma quase sempre ficou com outra, e a quebra não distingue
+os dois casos. Desvio registrado em D-041.
 
 ## 5. Especificação
 
@@ -93,12 +156,13 @@ inconsistência do TWFE nesse caso. Sun & Abraham como robustez.
 
 - Unidade: município × mês
 - Efeitos fixos: município e mês-calendário
-- Grupo de comparação: **not-yet-treated** (D-022). Os ~3.900 municípios nunca
-  tratados existem, mas são pequenos e rurais por construção — é o porte que
-  determina a entrada da plataforma. Compará-los aos tratados compara
-  urbanização, não plataforma, e urbanização move motorização, tráfego e oferta
-  hospitalar de uma vez. Never-treated volta como robustez, pareado por porte e
-  frota; divergência entre os dois é diagnóstico de seleção urbana, não fracasso.
+- Grupo de comparação: **not-yet-treated** (D-022), entre os municípios
+  `datado` e `sem_quebra` da seção 4. Os municípios abaixo de 20 mil habitantes
+  não entram: são pequenos e rurais por construção, e compará-los aos tratados
+  compararia urbanização, não plataforma — urbanização move motorização, tráfego
+  e oferta hospitalar de uma vez. **Robustez:** só not-yet-treated `datado`, sem
+  os `sem_quebra` (que podem ter plataforma que o MEI não viu). Divergência entre
+  as duas é diagnóstico de contaminação do controle, não fracasso.
   **Reportar o tamanho do grupo de comparação por coorte**: a saturação encolhe
   o conjunto no fim da janela.
 - Erros-padrão: **agrupados em região imediata do IBGE** (510 regiões, mediana
@@ -114,17 +178,20 @@ inconsistência do TWFE nesse caso. Sun & Abraham como robustez.
   comparação entre os dois níveis entra na tabela principal, não em anexo.
 - Janela de evento: **e ∈ [−12, +24] meses, balanceada** — só entram coortes
   com os 37 tempos de evento observados.
-  **Por que exatamente −12:** é a janela mais larga que custa zero município. O
-  denominador de frota começa em julho/2016 (D-015) e a coorte mais antiga é
-  janeiro/2018 (D-020); para ela, `e = −12` cai em janeiro/2017, com **seis
-  meses de folga**. Em `e = −18` a folga é zero — a coorte inicial dependeria do
-  primeiro mês de denominador existente e cairia inteira a qualquer revisão de
-  cobertura do Senatran.
-  **Por que preservar as coortes iniciais importa:** são as maiores cidades, onde
-  a operação é mais intensa e o tratamento mais forte. Uma janela que as descarta
-  troca precisão por um estimando diferente.
+  **Quem cabe nela:** o denominador de frota começa em julho/2016 (D-015) e o
+  painel do SIH termina em dezembro/2025, então a janela balanceada admite
+  coortes de **2017-07 a 2023-12**: 478 dos 640 `datado`. Ficam fora 50 com
+  quebra antes de 2017-07 e 112 com quebra depois de 2023-12.
+  **Por que −12 e não mais:** com a quebra do MEI a coorte mais antiga é
+  2017-01, não 2018-01 (como a versão anterior deste plano supunha). Alargar a
+  janela para trás custa as coortes de 2017, que já são as de risco de quebra
+  espúria (seção 4); estreitar para a frente custa as de 2024–2025, as de risco
+  de contaminação. +24 meses é o efeito que interessa: remuneração por corrida
+  age pela exposição acumulada.
   **Robustez:** versão não balanceada, usando todo período disponível por coorte,
-  acompanhada da tabela de quais coortes contribuem em cada tempo de evento.
+  acompanhada da tabela de quais coortes contribuem em cada tempo de evento; e a
+  contagem de internações (com efeito fixo de município) no lugar da taxa, que
+  recupera as coortes anteriores a 2017-07 porque o SIH começa em 2015-01.
 
 ## 6. Testes pré-declarados de falha do desenho
 

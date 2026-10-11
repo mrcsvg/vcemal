@@ -58,6 +58,7 @@ src/vcemal/inss.py    espécies do INSS, classe acidentária × previdenciária,
 src/vcemal/pnad.py    regras do módulo de plataformas da PNAD: informalidade, universo, ocupações
 src/vcemal/lucro.py   série do iFood na Prosus: métricas aceitas, ano fiscal abril–março, ano civil
 src/vcemal/cronologia.py  F3: esquema da planilha, validação, concordância e desempate por regra
+src/vcemal/auditoria.py   F3: sorteio cego e veredito da auditoria do tratamento do MEI (D-041)
 src/vcemal/municipios.py  ponte nome ↔ código IBGE, com a tabela de apelidos revisada
 src/vcemal/extract/   download das fontes — única camada que toca a rede
                       (sih.py = FTP DATASUS; bigquery.py = espelho Base dos Dados)
@@ -95,6 +96,7 @@ make contraste     # figura: resultado do iFood e valor pago pelo SUS no mesmo e
 make cronologia    # F3: concordância e desempate das planilhas dos codificadores — sem rede
 make wayback       # F3: listas de cidades com entregador próprio no Wayback — rodar fora da nuvem
 make mei           # F3: mês de chegada do entregador pela quebra nas aberturas de MEI de entrega — ~6 GB de HTTPS
+make auditoria     # F3: consolida a auditoria dos codificadores e dá o veredito por estrato — sem rede
 ```
 
 `make diagnostico` lê o painel já montado e escreve `car_int_por_ano.csv`,
@@ -156,6 +158,14 @@ aplica a regra de quebra congelada em `vcemal.mei`. Escreve
 universo), `aberturas_mei_municipio_mes.csv` e `mei_quebra_por_faixa_ano.csv`,
 e imprime o placebo de 2016 e a concordância com o Wayback. Não lê o SIH.
 `ARGS=--offline` remonta do que já foi baixado.
+
+O tratamento que vale é a cópia congelada em
+`docs/fontes/cronologia/tratamento_mei_municipio.csv`, cujo hash está no plano de
+análise (D-041); rodar `make mei` de novo não a altera. `make auditoria`
+consolida as planilhas da auditoria (`auditoria_a.csv`, `auditoria_b.csv`, 48
+municípios sorteados por `scripts/cronologia.py auditoria-amostra`) e compara a
+cronologia codificada com a quebra, estrato por estrato, pela regra declarada na
+seção 4 do plano.
 
 Os alvos passam pelo interpretador ativo (`$(PYTHON)`, padrão `python`). Para
 apontar outro: `make test PYTHON=python3.11`.

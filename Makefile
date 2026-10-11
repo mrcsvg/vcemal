@@ -1,4 +1,4 @@
-.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei lint test limpar
+.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria lint test limpar
 
 PYTHON ?= python
 
@@ -48,6 +48,12 @@ wayback: ## F3: listas de cidades atendidas no Wayback -> intervalo de entrada (
 
 mei: ## F3: mes de chegada do entregador pela quebra nas aberturas de MEI de entrega (D-040) -- ~6 GB de HTTPS
 	$(PYTHON) scripts/mei.py $(ARGS)
+
+AUD = docs/fontes/cronologia
+auditoria: ## F3: consolida as planilhas da auditoria do MEI e da o veredito por estrato (D-041) -- sem rede
+	$(PYTHON) scripts/cronologia.py consolidar $(AUD)/auditoria_a.csv $(AUD)/auditoria_b.csv \
+		--desempates $(AUD)/auditoria_desempates.csv --saida output/auditoria
+	$(PYTHON) scripts/cronologia.py auditoria-avaliar output/auditoria/tratamento_municipio.csv
 
 lint:
 	ruff check . && ruff format --check .

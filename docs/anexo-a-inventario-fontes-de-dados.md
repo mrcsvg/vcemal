@@ -1,6 +1,6 @@
 # Anexo A — Inventário de fontes de dados
 
-**Projeto:** Remuneração por peça e externalidade fiscal — plataformas de entrega, internações de motociclistas e gasto público
+**Projeto:** Lucro privado, risco público — plataformas de entrega, internações de motociclistas e gasto público
 **Versão:** 0.1 — setembro de 2026
 **Escopo:** fontes candidatas, dicionários, cobertura temporal, granularidade e status de acesso
 

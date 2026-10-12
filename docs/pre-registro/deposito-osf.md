@@ -7,8 +7,8 @@
 > `plano-de-analise.en.md` — este texto o resume e aponta para ele, e onde
 > divergirem vale o plano em português.
 >
-> **Antes de depositar**, falta só uma coisa: o hash do commit depositado, no
-> campo Description (⚠️). As decisões que o formulário exigia e o plano não tinha
+> **Antes de depositar**, falta só uma coisa: o hash do commit para onde a tag
+> `pre-registro-v1` aponta, no campo Description (⚠️). As decisões que o formulário exigia e o plano não tinha
 > estão no D-043 e já constam do plano.
 >
 > **Embargo:** o OSF permite até 4 anos. O timestamp vale do mesmo jeito.
@@ -17,26 +17,25 @@
 
 ## Title
 
-Piece-rate pay and motorcyclist hospitalizations in Brazil's public health
-system: platform couriers' arrival and hospitalization incidence in Brazilian
-municipalities, 2017–2025
+Delivery platforms and motorcyclist hospitalizations in Brazil's public health
+system (SUS): the effect of entry in Brazilian municipalities
 
 ## Description
 
-Observational study on a municipality × month panel. It estimates the effect of
-the arrival of couriers paid per delivery (food-delivery platforms operating
-their own courier fleet) on the incidence of hospitalizations of motorcyclists
-injured in transport accidents in Brazil's public health system (SUS). Treatment
-timing is the structural break in new registrations of individual
-micro-entrepreneurs (MEI) under economic activity code CNAE 5320-2/02 ("express
-delivery services") in the federal company registry (CNPJ), detected by a rule
-frozen before any linkage with the outcome. The outcome comes from SIH/SUS
-(hospital admission authorizations), with the municipal motorcycle fleet
-(Senatran) as denominator. Staggered-adoption difference-in-differences
-(Callaway & Sant'Anna, 2021). The full analysis plan (Portuguese original and
-English translation; the original prevails), the treatment-audit protocol and
-the decision log are attached and in the repository
-`github.com/mrcsvg/vcemal`, commit `⚠️ fill in the hash of the deposited commit`.
+Observational study on a municipality × month panel of Brazilian
+municipalities, 2015–2025. It estimates the effect of the arrival of couriers
+paid per delivery (food-delivery platforms with their own courier fleet) on
+hospitalizations of motorcyclists injured in traffic accidents in Brazil's
+public health system (SUS). The arrival date is the structural break in new
+micro-entrepreneur (MEI) registrations under activity code CNAE 5320-2/02
+("express delivery services") in the federal company registry, detected by a
+rule frozen before any linkage with the outcome. Outcome: SIH/SUS admissions per
+100,000 registered motorcycles. Identification by staggered-adoption
+difference-in-differences (Callaway & Sant'Anna, 2021). The analysis plan
+(Portuguese original, which prevails, and English translation), the
+treatment-audit protocol and the decision log are attached and in
+`github.com/mrcsvg/vcemal`, tag `pre-registro-v1` (commit ⚠️ hash of the
+commit the tag points to: `git rev-parse pre-registro-v1^{commit}`).
 
 ## Hypotheses
 

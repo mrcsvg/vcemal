@@ -2,8 +2,11 @@
 
 > Este documento é a espinha do projeto. Tudo que entra no repositório precisa
 > servir a uma das quatro pernas abaixo. Se não serve, não entra — ver D-028.
-> O título de trabalho é o do inventário de fontes: **remuneração por peça e
-> externalidade fiscal**.
+> O título de trabalho é **"Lucro privado, risco público: plataformas de entrega e
+> internações de motociclistas no SUS"**; a alternativa mais sóbria, conforme o
+> periódico, é "Plataformas de entrega e internações de motociclistas no SUS:
+> carga, custo público e efeito da entrada nos municípios brasileiros". O
+> mecanismo é a **remuneração por corrida**.
 
 ## O objetivo, em uma frase
 

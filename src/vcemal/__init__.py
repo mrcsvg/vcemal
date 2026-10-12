@@ -1,4 +1,4 @@
-"""vcemal -- remuneracao por peca em plataformas de entrega e internacoes no SUS.
+"""vcemal -- plataformas de entrega e internacoes de motociclistas no SUS.
 
 Camadas: `extract` (rede), `transform` (limpeza e agregacao), `analyze`
 (diagnostico e estimacao). A definicao de caso mora em `vcemal.cid`.

@@ -1,7 +1,7 @@
 [project]
 name = "vcemal"
 version = "0.1.0"
-description = "Remuneracao por peca em plataformas de entrega e internacoes de motociclistas no SUS"
+description = "Plataformas de entrega e internacoes de motociclistas no SUS: carga, custo publico e efeito causal"
 requires-python = ">=3.11"
 dependencies = [
   "pandas>=2.2",

@@ -1,6 +1,6 @@
 # vcemal
 
-Remuneração por peça em plataformas de entrega e internações de motociclistas no SUS: carga, custo público e identificação causal.
+Lucro privado, risco público: plataformas de entrega e internações de motociclistas no SUS — carga, custo público e identificação causal.
 
 **Status:** em construção. Nada aqui foi submetido, revisado ou publicado.
 

@@ -21,6 +21,14 @@ Subcomandos:
                                               Wayback -> intervalo de entrada por municipio
                                               (tipo 3), insumo dos codificadores. Rede:
                                               web.archive.org, que recusa ambiente de nuvem
+    cronologia.py auditoria-amostra           sorteia a amostra da auditoria do MEI (D-041) do
+                                              tratamento congelado: lista cega para os
+                                              codificadores e chave fora do alcance deles
+    cronologia.py planilha --codificador A --municipios LISTA.csv
+                                              planilha so dos municipios da lista, na ordem dela
+    cronologia.py auditoria-avaliar [TRATAMENTO.csv]
+                                              quebra do MEI contra a cronologia codificada da
+                                              amostra: veredito por estrato
 
 `make cronologia` roda `consolidar` sobre as planilhas dos dois codificadores,
 se existirem. As regras estao em `src/vcemal/cronologia.py` e o protocolo em
@@ -39,6 +47,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from vcemal import auditoria as aud
 from vcemal import cronologia as cro
 from vcemal.extract import ibge
 from vcemal.extract import wayback as extract_wayback
@@ -53,6 +62,15 @@ CODIFICADOR_A = PASTA / "codificador_a.csv"
 CODIFICADOR_B = PASTA / "codificador_b.csv"
 DESEMPATES = PASTA / "desempates.csv"
 UNIVERSO = PASTA / "universo.csv"
+#: Tratamento do MEI congelado antes de qualquer cruzamento com o SIH (D-041): o
+#: hash deste arquivo vai no deposito do plano de analise.
+TRATAMENTO_MEI = PASTA / "tratamento_mei_municipio.csv"
+#: O que os codificadores da auditoria recebem: municipio e ordem, nada mais.
+AUDITORIA_LISTA = PASTA / "auditoria_municipios.csv"
+#: Estrato de cada municipio auditado, para conferencia. Fica em output/, fora do
+#: versionado; `auditoria-avaliar` o refaz do arquivo congelado e da semente.
+AUDITORIA_CHAVE = TABELAS / "auditoria_chave.csv"
+AUDITORIA_SAIDA = TABELAS.parent / "auditoria"
 #: Semente do sorteio da ordem de codificacao: a mesma para os dois codificadores,
 #: para os blocos coincidirem e a concordancia ser calculada por bloco.
 SEMENTE = 20260920
@@ -170,7 +188,16 @@ def cmd_planilha(args) -> int:
         log.error("sem %s -- rode `scripts/cronologia.py universo` antes", args.universo)
         return 1
     uni = pd.read_csv(args.universo, dtype=str)
-    uni = uni.sample(frac=1, random_state=SEMENTE).reset_index(drop=True)
+    if args.municipios:
+        # Auditoria: so os municipios da lista, na ordem dela (que ja e sorteada).
+        lista = pd.read_csv(args.municipios, dtype=str)["municipio_ibge"]
+        fora = set(lista) - set(uni["municipio_ibge"])
+        if fora:
+            log.error("municipios da lista fora do universo: %s", sorted(fora))
+            return 1
+        uni = uni.set_index("municipio_ibge").loc[lista].reset_index()
+    else:
+        uni = uni.sample(frac=1, random_state=SEMENTE).reset_index(drop=True)
     plataformas = args.plataformas or list(cro.PLATAFORMAS)
     linhas = [
         {
@@ -289,6 +316,60 @@ def cmd_prosus(args) -> int:
         cod = sum(1 for r in entradas if cro.mes_indice(r["data_max"]) <= corte)
         print(f"{int(fy)}        {cod:5d}       {int(n):5d}")
     print("codificados > prosus e sinal de erro; muito abaixo e cobertura incompleta do universo.")
+    return 0
+
+
+def cmd_auditoria_amostra(args) -> int:
+    if not args.tratamento.exists():
+        log.error("sem %s -- congele o tratamento do MEI antes (D-041)", args.tratamento)
+        return 1
+    if args.lista.exists() and not args.sobrescrever:
+        log.error("%s ja existe; use --sobrescrever se for mesmo recomecar", args.lista)
+        return 1
+    chave = aud.sortear(pd.read_csv(args.tratamento, dtype={"mes_quebra": str}))
+    garantir(args.chave.parent)
+    chave.to_csv(args.chave, index=False)
+    aud.lista_cega(chave).to_csv(args.lista, index=False)
+    log.info(
+        "%d municipios (%s) -> %s; chave em %s",
+        len(chave),
+        chave["estrato"].value_counts().sort_index().to_dict(),
+        args.lista,
+        args.chave,
+    )
+    return 0
+
+
+def cmd_auditoria_avaliar(args) -> int:
+    for caminho in (args.codificado, args.tratamento, args.lista):
+        if not caminho.exists():
+            log.error("sem %s", caminho)
+            return 1
+    tratamento = pd.read_csv(args.tratamento, dtype={"mes_quebra": str})
+    # A chave se refaz do arquivo congelado e da semente; tem de bater com a lista
+    # que os codificadores receberam, senao o tratamento mudou depois do sorteio.
+    chave = aud.sortear(tratamento)
+    lista = pd.read_csv(args.lista)["municipio_ibge"].tolist()
+    if aud.lista_cega(chave)["municipio_ibge"].tolist() != lista:
+        log.error("%s nao bate com o sorteio de %s", args.lista, args.tratamento)
+        return 1
+    por_mun, resumo, por_faixa = aud.avaliar(
+        chave, tratamento, pd.read_csv(args.codificado, dtype={"mes_tratamento": str})
+    )
+    garantir(args.saida)
+    por_mun.to_csv(args.saida / "auditoria_por_municipio.csv", index=False)
+    resumo.to_csv(args.saida / "auditoria_resumo.csv", index=False)
+    por_faixa.to_csv(args.saida / "auditoria_por_faixa.csv", index=False)
+    print(f"\n=== Auditoria do MEI (D-041): quebra no intervalo +-{aud.TOLERANCIA} meses ===")
+    print(resumo.to_string(index=False))
+    print(f"capital: intervalo codificado comeca ate {aud.LIMITE_PRECOCE} (+-{aud.TOLERANCIA})")
+    print("\n--- por faixa, so descritivo ---")
+    print(por_faixa.to_string(index=False))
+    print(
+        f"passa: >= {aud.LIMIAR:.0%} dos achados concordam; "
+        f"inconclusivo: menos de {aud.MINIMO_ACHADOS} achados. "
+        "Consequencia de cada veredito: secao 4 do plano de analise."
+    )
     return 0
 
 
@@ -424,6 +505,7 @@ def main(argv: list[str] | None = None) -> int:
     s.add_argument("--codificador", required=True, help="identificador curto: A, B, C")
     s.add_argument("--universo", type=Path, default=UNIVERSO)
     s.add_argument("--plataformas", nargs="*", choices=list(cro.PLATAFORMAS))
+    s.add_argument("--municipios", type=Path, help="lista de municipios (auditoria, D-041)")
     s.add_argument("--saida", type=Path, default=None)
     s.add_argument("--sobrescrever", action="store_true")
     s.set_defaults(func=cmd_planilha)
@@ -463,6 +545,22 @@ def main(argv: list[str] | None = None) -> int:
     s.add_argument("--offline", action="store_true", help="so o que ja esta no cache")
     s.add_argument("--saida", type=Path, default=TABELAS)
     s.set_defaults(func=cmd_wayback)
+
+    s = sub.add_parser("auditoria-amostra")
+    s.add_argument("--tratamento", type=Path, default=TRATAMENTO_MEI)
+    s.add_argument("--lista", type=Path, default=AUDITORIA_LISTA)
+    s.add_argument("--chave", type=Path, default=AUDITORIA_CHAVE)
+    s.add_argument("--sobrescrever", action="store_true")
+    s.set_defaults(func=cmd_auditoria_amostra)
+
+    s = sub.add_parser("auditoria-avaliar")
+    s.add_argument(
+        "codificado", type=Path, nargs="?", default=AUDITORIA_SAIDA / "tratamento_municipio.csv"
+    )
+    s.add_argument("--tratamento", type=Path, default=TRATAMENTO_MEI)
+    s.add_argument("--lista", type=Path, default=AUDITORIA_LISTA)
+    s.add_argument("--saida", type=Path, default=TABELAS)
+    s.set_defaults(func=cmd_auditoria_avaliar)
 
     args = p.parse_args(argv)
     if args.cmd == "consolidar" and not (args.a.exists() and args.b.exists()):

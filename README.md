@@ -58,6 +58,7 @@ src/vcemal/inss.py    espécies do INSS, classe acidentária × previdenciária,
 src/vcemal/pnad.py    regras do módulo de plataformas da PNAD: informalidade, universo, ocupações
 src/vcemal/lucro.py   série do iFood na Prosus: métricas aceitas, ano fiscal abril–março, ano civil
 src/vcemal/cronologia.py  F3: esquema da planilha, validação, concordância e desempate por regra
+src/vcemal/auditoria.py   F3: sorteio cego e veredito da auditoria do tratamento do MEI (D-041)
 src/vcemal/municipios.py  ponte nome ↔ código IBGE, com a tabela de apelidos revisada
 src/vcemal/extract/   download das fontes — única camada que toca a rede
                       (sih.py = FTP DATASUS; bigquery.py = espelho Base dos Dados)
@@ -93,7 +94,9 @@ make pnad          # módulo de plataformas da PNAD Contínua: precariedade por 
 make lucro         # receita e resultado do iFood (Prosus) em reais constantes — só baixa câmbio e IPCA
 make contraste     # figura: resultado do iFood e valor pago pelo SUS no mesmo eixo — sem rede
 make cronologia    # F3: concordância e desempate das planilhas dos codificadores — sem rede
-make wayback       # F3: lista de cidades atendidas nos snapshots do Wayback — rodar fora da nuvem
+make wayback       # F3: listas de cidades com entregador próprio no Wayback — rodar fora da nuvem
+make mei           # F3: mês de chegada do entregador pela quebra nas aberturas de MEI de entrega — ~6 GB de HTTPS
+make auditoria     # F3: consolida a auditoria dos codificadores e dá o veredito por estrato — sem rede
 ```
 
 `make diagnostico` lê o painel já montado e escreve `car_int_por_ano.csv`,
@@ -138,12 +141,32 @@ protocolo humano está em `docs/protocolo-cronologia-entrada.md`; a codificaçã
 em si ainda não começou — ver D-033.
 
 `make wayback` é o passo 1 do roteiro de busca do F3: baixa do Wayback os
-snapshots da página de cidades atendidas do portal de entregadores, casa cada
-item da lista com o universo e escreve `cronologia_wayback.csv` (entrada por
+snapshots das listas de cidades com entregador próprio (iFood: cidades com os
+termos do entregador; Rappi: seletor da home; Uber Eats: diretório de cidades),
+casa cada item com o universo e escreve `cronologia_wayback.csv` (entrada por
 intervalo, tipo 3, no esquema da planilha), `wayback_snapshots.csv` e
 `wayback_nao_casados.csv`. O Wayback recusa conexão de ambiente de nuvem: rode
-na sua máquina. Confira os dois relatórios antes de entregar as linhas aos
-codificadores — ver D-038.
+na sua máquina; a home da Rappi são ~630 downloads, perto de uma hora. Confira
+os dois relatórios antes de entregar as linhas aos codificadores — ver D-038 e
+D-039.
+
+`make mei` é a fonte principal do tratamento do V2 (D-040): baixa a publicação
+mais recente dos dados abertos do CNPJ (a Receita serve devagar; o download
+retoma onde cai), conta as aberturas de CNAE 5320-2/02 por município e mês e
+aplica a regra de quebra congelada em `vcemal.mei`. Escreve
+`tratamento_mei_municipio.csv` (grupo e mês de tratamento por município do
+universo), `aberturas_mei_municipio_mes.csv` e `mei_quebra_por_faixa_ano.csv`,
+e imprime o placebo de 2016 e a concordância com o Wayback. Não lê o SIH.
+`ARGS=--offline` remonta do que já foi baixado.
+
+O tratamento que vale é a cópia congelada em
+`docs/fontes/cronologia/tratamento_mei_municipio.csv`, cujo hash está no plano de
+análise (D-041); rodar `make mei` de novo não a altera. `make auditoria`
+consolida as planilhas da auditoria (`auditoria_a.csv`, `auditoria_b.csv`: 48
+municípios sorteados por `scripts/cronologia.py auditoria-amostra` e as 27
+capitais) e compara a
+cronologia codificada com a quebra, estrato por estrato, pela regra declarada na
+seção 4 do plano.
 
 Os alvos passam pelo interpretador ativo (`$(PYTHON)`, padrão `python`). Para
 apontar outro: `make test PYTHON=python3.11`.

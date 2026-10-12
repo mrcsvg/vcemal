@@ -179,8 +179,21 @@ não entra.** O V2 continua sendo a maior peça, mas não é o critério.
    desempate por regra em `make cronologia`. **Falta a codificação em si**: dois
    codificadores, piloto de 60 municípios, 8 a 11 semanas de uma pessoa. Não é
    trabalho de sessão automática. **O passo 1 do roteiro existe (D-038):**
-   `make wayback` data por intervalo os municípios que aparecem na lista de
-   cidades atendidas do iFood arquivada no Wayback; falta rodar fora da nuvem e
-   conferir os relatórios.
+   `make wayback` data por intervalo os municípios que aparecem nas listas de
+   cidades arquivadas no Wayback. **Rodado (out/2026), D-039:** a lista do
+   iFood que se usava era do marketplace e saiu; a do entregador dá 453
+   municípios com frota até dez/2023, sem datar entrada. Rappi (160 municípios,
+   2019–2021) e Uber Eats (191, 2020–2022) datam por intervalo, 65 deles com
+   confiança C. ~~Para o iFood, a cronologia depende da busca dos codificadores.~~
+   **O tratamento passa a ser datado pelo CNPJ (D-040):** `make mei` acha a
+   quebra nas aberturas de MEI de entrega (CNAE 5320-2/02) por município e mês.
+   640 municípios abaixo de 100 mil habitantes ficam datados, de 2017 a 2025;
+   os 319 de 100 mil+ são coorte precoce (até 2018). ~~A codificação vira
+   auditoria de 30 a 50 municípios; falta o protocolo 1.1 dizer isso.~~
+   **Congelado e auditável (D-041):** o tratamento tem hash na seção 4 do plano
+   de análise; protocolo 1.1 escrito; amostra de 75 municípios (D-042: 36
+   `datado` por estrato de ano × faixa, 12 iscas, as 27 capitais) e planilhas
+   dos dois codificadores geradas. **Falta:** depositar o plano no OSF e,
+   depois, a busca em si (~94 h por codificador) e `make auditoria`.
 6. Migrar aqui o documento original `pre-projeto-remuneracao-entrega-acidentes.md`
    (fases F0–F4, desenhos A e B, cronograma), que não está no repositório.

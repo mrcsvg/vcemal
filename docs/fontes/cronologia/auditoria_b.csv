@@ -1,0 +1,376 @@
+municipio_ibge,uf,municipio,plataforma,evento,data_min,data_max,tipo_evidencia,confianca,fonte,url,data_acesso,trecho,buscas,observacao,codificador
+3162955,MG,São José da Lapa,ifood,entrada,,,,,,,,,,,B
+3162955,MG,São José da Lapa,rappi,entrada,,,,,,,,,,,B
+3162955,MG,São José da Lapa,uber_eats,entrada,,,,,,,,,,,B
+3162955,MG,São José da Lapa,99food,entrada,,,,,,,,,,,B
+3162955,MG,São José da Lapa,keeta,entrada,,,,,,,,,,,B
+1600303,AP,Macapá,ifood,entrada,,,,,,,,,,,B
+1600303,AP,Macapá,rappi,entrada,,,,,,,,,,,B
+1600303,AP,Macapá,uber_eats,entrada,,,,,,,,,,,B
+1600303,AP,Macapá,99food,entrada,,,,,,,,,,,B
+1600303,AP,Macapá,keeta,entrada,,,,,,,,,,,B
+1506138,PA,Redenção,ifood,entrada,,,,,,,,,,,B
+1506138,PA,Redenção,rappi,entrada,,,,,,,,,,,B
+1506138,PA,Redenção,uber_eats,entrada,,,,,,,,,,,B
+1506138,PA,Redenção,99food,entrada,,,,,,,,,,,B
+1506138,PA,Redenção,keeta,entrada,,,,,,,,,,,B
+3510005,SP,Cândido Mota,ifood,entrada,,,,,,,,,,,B
+3510005,SP,Cândido Mota,rappi,entrada,,,,,,,,,,,B
+3510005,SP,Cândido Mota,uber_eats,entrada,,,,,,,,,,,B
+3510005,SP,Cândido Mota,99food,entrada,,,,,,,,,,,B
+3510005,SP,Cândido Mota,keeta,entrada,,,,,,,,,,,B
+2904902,BA,Cachoeira,ifood,entrada,,,,,,,,,,,B
+2904902,BA,Cachoeira,rappi,entrada,,,,,,,,,,,B
+2904902,BA,Cachoeira,uber_eats,entrada,,,,,,,,,,,B
+2904902,BA,Cachoeira,99food,entrada,,,,,,,,,,,B
+2904902,BA,Cachoeira,keeta,entrada,,,,,,,,,,,B
+3512803,SP,Cosmópolis,ifood,entrada,,,,,,,,,,,B
+3512803,SP,Cosmópolis,rappi,entrada,,,,,,,,,,,B
+3512803,SP,Cosmópolis,uber_eats,entrada,,,,,,,,,,,B
+3512803,SP,Cosmópolis,99food,entrada,,,,,,,,,,,B
+3512803,SP,Cosmópolis,keeta,entrada,,,,,,,,,,,B
+2408102,RN,Natal,ifood,entrada,,,,,,,,,,,B
+2408102,RN,Natal,rappi,entrada,,,,,,,,,,,B
+2408102,RN,Natal,uber_eats,entrada,,,,,,,,,,,B
+2408102,RN,Natal,99food,entrada,,,,,,,,,,,B
+2408102,RN,Natal,keeta,entrada,,,,,,,,,,,B
+5007109,MS,Ribas do Rio Pardo,ifood,entrada,,,,,,,,,,,B
+5007109,MS,Ribas do Rio Pardo,rappi,entrada,,,,,,,,,,,B
+5007109,MS,Ribas do Rio Pardo,uber_eats,entrada,,,,,,,,,,,B
+5007109,MS,Ribas do Rio Pardo,99food,entrada,,,,,,,,,,,B
+5007109,MS,Ribas do Rio Pardo,keeta,entrada,,,,,,,,,,,B
+2112803,MA,Viana,ifood,entrada,,,,,,,,,,,B
+2112803,MA,Viana,rappi,entrada,,,,,,,,,,,B
+2112803,MA,Viana,uber_eats,entrada,,,,,,,,,,,B
+2112803,MA,Viana,99food,entrada,,,,,,,,,,,B
+2112803,MA,Viana,keeta,entrada,,,,,,,,,,,B
+2101608,MA,Barra do Corda,ifood,entrada,,,,,,,,,,,B
+2101608,MA,Barra do Corda,rappi,entrada,,,,,,,,,,,B
+2101608,MA,Barra do Corda,uber_eats,entrada,,,,,,,,,,,B
+2101608,MA,Barra do Corda,99food,entrada,,,,,,,,,,,B
+2101608,MA,Barra do Corda,keeta,entrada,,,,,,,,,,,B
+1721000,TO,Palmas,ifood,entrada,,,,,,,,,,,B
+1721000,TO,Palmas,rappi,entrada,,,,,,,,,,,B
+1721000,TO,Palmas,uber_eats,entrada,,,,,,,,,,,B
+1721000,TO,Palmas,99food,entrada,,,,,,,,,,,B
+1721000,TO,Palmas,keeta,entrada,,,,,,,,,,,B
+4118402,PR,Paranavaí,ifood,entrada,,,,,,,,,,,B
+4118402,PR,Paranavaí,rappi,entrada,,,,,,,,,,,B
+4118402,PR,Paranavaí,uber_eats,entrada,,,,,,,,,,,B
+4118402,PR,Paranavaí,99food,entrada,,,,,,,,,,,B
+4118402,PR,Paranavaí,keeta,entrada,,,,,,,,,,,B
+3305505,RJ,Saquarema,ifood,entrada,,,,,,,,,,,B
+3305505,RJ,Saquarema,rappi,entrada,,,,,,,,,,,B
+3305505,RJ,Saquarema,uber_eats,entrada,,,,,,,,,,,B
+3305505,RJ,Saquarema,99food,entrada,,,,,,,,,,,B
+3305505,RJ,Saquarema,keeta,entrada,,,,,,,,,,,B
+2313302,CE,Tauá,ifood,entrada,,,,,,,,,,,B
+2313302,CE,Tauá,rappi,entrada,,,,,,,,,,,B
+2313302,CE,Tauá,uber_eats,entrada,,,,,,,,,,,B
+2313302,CE,Tauá,99food,entrada,,,,,,,,,,,B
+2313302,CE,Tauá,keeta,entrada,,,,,,,,,,,B
+4303509,RS,Camaquã,ifood,entrada,,,,,,,,,,,B
+4303509,RS,Camaquã,rappi,entrada,,,,,,,,,,,B
+4303509,RS,Camaquã,uber_eats,entrada,,,,,,,,,,,B
+4303509,RS,Camaquã,99food,entrada,,,,,,,,,,,B
+4303509,RS,Camaquã,keeta,entrada,,,,,,,,,,,B
+1501402,PA,Belém,ifood,entrada,,,,,,,,,,,B
+1501402,PA,Belém,rappi,entrada,,,,,,,,,,,B
+1501402,PA,Belém,uber_eats,entrada,,,,,,,,,,,B
+1501402,PA,Belém,99food,entrada,,,,,,,,,,,B
+1501402,PA,Belém,keeta,entrada,,,,,,,,,,,B
+4318408,RS,São Jerônimo,ifood,entrada,,,,,,,,,,,B
+4318408,RS,São Jerônimo,rappi,entrada,,,,,,,,,,,B
+4318408,RS,São Jerônimo,uber_eats,entrada,,,,,,,,,,,B
+4318408,RS,São Jerônimo,99food,entrada,,,,,,,,,,,B
+4318408,RS,São Jerônimo,keeta,entrada,,,,,,,,,,,B
+2211001,PI,Teresina,ifood,entrada,,,,,,,,,,,B
+2211001,PI,Teresina,rappi,entrada,,,,,,,,,,,B
+2211001,PI,Teresina,uber_eats,entrada,,,,,,,,,,,B
+2211001,PI,Teresina,99food,entrada,,,,,,,,,,,B
+2211001,PI,Teresina,keeta,entrada,,,,,,,,,,,B
+5002704,MS,Campo Grande,ifood,entrada,,,,,,,,,,,B
+5002704,MS,Campo Grande,rappi,entrada,,,,,,,,,,,B
+5002704,MS,Campo Grande,uber_eats,entrada,,,,,,,,,,,B
+5002704,MS,Campo Grande,99food,entrada,,,,,,,,,,,B
+5002704,MS,Campo Grande,keeta,entrada,,,,,,,,,,,B
+2507507,PB,João Pessoa,ifood,entrada,,,,,,,,,,,B
+2507507,PB,João Pessoa,rappi,entrada,,,,,,,,,,,B
+2507507,PB,João Pessoa,uber_eats,entrada,,,,,,,,,,,B
+2507507,PB,João Pessoa,99food,entrada,,,,,,,,,,,B
+2507507,PB,João Pessoa,keeta,entrada,,,,,,,,,,,B
+3205309,ES,Vitória,ifood,entrada,,,,,,,,,,,B
+3205309,ES,Vitória,rappi,entrada,,,,,,,,,,,B
+3205309,ES,Vitória,uber_eats,entrada,,,,,,,,,,,B
+3205309,ES,Vitória,99food,entrada,,,,,,,,,,,B
+3205309,ES,Vitória,keeta,entrada,,,,,,,,,,,B
+4314902,RS,Porto Alegre,ifood,entrada,,,,,,,,,,,B
+4314902,RS,Porto Alegre,rappi,entrada,,,,,,,,,,,B
+4314902,RS,Porto Alegre,uber_eats,entrada,,,,,,,,,,,B
+4314902,RS,Porto Alegre,99food,entrada,,,,,,,,,,,B
+4314902,RS,Porto Alegre,keeta,entrada,,,,,,,,,,,B
+2930105,BA,Senhor do Bonfim,ifood,entrada,,,,,,,,,,,B
+2930105,BA,Senhor do Bonfim,rappi,entrada,,,,,,,,,,,B
+2930105,BA,Senhor do Bonfim,uber_eats,entrada,,,,,,,,,,,B
+2930105,BA,Senhor do Bonfim,99food,entrada,,,,,,,,,,,B
+2930105,BA,Senhor do Bonfim,keeta,entrada,,,,,,,,,,,B
+5300108,DF,Brasília,ifood,entrada,,,,,,,,,,,B
+5300108,DF,Brasília,rappi,entrada,,,,,,,,,,,B
+5300108,DF,Brasília,uber_eats,entrada,,,,,,,,,,,B
+5300108,DF,Brasília,99food,entrada,,,,,,,,,,,B
+5300108,DF,Brasília,keeta,entrada,,,,,,,,,,,B
+2304707,CE,Granja,ifood,entrada,,,,,,,,,,,B
+2304707,CE,Granja,rappi,entrada,,,,,,,,,,,B
+2304707,CE,Granja,uber_eats,entrada,,,,,,,,,,,B
+2304707,CE,Granja,99food,entrada,,,,,,,,,,,B
+2304707,CE,Granja,keeta,entrada,,,,,,,,,,,B
+2927408,BA,Salvador,ifood,entrada,,,,,,,,,,,B
+2927408,BA,Salvador,rappi,entrada,,,,,,,,,,,B
+2927408,BA,Salvador,uber_eats,entrada,,,,,,,,,,,B
+2927408,BA,Salvador,99food,entrada,,,,,,,,,,,B
+2927408,BA,Salvador,keeta,entrada,,,,,,,,,,,B
+4212809,SC,Balneário Piçarras,ifood,entrada,,,,,,,,,,,B
+4212809,SC,Balneário Piçarras,rappi,entrada,,,,,,,,,,,B
+4212809,SC,Balneário Piçarras,uber_eats,entrada,,,,,,,,,,,B
+4212809,SC,Balneário Piçarras,99food,entrada,,,,,,,,,,,B
+4212809,SC,Balneário Piçarras,keeta,entrada,,,,,,,,,,,B
+3161106,MG,São Francisco,ifood,entrada,,,,,,,,,,,B
+3161106,MG,São Francisco,rappi,entrada,,,,,,,,,,,B
+3161106,MG,São Francisco,uber_eats,entrada,,,,,,,,,,,B
+3161106,MG,São Francisco,99food,entrada,,,,,,,,,,,B
+3161106,MG,São Francisco,keeta,entrada,,,,,,,,,,,B
+3300803,RJ,Cachoeiras de Macacu,ifood,entrada,,,,,,,,,,,B
+3300803,RJ,Cachoeiras de Macacu,rappi,entrada,,,,,,,,,,,B
+3300803,RJ,Cachoeiras de Macacu,uber_eats,entrada,,,,,,,,,,,B
+3300803,RJ,Cachoeiras de Macacu,99food,entrada,,,,,,,,,,,B
+3300803,RJ,Cachoeiras de Macacu,keeta,entrada,,,,,,,,,,,B
+1508407,PA,Xinguara,ifood,entrada,,,,,,,,,,,B
+1508407,PA,Xinguara,rappi,entrada,,,,,,,,,,,B
+1508407,PA,Xinguara,uber_eats,entrada,,,,,,,,,,,B
+1508407,PA,Xinguara,99food,entrada,,,,,,,,,,,B
+1508407,PA,Xinguara,keeta,entrada,,,,,,,,,,,B
+2108306,MA,Penalva,ifood,entrada,,,,,,,,,,,B
+2108306,MA,Penalva,rappi,entrada,,,,,,,,,,,B
+2108306,MA,Penalva,uber_eats,entrada,,,,,,,,,,,B
+2108306,MA,Penalva,99food,entrada,,,,,,,,,,,B
+2108306,MA,Penalva,keeta,entrada,,,,,,,,,,,B
+3530300,SP,Mirassol,ifood,entrada,,,,,,,,,,,B
+3530300,SP,Mirassol,rappi,entrada,,,,,,,,,,,B
+3530300,SP,Mirassol,uber_eats,entrada,,,,,,,,,,,B
+3530300,SP,Mirassol,99food,entrada,,,,,,,,,,,B
+3530300,SP,Mirassol,keeta,entrada,,,,,,,,,,,B
+4106902,PR,Curitiba,ifood,entrada,,,,,,,,,,,B
+4106902,PR,Curitiba,rappi,entrada,,,,,,,,,,,B
+4106902,PR,Curitiba,uber_eats,entrada,,,,,,,,,,,B
+4106902,PR,Curitiba,99food,entrada,,,,,,,,,,,B
+4106902,PR,Curitiba,keeta,entrada,,,,,,,,,,,B
+4216206,SC,São Francisco do Sul,ifood,entrada,,,,,,,,,,,B
+4216206,SC,São Francisco do Sul,rappi,entrada,,,,,,,,,,,B
+4216206,SC,São Francisco do Sul,uber_eats,entrada,,,,,,,,,,,B
+4216206,SC,São Francisco do Sul,99food,entrada,,,,,,,,,,,B
+4216206,SC,São Francisco do Sul,keeta,entrada,,,,,,,,,,,B
+1301209,AM,Coari,ifood,entrada,,,,,,,,,,,B
+1301209,AM,Coari,rappi,entrada,,,,,,,,,,,B
+1301209,AM,Coari,uber_eats,entrada,,,,,,,,,,,B
+1301209,AM,Coari,99food,entrada,,,,,,,,,,,B
+1301209,AM,Coari,keeta,entrada,,,,,,,,,,,B
+4218202,SC,Timbó,ifood,entrada,,,,,,,,,,,B
+4218202,SC,Timbó,rappi,entrada,,,,,,,,,,,B
+4218202,SC,Timbó,uber_eats,entrada,,,,,,,,,,,B
+4218202,SC,Timbó,99food,entrada,,,,,,,,,,,B
+4218202,SC,Timbó,keeta,entrada,,,,,,,,,,,B
+4104907,PR,Castro,ifood,entrada,,,,,,,,,,,B
+4104907,PR,Castro,rappi,entrada,,,,,,,,,,,B
+4104907,PR,Castro,uber_eats,entrada,,,,,,,,,,,B
+4104907,PR,Castro,99food,entrada,,,,,,,,,,,B
+4104907,PR,Castro,keeta,entrada,,,,,,,,,,,B
+1302603,AM,Manaus,ifood,entrada,,,,,,,,,,,B
+1302603,AM,Manaus,rappi,entrada,,,,,,,,,,,B
+1302603,AM,Manaus,uber_eats,entrada,,,,,,,,,,,B
+1302603,AM,Manaus,99food,entrada,,,,,,,,,,,B
+1302603,AM,Manaus,keeta,entrada,,,,,,,,,,,B
+3143104,MG,Monte Carmelo,ifood,entrada,,,,,,,,,,,B
+3143104,MG,Monte Carmelo,rappi,entrada,,,,,,,,,,,B
+3143104,MG,Monte Carmelo,uber_eats,entrada,,,,,,,,,,,B
+3143104,MG,Monte Carmelo,99food,entrada,,,,,,,,,,,B
+3143104,MG,Monte Carmelo,keeta,entrada,,,,,,,,,,,B
+1400100,RR,Boa Vista,ifood,entrada,,,,,,,,,,,B
+1400100,RR,Boa Vista,rappi,entrada,,,,,,,,,,,B
+1400100,RR,Boa Vista,uber_eats,entrada,,,,,,,,,,,B
+1400100,RR,Boa Vista,99food,entrada,,,,,,,,,,,B
+1400100,RR,Boa Vista,keeta,entrada,,,,,,,,,,,B
+3524303,SP,Jaboticabal,ifood,entrada,,,,,,,,,,,B
+3524303,SP,Jaboticabal,rappi,entrada,,,,,,,,,,,B
+3524303,SP,Jaboticabal,uber_eats,entrada,,,,,,,,,,,B
+3524303,SP,Jaboticabal,99food,entrada,,,,,,,,,,,B
+3524303,SP,Jaboticabal,keeta,entrada,,,,,,,,,,,B
+3171303,MG,Viçosa,ifood,entrada,,,,,,,,,,,B
+3171303,MG,Viçosa,rappi,entrada,,,,,,,,,,,B
+3171303,MG,Viçosa,uber_eats,entrada,,,,,,,,,,,B
+3171303,MG,Viçosa,99food,entrada,,,,,,,,,,,B
+3171303,MG,Viçosa,keeta,entrada,,,,,,,,,,,B
+2910602,BA,Esplanada,ifood,entrada,,,,,,,,,,,B
+2910602,BA,Esplanada,rappi,entrada,,,,,,,,,,,B
+2910602,BA,Esplanada,uber_eats,entrada,,,,,,,,,,,B
+2910602,BA,Esplanada,99food,entrada,,,,,,,,,,,B
+2910602,BA,Esplanada,keeta,entrada,,,,,,,,,,,B
+3539509,SP,Pitangueiras,ifood,entrada,,,,,,,,,,,B
+3539509,SP,Pitangueiras,rappi,entrada,,,,,,,,,,,B
+3539509,SP,Pitangueiras,uber_eats,entrada,,,,,,,,,,,B
+3539509,SP,Pitangueiras,99food,entrada,,,,,,,,,,,B
+3539509,SP,Pitangueiras,keeta,entrada,,,,,,,,,,,B
+2611606,PE,Recife,ifood,entrada,,,,,,,,,,,B
+2611606,PE,Recife,rappi,entrada,,,,,,,,,,,B
+2611606,PE,Recife,uber_eats,entrada,,,,,,,,,,,B
+2611606,PE,Recife,99food,entrada,,,,,,,,,,,B
+2611606,PE,Recife,keeta,entrada,,,,,,,,,,,B
+4205407,SC,Florianópolis,ifood,entrada,,,,,,,,,,,B
+4205407,SC,Florianópolis,rappi,entrada,,,,,,,,,,,B
+4205407,SC,Florianópolis,uber_eats,entrada,,,,,,,,,,,B
+4205407,SC,Florianópolis,99food,entrada,,,,,,,,,,,B
+4205407,SC,Florianópolis,keeta,entrada,,,,,,,,,,,B
+4319901,RS,Sapiranga,ifood,entrada,,,,,,,,,,,B
+4319901,RS,Sapiranga,rappi,entrada,,,,,,,,,,,B
+4319901,RS,Sapiranga,uber_eats,entrada,,,,,,,,,,,B
+4319901,RS,Sapiranga,99food,entrada,,,,,,,,,,,B
+4319901,RS,Sapiranga,keeta,entrada,,,,,,,,,,,B
+3304557,RJ,Rio de Janeiro,ifood,entrada,,,,,,,,,,,B
+3304557,RJ,Rio de Janeiro,rappi,entrada,,,,,,,,,,,B
+3304557,RJ,Rio de Janeiro,uber_eats,entrada,,,,,,,,,,,B
+3304557,RJ,Rio de Janeiro,99food,entrada,,,,,,,,,,,B
+3304557,RJ,Rio de Janeiro,keeta,entrada,,,,,,,,,,,B
+2304400,CE,Fortaleza,ifood,entrada,,,,,,,,,,,B
+2304400,CE,Fortaleza,rappi,entrada,,,,,,,,,,,B
+2304400,CE,Fortaleza,uber_eats,entrada,,,,,,,,,,,B
+2304400,CE,Fortaleza,99food,entrada,,,,,,,,,,,B
+2304400,CE,Fortaleza,keeta,entrada,,,,,,,,,,,B
+4307708,RS,Esteio,ifood,entrada,,,,,,,,,,,B
+4307708,RS,Esteio,rappi,entrada,,,,,,,,,,,B
+4307708,RS,Esteio,uber_eats,entrada,,,,,,,,,,,B
+4307708,RS,Esteio,99food,entrada,,,,,,,,,,,B
+4307708,RS,Esteio,keeta,entrada,,,,,,,,,,,B
+3536703,SP,Pederneiras,ifood,entrada,,,,,,,,,,,B
+3536703,SP,Pederneiras,rappi,entrada,,,,,,,,,,,B
+3536703,SP,Pederneiras,uber_eats,entrada,,,,,,,,,,,B
+3536703,SP,Pederneiras,99food,entrada,,,,,,,,,,,B
+3536703,SP,Pederneiras,keeta,entrada,,,,,,,,,,,B
+3302601,RJ,Mangaratiba,ifood,entrada,,,,,,,,,,,B
+3302601,RJ,Mangaratiba,rappi,entrada,,,,,,,,,,,B
+3302601,RJ,Mangaratiba,uber_eats,entrada,,,,,,,,,,,B
+3302601,RJ,Mangaratiba,99food,entrada,,,,,,,,,,,B
+3302601,RJ,Mangaratiba,keeta,entrada,,,,,,,,,,,B
+5208707,GO,Goiânia,ifood,entrada,,,,,,,,,,,B
+5208707,GO,Goiânia,rappi,entrada,,,,,,,,,,,B
+5208707,GO,Goiânia,uber_eats,entrada,,,,,,,,,,,B
+5208707,GO,Goiânia,99food,entrada,,,,,,,,,,,B
+5208707,GO,Goiânia,keeta,entrada,,,,,,,,,,,B
+3550308,SP,São Paulo,ifood,entrada,,,,,,,,,,,B
+3550308,SP,São Paulo,rappi,entrada,,,,,,,,,,,B
+3550308,SP,São Paulo,uber_eats,entrada,,,,,,,,,,,B
+3550308,SP,São Paulo,99food,entrada,,,,,,,,,,,B
+3550308,SP,São Paulo,keeta,entrada,,,,,,,,,,,B
+2610608,PE,Paudalho,ifood,entrada,,,,,,,,,,,B
+2610608,PE,Paudalho,rappi,entrada,,,,,,,,,,,B
+2610608,PE,Paudalho,uber_eats,entrada,,,,,,,,,,,B
+2610608,PE,Paudalho,99food,entrada,,,,,,,,,,,B
+2610608,PE,Paudalho,keeta,entrada,,,,,,,,,,,B
+5103403,MT,Cuiabá,ifood,entrada,,,,,,,,,,,B
+5103403,MT,Cuiabá,rappi,entrada,,,,,,,,,,,B
+5103403,MT,Cuiabá,uber_eats,entrada,,,,,,,,,,,B
+5103403,MT,Cuiabá,99food,entrada,,,,,,,,,,,B
+5103403,MT,Cuiabá,keeta,entrada,,,,,,,,,,,B
+2110005,MA,Santa Luzia,ifood,entrada,,,,,,,,,,,B
+2110005,MA,Santa Luzia,rappi,entrada,,,,,,,,,,,B
+2110005,MA,Santa Luzia,uber_eats,entrada,,,,,,,,,,,B
+2110005,MA,Santa Luzia,99food,entrada,,,,,,,,,,,B
+2110005,MA,Santa Luzia,keeta,entrada,,,,,,,,,,,B
+2109809,MA,Santa Helena,ifood,entrada,,,,,,,,,,,B
+2109809,MA,Santa Helena,rappi,entrada,,,,,,,,,,,B
+2109809,MA,Santa Helena,uber_eats,entrada,,,,,,,,,,,B
+2109809,MA,Santa Helena,99food,entrada,,,,,,,,,,,B
+2109809,MA,Santa Helena,keeta,entrada,,,,,,,,,,,B
+2111300,MA,São Luís,ifood,entrada,,,,,,,,,,,B
+2111300,MA,São Luís,rappi,entrada,,,,,,,,,,,B
+2111300,MA,São Luís,uber_eats,entrada,,,,,,,,,,,B
+2111300,MA,São Luís,99food,entrada,,,,,,,,,,,B
+2111300,MA,São Luís,keeta,entrada,,,,,,,,,,,B
+3304755,RJ,São Francisco de Itabapoana,ifood,entrada,,,,,,,,,,,B
+3304755,RJ,São Francisco de Itabapoana,rappi,entrada,,,,,,,,,,,B
+3304755,RJ,São Francisco de Itabapoana,uber_eats,entrada,,,,,,,,,,,B
+3304755,RJ,São Francisco de Itabapoana,99food,entrada,,,,,,,,,,,B
+3304755,RJ,São Francisco de Itabapoana,keeta,entrada,,,,,,,,,,,B
+4304408,RS,Canela,ifood,entrada,,,,,,,,,,,B
+4304408,RS,Canela,rappi,entrada,,,,,,,,,,,B
+4304408,RS,Canela,uber_eats,entrada,,,,,,,,,,,B
+4304408,RS,Canela,99food,entrada,,,,,,,,,,,B
+4304408,RS,Canela,keeta,entrada,,,,,,,,,,,B
+3525102,SP,Jardinópolis,ifood,entrada,,,,,,,,,,,B
+3525102,SP,Jardinópolis,rappi,entrada,,,,,,,,,,,B
+3525102,SP,Jardinópolis,uber_eats,entrada,,,,,,,,,,,B
+3525102,SP,Jardinópolis,99food,entrada,,,,,,,,,,,B
+3525102,SP,Jardinópolis,keeta,entrada,,,,,,,,,,,B
+4204806,SC,Curitibanos,ifood,entrada,,,,,,,,,,,B
+4204806,SC,Curitibanos,rappi,entrada,,,,,,,,,,,B
+4204806,SC,Curitibanos,uber_eats,entrada,,,,,,,,,,,B
+4204806,SC,Curitibanos,99food,entrada,,,,,,,,,,,B
+4204806,SC,Curitibanos,keeta,entrada,,,,,,,,,,,B
+3106200,MG,Belo Horizonte,ifood,entrada,,,,,,,,,,,B
+3106200,MG,Belo Horizonte,rappi,entrada,,,,,,,,,,,B
+3106200,MG,Belo Horizonte,uber_eats,entrada,,,,,,,,,,,B
+3106200,MG,Belo Horizonte,99food,entrada,,,,,,,,,,,B
+3106200,MG,Belo Horizonte,keeta,entrada,,,,,,,,,,,B
+2800308,SE,Aracaju,ifood,entrada,,,,,,,,,,,B
+2800308,SE,Aracaju,rappi,entrada,,,,,,,,,,,B
+2800308,SE,Aracaju,uber_eats,entrada,,,,,,,,,,,B
+2800308,SE,Aracaju,99food,entrada,,,,,,,,,,,B
+2800308,SE,Aracaju,keeta,entrada,,,,,,,,,,,B
+1200401,AC,Rio Branco,ifood,entrada,,,,,,,,,,,B
+1200401,AC,Rio Branco,rappi,entrada,,,,,,,,,,,B
+1200401,AC,Rio Branco,uber_eats,entrada,,,,,,,,,,,B
+1200401,AC,Rio Branco,99food,entrada,,,,,,,,,,,B
+1200401,AC,Rio Branco,keeta,entrada,,,,,,,,,,,B
+3142908,MG,Monte Azul,ifood,entrada,,,,,,,,,,,B
+3142908,MG,Monte Azul,rappi,entrada,,,,,,,,,,,B
+3142908,MG,Monte Azul,uber_eats,entrada,,,,,,,,,,,B
+3142908,MG,Monte Azul,99food,entrada,,,,,,,,,,,B
+3142908,MG,Monte Azul,keeta,entrada,,,,,,,,,,,B
+5208608,GO,Goianésia,ifood,entrada,,,,,,,,,,,B
+5208608,GO,Goianésia,rappi,entrada,,,,,,,,,,,B
+5208608,GO,Goianésia,uber_eats,entrada,,,,,,,,,,,B
+5208608,GO,Goianésia,99food,entrada,,,,,,,,,,,B
+5208608,GO,Goianésia,keeta,entrada,,,,,,,,,,,B
+2704302,AL,Maceió,ifood,entrada,,,,,,,,,,,B
+2704302,AL,Maceió,rappi,entrada,,,,,,,,,,,B
+2704302,AL,Maceió,uber_eats,entrada,,,,,,,,,,,B
+2704302,AL,Maceió,99food,entrada,,,,,,,,,,,B
+2704302,AL,Maceió,keeta,entrada,,,,,,,,,,,B
+3517406,SP,Guaíra,ifood,entrada,,,,,,,,,,,B
+3517406,SP,Guaíra,rappi,entrada,,,,,,,,,,,B
+3517406,SP,Guaíra,uber_eats,entrada,,,,,,,,,,,B
+3517406,SP,Guaíra,99food,entrada,,,,,,,,,,,B
+3517406,SP,Guaíra,keeta,entrada,,,,,,,,,,,B
+4205704,SC,Garopaba,ifood,entrada,,,,,,,,,,,B
+4205704,SC,Garopaba,rappi,entrada,,,,,,,,,,,B
+4205704,SC,Garopaba,uber_eats,entrada,,,,,,,,,,,B
+4205704,SC,Garopaba,99food,entrada,,,,,,,,,,,B
+4205704,SC,Garopaba,keeta,entrada,,,,,,,,,,,B
+3143401,MG,Monte Sião,ifood,entrada,,,,,,,,,,,B
+3143401,MG,Monte Sião,rappi,entrada,,,,,,,,,,,B
+3143401,MG,Monte Sião,uber_eats,entrada,,,,,,,,,,,B
+3143401,MG,Monte Sião,99food,entrada,,,,,,,,,,,B
+3143401,MG,Monte Sião,keeta,entrada,,,,,,,,,,,B
+1100205,RO,Porto Velho,ifood,entrada,,,,,,,,,,,B
+1100205,RO,Porto Velho,rappi,entrada,,,,,,,,,,,B
+1100205,RO,Porto Velho,uber_eats,entrada,,,,,,,,,,,B
+1100205,RO,Porto Velho,99food,entrada,,,,,,,,,,,B
+1100205,RO,Porto Velho,keeta,entrada,,,,,,,,,,,B
+2305308,CE,Ibiapina,ifood,entrada,,,,,,,,,,,B
+2305308,CE,Ibiapina,rappi,entrada,,,,,,,,,,,B
+2305308,CE,Ibiapina,uber_eats,entrada,,,,,,,,,,,B
+2305308,CE,Ibiapina,99food,entrada,,,,,,,,,,,B
+2305308,CE,Ibiapina,keeta,entrada,,,,,,,,,,,B
+4113205,PR,Lapa,ifood,entrada,,,,,,,,,,,B
+4113205,PR,Lapa,rappi,entrada,,,,,,,,,,,B
+4113205,PR,Lapa,uber_eats,entrada,,,,,,,,,,,B
+4113205,PR,Lapa,99food,entrada,,,,,,,,,,,B
+4113205,PR,Lapa,keeta,entrada,,,,,,,,,,,B

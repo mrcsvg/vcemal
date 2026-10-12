@@ -1,7 +1,7 @@
 # Plano de análise — pré-registro
 
-> **Não depositar ainda.** Este arquivo é o esqueleto. Preencher as seções marcadas
-> com `[ ]` e só então depositar no OSF. Depois do depósito, este arquivo fica
+> **Pronto para depósito (2026-10-11).** Nenhuma seção `[ ]` em aberto; o texto do
+> formulário do OSF está em `deposito-osf.md`. Depois do depósito, este arquivo fica
 > congelado — qualquer mudança vai para `docs/decisoes.md` como análise exploratória
 > declarada.
 
@@ -9,9 +9,15 @@
 
 - **H1** — a entrada de plataforma de entrega em um município eleva a incidência
   de internações de motociclistas por acidente de transporte.
-- **H2** — o efeito é crescente na intensidade de operação. `[ ]` **Parcialmente
-  identificada**: volume de pedidos por município é dado privado. Declarar o proxy
-  usado e o sinal esperado do viés.
+- **H2** — o efeito é crescente na intensidade de operação. `[x]` **Parcialmente
+  identificada**: volume de pedidos por município é dado privado. **Proxy
+  (D-043):** aberturas de MEI 5320-2/02 por mil habitantes (Censo 2022) nos 12
+  meses a partir da quebra, em tercis entre os tratados da janela balanceada; o
+  estimando principal (seção 5) é estimado por tercil. **Previsão:** efeito
+  monotonicamente crescente do primeiro ao terceiro tercil. **Sinal do viés:** o
+  MEI cobre a minoria dos entregadores (D-031), então a proxy mede intensidade com
+  erro, e erro de classificação entre tercis achata o gradiente — o teste é
+  conservador. Ausência de gradiente não refuta H2; gradiente presente a sustenta.
 - **H3** — o efeito se concentra no **perfil demográfico do trabalho de entrega**:
   homens de 18 a 39 anos. Se o efeito for de magnitude semelhante fora desse
   perfil, o desenho está captando tendência geral de trânsito *dentro* do grupo
@@ -43,6 +49,10 @@ CNPJ (tratamento: quebra nas aberturas de MEI de entrega — ver seção 4).
 | Motociclista | V20–V29 **em trânsito** (`internacoes_transito`) | Desfecho |
 | Ciclista | V10–V19 | Teste do mecanismo |
 | Ocupante de automóvel | V40–V49 | Placebo |
+
+**A taxa do desfecho é calculada na estimação**, como 100.000 ×
+`internacoes_transito` / `frota_moto`. A coluna `taxa_por_frota` do painel usa
+`internacoes`, que inclui as de não-trânsito, e não é o desfecho.
 
 A leitura do quarto dígito não é uniforme entre as categorias: V19, V29 e V49
 usam outra tabela, em que `.3` é acidente **não** de trânsito. A regra está em
@@ -160,6 +170,17 @@ Diferenças em diferenças com adoção escalonada. Estimador de Callaway &
 Sant'Anna (2021) como principal, dada a heterogeneidade de timing e a conhecida
 inconsistência do TWFE nesse caso. Sun & Abraham como robustez.
 
+**Estimando principal de H1 (D-043):** a média simples dos ATT(e) para
+`e ∈ [0, +24]` na janela balanceada, sem covariáveis (tendências paralelas
+incondicionais), reportada também em % da média pré-tratamento dos tratados
+(`e ∈ [−12, −1]`).
+
+**Critério de inferência (D-043):** teste bilateral a 5% e intervalo de 95%. H1
+é sustentada se o estimando principal for positivo e o intervalo excluir zero.
+H1 é a única hipótese confirmatória, sem correção para comparações múltiplas;
+H2, H3, o teste do mecanismo e os testes de falha da seção 6 são lidos pelos
+critérios declarados em cada um, com intervalos de 95%.
+
 - Unidade: município × mês
 - Efeitos fixos: município e mês-calendário
 - Grupo de comparação: **not-yet-treated** (D-022), entre os municípios
@@ -211,7 +232,8 @@ inconsistência do TWFE nesse caso. Sun & Abraham como robustez.
    juntos e a taxa deixa de medir risco.
    **Critério pré-declarado de falha:** se o efeito sobre `frota_moto` for
    estatisticamente distinguível de zero **e** sua variação percentual for de
-   ordem comparável à das internações, a taxa não é interpretável. Nesse caso o
+   ordem comparável à das internações — **ao menos metade do efeito percentual
+   sobre as internações** (D-043) —, a taxa não é interpretável. Nesse caso o
    resultado principal passa a ser a **contagem** de internações com efeito fixo
    de município, e a taxa vai para o anexo com a advertência.
    **O viés é signável, e isso importa:** frota subindo com o tratamento *atenua*

@@ -1,7 +1,8 @@
 # Plano de análise — pré-registro
 
 > **Pronto para depósito (2026-10-11).** Nenhuma seção `[ ]` em aberto; o texto do
-> formulário do OSF está em `deposito-osf.md`. Depois do depósito, este arquivo fica
+> formulário do OSF está em `deposito-osf.md`, e a tradução para o inglês deste
+> plano em `plano-de-analise.en.md`. Em divergência entre os dois, vale este. Depois do depósito, este arquivo fica
 > congelado — qualquer mudança vai para `docs/decisoes.md` como análise exploratória
 > declarada.
 

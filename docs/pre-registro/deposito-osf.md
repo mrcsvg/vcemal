@@ -3,8 +3,9 @@
 > **Como usar.** Modelo: **OSF Preregistration** (OSF Registries → "Add new" →
 > "OSF Preregistration"). Cada seção abaixo corresponde a um campo do formulário,
 > na ordem dele; o texto, em inglês, é para colar. O documento normativo é o
-> `plano-de-analise.md` (em português), anexado ao depósito — este texto o resume
-> e aponta para ele, e onde os dois divergirem vale o plano.
+> `plano-de-analise.md` (em português), anexado ao depósito com a tradução
+> `plano-de-analise.en.md` — este texto o resume e aponta para ele, e onde
+> divergirem vale o plano em português.
 >
 > **Antes de depositar**, falta só uma coisa: o hash do commit depositado, no
 > campo Description (⚠️). As decisões que o formulário exigia e o plano não tinha
@@ -32,8 +33,9 @@ delivery services") in the federal company registry (CNPJ), detected by a rule
 frozen before any linkage with the outcome. The outcome comes from SIH/SUS
 (hospital admission authorizations), with the municipal motorcycle fleet
 (Senatran) as denominator. Staggered-adoption difference-in-differences
-(Callaway & Sant'Anna, 2021). The full analysis plan, the treatment-audit
-protocol and the decision log are attached and in the repository
+(Callaway & Sant'Anna, 2021). The full analysis plan (Portuguese original and
+English translation; the original prevails), the treatment-audit protocol and
+the decision log are attached and in the repository
 `github.com/mrcsvg/vcemal`, commit `⚠️ fill in the hash of the deposited commit`.
 
 ## Hypotheses
@@ -268,8 +270,9 @@ separately.
 date and reason, and the affected analyses become declared exploratory
 analyses.
 
-**Attachments** (in Portuguese; this form is the English summary):
-`plano-de-analise.md` (analysis plan); `protocolo-cronologia-entrada.md`
+**Attachments:** `plano-de-analise.md` (analysis plan, Portuguese original,
+authoritative) and `plano-de-analise.en.md` (its English translation); in
+Portuguese only: `protocolo-cronologia-entrada.md`
 (coding protocol, version 1.1); `tratamento_mei_municipio.csv` (frozen
 treatment, hash above); `auditoria_municipios.csv` (audit sample);
 `decisoes.md` (decision log).

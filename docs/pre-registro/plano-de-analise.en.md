@@ -112,7 +112,7 @@ inhabitants):**
 |---|---|---|---|
 | `datado` (dated) | 640 | under 100,000 inhabitants, with a break | treated; `mes_tratamento` = month of the break. This is where the variation over time comes from |
 | `sem_quebra` (no break) | 751 | under 100,000, no break | untreated as far as can be seen — **not** "never treated": there may be a platform with too few MEI couriers for the test to detect. Part of the comparison group; a robustness check excludes them |
-| `coorte_precoce` (early cohort) | 319 | 100,000 or more | outside the main estimation. All had iFood in 2019 (D-038, D-039) and the placebo fires in a quarter of them: the break does not date them |
+| `coorte_precoce` (early cohort) | 319 | 100,000 or more | outside the main estimation. All had the iFood app in 2019 (D-038, D-039); that the own courier fleet had arrived by 2018 is a premise, tested by the audit's state-capitals stratum. The placebo fires in a quarter of them: the break does not date them |
 
 Municipalities under 20,000 inhabitants are not included: the rule was not
 validated for them.

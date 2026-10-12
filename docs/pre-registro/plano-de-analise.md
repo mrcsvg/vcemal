@@ -98,7 +98,7 @@ Depois do depósito, nenhuma data muda.
 |---|---|---|---|
 | `datado` | 640 | abaixo de 100 mil habitantes, com quebra | tratados; `mes_tratamento` = mês da quebra. É daqui que vem a variação no tempo |
 | `sem_quebra` | 751 | abaixo de 100 mil, sem quebra | não tratados até onde se vê — **não** "nunca tratados": pode haver plataforma com poucos entregadores MEI para o teste ver. Entram no grupo de comparação; robustez os exclui |
-| `coorte_precoce` | 319 | 100 mil ou mais | fora da estimação principal. Todas tinham iFood em 2019 (D-038, D-039) e o placebo dispara em um quarto delas: a quebra não as data |
+| `coorte_precoce` | 319 | 100 mil ou mais | fora da estimação principal. Todas tinham o app do iFood em 2019 (D-038, D-039); que a frota própria tenha chegado até 2018 é premissa, testada pelo estrato das capitais da auditoria. O placebo dispara em um quarto delas: a quebra não as data |
 
 Municípios abaixo de 20 mil habitantes não entram: a regra não foi validada
 neles.

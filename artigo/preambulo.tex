@@ -1,0 +1,19 @@
+% Caracteres Unicode usados no texto (permite compilar com pdflatex; xelatex/lualatex não precisam)
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage{newunicodechar}
+  \newunicodechar{α}{\ensuremath{\alpha}}
+  \newunicodechar{λ}{\ensuremath{\lambda}}
+  \newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+  \newunicodechar{∈}{\ensuremath{\in}}
+  \newunicodechar{−}{\ensuremath{-}}
+  \newunicodechar{≈}{\ensuremath{\approx}}
+  \newunicodechar{≥}{\ensuremath{\geq}}
+  \newunicodechar{→}{\ensuremath{\rightarrow}}
+  \newunicodechar{×}{\ensuremath{\times}}
+  \newunicodechar{·}{\ensuremath{\cdot}}
+\fi
+\usepackage{float}
+\let\origfigure\figure
+\let\endorigfigure\endfigure
+\renewenvironment{figure}[1][2] {\origfigure[H]} {\endorigfigure}

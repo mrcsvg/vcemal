@@ -132,40 +132,47 @@ tratamento e plano de identificação}
 com remuneração por corrida coincide com o crescimento das internações
 de motociclistas no Sistema Único de Saúde (SUS), mas nenhuma base
 administrativa pública liga uma internação ao trabalho por plataforma, e
-o debate público trata só do vínculo empregatício, não de quem paga a
-conta hospitalar. \emph{Objetivo:} medir a carga e o custo público das
-internações de motociclistas, documentar a invisibilidade ocupacional
-desses casos nos registros oficiais e construir --- antes de olhar o
-desfecho --- um tratamento municipal datado que permita estimar o efeito
-causal da chegada do entregador por aplicativo. \emph{Métodos:} painel
-município × mês (2015--2025) montado a partir dos microdados do SIH/SUS
-(3.563 de 3.564 competências; 433.033 linhas em 5.517 municípios), frota
-municipal do Senatran, benefícios do INSS, PNAD Contínua e relatórios da
-Prosus. O tratamento é a quebra estrutural nas aberturas de MEI com CNAE
-5320-2/02, detectada por uma regra de teste de Poisson cujos
-hiperparâmetros foram calibrados por busca em grade contra um placebo
-pré-plataforma e contra datas externas (Wayback Machine), nunca contra
-internações. O plano de análise (diferenças em diferenças com adoção
-escalonada, Callaway \& Sant'Anna) foi registrado no OSF antes de
-qualquer cruzamento tratamento × desfecho. \emph{Resultados:} foram
-965.714 internações de motociclistas em 2016--2023, das quais 62 (uma em
-15.576) registram nexo ocupacional; o SUS pagou R\$ 288 milhões com
-essas internações em 2025, enquanto o resultado operacional do iFood no
-mesmo ano foi de R\$ 1,8 bilhão. A regra de quebra data 640 municípios
-de 20 a 100 mil habitantes entre 2017 e 2025, com falso positivo de
-0,7\% a 3,8\% no placebo; 478 entram na janela balanceada de estimação.
-Dois modelos complementares, sem uso do desfecho, avaliam o tratamento:
-uma simulação de Monte Carlo da regra reproduz o falso positivo
-observado abaixo de 100 mil habitantes (0,6\% e 3,9\% simulados contra
-0,7\% e 3,8\% observados) e mostra que a regra é conservadora (detecta
-22--54\% dos saltos de 2 a 5 vezes em municípios de 50--100 mil); uma
-regressão logística de seleção (AUC de validação cruzada 0,91) mostra
-que Nordeste e Norte têm chance 17 a 34 vezes menor de receber data,
-mesmo controlando população e propensão pré-plataforma a abrir MEI.
-\emph{Conclusão:} a carga é grande, crescente e invisível como acidente
-de trabalho; o desenho causal é viável e está travado por pré-registro.
-Esta versão entrega a parte descritiva e a construção do tratamento; a
-estimação causal é a etapa seguinte, já especificada.
+não há política pública permanente que regule esse risco ou proteja os
+entregadores --- o que está em pauta é o vínculo empregatício.
+\emph{Objetivo:} medir a carga e o custo público das internações de
+motociclistas, documentar a invisibilidade ocupacional desses casos nos
+registros oficiais e construir --- antes de olhar o desfecho --- um
+tratamento municipal datado que permita estimar o efeito causal da
+chegada do entregador por aplicativo. \emph{Métodos:} painel município ×
+mês (2015--2025) montado a partir dos microdados do SIH/SUS (3.563 de
+3.564 competências; 433.033 linhas em 5.517 municípios), frota municipal
+do Senatran, benefícios do INSS, PNAD Contínua e relatórios da Prosus. O
+tratamento é o mês em que, em cada município, as aberturas de
+microempreendedor individual (MEI) na atividade de entrega dão um salto
+abrupto, ao menos o dobro do ritmo dos dois anos anteriores. A atividade
+é identificada pela CNAE (Classificação Nacional de Atividades
+Econômicas), o código que toda empresa declara à Receita Federal para
+dizer o que faz; o de entregadores é o 5320-2/02, ``serviços de entrega
+rápida''. O salto é detectado por uma regra baseada em teste de Poisson,
+cujos parâmetros foram calibrados contra um período anterior às
+plataformas (placebo) e contra datas de entrada conhecidas (Wayback
+Machine), nunca contra internações. O plano de análise (diferenças em
+diferenças com adoção escalonada, Callaway \& Sant'Anna) foi registrado
+no OSF antes de qualquer cruzamento tratamento × desfecho.
+\emph{Resultados:} foram 965.714 internações de motociclistas em
+2016--2023, das quais 62 (uma em 15.576) registram nexo ocupacional; o
+SUS pagou R\$ 288 milhões com essas internações em 2025, enquanto o
+resultado operacional do iFood no mesmo ano foi de R\$ 1,8 bilhão. A
+regra identifica esse salto em 640 municípios de 20 a 100 mil habitantes
+entre 2017 e 2025, com falso positivo de 0,7\% a 3,8\% no placebo; 478
+entram na janela balanceada de estimação. Dois modelos complementares,
+sem uso do desfecho, avaliam o tratamento: uma simulação de Monte Carlo
+da regra reproduz o falso positivo observado abaixo de 100 mil
+habitantes (0,6\% e 3,9\% simulados contra 0,7\% e 3,8\% observados) e
+mostra que a regra é conservadora (detecta 22--54\% dos saltos de 2 a 5
+vezes em municípios de 50--100 mil); uma regressão logística de seleção
+(AUC de validação cruzada 0,91) mostra que Nordeste e Norte têm chance
+17 a 34 vezes menor de receber data, mesmo controlando população e
+propensão pré-plataforma a abrir MEI. \emph{Conclusão:} a carga é
+grande, crescente e invisível como acidente de trabalho; o desenho
+causal é viável e está travado por pré-registro. Esta versão entrega a
+parte descritiva e a construção do tratamento; a estimação causal é a
+etapa seguinte, já especificada.
 
 \textbf{Palavras-chave:} plataformas digitais; entregadores; acidentes
 de motocicleta; SIH/SUS; diferenças em diferenças; pré-registro.
@@ -211,14 +218,18 @@ no OSF. Esta versão do artigo é, portanto, uma prévia: entrega (i) e
 (ii) completos, e (iii) como protocolo registrado, com a estimação como
 etapa seguinte.
 
-A contribuição é dupla. Substantivamente, o debate público brasileiro
-(PLP 12/2024; julgamento do vínculo no STF, suspenso em junho de 2026) é
-inteiramente sobre vínculo empregatício; ninguém mede a externalidade
-fiscal sobre o SUS. Metodologicamente, propomos datar a chegada de uma
-tecnologia de trabalho não observada por uma quebra estrutural em
-registros de pessoa jurídica, com hiperparâmetros calibrados contra
-placebo e validação externa --- uma solução reutilizável para outros
-fenômenos de plataformização.
+A contribuição é dupla. Substantivamente, o problema é a ausência de
+regulação: o seguro de acidentes obrigatório da Lei 14.297/2022 valeu só
+durante a emergência sanitária, e o que está em pauta hoje é o vínculo
+empregatício, cujo julgamento no STF está suspenso desde junho de 2026.
+Nenhuma regra em vigor obriga as plataformas a custear o risco de
+acidente que a remuneração por corrida cria, nem a proteger quem o
+corre. Este trabalho mede a carga e o custo público desse risco, que é a
+base que uma política precisa ter. Metodologicamente, propomos datar a
+chegada de uma tecnologia de trabalho não observada por uma quebra
+estrutural em registros de pessoa jurídica, com hiperparâmetros
+calibrados contra placebo e validação externa --- uma solução
+reutilizável para outros fenômenos de plataformização.
 
 \hypertarget{muxe9todos}{%
 \section{2. Métodos}\label{muxe9todos}}
@@ -489,9 +500,10 @@ resultado principal passa a ser a contagem.
 \textbf{Pré-registro.} O plano de análise (seções 1--8, com tradução
 para o inglês), o protocolo de auditoria e o log de decisões datadas
 (até D-045) foram depositados no OSF Registries (modelo \emph{OSF
-Preregistration}) \textbf{{[}DOI/URL DO REGISTRO OSF{]}}, apontando para
-a tag \texttt{pre-registro-v1} do repositório. Todo desvio posterior vai
-para o log como análise exploratória declarada.
+Preregistration}) (doi:
+\href{https://doi.org/10.17605/OSF.IO/V82JE}{10.17605/OSF.IO/V82JE}),
+apontando para a tag \texttt{pre-registro-v1} do repositório. Todo
+desvio posterior vai para o log como análise exploratória declarada.
 
 \hypertarget{avaliauxe7uxe3o-do-tratamento-auditoria-cega}{%
 \subsection{2.5 Avaliação do tratamento: auditoria
@@ -972,13 +984,13 @@ de região × mês, comparando só municípios da mesma grande região, e (ii)
 a estimação restrita a Sul e Sudeste, onde 73--78\% dos municípios têm
 data e o grupo de comparação é mais homogêneo.
 
-\textbf{Implicações.} O debate brasileiro é sobre vínculo; a
-externalidade fiscal não depende dele. Se H1 for sustentada, a fração
-atribuível dá a base de cálculo para uma contribuição acidentária das
-plataformas sobre o valor das corridas --- equivalente funcional do RAT
----, ou um repasse por corrida ao SUS no molde do que o DPVAT fazia. Se
-não for, a invisibilidade documentada aqui continua sendo, sozinha,
-argumento para mudar o registro.
+\textbf{Implicações.} A falta de regulação não depende de decidir o
+vínculo: a externalidade fiscal existe com ou sem ele. Se H1 for
+sustentada, a fração atribuível dá a base de cálculo para uma
+contribuição acidentária das plataformas sobre o valor das corridas ---
+equivalente funcional do RAT ---, ou um repasse por corrida ao SUS no
+molde do que o DPVAT fazia. Se não for, a invisibilidade documentada
+aqui continua sendo, sozinha, argumento para mudar o registro.
 
 \hypertarget{conclusuxe3o}{%
 \section{5. Conclusão}\label{conclusuxe3o}}
@@ -1046,8 +1058,9 @@ declaradas, e a auditoria cega do tratamento são as próximas etapas.
   chance e \texttt{LogisticRegression} com regularização L2 padrão
   (scikit-learn, C = 1) para a AUC.
 \item
-  \textbf{Pré-registro:} OSF \textbf{{[}DOI/URL{]}}; texto do formulário
-  em \texttt{docs/pre-registro/deposito-osf.md}.
+  \textbf{Pré-registro:} OSF, doi:
+  \href{https://doi.org/10.17605/OSF.IO/V82JE}{10.17605/OSF.IO/V82JE};
+  texto do formulário em \texttt{docs/pre-registro/deposito-osf.md}.
 \item
   \textbf{Checklist REFORMS:} documento anexo
   (\texttt{artigo/reforms.md}).
@@ -1096,6 +1109,11 @@ eadk3452, 2024.
 
 NOSEK, B. A. et al.~The preregistration revolution. \emph{Proceedings of
 the National Academy of Sciences}, v. 115, n.~11, p.~2600--2606, 2018.
+
+{[}NOMES DOS AUTORES{]}. \emph{Delivery platforms and motorcyclist
+hospitalizations in Brazil's public health system (SUS): the effect of
+entry in Brazilian municipalities}. Preregistration. OSF Registries,
+2026. DOI: 10.17605/OSF.IO/V82JE.
 
 PROSUS N.V. \emph{KPI datasheets}, anos fiscais 2021 a 2026. Amsterdã:
 Prosus. Disponível em: prosus.com (URLs por célula em

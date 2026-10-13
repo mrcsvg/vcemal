@@ -1,14 +1,14 @@
 # Analysis plan — preregistration (English translation)
 
 > **Translation.** This is a faithful English translation of
-> `plano-de-analise.md`, prepared for the OSF registration on 2026-10-11. The
+> `plano-de-analise.md`, prepared for the OSF registration on 2026-10-13. The
 > Portuguese original is authoritative: if the two differ, the Portuguese text
 > prevails. Codes such as D-040 refer to entries in the project's decision log
 > (`docs/decisoes.md`, in Portuguese). Variable and group names are kept as they
 > appear in the code (`datado`, `sem_quebra`, `coorte_precoce`, …), with a gloss
 > on first use.
 >
-> **Ready for registration (2026-10-11).** No open `[ ]` sections. After
+> **Ready for registration (2026-10-13).** No open `[ ]` sections. After
 > registration this file is frozen — any change goes to the decision log as a
 > declared exploratory analysis.
 
@@ -44,7 +44,39 @@
   instead of `.9` varies by hospital and by state**, and that practice tends to
   track urbanization, which is what drives platform entry. It is potential
   confounding, not just noise. Report, do not interpret in isolation.
-- **H4** — the occupational link is systematically under-recorded in SIH.
+- **H4** (descriptive, outside the causal design) — the occupational link is
+  systematically under-recorded in SIH **and in SIM**. **Operationalization
+  (D-044):** by year and state, among hospitalizations (SIH) and deaths (SIM)
+  of motorcyclists in traffic among men aged 18 to 39, the share with a
+  recorded work link — in SIH, `CAR_INT` 03 or 04 (accident at work or
+  commuting, column `nexo_ocupacional`) over records with `CAR_INT` filled in;
+  in SIM, `ACIDTRAB = 1` over records with `ACIDTRAB` filled in. The completeness
+  of each field is reported alongside. No test: the share is described next to
+  the share of delivery workers among employed motorcyclists in the PNAD
+  (D-031), as an order of magnitude, not as an estimate of under-recording.
+- **H5** (secondary, D-044) — the effect also shows up in motorcyclist
+  **deaths**, which SIH only partly sees: SIH records the death of those
+  admitted to an SUS hospital (`obitos`), not of those who die on the road, at
+  home or in a private hospital. **Source:** SIM (mortality information
+  system), underlying cause V20–V29 in traffic (same fourth-character rule,
+  `src/vcemal/cid.py`), by municipality of residence and month of death. Two
+  outcomes, both per 100,000 motorcycles and with the primary estimand of
+  section 5:
+  - **H5a — total deaths.** **Prediction:** positive effect.
+  - **H5b — deaths outside a health facility** (`LOCOCOR` other than hospital
+    and other health facility; unknown does not count as outside): people who
+    die before being admitted and therefore never enter SIH. **Prediction:**
+    positive effect. An effect on H5b is harm the primary outcome cannot see by
+    construction — one more reason to read H1 as a lower bound, alongside the
+    three in section 6.
+
+  **Criterion:** each is supported if the estimand is positive and the 95%
+  interval excludes zero. **Declared low power:** under 100,000 inhabitants,
+  motorcyclist deaths per municipality and month are small counts with many
+  zeros. Absence of an effect does not refute H5 and does not weigh against H1.
+  **SIM version:** the one available at extraction, recorded with its date; a
+  year still preliminary is flagged, and a robustness check repeats H5 only with
+  the cohorts whose window ends in the last final year.
 
 ## 2. Data
 
@@ -52,7 +84,9 @@ See `docs/anexo-a-inventario-fontes-de-dados.md`. Sources for the main
 estimation: SIH/SUS (outcome; hospital admission records of Brazil's public
 health system), RENAVAM motorcycle fleet (denominator), IBGE (population), CNPJ
 open data (federal company registry; treatment: the break in delivery MEI
-registrations — see section 4).
+registrations — see section 4). For H4 and H5, SIM (death certificates). **SIM
+had not been extracted** at the date of registration: it comes in afterwards,
+by the same route as SIH, and has never been linked with the treatment (D-044).
 
 ## 3. Case definition
 
@@ -61,6 +95,7 @@ registrations — see section 4).
 | Motorcyclist | V20–V29 **in traffic** (`internacoes_transito`) | Outcome |
 | Cyclist | V10–V19 | Mechanism test |
 | Car occupant | V40–V49 | Placebo |
+| Motorcyclist, death | V20–V29 in traffic as underlying cause in SIM | Secondary outcome (H5) |
 
 **The outcome rate is computed in the estimation**, as 100,000 ×
 `internacoes_transito` / `frota_moto` (motorcycle fleet). The panel column
@@ -198,7 +233,7 @@ pre-treatment mean (`e ∈ [−12, −1]`).
 **Inference criterion (D-043):** two-sided test at 5% and 95% interval. H1 is
 supported if the primary estimand is positive and the interval excludes zero.
 H1 is the only confirmatory hypothesis, with no multiple-comparison correction;
-H2, H3, the mechanism test and the failure tests in section 6 are read by the
+H2, H3, H5, the mechanism test and the failure tests in section 6 are read by the
 criteria declared in each, with 95% intervals.
 
 - Unit: municipality × month

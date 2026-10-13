@@ -1,6 +1,6 @@
 # Plano de análise — pré-registro
 
-> **Pronto para depósito (2026-10-11).** Nenhuma seção `[ ]` em aberto; o texto do
+> **Pronto para depósito (2026-10-13).** Nenhuma seção `[ ]` em aberto; o texto do
 > formulário do OSF está em `deposito-osf.md`, e a tradução para o inglês deste
 > plano em `plano-de-analise.en.md`. Em divergência entre os dois, vale este. Depois do depósito, este arquivo fica
 > congelado — qualquer mudança vai para `docs/decisoes.md` como análise exploratória
@@ -35,13 +35,48 @@
   `.4` em vez de `.9` varia por hospital e por UF**, e essa prática tende a
   acompanhar urbanização, que é o que determina a entrada da plataforma. É
   confundimento potencial, não só ruído. Reportar, não interpretar isolado.
-- **H4** — o nexo ocupacional é sistematicamente subregistrado no SIH.
+- **H4** (descritiva, fora do desenho causal) — o nexo ocupacional é
+  sistematicamente subregistrado no SIH **e no SIM**. **Operacionalização
+  (D-044):** por ano e por UF, entre internações (SIH) e óbitos (SIM) de
+  motociclistas em trânsito de homens de 18 a 39 anos, a fração com nexo de
+  trabalho registrado — no SIH, `CAR_INT` 03 ou 04 (acidente no trabalho ou no
+  trajeto, coluna `nexo_ocupacional`) sobre os registros com `CAR_INT`
+  preenchido; no SIM, `ACIDTRAB = 1` sobre os registros com `ACIDTRAB`
+  preenchido. O preenchimento de cada campo é reportado ao lado. Sem teste: a
+  fração é descrita ao lado da participação de entregadores entre os
+  motociclistas ocupados na PNAD (D-031), como ordem de grandeza, não como
+  estimativa do subregistro.
+- **H5** (secundária, D-044) — o efeito aparece também nas **mortes** de
+  motociclistas, que o SIH vê só em parte: o SIH registra o óbito de quem foi
+  internado no SUS (`obitos`), não o de quem morre na via, em casa ou em
+  hospital privado. **Fonte:** SIM, causa básica V20–V29 em trânsito (mesma
+  regra de quarto dígito, `src/vcemal/cid.py`), por município de residência e
+  mês do óbito. Dois desfechos, ambos por 100 mil motos e com o estimando
+  principal da seção 5:
+  - **H5a — mortes totais.** **Previsão:** efeito positivo.
+  - **H5b — mortes fora de estabelecimento de saúde** (`LOCOCOR` diferente de
+    hospital e de outro estabelecimento de saúde; ignorado não conta como fora):
+    quem morre sem chegar a ser internado e por isso nunca entra no SIH.
+    **Previsão:** efeito positivo. Efeito em H5b é dano que o desfecho
+    principal não vê por construção — mais uma razão para ler H1 como piso, ao
+    lado das três da seção 6.
+
+  **Critério:** cada uma é sustentada se o estimando for positivo e o intervalo
+  de 95% excluir zero. **Poder declaradamente baixo:** abaixo de 100 mil
+  habitantes, morte de motociclista por município e mês é contagem pequena, com
+  muitos zeros. Ausência de efeito não refuta H5 e não pesa contra H1.
+  **Versão do SIM:** a disponível na extração, registrada com data; ano ainda
+  preliminar é marcado, e a robustez repete H5 só com as coortes cuja janela
+  termina no último ano definitivo.
 
 ## 2. Dados
 
 Ver `docs/anexo-a-inventario-fontes-de-dados.md`. Fontes da estimação principal:
 SIH/SUS (desfecho), RENAVAM (denominador), IBGE (população), dados abertos do
-CNPJ (tratamento: quebra nas aberturas de MEI de entrega — ver seção 4).
+CNPJ (tratamento: quebra nas aberturas de MEI de entrega — ver seção 4). Para
+H4 e H5, o SIM (declarações de óbito). **O SIM ainda não foi extraído** na data
+do depósito: entra depois, pelo mesmo caminho do SIH, e nunca foi cruzado com o
+tratamento (D-044).
 
 ## 3. Definição de caso
 
@@ -50,6 +85,7 @@ CNPJ (tratamento: quebra nas aberturas de MEI de entrega — ver seção 4).
 | Motociclista | V20–V29 **em trânsito** (`internacoes_transito`) | Desfecho |
 | Ciclista | V10–V19 | Teste do mecanismo |
 | Ocupante de automóvel | V40–V49 | Placebo |
+| Motociclista, óbito | V20–V29 em trânsito como causa básica no SIM | Desfecho secundário (H5) |
 
 **A taxa do desfecho é calculada na estimação**, como 100.000 ×
 `internacoes_transito` / `frota_moto`. A coluna `taxa_por_frota` do painel usa
@@ -179,7 +215,7 @@ incondicionais), reportada também em % da média pré-tratamento dos tratados
 **Critério de inferência (D-043):** teste bilateral a 5% e intervalo de 95%. H1
 é sustentada se o estimando principal for positivo e o intervalo excluir zero.
 H1 é a única hipótese confirmatória, sem correção para comparações múltiplas;
-H2, H3, o teste do mecanismo e os testes de falha da seção 6 são lidos pelos
+H2, H3, H5, o teste do mecanismo e os testes de falha da seção 6 são lidos pelos
 critérios declarados em cada um, com intervalos de 95%.
 
 - Unidade: município × mês

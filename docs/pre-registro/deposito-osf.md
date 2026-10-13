@@ -30,7 +30,8 @@ public health system (SUS). The arrival date is the structural break in new
 micro-entrepreneur (MEI) registrations under activity code CNAE 5320-2/02
 ("express delivery services") in the federal company registry, detected by a
 rule frozen before any linkage with the outcome. Outcome: SIH/SUS admissions per
-100,000 registered motorcycles. Identification by staggered-adoption
+100,000 registered motorcycles; motorcyclist deaths (mortality information
+system, SIM) as a secondary outcome. Identification by staggered-adoption
 difference-in-differences (Callaway & Sant'Anna, 2021). The analysis plan
 (Portuguese original, which prevails, and English translation), the
 treatment-audit protocol and the decision log are attached and in
@@ -56,7 +57,16 @@ commit the tag points to: `git rev-parse pre-registro-v1^{commit}`).
   complement indicates a general traffic trend within motorcyclists, not
   platformization.
 - **H4 (descriptive, outside the causal design).** The occupational link of
-  these injuries is systematically under-recorded in SIH (field `CAR_INT`).
+  these injuries and deaths is systematically under-recorded in SIH (field
+  `CAR_INT`) and SIM (field `ACIDTRAB`). Measured by year and state, among men
+  aged 18–39, as the share of records with a work link among those with the
+  field filled in, with completeness reported alongside; no test.
+- **H5 (secondary).** The effect also shows up in motorcyclist deaths, which
+  SIH only partly sees. Same estimand as H1, on SIM deaths (underlying cause
+  V20–V29, traffic) per 100,000 motorcycles: H5a, total deaths; H5b, deaths
+  outside a health facility (field `LOCOCOR`), which never enter SIH.
+  Predicted direction: positive for both. Declared low power (small monthly
+  counts); absence of an effect does not refute H5.
 
 ## Design Plan
 
@@ -113,8 +123,8 @@ Registration prior to analysis of the data.
 
 ### Explanation of existing data
 
-All data exist and have been downloaded. What has and has not been done with
-them:
+All data exist; all but SIM have been downloaded. What has and has not been
+done with them:
 
 - **SIH (outcome).** Downloaded and aggregated into a municipality × month
   panel. **Descriptive** national and state-level analyses were run and are
@@ -125,6 +135,10 @@ them:
 - **CNPJ (treatment).** Downloaded and processed; break rule applied and frozen.
   Validated against the 2016 placebo and against the Wayback Machine, never
   against SIH (code and outputs in `scripts/mei.py`, decision D-040).
+- **SIM (secondary outcome, H4 and H5).** Not yet downloaded at the date of
+  registration. It will be extracted afterwards by the same route as SIH
+  (D-044); the version used is recorded with its date, and a year still
+  preliminary is flagged.
 - **Never done:** any linkage of treatment with outcome, in a table, model or
   exploratory plot (rule D-006, in force since 2026-09-12). The estimation script
   does not exist yet.
@@ -140,6 +154,10 @@ Public sources, rebuilt by the repository code (`Makefile`):
   residence.
 - Fleet: Senatran monthly municipal fleet, vehicle types matching V20–V29
   (D-013), from July 2016.
+- SIM, death certificates (DO files), from the DATASUS FTP via PySUS. Case:
+  underlying cause V20–V29, traffic by the same fourth-character rule;
+  municipality of residence; month of death; place of occurrence (`LOCOCOR`)
+  and work-accident flag (`ACIDTRAB`).
 - Population: IBGE (2022 Census for the universe; annual estimates as control).
 - Treatment: CNPJ open data, September 2026 release, head-office establishments
   with primary CNAE 5320-2/02, including closed ones (D-040).
@@ -181,7 +199,9 @@ the break is the first month in that window with a registration. Code:
 - **Subgroups and tests:** hospitalizations of men aged 18–39 and of the
   complement (H3); of male drivers aged 18–39 (secondary, low power, D-023);
   cyclists V10–V19, as counts (mechanism); car occupants V40–V49 (placebo);
-  `frota_moto` as outcome (endogenous-denominator test).
+  `frota_moto` as outcome (endogenous-denominator test); SIM deaths of
+  motorcyclists in traffic per 100,000 motorcycles, total and outside a health
+  facility (H5).
 - Full data dictionary: `docs/dicionario-painel.md`.
 
 ### Indices
@@ -215,7 +235,8 @@ H1 is tested two-sided at 5% with a 95% confidence interval; it is supported if
 the primary estimand is positive and the interval excludes zero. H1 is the only
 confirmatory hypothesis, with no multiple-comparison correction; H2, H3, the
 mechanism test and the placebo are read by the criteria pre-declared in the
-plan, with 95% intervals.
+plan, with 95% intervals. H5a and H5b are each supported if the estimand is
+positive and the 95% interval excludes zero.
 
 Pre-declared design-failure tests (section 6 of the plan):
 
@@ -263,7 +284,8 @@ instead of rates.
 the municipality level, outcome over all motorcyclists), the pre-period is
 partly contaminated by the marketplace phase (D-021), and a fleet that grows
 with treatment attenuates the rate (D-027). The three reasons will be reported
-separately.
+separately. An effect on deaths outside a health facility (H5b) would add a
+fourth: harm that SIH cannot see by construction.
 
 **Deviations** from this plan after registration go to `docs/decisoes.md` with
 date and reason, and the affected analyses become declared exploratory

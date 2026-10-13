@@ -468,7 +468,15 @@ positivo e o IC 95\% excluir zero.
 \textbf{Hipóteses secundárias:} H2 --- gradiente do efeito na
 intensidade (tercis de aberturas de MEI por mil habitantes nos 12 meses
 após a quebra); H3 --- concentração em homens de 18--39 anos, o perfil
-do trabalho de entrega (50,4\% do desfecho), contra o complemento.
+do trabalho de entrega (50,4\% do desfecho), contra o complemento; H5
+--- o mesmo estimando aplicado às \textbf{mortes} de motociclistas em
+trânsito no SIM, por 100 mil motos, em dois desfechos: mortes totais
+(H5a) e mortes fora de estabelecimento de saúde (H5b, \texttt{LOCOCOR}),
+que o SIH não vê por construção. H5 é secundária, com poder
+declaradamente baixo; o SIM ainda não foi extraído e nunca foi cruzado
+com o tratamento. \textbf{H4}, descritiva e fora do desenho causal, é o
+subregistro do nexo ocupacional no SIH (\texttt{CAR\_INT}) e no SIM
+(\texttt{ACIDTRAB}), entre homens de 18--39 anos, por ano e UF.
 
 \textbf{Testes de falha declarados antes:} (1) placebo em ocupantes de
 automóvel indistinguível do efeito em motociclistas → tendência geral de
@@ -479,11 +487,11 @@ do efeito sobre internações, a taxa deixa de ser interpretável e o
 resultado principal passa a ser a contagem.
 
 \textbf{Pré-registro.} O plano de análise (seções 1--8, com tradução
-para o inglês), o protocolo de auditoria e o log de 43 decisões datadas
-foram depositados no OSF Registries (modelo \emph{OSF Preregistration})
-\textbf{{[}DOI/URL DO REGISTRO OSF{]}}, apontando para a tag
-\texttt{pre-registro-v1} do repositório. Todo desvio posterior vai para
-o log como análise exploratória declarada.
+para o inglês), o protocolo de auditoria e o log de decisões datadas
+(até D-045) foram depositados no OSF Registries (modelo \emph{OSF
+Preregistration}) \textbf{{[}DOI/URL DO REGISTRO OSF{]}}, apontando para
+a tag \texttt{pre-registro-v1} do repositório. Todo desvio posterior vai
+para o log como análise exploratória declarada.
 
 \hypertarget{avaliauxe7uxe3o-do-tratamento-auditoria-cega}{%
 \subsection{2.5 Avaliação do tratamento: auditoria
@@ -495,10 +503,16 @@ população em cada estrato de ano (2017; 2018--2020; 2021--2025), 12
 iscas \texttt{sem\_quebra} e as 27 capitais --- 75 municípios, numa
 lista única. Dois codificadores, cegos ao SIH, à data da quebra e ao
 grupo, datam a entrada das plataformas pelo protocolo v1.1. Concorda a
-quebra que cai no intervalo codificado ±6 meses; o estrato passa com ≥
-2/3 de concordância. As consequências de cada veredito (excluir quebras
-de 2017 ou de 2021+; ou rebaixar a leitura para ``efeito da chegada de
-entregador formalizado'') foram escritas antes da auditoria começar.
+quebra que cai no intervalo codificado ±6 meses; o estrato passa com
+\textbf{taxa de coincidência} (concordantes sobre achados) de ao menos
+2/3, e é inconclusivo --- não auditado --- com menos de 6 achados. Não
+encontrar evidência é resultado previsto em municípios pequenos, e não
+conta contra nem a favor da regra: por isso cada estrato reporta também
+a \textbf{taxa de achado} (achados sobre sorteados) e a coincidência com
+intervalo de Wilson de 95\%. As consequências de cada veredito (excluir
+quebras de 2017 ou de 2021+; ou rebaixar a leitura para ``efeito da
+chegada de entregador formalizado'') foram escritas antes da auditoria
+começar.
 
 \hypertarget{modelos-complementares-sobre-o-tratamento-exploratuxf3rios-sem-desfecho}{%
 \subsection{2.6 Modelos complementares sobre o tratamento
@@ -507,7 +521,7 @@ desfecho)}\label{modelos-complementares-sobre-o-tratamento-exploratuxf3rios-sem-
 
 Dois modelos avaliam o tratamento construído antes da estimação causal.
 Nenhum usa internações; ambos leem só o arquivo congelado e foram
-registrados no log de decisões como análise exploratória (D-044).
+registrados no log de decisões como análise exploratória (D-046).
 
 \textbf{(a) Simulação de Monte Carlo da regra de quebra.} O mesmo código
 que gerou o tratamento (\texttt{vcemal.mei.detectar\_quebra}) é aplicado
@@ -999,7 +1013,7 @@ declaradas, e a auditoria cega do tratamento são as próximas etapas.
 \item
   \textbf{Código e documentação:} \texttt{github.com/mrcsvg/vcemal}
   (MIT; textos CC BY 4.0). Pipeline completo por \texttt{Makefile};
-  \texttt{make\ test} roda sem rede e sem dado. Log de 44 decisões
+  \texttt{make\ test} roda sem rede e sem dado. Log de 46 decisões
   datadas em \texttt{docs/decisoes.md}; dicionário do painel em
   \texttt{docs/dicionario-painel.md}.
 \item

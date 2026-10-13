@@ -1,4 +1,4 @@
-"""Dois modelos sobre o tratamento congelado, sem tocar no desfecho (D-006, D-044).
+"""Dois modelos sobre o tratamento congelado, sem tocar no desfecho (D-006, D-046).
 
 1. Monte Carlo da regra de quebra (`vcemal.mei.detectar_quebra`, o código que
    gerou o tratamento): falso positivo sob nulo de Poisson e sob superdispersão,

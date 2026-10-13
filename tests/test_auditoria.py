@@ -5,6 +5,8 @@ Sem rede e sem SIH: o tratamento do MEI e o da codificacao sao montados a mao.
 
 from __future__ import annotations
 
+import math
+
 import pandas as pd
 import pytest
 
@@ -192,3 +194,22 @@ def test_municipio_da_amostra_sem_linha_codificada_e_erro():
     chave, mei = _chave_e_mei("2017", ["2017-04"] * 2)
     with pytest.raises(ValueError, match="sem codificacao"):
         aud.avaliar(chave, mei, _codificado({1: None}))
+
+
+def test_wilson_bate_com_valor_de_referencia_e_n_zero_e_nan():
+    inf, sup = aud.wilson(6, 9)
+    assert (round(inf, 4), round(sup, 4)) == (0.3542, 0.8794)
+    assert all(math.isnan(x) for x in aud.wilson(0, 0))
+
+
+def test_taxas_de_achado_e_coincidencia_e_linha_agregada_sem_veredito():
+    chave, mei = _chave_e_mei("2021-2025", ["2022-01"] * 12)
+    cod = _codificado({i: ("2022-02", 0) if i <= 5 else None for i in range(1, 13)})
+    resumo = _resumo(chave, mei, cod)
+    linha = resumo.loc["2021-2025"]
+    assert linha["taxa_achado"] == 5 / 12
+    assert linha["taxa_coincidencia"] == 1.0
+    assert linha["ic95_inf"] < 1.0 <= linha["ic95_sup"]
+    agregado = resumo.loc[aud.AGREGADO]
+    assert (agregado["achados"], agregado["veredito"]) == (5, "")
+    assert math.isnan(resumo.loc["2017", "taxa_coincidencia"])

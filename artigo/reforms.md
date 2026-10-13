@@ -78,6 +78,6 @@ Checklist REFORMS (Kapoor et al., 2024, *Science Advances* 10(18): eadk3452), 8 
 | Item | Status | Resposta | Onde |
 |---|---|---|---|
 | 8a. Validade externa | ✓ | Efeito é de “chegada de entregador formalizado” em municípios de 20–100 mil; não se estende a capitais nem à plataforma X; é piso por três razões distintas (diluição, pré-período contaminado, denominador endógeno) | Artigo §4 |
-| 8b. Contextos em que os resultados não se generalizam | ✓ | Municípios < 20 mil; rede privada de saúde; óbitos pré-hospitalares (SIM, fora); entregadores de bicicleta para o desfecho principal; período pós-2021 com possível contaminação por e-commerce | Artigo §4; plano §4 |
+| 8b. Contextos em que os resultados não se generalizam | ✓ | Municípios < 20 mil; rede privada de saúde; óbitos pré-hospitalares no desfecho principal (entram só na H5, secundária, pelo SIM); entregadores de bicicleta para o desfecho principal; período pós-2021 com possível contaminação por e-commerce | Artigo §4; plano §4 |
 
 **Síntese.** 30 itens atendidos, 2 parciais (3g, 7b), nenhum não atendido. O item 3g é parcial por um achado do próprio estudo (seleção regional ao tratamento), com resposta proposta; o 7b depende da estimação causal, a etapa seguinte ao pré-registro.

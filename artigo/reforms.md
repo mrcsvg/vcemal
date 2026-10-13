@@ -24,7 +24,7 @@ Checklist REFORMS (Kapoor et al., 2024, *Science Advances* 10(18): eadk3452), 8 
 | 2b. Código | ✓ | Repositório público `github.com/mrcsvg/vcemal`, MIT | README |
 | 2c. Infraestrutura computacional | ✓ | Python ≥ 3.11, CPU comum; série SIH ~3.564 arquivos; CNPJ ~6 GB | `pyproject.toml`; README |
 | 2d. README com instruções | ✓ | Passo a passo por alvo de `make` | `README.md` |
-| 2e. Script de reprodução | ✓ | `make painel`, `make mei`, `make custo` etc.; `artigo/analise_artigo.py` para as figuras desta versão (verifica o hash do tratamento) | `Makefile` |
+| 2e. Script de reprodução | ✓ | `make painel`, `make mei`, `make custo` etc.; `artigo/analise_artigo.py` (figuras 1–4) e `artigo/modelos_artigo.py` (simulação e modelo de seleção), ambos verificam o hash do tratamento | `Makefile`; `artigo/` |
 
 ## Módulo 3 — Qualidade dos dados
 
@@ -36,7 +36,7 @@ Checklist REFORMS (Kapoor et al., 2024, *Science Advances* 10(18): eadk3452), 8 
 | 3d. Variável de desfecho | ✓ | Taxa por 100 mil motos de internações V20–V29 em trânsito; leitura do 4º dígito por categoria; causa externa em campo secundário | Artigo §2.2; `src/vcemal/cid.py` |
 | 3e. Tamanho da amostra | ✓ | 433.033 linhas de painel em 5.517 municípios; 640 tratados, 478 na janela balanceada; 510 clusters | Artigo §2.2, §3.4 |
 | 3f. Dados faltantes | ✓ | 1 de 3.564 competências ausente (RR 2022-06, lacuna da fonte); 103 recuperadas do FTP; frota só desde jul/2016 (encurta a janela); população sem 2022–2023 (não interpolada) | Artigo §2.2; D-015, D-036 |
-| 3g. Representatividade | ◐ | Universo completo de municípios ≥ 20 mil, mas desbalanço regional dos tratados (NE/N 15–20% contra S/SE 73–78%) pode refletir propensão a formalizar, não chegada da plataforma | Artigo Tabela 4, §4 |
+| 3g. Representatividade | ◐ | Universo completo de municípios ≥ 20 mil, mas a seleção ao tratamento é fortemente regional: controlando porte e formalização prévia, NE e N têm chance 17 e 34 vezes menor de receber data (regressão logística, AUC 0,91). Proposta: efeitos fixos de região × mês e estimação restrita a S/SE, como exploratórias declaradas | Artigo §3.6, Tabela 7 |
 
 ## Módulo 4 — Pré-processamento
 
@@ -52,10 +52,10 @@ Checklist REFORMS (Kapoor et al., 2024, *Science Advances* 10(18): eadk3452), 8 
 |---|---|---|---|
 | 5a. Descrição do modelo | ✓ | (i) Regra de quebra: teste de Poisson sobre janelas de 6 meses contra linha de base de 24 meses; (ii) DiD escalonado Callaway & Sant'Anna, Sun & Abraham como robustez | Artigo §2.3–2.4; `src/vcemal/mei.py` |
 | 5b. Justificativa da escolha | ✓ | Poisson: contagens raras; DiD-CS: heterogeneidade de timing; *not-yet-treated* evita comparar urbanização | Artigo §2.4; D-022 |
-| 5c. Método de avaliação | ✓ | Regra: falso positivo em placebo pré-plataforma (2016) e atraso contra 65 datas externas (Wayback); auditoria cega de 75 municípios. DiD: pré-tendências, placebo V40–V49, teste de denominador endógeno | Artigo §2.3, §2.5; plano §6 |
+| 5c. Método de avaliação | ✓ | Regra: falso positivo em placebo pré-plataforma (2016), atraso contra 65 datas externas (Wayback), simulação de Monte Carlo (falso positivo sob nulo Poisson e gama-Poisson; poder contra saltos de 2 a 20 vezes), auditoria cega de 75 municípios. Modelo de seleção: AUC em validação cruzada estratificada 5×10. DiD: pré-tendências, placebo V40–V49, teste de denominador endógeno | Artigo §2.3, §2.5, §2.6; plano §6 |
 | 5d. Seleção de modelo | ✓ | Grade de 9 configurações avaliada só contra placebo e Wayback, nunca contra internação | Artigo §2.3 |
 | 5e. Hiperparâmetros | ✓ | *k* = 2, *N* = 5, α = 0,01, base 24 m, janela 6 m; janela de evento [−12, +24]; semente 20261011 | Artigo, Materiais complementares |
-| 5f. Baselines | ◐ | Regra comparada a alternativas da grade e à fonte anterior (codificação manual/Wayback, descartada); estimador principal comparado a TWFE implicitamente e a Sun & Abraham (previsto) | D-039, D-040; plano §5 |
+| 5f. Baselines | ✓ | Regra: comparada às 9 configurações da grade, à fonte anterior (Wayback, descartada) e a um nulo de Poisson simulado. Modelo de seleção: modelos aninhados M1 (só população) → M2 (+ região) → M3 (+ propensão prévia), com AUC 0,755 → 0,904 → 0,912. Estimador principal: Sun & Abraham como robustez (previsto) | Artigo §3.5–3.6; D-039, D-040 |
 
 ## Módulo 6 — Vazamento de dados (*data leakage*)
 
@@ -80,4 +80,4 @@ Checklist REFORMS (Kapoor et al., 2024, *Science Advances* 10(18): eadk3452), 8 
 | 8a. Validade externa | ✓ | Efeito é de “chegada de entregador formalizado” em municípios de 20–100 mil; não se estende a capitais nem à plataforma X; é piso por três razões distintas (diluição, pré-período contaminado, denominador endógeno) | Artigo §4 |
 | 8b. Contextos em que os resultados não se generalizam | ✓ | Municípios < 20 mil; rede privada de saúde; óbitos pré-hospitalares (SIM, fora); entregadores de bicicleta para o desfecho principal; período pós-2021 com possível contaminação por e-commerce | Artigo §4; plano §4 |
 
-**Síntese.** 29 itens atendidos, 3 parciais (3g, 5f, 7b), nenhum não atendido. Os parciais dependem da estimação causal, que é a etapa seguinte ao pré-registro.
+**Síntese.** 30 itens atendidos, 2 parciais (3g, 7b), nenhum não atendido. O item 3g é parcial por um achado do próprio estudo (seleção regional ao tratamento), com resposta proposta; o 7b depende da estimação causal, a etapa seguinte ao pré-registro.

@@ -86,9 +86,17 @@ and against entry dates observed in the Wayback Machine (Rappi and Uber Eats),
 without consulting hospitalization data; the treatment file was frozen with
 SHA-256 `128999bd21de00854c717e181657f5d1832ce78222ec9ef6dd99a3bd8a7654a2`.
 (2) An audit by independent search (75 municipalities) is carried out after this
-registration by two coders blind to SIH, to the break date and to each
-municipality's group (the list includes decoys with no break); the consequence
-of each audit verdict is declared in the plan before the search starts.
+registration by two coders blind to SIH, to the break date and, for the 48
+sampled municipalities, to their group (the list mixes treated municipalities
+with decoys that have no break; the 27 state capitals are recognizable as such
+and are audited under their own criterion). Not finding evidence is expected in
+small municipalities and counts neither for nor against: a stratum passes when
+at least 2/3 of the municipalities with evidence found agree with the break
+(widened by 6 months on each side), and is declared unaudited with fewer than 6
+found. Find rate and agreement rate (with 95% Wilson interval) are reported by
+stratum. The consequence of each audit verdict is declared in the plan before
+the search starts. (3) The SIM mortality data (H4, H5) had not been downloaded
+at registration and have never been linked with the treatment.
 
 ### Study design
 

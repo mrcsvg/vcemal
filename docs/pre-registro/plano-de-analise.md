@@ -160,7 +160,8 @@ mil) em cada estrato de ano da quebra — `2017`, `2018-2020`, `2021-2025` —, 
 iscas `sem_quebra` por faixa e, obrigatoriamente, as 27 capitais: 75 municípios
 misturados numa lista só (`docs/fontes/cronologia/auditoria_municipios.csv`). Dois codificadores buscam a
 entrada das plataformas pelo protocolo `docs/protocolo-cronologia-entrada.md`,
-versão 1.1, cegos ao SIH, à quebra e ao estrato; desempate por regra e
+versão 1.1, cegos ao SIH, à quebra e ao estrato — exceto que as 27 capitais são
+reconhecíveis como tais e têm critério próprio; desempate por regra e
 adjudicação como no protocolo.
 
 - **Concordância:** a quebra cai no intervalo codificado `[data_min, data_max]`
@@ -172,6 +173,18 @@ adjudicação como no protocolo.
   *falha* abaixo disso; *inconclusivo* com menos de 6 achados. O veredito é por
   estrato de ano; o resultado por faixa é reportado ao lado, sem veredito. Iscas
   são só descritas: a fração delas com plataforma encontrada é reportada.
+- **Não encontrar é resultado previsto, não falha (D-045).** Em município
+  pequeno a chegada de plataforma deixa pouco rastro, e muitos `N` são
+  esperados. Por isso o critério é uma **taxa de coincidência** — concordantes
+  sobre achados —, e não sobre a amostra sorteada. Por estrato de ano e por
+  faixa são reportados três números: a **taxa de achado** (achados sobre
+  sorteados), a **taxa de coincidência** (concordantes sobre achados), com
+  intervalo de 95% de Wilson, e o veredito. A coincidência nos 36 `datado`
+  juntos é reportada também, sem consequência.
+  **Viés declarado:** os achados tendem a ser os municípios com mais rastro
+  (maiores, quebras mais recentes), então a coincidência vale para eles e não
+  necessariamente para os não achados. Estrato inconclusivo por falta de achados
+  é dito **não auditado** — não aprovado.
 - **Consequência, aplicada mecanicamente:**
   - `2017` falha → as quebras de 2017 saem da estimação principal (nem tratadas
     nem comparação) e voltam só como robustez;

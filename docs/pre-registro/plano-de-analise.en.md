@@ -175,8 +175,9 @@ thousand) in each break-year stratum — `2017`, `2018-2020`, `2021-2025` —, 6
 municipalities mixed in a single list
 (`docs/fontes/cronologia/auditoria_municipios.csv`). Two coders search for
 platform entry following the protocol `docs/protocolo-cronologia-entrada.md`,
-version 1.1, blind to SIH, to the break and to the stratum; tie-breaking by rule
-and adjudication as in the protocol.
+version 1.1, blind to SIH, to the break and to the stratum — except that the 27
+state capitals are recognizable as such and have their own criterion;
+tie-breaking by rule and adjudication as in the protocol.
 
 - **Agreement:** the break falls in the coded interval `[data_min, data_max]`
   of the earliest entry, widened by 6 months on each side. For the capitals,
@@ -189,6 +190,18 @@ and adjudication as in the protocol.
   The verdict is by break-year stratum; the result by population band is
   reported alongside, without a verdict. Decoys are only described: the share
   of them with a platform found is reported.
+- **Not finding is an expected outcome, not a failure (D-045).** In small
+  municipalities the arrival of a platform leaves little trace, and many `N`
+  are expected. The criterion is therefore an **agreement rate** — agreeing
+  over found —, not over the drawn sample. By break-year stratum and by
+  population band three numbers are reported: the **find rate** (found over
+  drawn), the **agreement rate** (agreeing over found), with a 95% Wilson
+  interval, and the verdict. Agreement over the 36 `datado` together is also
+  reported, without consequence.
+  **Declared bias:** found cases tend to be the municipalities with more trace
+  (larger, more recent breaks), so agreement holds for them and not necessarily
+  for those not found. A stratum inconclusive for lack of found cases is
+  declared **unaudited** — not passed.
 - **Consequence, applied mechanically:**
   - `2017` fails → the 2017 breaks leave the main estimation (neither treated
     nor comparison) and return only as robustness;

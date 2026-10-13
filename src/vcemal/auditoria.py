@@ -41,6 +41,8 @@ plano de analise.
 
 from __future__ import annotations
 
+import math
+
 import pandas as pd
 
 #: Sorteio da auditoria: diferente da semente da ordem de codificacao (20260920).
@@ -98,6 +100,8 @@ TOLERANCIA = 6
 LIMIAR = 2 / 3
 #: Abaixo disto o estrato nao tem achados bastantes para veredito.
 MINIMO_ACHADOS = 6
+#: Linha do resumo com os tres estratos `datado` juntos -- descritiva, sem veredito (D-045).
+AGREGADO = "datado"
 
 COLUNAS_CHAVE = ("ordem", "municipio_ibge", "uf", "municipio", "faixa", "estrato")
 
@@ -160,6 +164,16 @@ def concorda_precoce(mes_tratamento: str, incerteza_meses: int) -> bool:
     return ini - TOLERANCIA <= _mes(LIMITE_PRECOCE)
 
 
+def wilson(k: int, n: int, z: float = 1.959964) -> tuple[float, float]:
+    """Intervalo de Wilson para a proporcao `k / n`; `(nan, nan)` com `n = 0`."""
+    if n == 0:
+        return math.nan, math.nan
+    p = k / n
+    centro = (p + z * z / (2 * n)) / (1 + z * z / n)
+    meia = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / (1 + z * z / n)
+    return max(0.0, centro - meia), min(1.0, centro + meia)
+
+
 def _veredito(estrato: str, achados: int, concordantes: int) -> str:
     if estrato == ISCA:
         return ""
@@ -179,20 +193,30 @@ def _concorda(r) -> bool | None:
 def _resumir(por_mun: pd.DataFrame, chaves: list[tuple[str, str]], com_veredito: bool):
     linhas = []
     for estrato, faixa in chaves:
-        grupo = por_mun[por_mun["estrato"] == estrato]
+        membros = list(ESTRATOS) if estrato == AGREGADO else [estrato]
+        grupo = por_mun[por_mun["estrato"].isin(membros)]
         if faixa:
             grupo = grupo[grupo["faixa"] == faixa]
         achados = int(grupo["achado"].sum())
         concordantes = int((grupo["concorda"] == True).sum())  # noqa: E712 -- coluna com None
+        # Nao achar nao conta contra (D-045): a coincidencia e sobre os achados.
+        julgado = estrato != ISCA and achados > 0
+        inf, sup = wilson(concordantes, achados) if julgado else (math.nan, math.nan)
         linha = {
             "estrato": estrato,
             **({"faixa": faixa} if faixa else {}),
             "auditados": len(grupo),
             "achados": achados,
             "concordantes": concordantes,
+            "taxa_achado": achados / len(grupo) if len(grupo) else math.nan,
+            "taxa_coincidencia": concordantes / achados if julgado else math.nan,
+            "ic95_inf": inf,
+            "ic95_sup": sup,
         }
         if com_veredito:
-            linha["veredito"] = _veredito(estrato, achados, concordantes)
+            linha["veredito"] = (
+                "" if estrato == AGREGADO else _veredito(estrato, achados, concordantes)
+            )
         linhas.append(linha)
     return pd.DataFrame(linhas)
 
@@ -205,7 +229,9 @@ def avaliar(
     `codificado` e o `tratamento_municipio.csv` que `cronologia.py consolidar`
     escreve sobre as planilhas da auditoria. Devolve uma linha por municipio
     auditado, o resumo por estrato com o veredito e o mesmo resumo aberto por
-    faixa, so descritivo.
+    faixa, so descritivo. Cada linha traz a taxa de achado, a taxa de coincidencia
+    (concordantes sobre achados) e o intervalo de Wilson dela; a linha `AGREGADO`
+    junta os tres estratos `datado`, sem veredito (D-045).
     """
     cod = codificado.assign(municipio_ibge=codificado["municipio_ibge"].astype(int))
     faltam = set(chave["municipio_ibge"].astype(int)) - set(cod["municipio_ibge"])
@@ -226,7 +252,7 @@ def avaliar(
     por_mun["achado"] = por_mun["tratado"].astype(str).str.lower() == "true"
     por_mun["concorda"] = [_concorda(r) for r in por_mun.itertuples()]
 
-    estratos = [*ESTRATOS, CAPITAL, ISCA]
+    estratos = [*ESTRATOS, AGREGADO, CAPITAL, ISCA]
     resumo = _resumir(por_mun, [(e, "") for e in estratos], com_veredito=True)
     por_faixa = _resumir(
         por_mun, [(e, f) for e in [*ESTRATOS, ISCA] for f in FAIXAS], com_veredito=False

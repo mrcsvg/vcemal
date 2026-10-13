@@ -127,7 +127,7 @@ with fixed seed 20261011, already executed and versioned.)
 
 ### Existing Data
 
-Registration prior to analysis of the data.
+Authors have observed the data, but have not performed the proposed analyses.
 
 ### Explanation of existing data
 
@@ -150,6 +150,13 @@ done with them:
 - **Never done:** any linkage of treatment with outcome, in a table, model or
   exploratory plot (rule D-006, in force since 2026-09-12). The estimation script
   does not exist yet.
+- **Observations that informed decisions, declared.** The case definition does
+  not restrict the outcome to drivers because the fourth character `.4` covers
+  only 9.4% of motorcyclist admissions and `.9` (unspecified) 69.5% (D-023);
+  the break rule was calibrated on CNPJ data against the 2016 placebo and the
+  Wayback Machine (D-040). Both are observations of the data, made before and
+  without any linkage of treatment with outcome. This is why the option above is
+  chosen rather than a lower level of foreknowledge.
 
 ### Data collection procedures
 

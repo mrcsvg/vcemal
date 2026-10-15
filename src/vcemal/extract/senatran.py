@@ -74,6 +74,10 @@ EXTENSOES = (".xls", ".xlsx")
 
 _ANO_NO_NOME = re.compile(r"20\d{2}")
 
+#: Abreviacao colada no ano, sem separador: `FrotaporMunicpioeTipoJUN2024.xlsx`
+#: (jun e jul/2024). So vale com o ano logo depois, para `marcas` nao virar marco.
+_ABREVIACAO_COLADA = re.compile(r"(" + "|".join(ABREVIACOES_MES) + r")(20\d{2})")
+
 
 def _texto_simples(valor: str) -> str:
     """Minusculas, sem acento, sem pontuacao, espaco simples."""
@@ -92,6 +96,9 @@ def mes_do_arquivo(arquivo: str) -> int | None:
     for token in simples.split():
         if token in ABREVIACOES_MES:
             return ABREVIACOES_MES[token]
+    colada = _ABREVIACAO_COLADA.search(colado)
+    if colada:
+        return ABREVIACOES_MES[colada.group(1)]
     return None
 
 

@@ -1,4 +1,4 @@
-.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria lint test limpar
+.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria did lint test limpar
 
 PYTHON ?= python
 
@@ -54,6 +54,10 @@ auditoria: ## F3: consolida as planilhas da auditoria do MEI e da o veredito por
 	$(PYTHON) scripts/cronologia.py consolidar $(AUD)/auditoria_a.csv $(AUD)/auditoria_b.csv \
 		--desempates $(AUD)/auditoria_desempates.csv --saida output/auditoria
 	$(PYTHON) scripts/cronologia.py auditoria-avaliar output/auditoria/tratamento_municipio.csv
+
+did: ## V2: painel de estimacao e Callaway & Sant'Anna das especificacoes do plano (R: did, fixest) -- sem rede
+	$(PYTHON) scripts/did_painel.py
+	Rscript scripts/did_estimar.R
 
 lint:
 	ruff check . && ruff format --check .

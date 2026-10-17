@@ -508,3 +508,50 @@ Nenhuma dimensão toca a regra de quebra, que está congelada, nem a definição
 - **E3, transbordamento (seção 7), aproximado.** Saem os `sem_quebra` de toda região imediata que tem um `datado` na janela. A versão exata seria tirar o controle só depois que o vizinho é tratado, mas exige controle que varia no tempo, e o `did` não suporta isso. Os `datado` vizinhos ainda não tratados continuam no controle.
 - **E4, o vale em `e = −1`.** No principal, todos os ATT(e) pré ficam entre +1 e +5 contra `e = −1`, e por isso o T2 dispara. Duas leituras: (a) o estimando contra a média de `e ∈ [−12, −1]`, em vez de contra `e = −1`, com o erro-padrão pela covariância agrupada dos ATT(e); (b) antecipação de 3 meses (`anticipation = 3`: a base passa a ser `g − 4`).
 **Fica para depois:** a mudança de codificação coincidente (seção 7) precisa do BigQuery e não roda aqui.
+
+## D-049 · Resultado das exploratórias do D-048, e o T3 põe a contagem como resultado principal
+**Data:** 2026-10-17
+**Poder.** O nulo do principal (+1,1%, p = 0,88) se lê como "abaixo de ~20% não detectável". A contagem detecta a partir de ~13%.
+**Curva de especificação** (`make did-exploratorio`, 48 de 48 estimadas), lida pela regra fixada no D-048:
+- **No geral:** mediana **+8,0%**, amplitude de −19,2% a +21,9%, 79% positivas, 4 de 48 com p < 0,05 positivas e nenhuma negativa, MDE mediano de 23,7%.
+- **O sinal depende da escala, e só dela:**
+  - **Taxa:** mediana +1,1%, 58% positivas, e o teste de pré-tendência rejeita em 33% das balanceadas e em 50% das não balanceadas. As negativas são todas taxa não balanceada, com MDE de 40 a 47%.
+  - **Contagem:** mediana +9,8%, amplitude de +5,9% a +20,5%, **100% positivas**, e a pré-tendência não rejeita em nenhuma.
+  - **Comparação, coortes e janela:** não mudam o sinal dentro da escala.
+- **As 4 com p < 0,05 não são achado** (D-048): duas na taxa não balanceada só com `datado`, uma delas com pré-tendência de p = 0,005, e duas na contagem sem 2017.
+- A resposta à pergunta da curva: na taxa, o sinal e a magnitude dependem da especificação; na contagem, não.
+**E1–E4** (sobre o principal, na taxa):
+- **E1, dentro da grande região:** +5,2%, IC −6,6 a +17,0. Por grande região, em internações por 100 mil motos:
+  - N −33 (19 tratados, ep 25);
+  - NE +1,7, SE +2,0, S +2,0;
+  - CO **+11,8 (35 tratados, ep 2,5)**.
+  O CO é a única região distinguível de zero. Com cinco regiões e 35 tratados, não é citado como evidência.
+- **E2, Sul e Sudeste:** +8,7%, IC −1,8 a +19,2, p = 0,10, pré-tendência p = 0,19.
+- **E3, sem controle vizinho:** −1,4%, p = 0,88.
+- **E4a, contra a média do pré:** −10,5%, IC −22,0 a +1,0, p = 0,07.
+- **E4b, antecipação de 3 meses:** −8,3%, IC −25,9 a +9,3.
+- O E4 mostra que, na taxa, a conclusão depende do mês tomado como base.
+**Consequência do T3, mecânica:** o T3 dispara. A frota sobe +1,2%, distinguível de zero, contra +1,1% nas internações por taxa. Pela seção 6 do plano, o resultado principal **passa a ser a contagem** de internações com efeito fixo de município, e a taxa vai para o anexo com a advertência.
+- **Resultado principal da contagem:** +7,8% da média pré, IC −1,4% a +17,0%, p = 0,098, pré-tendência p = 0,18, 528 tratados agregados. **H1 continua não sustentada.**
+- **Ressalva a declarar:** o T3 disparou de modo degenerado. O critério "ao menos metade do efeito percentual das internações" foi escrito pensando num efeito sobre as internações distinguível de zero. Com ele ≈ 0, qualquer movimento da frota dispara. Uma frota de +1,2% não explica, sozinha, a distância entre +1,1% e +7,8%. A regra é aplicada como está escrita, e a ressalva sai ao lado.
+- **Testes de falha na contagem:**
+  - T2 não dispara (p = 0,18);
+  - T1 já sai em contagem desde o início (D-047) e continua disparando: a diferença moto − auto é de +21 pp, mas com p = 0,069 o IC contém zero.
+
+## D-050 · Decomposição taxa × contagem na mesma amostra, declarada antes de rodar
+**Data:** 2026-10-17
+**Pergunta:** a distância entre a taxa (+1,1%) e a contagem (+7,8%) vem da amostra, da ponderação ou do denominador que varia no tempo? As duas especificações diferem em três coisas ao mesmo tempo:
+- **amostra:** a contagem entra desde 2015-01 e recupera as coortes de 2016-01 a 2017-06;
+- **escala:** a taxa pesa cada município igualmente em taxa, e a contagem pesa pelo tamanho;
+- **denominador:** a frota se move com o tratamento (T3).
+**Desenho:** quatro estimativas de CS, todas com o estimando, a comparação e a janela do principal.
+- **A.** Taxa por frota corrente, na amostra da taxa: é o principal do D-047.
+- **B.** Contagem **na amostra da taxa**, desde 2016-07 e com coortes de 2017-07 a 2023-12.
+- **C.** Contagem dividida pela **frota fixa** de 2016-07 do município, por 100 mil motos, na amostra da taxa. A frota de 2016-07 é anterior a toda coorte dessa amostra, logo predeterminada. C tem a ponderação da taxa e o denominador parado.
+- **D.** Contagem na amostra da contagem: é o resultado principal do D-049.
+**Leitura, fixada antes:**
+- **B − D** é o efeito da amostra.
+- **C − B** é o efeito da escala e da ponderação.
+- **A − C** é o efeito do denominador variar no tempo. Pelo T3, ele deve ser da ordem de −1 pp.
+Cada contraste sai como diferença dos efeitos em % da média pré, sem teste formal: as quatro estimativas compartilham dados, e a pergunta é de contabilidade, não de inferência. Como no D-048, nada aqui é confirmatório, e o resultado principal continua o do D-049.
+**Fecha o capítulo do DiD sobre o SIH.** Depois disto, o próximo passo é o SIM (H5, D-044).

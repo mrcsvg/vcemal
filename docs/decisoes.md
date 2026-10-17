@@ -610,3 +610,36 @@ Uma fonte só, com data, é mais simples que espelho mais recurso.
 - **Preliminar:** o ano que vem de `PRELIM/` é marcado na coluna `preliminar` do painel. Hoje é só 2025. Isso alimenta a robustez do plano: H5 repetida só com as coortes cuja janela termina no último ano definitivo.
 
 **Fronteira:** a extração e o painel do SIM (`make sim`) não leem o tratamento, nem o painel de estimação. O cruzamento com o tratamento é a estimação de H5, que é outro passo.
+
+## D-054 · Resultado da extração do SIM: versão de 17/10/2026, 2025 preliminar
+**Data:** 2026-10-17
+**Extração (`make sim`, D-053):** vieram as **297 UF-ano** (27 UFs, de 2015 a 2025), sem buraco. Uma falha de DNS em AC 2018 foi refeita na retomada.
+- **2015–2024:** definitivos, `CID10/DORES`.
+- **2025:** preliminar, `PRELIM/DORES`, nas 27 UFs.
+
+**Versão:** data de modificação dos arquivos no FTP, consultados em 17/10/2026. O detalhe por arquivo está em `data/raw/sim/manifesto.csv`.
+
+| Ano | Data no FTP |
+|---|---|
+| 2015–2017 | 31/01/2020 |
+| 2018 | 02/04/2020 |
+| 2019 | 06/04/2021 |
+| 2020 | 31/03 a 01/04/2022 |
+| 2021 | 28/04/2023 |
+| 2022 | 21 a 22/12/2023 |
+| 2023 | 19/12/2024 a 21/01/2025 |
+| 2024 | 23/12/2025 |
+| 2025 (preliminar) | 28 a 30/08/2026 |
+
+**Painel** (`data/painel/sim_municipio_mes.parquet`): 91.156 linhas e 5.319 municípios de residência.
+- **H5a:** 134.352 óbitos de motociclista em trânsito.
+- **H5b:** 74.337 deles fora de estabelecimento de saúde, 55%.
+- **Fora do painel:** 135 óbitos com município ignorado. Nenhum saiu por data inválida.
+- **Por ano:** de 10,7 mil a 15,3 mil, mesma ordem de grandeza da série oficial de óbitos de motociclista.
+
+**Lado SIM de H4** (`output/tabelas/h4_sim_uf_ano.csv`), em homens de 18 a 39 anos:
+- `ACIDTRAB` está preenchido em 42% a 50% dos óbitos, conforme o ano.
+- Entre os preenchidos, 5% a 11% marcam acidente de trabalho.
+- É descrição, sem teste, como fixa o plano.
+
+**Ainda não feito:** nada disso foi cruzado com o tratamento. A estimação de H5 é o próximo passo, com o estimando principal e a robustez sem 2025 que o plano exige.

@@ -578,3 +578,12 @@ Cada contraste sai como diferença dos efeitos em % da média pré, sem teste fo
 - **Taxa:** vai ao anexo com duas advertências, a do T3 e a da ponderação.
 - **O que não se diz:** nada disto permite dizer "há efeito nos municípios grandes". Isso seria um subgrupo escolhido depois de ver o dado. Se for perseguido, precisa de pré-registro novo e de outra fonte, por exemplo o SIM (H5) ou um período posterior.
 **Fecha o capítulo do DiD sobre o SIH.** H1 não sustentada em nenhuma escala. O desenho não detecta efeitos abaixo de 13% (contagem) a 20% (taxa). Na escala sem pré-tendência, a contagem, o ponto fica em +8 a +10%, e o sinal é estável em toda a curva. O próximo passo é o SIM (H5, D-044).
+
+## D-052 · Hipótese sugerida pelo dado vai para próximos trabalhos, nunca para o resultado
+**Data:** 2026-10-17
+**Decisão:** toda hipótese que surge depois de ver o desfecho (subgrupo, região, faixa de tamanho, mecanismo sugerido por um padrão) entra em `docs/proximos-trabalhos.md` e, no artigo, como **sugestão de trabalho futuro**. Nunca entra como resultado, nem qualificado ("sugestivo", "há indícios"). O registro diz de onde a hipótese veio e o que seria preciso para testá-la: pré-registro próprio e dado que não a gerou.
+**Por quê:** é a fronteira que o pré-registro protege. Testar a hipótese no mesmo dado que a sugeriu confirma o que já se viu.
+**Aplicado agora:**
+- **PT-01:** concentração nos municípios maiores (D-051).
+- **PT-02:** Centro-Oeste (E1, D-049).
+**Revisa o D-051:** onde o D-051 diz "se for perseguido, precisa de pré-registro novo e de outra fonte", vale esta regra. A hipótese é a PT-01.

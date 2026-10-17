@@ -70,8 +70,9 @@ cat(sprintf("curva: %d especificacoes em %.1f min\n", nrow(curva),
 curva <- cbind(grade, curva)
 fwrite(curva, file.path(saida, "curva_especificacao.csv"))
 
-ok <- curva[is.na(erro %||% NA_character_) | !"erro" %in% names(curva)]
-if ("erro" %in% names(curva)) ok <- curva[is.na(erro)]
+if (!"erro" %in% names(curva)) curva[, erro := NA_character_]
+for (e in curva[!is.na(erro), paste(id, erro, sep = ": ")]) cat("ERRO", e, "\n")
+ok <- curva[is.na(erro)]
 resumo_curva <- data.table(
   especificacoes = nrow(curva), estimadas = nrow(ok),
   mediana_pct = median(ok$pct), min_pct = min(ok$pct), max_pct = max(ok$pct),

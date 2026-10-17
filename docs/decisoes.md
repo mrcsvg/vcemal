@@ -555,3 +555,26 @@ Nenhuma dimensão toca a regra de quebra, que está congelada, nem a definição
 - **A − C** é o efeito do denominador variar no tempo. Pelo T3, ele deve ser da ordem de −1 pp.
 Cada contraste sai como diferença dos efeitos em % da média pré, sem teste formal: as quatro estimativas compartilham dados, e a pergunta é de contabilidade, não de inferência. Como no D-048, nada aqui é confirmatório, e o resultado principal continua o do D-049.
 **Fecha o capítulo do DiD sobre o SIH.** Depois disto, o próximo passo é o SIM (H5, D-044).
+
+## D-051 · A distância entre taxa e contagem é ponderação, não amostra nem denominador; fecha o DiD sobre o SIH
+**Data:** 2026-10-17
+**Resultado da decomposição do D-050** (`make did-decomposicao`), em % da média pré:
+| | efeito | IC 95% | p | pré-tendência p |
+|---|---|---|---|---|
+| A, taxa por frota corrente | +1,1 | −13,2 a +15,5 | 0,88 | 0,035 |
+| B, contagem na amostra da taxa | +8,7 | −1,0 a +18,4 | 0,079 | 0,34 |
+| C, taxa por frota fixa de 2016-07 | −2,5 | −16,9 a +11,8 | 0,73 | 0,017 |
+| D, contagem (principal, D-049) | +7,8 | −1,4 a +17,0 | 0,098 | 0,18 |
+**Contrastes:**
+- **B − D, amostra: +1,0 pp.** As coortes de 2016 e os dados de 2015 não explicam nada.
+- **C − B, escala e ponderação: −11,2 pp.** Explica a distância inteira.
+- **A − C, denominador no tempo: +3,7 pp.** Tem o sinal contrário ao esperado pelo T3, que previa cerca de −1 pp.
+**Leitura:**
+- Mudar de contagem para taxa troca o peso de cada município. A contagem pesa pelo tamanho, e a taxa pesa cada município igualmente.
+- A contagem positiva e a taxa nula, nas mesmas unidades e meses, querem dizer que o que houver de efeito está nos municípios maiores. Nos menores, a taxa é ruído e não mostra efeito.
+- A atenuação pelo denominador que o T3 temia **não aparece**. O contraste A − C vale cerca de 1 internação por 100 mil motos, dentro de meio erro-padrão de cada uma, e não tem sinal interpretável. O T3 disparou pela regra (D-049), mas o mecanismo que ele protege não é o que separa as escalas.
+**Consequência para o artigo:**
+- **Estimando:** o resultado principal fica o da contagem (D-049), declarado como estimando ponderado pelo tamanho do município.
+- **Taxa:** vai ao anexo com duas advertências, a do T3 e a da ponderação.
+- **O que não se diz:** nada disto permite dizer "há efeito nos municípios grandes". Isso seria um subgrupo escolhido depois de ver o dado. Se for perseguido, precisa de pré-registro novo e de outra fonte, por exemplo o SIM (H5) ou um período posterior.
+**Fecha o capítulo do DiD sobre o SIH.** H1 não sustentada em nenhuma escala. O desenho não detecta efeitos abaixo de 13% (contagem) a 20% (taxa). Na escala sem pré-tendência, a contagem, o ponto fica em +8 a +10%, e o sinal é estável em toda a curva. O próximo passo é o SIM (H5, D-044).

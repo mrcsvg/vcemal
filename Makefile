@@ -1,4 +1,4 @@
-.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria did did-exploratorio lint test limpar
+.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria did did-exploratorio did-decomposicao lint test limpar
 
 PYTHON ?= python
 
@@ -61,6 +61,9 @@ did: ## V2: painel de estimacao e Callaway & Sant'Anna das especificacoes do pla
 
 did-exploratorio: ## V2: curva de especificacao e exploratorias E1-E4, declaradas no D-048 (roda depois de make did) -- sem rede
 	Rscript scripts/did_exploratorio.R
+
+did-decomposicao: ## V2: decomposicao taxa x contagem na mesma amostra, declarada no D-050 (roda depois de make did) -- sem rede
+	Rscript scripts/did_decomposicao.R
 
 lint:
 	ruff check . && ruff format --check .

@@ -587,3 +587,26 @@ Cada contraste sai como diferença dos efeitos em % da média pré, sem teste fo
 - **PT-01:** concentração nos municípios maiores (D-051).
 - **PT-02:** Centro-Oeste (E1, D-049).
 **Revisa o D-051:** onde o D-051 diz "se for perseguido, precisa de pré-registro novo e de outra fonte", vale esta regra. A hipótese é a PT-01.
+
+## D-053 · O SIM vem direto do FTP do DATASUS, por UF de residência e ano, com a versão de cada arquivo registrada
+**Data:** 2026-10-17
+**Decisão:** `vcemal.extract.sim` baixa `DO<UF><AAAA>.dbc` do FTP do DATASUS, primeiro em `/dissemin/publicos/SIM/CID10/DORES/` (ano definitivo) e, se o arquivo não estiver lá (550), em `/dissemin/publicos/SIM/PRELIM/DORES/` (ano preliminar). Converte pelo PySUS, como no D-036. Fica em disco só o que cai na definição de caso (`vcemal.cid`, causa básica `CAUSABAS`), em `data/raw/sim/uf=<UF>/ano=<AAAA>/parte.parquet`. O `.dbc` inteiro é descartado. Cada arquivo baixado entra em `data/raw/sim/manifesto.csv` com diretório, tamanho, data de modificação no FTP, data da extração, total de declarações e marca de preliminar. Esse manifesto é a "versão do SIM registrada com data" que o plano (seção 1, H5) exige.
+**Por que o FTP e não o espelho do PySUS:** sondado hoje, antes de qualquer download de série.
+- O espelho tem `DO<UF>2015` a `DO<UF>2024` e **não tem 2025**.
+- No FTP, o definitivo vai até 2024 (`DOBR2024.dbc`, de 23/12/2025). O 2025 só existe em `PRELIM/` (`DOBR2025.dbc`, de 30/08/2026).
+- O espelho também não diz de que versão do arquivo veio. Ano definitivo é republicado no FTP: `DOBR2017`, `DOBR2018` e `DOBR2023` trazem data de jan/2025. E o plano pede a versão com data.
+
+Uma fonte só, com data, é mais simples que espelho mais recurso.
+**Operacionalização, fixada antes de baixar:**
+- **Caso (H5):** `CAUSABAS` em V20–V29 e em trânsito pela regra de quarto dígito de `vcemal.cid.em_transito`, a mesma do SIH.
+- **Município:** de residência (`CODMUNRES`, 6 dígitos, como o `MUNIC_RES` do SIH). Código terminado em `0000` (município ignorado) sai do painel, contado no log e no manifesto.
+- **Mês:** o do óbito (`DTOBITO`, `DDMMAAAA`).
+- **H5a:** `obitos_moto_transito`.
+- **H5b:** `obitos_moto_transito_fora_saude`, com `LOCOCOR` em {3 domicílio, 4 via pública, 5 outros, 6 aldeia indígena}. Ficam de fora 1 (hospital), 2 (outro estabelecimento de saúde), 9 e branco, como o D-044 manda: ignorado não conta como fora.
+- **H4, lado SIM:** por UF de residência e ano, entre óbitos de motociclista em trânsito de homens (`SEXO = 1`) de 18 a 39 anos (`IDADE` de 418 a 439, unidade "anos"), três contagens:
+  - o total;
+  - os de `ACIDTRAB` preenchido, que são 1 (sim) e 2 (não). 9 (ignorado) e branco não contam, pela mesma lógica do `CAR_INT` no D-008;
+  - os de `ACIDTRAB = 1`.
+- **Preliminar:** o ano que vem de `PRELIM/` é marcado na coluna `preliminar` do painel. Hoje é só 2025. Isso alimenta a robustez do plano: H5 repetida só com as coortes cuja janela termina no último ano definitivo.
+
+**Fronteira:** a extração e o painel do SIM (`make sim`) não leem o tratamento, nem o painel de estimação. O cruzamento com o tratamento é a estimação de H5, que é outro passo.

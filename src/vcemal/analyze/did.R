@@ -20,6 +20,10 @@ suppressPackageStartupMessages({
 E_MIN <- -12L
 E_MAX <- 24L
 
+#: Efeito minimo detectavel com 80% de poder num teste bilateral a 5%:
+#: (z_0,975 + z_0,80) x erro-padrao ~ 2,8 ep. Le o nulo como "nao detectavel".
+FATOR_MDE <- qnorm(0.975) + qnorm(0.80)
+
 #' Recorte da spec sobre o painel. Devolve data.table com `y` e `g` da spec.
 amostra <- function(d, spec) {
   s <- modifyList(list(
@@ -117,12 +121,13 @@ estimar_cs <- function(d, spec) {
     se_municipio = se_mun, p_municipio = 2 * pnorm(-abs(est / se_mun)),
     media_pre_tratados = pre_m, pct = 100 * est / pre_m,
     pct_ic_inf = 100 * (est - z * se_reg) / pre_m, pct_ic_sup = 100 * (est + z * se_reg) / pre_m,
+    mde80 = FATOR_MDE * se_reg, mde80_pct = 100 * FATOR_MDE * se_reg / pre_m,
     pre_wald = wald, pre_wald_gl = length(pre), pre_wald_p = wald_p,
     municipios = nrow(um), tratados_agregados = sum(um$g %in% coortes),
     coortes_agregadas = length(coortes), regioes = uniqueN(um$regiao_imediata),
     periodo_ini = min(x$periodo), periodo_fim = max(x$periodo)
   )
-  list(resumo = resumo, es = es, att_gt = a, amostra = x, coortes = coortes)
+  list(resumo = resumo, es = es, v_e = v_e, att_gt = a, amostra = x, coortes = coortes)
 }
 
 #' Tamanho do grupo de comparacao por coorte (plano, secao 5): not-yet-treated
@@ -182,6 +187,7 @@ estimar_sa <- function(d, spec) {
     se_municipio = se_mun, p_municipio = 2 * pnorm(-abs(est / se_mun)),
     media_pre_tratados = pre_m, pct = 100 * est / pre_m,
     pct_ic_inf = 100 * (est - z * se_reg) / pre_m, pct_ic_sup = 100 * (est + z * se_reg) / pre_m,
+    mde80 = FATOR_MDE * se_reg, mde80_pct = 100 * FATOR_MDE * se_reg / pre_m,
     municipios = uniqueN(x$municipio_ibge), tratados_agregados = uniqueN(x$municipio_ibge[x$g > 0]),
     coortes_agregadas = length(coortes), regioes = uniqueN(x$regiao_imediata),
     periodo_ini = min(x$periodo), periodo_fim = max(x$periodo)
@@ -204,4 +210,61 @@ diferenca_proporcional <- function(d, spec, col_a, col_b) {
   nome <- sprintf("dif_%s_%s", col_a, col_b)
   d[, (nome) := get(col_a) / pa - get(col_b) / pb]
   nome
+}
+
+#' E4 (D-048): estimando contra a media do pre-periodo, nao contra e = -1.
+#' Media de ATT(e) em [0, 24] menos media de ATT(e) em [-12, -1], com o
+#' erro-padrao pela covariancia agrupada dos ATT(e). Com base universal,
+#' ATT(-1) = 0 e entra na media do pre.
+contraste_pre_medio <- function(r) {
+  e <- r$es$e
+  w <- numeric(length(e))
+  pos <- e >= 0 & e <= E_MAX
+  pre <- e >= E_MIN & e <= -1
+  w[pos] <- 1 / sum(pos)
+  w[pre] <- -1 / sum(pre)
+  v <- r$v_e
+  v[is.na(v)] <- 0
+  est <- sum(w * r$es$att)
+  se <- sqrt(as.numeric(t(w) %*% v %*% w))
+  pre_m <- r$resumo$media_pre_tratados
+  z <- qnorm(0.975)
+  data.table(
+    id = paste0(r$resumo$id, "_contra_pre_medio"), att = est, se_regiao = se,
+    ic_inf = est - z * se, ic_sup = est + z * se, p_regiao = 2 * pnorm(-abs(est / se)),
+    media_pre_tratados = pre_m, pct = 100 * est / pre_m,
+    pct_ic_inf = 100 * (est - z * se) / pre_m, pct_ic_sup = 100 * (est + z * se) / pre_m,
+    mde80_pct = 100 * FATOR_MDE * se / pre_m
+  )
+}
+
+#' E1 (D-048): CS dentro de cada grande regiao, combinado com peso nos tratados
+#' agregados. A variancia soma: o cluster (regiao imediata) esta contido na
+#' grande regiao, entao as estimativas sao independentes entre regioes.
+#' `regiao` e a coluna da grande regiao no painel.
+estimar_por_grande_regiao <- function(d, spec, regiao = "grande_regiao") {
+  partes <- lapply(sort(unique(d[[regiao]])), function(k) {
+    r <- tryCatch(suppressWarnings(estimar_cs(d[get(regiao) == k], spec)),
+                  error = function(e) NULL)
+    if (is.null(r)) return(data.table(grande_regiao = k, att = NA_real_, se_regiao = NA_real_,
+                                      media_pre_tratados = NA_real_, tratados_agregados = 0L))
+    r$resumo[, .(grande_regiao = k, att, se_regiao, media_pre_tratados, tratados_agregados)]
+  })
+  p <- rbindlist(partes)
+  ok <- p[!is.na(att) & tratados_agregados > 0]
+  w <- ok$tratados_agregados / sum(ok$tratados_agregados)
+  est <- sum(w * ok$att)
+  se <- sqrt(sum(w^2 * ok$se_regiao^2))
+  pre_m <- sum(w * ok$media_pre_tratados)
+  z <- qnorm(0.975)
+  list(
+    por_regiao = p,
+    resumo = data.table(
+      id = spec$id, att = est, se_regiao = se, ic_inf = est - z * se, ic_sup = est + z * se,
+      p_regiao = 2 * pnorm(-abs(est / se)), media_pre_tratados = pre_m, pct = 100 * est / pre_m,
+      pct_ic_inf = 100 * (est - z * se) / pre_m, pct_ic_sup = 100 * (est + z * se) / pre_m,
+      mde80_pct = 100 * FATOR_MDE * se / pre_m, tratados_agregados = sum(ok$tratados_agregados),
+      regioes_estimadas = nrow(ok), regioes_sem_estimativa = nrow(p) - nrow(ok)
+    )
+  )
 }

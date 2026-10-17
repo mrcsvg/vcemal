@@ -96,6 +96,20 @@ nome <- diferenca_proporcional(d, spec, "ysint", "ydobro")
 rd <- estimar_cs(d, modifyList(spec, list(id = "dif", y = nome)))
 confere(abs(rd$resumo$att) < 1e-8, sprintf("diferenca proporcional de desfechos proporcionais: %.2g", rd$resumo$att))
 
+# 7. Contra a media do pre: sem pre-tendencia, da o mesmo que contra e = -1.
+cp <- contraste_pre_medio(r)
+confere(abs(cp$att - verdade) / cp$se_regiao < 4, sprintf("contra o pre medio %.3f contra %.3f", cp$att, verdade))
+#    Com pre-tendencia plantada, os dois divergem (o vale em e = -1 do D-048).
+cp1 <- contraste_pre_medio(r1)
+confere(abs(cp1$att - r1$resumo$att) > 3 * cp1$se_regiao,
+        sprintf("pre-tendencia separa os dois estimandos: %.2f vs %.2f", cp1$att, r1$resumo$att))
+
+# 8. Grande regiao: com o efeito igual em toda parte, a combinacao recupera.
+d[, grande_regiao := (regiao_imediata - 1L) %/% 20L]
+gr <- estimar_por_grande_regiao(d, spec)
+confere(abs(gr$resumo$att - verdade) / gr$resumo$se_regiao < 4,
+        sprintf("grande regiao %.3f contra %.3f (%d regioes)", gr$resumo$att, verdade, gr$resumo$regioes_estimadas))
+
 if (length(falhas)) {
   cat("\n", length(falhas), "falha(s)\n")
   quit(status = 1)

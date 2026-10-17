@@ -490,3 +490,21 @@ Rappi e Uber Eats sempre operaram com entregador próprio (seção 1), então a 
 - **`coorte_precoce` como coorte de 2018-01** na robustez que a seção 4 menciona: é o limite superior da premissa "frota própria até 2018".
 - **Sun & Abraham** (`fixest::sunab`): controle são os `sem_quebra`, só as coortes da janela, observações tratadas aparadas em `e ∈ [−12, +24]`, estimando = média simples dos coeficientes `e ∈ [0, 24]`.
 **De passagem:** o parser do Senatran não reconhecia a abreviação colada no ano (`FrotaporMunicpioeTipoJUN2024.xlsx`), e jun e jul/2024 faltavam nos denominadores. Corrigido com teste; o painel tem agora as 114 competências de 2016-07 a 2025-12.
+
+## D-048 · Poder, curva de especificação e exploratórias do V2, declaradas antes de rodar
+**Data:** 2026-10-16
+**Contexto:** a estimação do D-047 não sustenta H1. Estimando principal de +1,1% da média pré, IC de −13% a +15%, p = 0,88. T1, T2 e T3 disparam. A pergunta seguinte é se o nulo é ausência de efeito ou falta de poder, e quão sensível ele é à especificação. Nada abaixo substitui o resultado confirmatório: tudo é **análise exploratória declarada** (plano, seção 8), registrada aqui antes de rodar.
+**1. Poder.** Toda estimativa passa a sair com o efeito mínimo detectável a 80% de poder, num teste bilateral a 5%: `mde80 = (z_0,975 + z_0,80) × ep`, cerca de 2,8 erros-padrão, também em % da média pré. Já calculado sobre o D-047: principal **20,5%**; contagem e só `datado`, cerca de **13%**; Sun & Abraham, 27,5%. O nulo do principal se lê como "efeito abaixo de ~20% não detectável", não como "efeito zero".
+**2. Curva de especificação: 48 especificações, reportadas todas.** Callaway & Sant'Anna, desfecho motociclista em trânsito, janela de evento e estimando como no principal. O produto cartesiano de quatro dimensões:
+- **escala:** taxa por 100 mil motos (desde 2016-07) | contagem (desde 2015-01);
+- **comparação:** not-yet-treated `datado` + `sem_quebra` | not-yet-treated só `datado` | nunca tratados (`sem_quebra`);
+- **coortes:** todas | sem as quebras antes de 2018-01 | sem as quebras depois de 2020-12 | só 2018-01 a 2020-12;
+- **janela:** balanceada `[−12, +24]` | não balanceada.
+Nenhuma dimensão toca a regra de quebra, que está congelada, nem a definição de caso.
+**Regra de leitura, fixada antes:** sai a distribuição inteira, ordenada, com IC: mediana e amplitude do efeito em %, fração de estimativas positivas, fração com p < 0,05 de cada sinal. As 48 são fortemente correlacionadas (mesmos dados), então a fração significativa **não é um teste**, e nenhum subconjunto é citado como evidência. Uma especificação da curva com p < 0,05 não é achado. A curva responde a uma pergunta só: o sinal e a magnitude do principal dependem da especificação?
+**3. Exploratórias da seção 7 e do D-046**, sobre o principal:
+- **E1, comparação dentro da grande região.** CS separado em cada grande região e combinado com peso no número de tratados agregados. A variância soma entre regiões: as regiões imediatas, que são o cluster, estão contidas nelas. É a versão exata da proposta do D-046, "efeitos fixos de região × mês". Região com poucos tratados que não estime é reportada, não imputada.
+- **E2, só Sul e Sudeste** (D-046).
+- **E3, transbordamento (seção 7), aproximado.** Saem os `sem_quebra` de toda região imediata que tem um `datado` na janela. A versão exata seria tirar o controle só depois que o vizinho é tratado, mas exige controle que varia no tempo, e o `did` não suporta isso. Os `datado` vizinhos ainda não tratados continuam no controle.
+- **E4, o vale em `e = −1`.** No principal, todos os ATT(e) pré ficam entre +1 e +5 contra `e = −1`, e por isso o T2 dispara. Duas leituras: (a) o estimando contra a média de `e ∈ [−12, −1]`, em vez de contra `e = −1`, com o erro-padrão pela covariância agrupada dos ATT(e); (b) antecipação de 3 meses (`anticipation = 3`: a base passa a ser `g − 4`).
+**Fica para depois:** a mudança de codificação coincidente (seção 7) precisa do BigQuery e não roda aqui.

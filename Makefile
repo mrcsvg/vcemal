@@ -1,4 +1,4 @@
-.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria did lint test limpar
+.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria did did-exploratorio lint test limpar
 
 PYTHON ?= python
 
@@ -58,6 +58,9 @@ auditoria: ## F3: consolida as planilhas da auditoria do MEI e da o veredito por
 did: ## V2: painel de estimacao e Callaway & Sant'Anna das especificacoes do plano (R: did, fixest) -- sem rede
 	$(PYTHON) scripts/did_painel.py
 	Rscript scripts/did_estimar.R
+
+did-exploratorio: ## V2: curva de especificacao e exploratorias E1-E4, declaradas no D-048 (roda depois de make did) -- sem rede
+	Rscript scripts/did_exploratorio.R
 
 lint:
 	ruff check . && ruff format --check .

@@ -643,3 +643,19 @@ Uma fonte só, com data, é mais simples que espelho mais recurso.
 - É descrição, sem teste, como fixa o plano.
 
 **Ainda não feito:** nada disso foi cruzado com o tratamento. A estimação de H5 é o próximo passo, com o estimando principal e a robustez sem 2025 que o plano exige.
+
+## D-055 · Estimação de H5: o T3 vale para a mesma frota, e a robustez sem 2025 corta o painel em 2024-12
+**Data:** 2026-10-17
+**Decisão, antes de rodar:** H5a (`obitos_moto_transito`) e H5b (`obitos_moto_transito_fora_saude`) são estimadas pelo estimando principal da seção 5. É `estimar_cs`, com a mesma janela, a mesma comparação e o mesmo cluster de H1, nas duas escalas.
+- **Taxa por 100 mil motos**, como o plano escreve: janela desde 2016-07, coortes de 2017-07 a 2023-12.
+- **Contagem com efeito fixo de município:** janela desde 2015-01, coortes de 2016-01 a 2023-12.
+
+**Qual é a leitura principal:** a **contagem**. O T3 é um teste sobre o denominador. Ele disparou sobre `frota_moto` (D-049), e H5 usa exatamente o mesmo denominador. Pela seção 6, nesse caso "a taxa não é interpretável" e o resultado principal passa a ser a contagem. Aplicar a regra a H1 e não a H5 seria escolher a escala depois. A taxa sai ao lado, no anexo, com a mesma advertência e a ressalva do disparo degenerado do D-049.
+**Critério (plano, H5):** cada uma é sustentada se o estimando for positivo e o IC de 95% excluir zero, na leitura principal. Se a taxa e a contagem divergirem na conclusão, as duas são reportadas e a divergência é dita, sem escolher.
+**Robustez sem o ano preliminar (plano, H5):** o painel é cortado em 2024-12, o período 120, nas duas escalas.
+- O `balance_e = 24` tira da agregação as coortes cuja janela passaria de 2024-12: ficam as coortes até 2022-12.
+- As coortes de 2023 seguem como not-yet-treated até a quebra, como no principal.
+- É a leitura literal de "só com as coortes cuja janela termina no último ano definitivo": 2024 é o último definitivo (D-054).
+
+**Também sai:** para cada uma, o MDE de 80% (2,8 × ep, D-048) e a pré-tendência (T2). O T2 é reportado, e não interpretado causalmente se rejeitar, como na seção 6.
+**Painel:** `did_painel.py` junta o painel do SIM (`sim_municipio_mes.parquet`) ao de estimação pelo município de residência de 6 dígitos e pelo mês. Município-mês sem óbito é zero. A taxa usa a mesma `frota_moto`.

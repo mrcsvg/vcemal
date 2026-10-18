@@ -67,7 +67,16 @@ def serie_rd(ufs: list[str], anos: range) -> pd.DataFrame:
             if (uf, ano) in ja:
                 continue
             antes = set(cache.rglob("RD*.parquet")) if cache.exists() else set()
-            caminhos = baixar_ano(uf, ano)
+            caminhos = None
+            for tentativa in range(1, 4):
+                try:
+                    caminhos = baixar_ano(uf, ano)
+                    break
+                except Exception as e:  # noqa: BLE001 -- rede; a retomada cobre o resto
+                    log.warning("%s %d: tentativa %d falhou (%r)", uf, ano, tentativa, e)
+            if caminhos is None:
+                log.error("%s %d: desisti depois de 3 tentativas", uf, ano)
+                continue
             linhas = []
             for mes, caminho in sorted(caminhos.items()):
                 cols = ["DIAG_PRINC", *SECUNDARIOS]

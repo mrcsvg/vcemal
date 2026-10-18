@@ -743,3 +743,20 @@ O RD é a fonte de onde saiu o desfecho, e é ela que interessa conferir.
   - o maior salto entre meses consecutivos da série nacional, com o mês.
 - **O que contaria como descontinuidade:** salto de nível perto de 2018 maior que a variação entre meses do resto da série. Seria reportado ao lado de H1.
 - **Por que uma quebra nacional pesa pouco:** ela cai no mesmo mês de calendário para todos os municípios, então os efeitos de tempo do estimador a absorvem. Só pesaria se fosse correlacionada com a coorte. A série nacional não testa isso, e isso é dito.
+
+## D-060 · Mudança de codificação coincidente: sem descontinuidade perto de 2018
+**Data:** 2026-10-18
+**Cobertura:** os 297 RD completos (27 UFs × 2015–2025), 3.564 UF-meses e 136,2 milhões de AIH. Quatro UF-anos caíram por timeout de rede na primeira passada e entraram na retomada (RN 2018, SE 2019, SC 2016, SC 2017). Por isso o laço de download passou a ter 3 tentativas por UF-ano.
+**Resultado, lido pela regra do D-059:**
+- **Fração de AIH com V01–V99 em campo secundário:** 1,85% em 2017 e 1,80% em 2018, variação de −0,05 pp.
+- **Saltos entre meses consecutivos da série nacional:**
+  - Dentro da faixa marcada (2017-07 a 2018-12), o maior salto em módulo é de 0,09 pp, em 2017-07.
+  - Fora dela, o percentil 95 dos saltos é 0,15 pp, e o maior da série é −0,19 pp, em 2021-03.
+  - A mediana dos saltos é 0,04 pp.
+  - Nenhum salto perto de 2018 passa da variação do resto da série, então não há descontinuidade pelo critério do D-059.
+- **Nível:** a série sobe cerca de 0,2 pp de 2019 para 2020 e fica entre 2,0% e 2,1% até 2025. Isso fica fora da janela da pergunta e é registrado sem interpretação. Como é nacional, os efeitos de tempo do estimador o absorvem.
+- **Composição de `campo_causa`:** a definição de caso acha o código em `DIAGSEC1` em 99,4% a 99,7% das AIH em todos os anos, sem mudança perto de 2018.
+- **V em `DIAG_PRINC`:** aparece só em 2015-01 a 2015-05 (513 AIH no total) e zera daí em diante. São 329 casos da definição, 0,02% dos 1,73 milhão, todos antes da primeira coorte e longe da janela. Fica anotado como mudança de preenchimento em 2015, de peso desprezível.
+
+**Limite, como o D-059 previa:** a série é nacional. Ela não testa uma mudança de codificação correlacionada com a coorte, que é a única que viesaria o DiD.
+**Saídas:** `output/tabelas/codificacao_{brasil_mes,uf_mes,campo_causa,resumo}.csv` e `output/figuras/codificacao.png`.

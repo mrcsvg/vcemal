@@ -116,6 +116,30 @@ def test_montar_preenche_zero_e_balanceia():
     assert df.loc[df["frota_moto"].isna(), "taxa_moto_transito"].isna().all()
 
 
+def test_montar_junta_o_sim_com_zero_onde_nao_houve_obito():
+    painel = pd.DataFrame([_linha("410010", 2019, 3, "motociclista", transito=1)])
+    den = pd.DataFrame(
+        {"municipio_res": ["410010"], "ano": [2019], "mes": [3], "frota_moto": [4000]}
+    )
+    sim = pd.DataFrame(
+        {
+            "municipio_res": ["410010"],
+            "ano": [2019],
+            "mes": [3],
+            "obitos_moto_transito": [2],
+            "obitos_moto_transito_fora_saude": [1],
+            "preliminar": [False],
+        }
+    )
+    df = est.montar(painel, den, _tratamento(), REGIOES, sim=sim)
+    assert df["obitos_moto_transito"].sum() == 2
+    assert df["obitos_moto_transito"].dtype == "int64"
+    a = df[(df["municipio_ibge"] == 4100103) & (df["periodo"] == est.periodo_de("2019-03"))]
+    assert a["taxa_obito_moto_transito"].item() == pytest.approx(100_000 * 2 / 4000)
+    assert a["taxa_obito_moto_fora_saude"].item() == pytest.approx(100_000 * 1 / 4000)
+    assert df.loc[df["frota_moto"].isna(), "taxa_obito_moto_transito"].isna().all()
+
+
 def test_montar_recusa_municipio_sem_regiao():
     painel = pd.DataFrame([_linha("410010", 2019, 3, "motociclista")])
     den = pd.DataFrame(columns=["municipio_res", "ano", "mes", "frota_moto"])

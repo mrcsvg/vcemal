@@ -130,6 +130,7 @@ def montar(
     tratamento: pd.DataFrame,
     regioes: pd.DataFrame,
     aberturas: pd.DataFrame | None = None,
+    sim: pd.DataFrame | None = None,
 ) -> pd.DataFrame:
     """Painel balanceado municipio x mes, 2015-01 a 2025-12, para todo o universo.
 
@@ -171,6 +172,17 @@ def montar(
     df["taxa_moto_h1839"] = df["moto_homem_18_39"] * por_moto
     df["taxa_moto_resto"] = (df["moto_internacoes"] - df["moto_homem_18_39"]) * por_moto
     df["taxa_moto_condutor_h1839"] = df["moto_condutor_homem_18_39"] * por_moto
+
+    if sim is not None:
+        # H5 (D-055): obitos do SIM por residencia e mes, zero onde nao houve.
+        cols_sim = ["obitos_moto_transito", "obitos_moto_transito_fora_saude"]
+        o = sim[["municipio_res", "ano", "mes", *cols_sim]].copy()
+        o["municipio_res"] = o["municipio_res"].astype(str)
+        o[["ano", "mes"]] = o[["ano", "mes"]].astype("int64")
+        df = df.merge(o, on=["municipio_res", "ano", "mes"], how="left")
+        df[cols_sim] = df[cols_sim].fillna(0).astype("int64")
+        df["taxa_obito_moto_transito"] = df["obitos_moto_transito"] * por_moto
+        df["taxa_obito_moto_fora_saude"] = df["obitos_moto_transito_fora_saude"] * por_moto
 
     if aberturas is not None:
         intens = intensidade(tratamento, aberturas)

@@ -1,4 +1,4 @@
-.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria did did-exploratorio did-decomposicao sim lint test limpar
+.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria did did-exploratorio did-decomposicao did-h5 sim lint test limpar
 
 PYTHON ?= python
 
@@ -64,6 +64,9 @@ did-exploratorio: ## V2: curva de especificacao e exploratorias E1-E4, declarada
 
 did-decomposicao: ## V2: decomposicao taxa x contagem na mesma amostra, declarada no D-050 (roda depois de make did) -- sem rede
 	Rscript scripts/did_decomposicao.R
+
+did-h5: ## H5: obitos do SIM pelo estimando principal, contagem e taxa, com e sem 2025 (D-055; depois de make sim e make did) -- sem rede
+	Rscript scripts/did_h5.R
 
 sim: ## H5 e H4: obitos do SIM por municipio x mes, direto do FTP do DATASUS (D-053) -- ~1,5 GB de FTP
 	$(PYTHON) scripts/sim_pipeline.py

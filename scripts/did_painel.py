@@ -22,7 +22,14 @@ from pathlib import Path
 
 import pandas as pd
 
-from vcemal.paths import FONTES, INTERIM, PAINEL, PAINEL_MUNICIPIO_MES, TABELAS
+from vcemal.paths import (
+    FONTES,
+    INTERIM,
+    PAINEL,
+    PAINEL_MUNICIPIO_MES,
+    PAINEL_SIM_MUNICIPIO_MES,
+    TABELAS,
+)
 from vcemal.transform import estimacao
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -55,7 +62,12 @@ def main() -> int:
     den = pd.read_parquet(DENOMINADORES)
     aberturas = pd.read_csv(ABERTURAS)
 
-    df = estimacao.montar(painel, den, tratamento, regioes(CACHE_REGIOES), aberturas)
+    # O SIM entra se ja foi extraido (`make sim`, D-053); sem ele, H5 nao roda.
+    sim = pd.read_parquet(PAINEL_SIM_MUNICIPIO_MES) if PAINEL_SIM_MUNICIPIO_MES.exists() else None
+    if sim is None:
+        log.warning("sem painel do SIM em %s: H5 fica de fora", PAINEL_SIM_MUNICIPIO_MES)
+
+    df = estimacao.montar(painel, den, tratamento, regioes(CACHE_REGIOES), aberturas, sim)
 
     sem_frota = df[(df["periodo"] >= estimacao.periodo_de("2016-07")) & ~(df["frota_moto"] > 0)]
     if len(sem_frota):
@@ -67,6 +79,12 @@ def main() -> int:
     log.info("municipios por grupo:\n%s", estimacao.resumo(df).to_string())
     total = df["moto_internacoes_transito"].sum()
     log.info("internacoes de motociclista em transito no universo: %d", total)
+    if sim is not None:
+        log.info(
+            "obitos de motociclista em transito no universo: %d (%d fora de estab. de saude)",
+            df["obitos_moto_transito"].sum(),
+            df["obitos_moto_transito_fora_saude"].sum(),
+        )
 
     args.saida.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(args.saida, index=False)

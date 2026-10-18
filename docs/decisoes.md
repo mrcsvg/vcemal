@@ -659,3 +659,30 @@ Uma fonte só, com data, é mais simples que espelho mais recurso.
 
 **Também sai:** para cada uma, o MDE de 80% (2,8 × ep, D-048) e a pré-tendência (T2). O T2 é reportado, e não interpretado causalmente se rejeitar, como na seção 6.
 **Painel:** `did_painel.py` junta o painel do SIM (`sim_municipio_mes.parquet`) ao de estimação pelo município de residência de 6 dígitos e pelo mês. Município-mês sem óbito é zero. A taxa usa a mesma `frota_moto`.
+
+## D-056 · Resultado de H5: não sustentada em nenhuma das duas, com MDE de 25% a 46%
+**Data:** 2026-10-17
+**Execução:** `make did-h5`, com as especificações do D-055, todas estimadas. O painel de estimação tem 101.399 óbitos de motociclista em trânsito nos 1.710 municípios do universo, 54.478 deles fora de estabelecimento de saúde. Média pré dos tratados: 0,26 óbito por município-mês (H5a) e 0,14 (H5b).
+
+**Leitura principal (contagem, D-055):**
+| | Efeito (% da média pré) | IC 95% | p | MDE80 | Pré p | Tratados |
+|---|---|---|---|---|---|---|
+| H5a, mortes totais | +3,6% | −13,9 a +21,0 | 0,69 | 24,9% | 0,95 | 528 |
+| H5b, fora de estab. de saúde | +13,2% | −10,3 a +36,6 | 0,27 | 33,5% | 0,54 | 528 |
+
+**Anexo (taxa por 100 mil motos, T3 disparou):**
+- H5a: +6,7% [−16,0, +29,4], MDE 32,5%.
+- H5b: +1,7% [−28,2, +31,6], MDE 42,7%.
+
+**Robustez sem 2025 (painel até 2024-12, 474 tratados na contagem, 424 na taxa):**
+- Contagem: H5a +2,5% [−16,6, +21,5]; H5b +12,5% [−12,7, +37,7].
+- Taxa: H5a +7,2%; H5b +3,7%.
+- A conclusão não muda com o ano preliminar.
+
+**Critério (plano, H5):** **H5a e H5b não são sustentadas**, em nenhuma escala e em nenhuma versão. A conclusão não diverge entre taxa e contagem. O T2 não rejeita em nenhuma das oito (pré p de 0,54 a 1,00).
+
+**Como se lê:**
+- Pelo plano, ausência de efeito em H5 não refuta nada e não pesa contra H1.
+- O MDE diz o que o desenho alcança: abaixo de ~25% nas mortes totais e de ~34% nas fora de estabelecimento de saúde, não há como detectar.
+- As oito estimativas pontuais são positivas. Isso não é achado, pela mesma regra que vale para a curva (D-048).
+- H5b ter estimativa pontual maior que H5a não é resultado. Com ICs desse tamanho, os dois não se distinguem.

@@ -720,6 +720,6 @@ O plano pede só ordem de grandeza, e a tabela o diz.
 **Leitura descritiva (plano, H4):**
 - **No SIH, o nexo é praticamente invisível.** O `CAR_INT` está sempre preenchido, mas com o caráter da internação (urgência), e o código de acidente de trabalho quase nunca é usado. Confirma o D-019 neste recorte.
 - **No SIM, o campo existe e é usado, mas fica em branco ou ignorado em mais da metade das declarações.** Entre as UFs, o preenchimento vai de 9% a 87%.
-- **Quanto à PNAD:** a fração com nexo é de uma ordem de grandeza abaixo do teto de 22% a 34% no SIM e de quatro ordens abaixo no SIH. É ordem de grandeza, não estimativa do subregistro: o teto inclui mototáxi e não tem o mesmo recorte de idade e sexo.
+- **Quanto à PNAD:** contra o teto de 22% a 34%, a fração com nexo fica três a quatro vezes abaixo no SIM e de 5 a 8 mil vezes abaixo no SIH. É ordem de grandeza, não estimativa do subregistro: o teto inclui mototáxi e não tem o mesmo recorte de idade e sexo.
 
 **Não é resultado:** a variação de ano a ano e entre UFs fica descrita, não interpretada, e não vira hipótese deste trabalho (D-052).

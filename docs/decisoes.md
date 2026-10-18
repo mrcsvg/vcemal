@@ -686,3 +686,40 @@ Uma fonte só, com data, é mais simples que espelho mais recurso.
 - O MDE diz o que o desenho alcança: abaixo de ~25% nas mortes totais e de ~34% nas fora de estabelecimento de saúde, não há como detectar.
 - As oito estimativas pontuais são positivas. Isso não é achado, pela mesma regra que vale para a curva (D-048).
 - H5b ter estimativa pontual maior que H5a não é resultado. Com ICs desse tamanho, os dois não se distinguem.
+
+## D-057 · H4: o lado SIH sai das AIH individuais, e a referência da PNAD é a fração plataformizada entre motociclistas
+**Data:** 2026-10-17
+**Decisão, antes de montar:** a tabela de H4 (`make h4`, `output/tabelas/h4_uf_ano.csv` e `h4_brasil_ano.csv`) junta os dois lados, por UF de residência e ano.
+
+**Universo:** internações (SIH) e óbitos (SIM) de motociclista em trânsito, de homens de 18 a 39 anos.
+- **SIH, recorte:** o painel municipal não tem o cruzamento trânsito × perfil × `CAR_INT`, por isso o lado SIH sai das AIH já classificadas em `data/raw/sih/`. Entra a AIH com `grupo = motociclista`, `em_transito`, `SEXO = 1` e `idade_anos` de 18 a 39, o mesmo recorte do `homem_18_39` de H3.
+- **SIH, contagens:** o denominador é `car_int_valido`, que é `CAR_INT` com código de domínio (D-008). O numerador é `nexo_ocupacional`, `CAR_INT` 03 ou 04.
+- **SIH, UF e ano:** a UF sai dos dois primeiros dígitos de `MUNIC_RES`, que é a residência, como no SIM. O ano é o da competência, como no painel do SIH.
+- **SIM:** `h4_sim_uf_ano.csv`, do D-053, com o óbito pela residência e pelo ano do óbito.
+
+**Referência da PNAD, ao lado e sem teste:** `motociclistas_plataformizados / motociclistas`, no Brasil, por rodada (2022, 2024, 2025), com o recorte do D-031: setor privado e trabalho principal. É a fração ponderada pelo peso da PNAD.
+**É um teto da participação de entregadores, e não a participação**, por três razões:
+- inclui o mototáxi por aplicativo;
+- não se restringe a homens de 18 a 39 anos;
+- é estoque de ocupados, não de quem se acidenta.
+
+O plano pede só ordem de grandeza, e a tabela o diz.
+**Leitura (plano, H4):** descritiva. A fração com nexo registrado é posta ao lado do preenchimento de cada campo e da referência da PNAD. Não é estimativa do subregistro e não tem teste.
+
+## D-058 · Resultado de H4: o SIH registra o nexo em 1 a cada 24,5 mil internações; o SIM, em 7,7% das declarações preenchidas
+**Data:** 2026-10-17
+**Execução:** `make h4`, com o D-057, sobre 3.563 competências do SIH, as 297 UF-ano do SIM e as três rodadas da PNAD (`make pnad` refeito hoje, com os números do D-031 reproduzidos). Recorte: motociclista em trânsito, homem de 18 a 39 anos, 2015–2025, Brasil.
+
+| | Registros | Campo preenchido | Com nexo de trabalho | Nexo / preenchido |
+|---|---|---|---|---|
+| SIH (`CAR_INT`) | 637.905 internações | 100% | 26 | 0,004% (1 em 24.535) |
+| SIM (`ACIDTRAB`) | 71.190 óbitos | 45,7% (42% a 50% por ano) | 2.520 | 7,7% (5,3% a 10,6% por ano) |
+
+**PNAD, teto da participação de entregadores entre motociclistas (D-057):** fração plataformizada entre motociclistas ocupados de 21,9% (4T2022), 33,5% (3T2024) e 34,4% (3T2025).
+
+**Leitura descritiva (plano, H4):**
+- **No SIH, o nexo é praticamente invisível.** O `CAR_INT` está sempre preenchido, mas com o caráter da internação (urgência), e o código de acidente de trabalho quase nunca é usado. Confirma o D-019 neste recorte.
+- **No SIM, o campo existe e é usado, mas fica em branco ou ignorado em mais da metade das declarações.** Entre as UFs, o preenchimento vai de 9% a 87%.
+- **Quanto à PNAD:** a fração com nexo é de uma ordem de grandeza abaixo do teto de 22% a 34% no SIM e de quatro ordens abaixo no SIH. É ordem de grandeza, não estimativa do subregistro: o teto inclui mototáxi e não tem o mesmo recorte de idade e sexo.
+
+**Não é resultado:** a variação de ano a ano e entre UFs fica descrita, não interpretada, e não vira hipótese deste trabalho (D-052).

@@ -723,3 +723,23 @@ O plano pede só ordem de grandeza, e a tabela o diz.
 - **Quanto à PNAD:** contra o teto de 22% a 34%, a fração com nexo fica três a quatro vezes abaixo no SIM e de 5 a 8 mil vezes abaixo no SIH. É ordem de grandeza, não estimativa do subregistro: o teto inclui mototáxi e não tem o mesmo recorte de idade e sexo.
 
 **Não é resultado:** a variação de ano a ano e entre UFs fica descrita, não interpretada, e não vira hipótese deste trabalho (D-052).
+
+## D-059 · Mudança de codificação coincidente: série nacional dos RD completos, sem BigQuery
+**Data:** 2026-10-17
+**Decisão, antes de rodar:** a verificação da seção 7 do plano sai do mesmo RD do desfecho, baixado de novo por `vcemal.extract.sih.baixar_ano` (espelho do PySUS, FTP para o que faltar, D-035 e D-036), de 2015-01 a 2025-12. Do arquivo completo ficam só as contagens. O RD que não estava no cache do PySUS antes é apagado depois de contado.
+**Por que não o BigQuery, que o plano cita:** o plano o cita como ferramenta disponível, não como fonte exigida, e ele tem dois problemas.
+- O espelho da Base dos Dados termina em 2024 (anexo A), e a série vai até 2025.
+- Ele diverge do RD em formato (D-018).
+
+O RD é a fonte de onde saiu o desfecho, e é ela que interessa conferir.
+**As duas séries do plano, por competência (UF do arquivo × mês, somadas no Brasil):**
+1. **Fração de AIH com código do capítulo XX de transporte (V01–V99)** em qualquer campo secundário (`DIAG_SECUN`, `DIAGSEC1`–`DIAGSEC9`), sobre o total de AIH do arquivo. Ao lado sai a fração com V em `DIAG_PRINC`, que a norma não manda usar (D-017).
+2. **Composição de `campo_causa`** entre as AIH da definição de caso: em que campo `primeira_causa_externa` achou o código. Sai das AIH já classificadas em `data/raw/sih/`, sem rede.
+
+**Leitura, descritiva, como robustez (é ameaça à medida, não ao desenho; D-026):**
+- **Saídas:**
+  - figura das duas séries com a faixa de 2017-07 a 2018-12 marcada;
+  - variação da fração em 2018 contra 2017;
+  - o maior salto entre meses consecutivos da série nacional, com o mês.
+- **O que contaria como descontinuidade:** salto de nível perto de 2018 maior que a variação entre meses do resto da série. Seria reportado ao lado de H1.
+- **Por que uma quebra nacional pesa pouco:** ela cai no mesmo mês de calendário para todos os municípios, então os efeitos de tempo do estimador a absorvem. Só pesaria se fosse correlacionada com a coorte. A série nacional não testa isso, e isso é dito.

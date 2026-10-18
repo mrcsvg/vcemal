@@ -1,4 +1,4 @@
-.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria did did-exploratorio did-decomposicao did-h5 sim h4 lint test limpar
+.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria did did-exploratorio did-decomposicao did-h5 sim h4 codificacao lint test limpar
 
 PYTHON ?= python
 
@@ -73,6 +73,9 @@ sim: ## H5 e H4: obitos do SIM por municipio x mes, direto do FTP do DATASUS (D-
 
 h4: ## H4: nexo de trabalho registrado no SIH e no SIM por UF e ano, com a PNAD ao lado (D-057; depois de painel, sim e pnad) -- sem rede
 	$(PYTHON) scripts/h4.py
+
+codificacao: ## mudanca de codificacao coincidente (secao 7, D-059): rebaixa os RD completos so para contar -- horas
+	$(PYTHON) scripts/codificacao.py
 
 lint:
 	ruff check . && ruff format --check .

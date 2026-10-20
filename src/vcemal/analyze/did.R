@@ -268,3 +268,45 @@ estimar_por_grande_regiao <- function(d, spec, regiao = "grande_regiao") {
     )
   )
 }
+
+#' D-061: sensibilidade as tendencias paralelas (Rambachan & Roth) sobre o estudo
+#' de evento de `estimar_cs`. Pre = e em [-12, -2], pos = e em [0, +24]; e = -1 e
+#' a referencia da base universal. O alvo e o estimando principal (media simples
+#' dos ATT(e) pos). `mbar` vai para magnitudes relativas, `m_sd` (nas unidades do
+#' desfecho) para suavidade; vetor vazio pula a restricao. Devolve `rm`, `sd` e
+#' `original`, com os limites tambem em % da media pre.
+#' As magnitudes relativas testam theta numa grade de +-`grade_ep` erros-padrao do
+#' alvo; IC que encosta na borda (`na_borda`) nao e limitado dentro dela, e o
+#' numero da borda nao e limite de nada.
+sensibilidade_honest <- function(r, mbar = numeric(), m_sd = numeric(), alpha = 0.05,
+                                 grade_ep = 20) {
+  es <- r$es
+  pre <- which(es$e >= E_MIN & es$e <= -2)
+  pos <- which(es$e >= 0 & es$e <= E_MAX)
+  idx <- c(pre, pos)
+  b <- es$att[idx]
+  s <- r$v_e[idx, idx]
+  l <- rep(1 / length(pos), length(pos))
+  stopifnot(abs(sum(l * es$att[pos]) - r$resumo$att) < 1e-8 * max(1, abs(r$resumo$att)))
+  args <- list(betahat = b, sigma = s, numPrePeriods = length(pre),
+               numPostPeriods = length(pos), l_vec = l, alpha = alpha)
+  pre_m <- r$resumo$media_pre_tratados
+  pct <- function(x) {
+    x <- as.data.table(x)
+    x[, `:=`(id = r$resumo$id, lb_pct = 100 * lb / pre_m, ub_pct = 100 * ub / pre_m)]
+    x[]
+  }
+  out <- list(original = pct(do.call(HonestDiD::constructOriginalCS, args)))
+  if (length(mbar)) {
+    sd_alvo <- sqrt(as.numeric(t(l) %*% s[-seq_along(pre), -seq_along(pre)] %*% l))
+    lim <- c(r$resumo$att - grade_ep * sd_alvo, r$resumo$att + grade_ep * sd_alvo)
+    out$rm <- pct(do.call(HonestDiD::createSensitivityResults_relativeMagnitudes,
+                          c(args, list(Mbarvec = mbar, grid.lb = lim[1], grid.ub = lim[2]))))
+    passo <- diff(lim) / 1000
+    out$rm[, na_borda := lb <= lim[1] + passo | ub >= lim[2] - passo]
+  }
+  if (length(m_sd)) {
+    out$sd <- pct(do.call(HonestDiD::createSensitivityResults, c(args, list(Mvec = m_sd))))
+  }
+  out
+}

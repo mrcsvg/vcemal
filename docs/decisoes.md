@@ -785,3 +785,42 @@ O RD é a fonte de onde saiu o desfecho, e é ela que interessa conferir.
 
 **Validação, antes do dado:** em `tests/did_sintetico.R`, com a pré-tendência linear plantada e efeito zero, o IC convencional exclui o zero e o IC ΔSD com M = 0 o cobre.
 **Saídas:** `output/tabelas/did/honest_rm.csv`, `honest_sd.csv` e `output/figuras/did_honest.png`.
+
+## D-062 · Resultado da sensibilidade às tendências paralelas: nenhum IC robusto exclui zero; magnitudes relativas não informam com estudo de evento mensal
+**Data:** 2026-10-19
+**Ajuste técnico depois da primeira rodada, declarado:**
+- **O que aconteceu:** na primeira rodada, o IC de magnitudes relativas saiu idêntico e simétrico de M̄ = 0,5 em diante. Era a borda da grade de θ do pacote, de ±20 ep, e não um limite.
+- **O que mudou:**
+  - A grade passou a ser explícita, ±20 ep do alvo centrados no ATT, em `sensibilidade_honest(grade_ep = 20)`.
+  - A coluna `na_borda` marca o IC que encosta nela. Esse IC não é limitado dentro da grade, e o número da borda não é limite de nada.
+  - O número na borda mudou com o centro da grade (contagem: ±93,9 → −86,2 a +101,7). Fora da borda, os limites mudaram no máximo 0,3 pp, pela discretização da grade.
+- **Também sai:** `honest_original.csv`, o IC convencional, além das saídas declaradas no D-061.
+- **Avisos do solver:** 68 a 82 por especificação, todos "Solution may be inaccurate". Ficam registrados.
+
+**IC 95% em % da média pré dos tratados:**
+
+| | convencional | M̄ = 0,25 | M̄ ≥ 0,5 | SD, M = 0 | SD, M = 0,05% | SD, M = 0,1% | MDE 80% |
+|---|---|---|---|---|---|---|---|
+| H1 contagem | −1,4 a +17,0 | −58 a +74 | não limitado | −3,9 a +22,6 | −12,0 a +30,0 | −22,0 a +39,3 | 13,2 |
+| H1 taxa | −13,2 a +15,5 | −94 a +101 | não limitado | −1,8 a +30,0 | −8,9 a +37,1 | −17,3 a +47,6 | 20,5 |
+| H5a contagem | −13,9 a +21,0 | −114 a +121 | não limitado | −18,6 a +31,7 | −24,3 a +37,5 | −33,9 a +47,1 | 24,9 |
+| H5b contagem | −10,3 a +36,6 | −144 a +197 | não limitado | −9,0 a +57,2 | −13,7 a +61,8 | −22,8 a +71,0 | 33,5 |
+
+Em M̄ = 0, o IC reproduz o convencional (contagem: −1,2 a +16,7), o que confere a montagem.
+**Leitura, pela regra do D-061:**
+- **Vereditos:** nenhum IC robusto exclui zero, em nenhuma especificação nem ponto da grade. Os vereditos de H1 e H5 não mudam, como o D-061 previa.
+- **Magnitudes relativas: não informam aqui.**
+  - **Referência pedida:** em M̄ = 1, o limite superior não é limitado em nenhuma das quatro. Fica muito acima do MDE, e sob essa restrição o nulo não diz nada.
+  - **Por que é mecânico:** a referência é a maior mudança entre meses consecutivos do pré. Com ATT(e) mensais ruidosos, ela é dominada por ruído:
+    - contagem: 10,9% da média pré, contra um ep mediano de 6,1% por ATT(e);
+    - taxa: 18,3%;
+    - H5a: 15,6%;
+    - H5b: 24,1%.
+  - Com 25 meses de pós para acumular, até M̄ = 0,25 já abre ±60% a ±200%. É um limite do desenho mensal contra essa restrição, e não um sinal de violação.
+- **Suavidade: é a leitura informativa.**
+  - **Com tendência linear extrapolada do pré (M = 0):** a contagem de H1 descarta efeitos acima de 23%, a taxa acima de 30%, H5a acima de 32% e H5b acima de 57%.
+  - **Com curvatura de 0,1% da média pré por mês²:** os limites passam para 39%, 48%, 47% e 71%.
+  - **Contra o MDE:** o nulo da contagem de H1 fica menos informativo do que o poder sugeria. Sob tendências paralelas exatas ele descarta efeitos acima de 17%; admitindo uma tendência linear, só acima de 23%.
+- **Taxa:** sob suavidade, o IC da taxa sobe (M = 0: −1,8 a +30,0, contra −13,2 a +15,5 no convencional). É o que se espera quando a pré-tendência rejeita (D-049, p = 0,035 nesta especificação), e não reabre a escolha de escala. Fica reportado sem leitura causal.
+
+**Saídas:** `output/tabelas/did/honest_{original,rm,sd}.csv` e `output/figuras/did_honest.png`.

@@ -110,6 +110,18 @@ gr <- estimar_por_grande_regiao(d, spec)
 confere(abs(gr$resumo$att - verdade) / gr$resumo$se_regiao < 4,
         sprintf("grande regiao %.3f contra %.3f (%d regioes)", gr$resumo$att, verdade, gr$resumo$regioes_estimadas))
 
+# 9. HonestDiD (D-061): tendencia linear nos tratados, que segue no pos, e efeito
+#    zero. O IC convencional exclui o zero; o de suavidade com M = 0 o cobre.
+#    Contra os nunca tratados: com not-yet-treated os controles tambem tem a
+#    tendencia, a composicao deles muda com t e a violacao deixa de ser linear em e.
+d2 <- gerar(efeito = function(e) 0 * e, semente = 9)
+d2[, ysint := ysint - fifelse(!is.na(e) & e >= 0, desvio_reg, 0)]
+d2[g > 0, ysint := ysint + 0.15 * (periodo - g)]
+r2 <- estimar_cs(d2, modifyList(spec, list(controle = "nevertreated")))
+h <- sensibilidade_honest(r2, m_sd = 0)
+confere(h$original$lb > 0, sprintf("convencional com tendencia: [%.2f, %.2f]", h$original$lb, h$original$ub))
+confere(h$sd$lb <= 0 & h$sd$ub >= 0, sprintf("suavidade M = 0 cobre o zero: [%.2f, %.2f]", h$sd$lb, h$sd$ub))
+
 if (length(falhas)) {
   cat("\n", length(falhas), "falha(s)\n")
   quit(status = 1)

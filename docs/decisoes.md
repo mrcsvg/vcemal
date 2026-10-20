@@ -760,3 +760,28 @@ O RD é a fonte de onde saiu o desfecho, e é ela que interessa conferir.
 
 **Limite, como o D-059 previa:** a série é nacional. Ela não testa uma mudança de codificação correlacionada com a coorte, que é a única que viesaria o DiD.
 **Saídas:** `output/tabelas/codificacao_{brasil_mes,uf_mes,campo_causa,resumo}.csv` e `output/figuras/codificacao.png`.
+
+## D-061 · Sensibilidade às tendências paralelas (Rambachan & Roth), declarada antes de rodar
+**Data:** 2026-10-19
+**Desvio declarado:** o plano não prevê esta análise. Ela entra como robustez sobre estimativas que já existem, sem estimação nova. Responde a um limite que o teste 2 da seção 6 não cobre: não rejeitar a pré-tendência não prova tendências paralelas, porque o teste tem pouco poder e condicionar a leitura a ter passado nele distorce a inferência (Roth, 2022).
+**O que entra:** o estudo de evento de `estimar_cs`. Os ATT(e) de `e ∈ [−12, −2]` são o pré e os de `e ∈ [0, +24]` o pós. O `e = −1` é a referência (base universal, D-047). A covariância é a agrupada por região imediata, a mesma do erro-padrão principal. O alvo é o estimando principal: a média simples dos 25 ATT(e) pós (`l_vec = 1/25`). O script confere que isso reproduz o ATT reportado.
+**Especificações, quatro, todas já estimadas:**
+1. H1 contagem (`contagem`), a leitura principal desde o D-049.
+2. H1 taxa (`principal`), anexo.
+3. H5a contagem (`h5a_contagem`).
+4. H5b contagem (`h5b_contagem`).
+
+**Restrições e grades, fixadas aqui:**
+- **Magnitudes relativas (ΔRM):** a mudança da violação entre meses consecutivos no pós não passa de M̄ vezes a maior mudança observada no pré. A grade é M̄ ∈ {0; 0,25; 0,5; 0,75; 1; 1,5; 2}, com o método padrão do pacote (C-LF).
+- **Suavidade (ΔSD):** a curvatura da violação, isto é, a mudança da inclinação entre meses, não passa de M. M = 0 admite uma tendência linear extrapolada do pré. A grade é M ∈ {0; 0,025; 0,05; 0,1; 0,2}% da média pré dos tratados por mês², com o método padrão (FLCI). Com 25 meses de pós, M = 0,1% já permite um desvio médio da ordem de 10% da média pré.
+- IC de 95% em tudo. O IC convencional sai ao lado.
+
+**Leitura, fixada aqui:**
+- **Não muda veredito.** Os conjuntos robustos só alargam o IC convencional, e H1 e H5 já não são sustentadas. A análise diz quão informativo é o nulo, e só isso.
+- **Saída principal:** o limite superior do IC robusto, em % da média pré, para cada M̄ e cada M. É o maior efeito que os dados não descartam sob violações daquele tamanho.
+- **Referência da leitura:** em M̄ = 1, a violação pode ser tão grande quanto a pior do pré. Se o limite superior nesse ponto ficar perto do MDE de 80% do D-051 e do D-056, o nulo é tão informativo quanto o poder dizia. Se ficar muito acima, o nulo sob tendências paralelas fracas diz pouco, e isso é reportado.
+- **Taxa:** a pré-tendência rejeita em parte da curva (D-049), então espera-se que alargue mais que a contagem. Isso é reportado, sem reabrir a escolha de escala.
+- **Padrão novo:** um padrão que apareça aqui, como uma especificação ou região que se comporte diferente, vai para `docs/proximos-trabalhos.md` (D-052).
+
+**Validação, antes do dado:** em `tests/did_sintetico.R`, com a pré-tendência linear plantada e efeito zero, o IC convencional exclui o zero e o IC ΔSD com M = 0 o cobre.
+**Saídas:** `output/tabelas/did/honest_rm.csv`, `honest_sd.csv` e `output/figuras/did_honest.png`.

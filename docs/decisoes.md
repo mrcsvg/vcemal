@@ -824,3 +824,21 @@ Em M̄ = 0, o IC reproduz o convencional (contagem: −1,2 a +16,7), o que confe
 - **Taxa:** sob suavidade, o IC da taxa sobe (M = 0: −1,8 a +30,0, contra −13,2 a +15,5 no convencional). É o que se espera quando a pré-tendência rejeita (D-049, p = 0,035 nesta especificação), e não reabre a escolha de escala. Fica reportado sem leitura causal.
 
 **Saídas:** `output/tabelas/did/honest_{original,rm,sd}.csv` e `output/figuras/did_honest.png`.
+
+## D-063 · Fecha a rodada do V2: o que ficou feito e o que fica de fora
+**Data:** 2026-10-23
+**Feito nesta rodada:**
+- **DiD sobre o SIH (D-047 a D-052):** H1 não sustentada.
+- **SIM extraído (D-053, D-054).**
+- **H5 (D-055, D-056):** não sustentada.
+- **H4 (D-057, D-058):** tabela descritiva.
+- **Mudança de codificação (D-059, D-060):** sem descontinuidade perto de 2018.
+- **Sensibilidade às tendências paralelas (D-061, D-062):** nenhum IC robusto exclui zero.
+- **Todas as especificações** foram declaradas antes de rodar. Os desvios do plano estão nas entradas respectivas.
+
+**Considerado e não rodado, como sugestão metodológica para trabalho futuro, sem leitura sobre o resultado:**
+- **DiD sintético (Arkhangelsky et al., 2021) com adoção escalonada:** seria uma segunda via que não depende de tendências paralelas incondicionais. Ficou de fora porque seria um método escolhido depois de ver H1 e H5 nulas, e pela esparsidade do desfecho por município-mês, que exigiria uma agregação nova.
+- **Magnitudes relativas sobre um estudo de evento agregado (trimestral, por exemplo):** o D-062 mostra que, com ATT(e) mensais, a referência do pré é dominada por ruído. A agregação teria de ser fixada antes, num pré-registro próprio.
+- **O controle sintético clássico foi descartado:** é feito para poucos tratados, e aqui são 528 em coortes escalonadas.
+
+**Reproduzir:** `make sim`, `make did`, `make did-exploratorio`, `make did-decomposicao`, `make did-h5`, `make h4`, `make codificacao`, `make did-honest`.

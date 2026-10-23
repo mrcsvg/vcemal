@@ -1,4 +1,4 @@
-.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria lint test limpar
+.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria did did-exploratorio did-decomposicao did-h5 did-honest sim h4 codificacao lint test limpar
 
 PYTHON ?= python
 
@@ -54,6 +54,31 @@ auditoria: ## F3: consolida as planilhas da auditoria do MEI e da o veredito por
 	$(PYTHON) scripts/cronologia.py consolidar $(AUD)/auditoria_a.csv $(AUD)/auditoria_b.csv \
 		--desempates $(AUD)/auditoria_desempates.csv --saida output/auditoria
 	$(PYTHON) scripts/cronologia.py auditoria-avaliar output/auditoria/tratamento_municipio.csv
+
+did: ## V2: painel de estimacao e Callaway & Sant'Anna das especificacoes do plano (R: did, fixest) -- sem rede
+	$(PYTHON) scripts/did_painel.py
+	Rscript scripts/did_estimar.R
+
+did-exploratorio: ## V2: curva de especificacao e exploratorias E1-E4, declaradas no D-048 (roda depois de make did) -- sem rede
+	Rscript scripts/did_exploratorio.R
+
+did-decomposicao: ## V2: decomposicao taxa x contagem na mesma amostra, declarada no D-050 (roda depois de make did) -- sem rede
+	Rscript scripts/did_decomposicao.R
+
+did-h5: ## H5: obitos do SIM pelo estimando principal, contagem e taxa, com e sem 2025 (D-055; depois de make sim e make did) -- sem rede
+	Rscript scripts/did_h5.R
+
+did-honest: ## V2: sensibilidade as tendencias paralelas (HonestDiD), declarada no D-061 (depois de make did e make sim) -- sem rede
+	Rscript scripts/did_honest.R
+
+sim: ## H5 e H4: obitos do SIM por municipio x mes, direto do FTP do DATASUS (D-053) -- ~1,5 GB de FTP
+	$(PYTHON) scripts/sim_pipeline.py
+
+h4: ## H4: nexo de trabalho registrado no SIH e no SIM por UF e ano, com a PNAD ao lado (D-057; depois de painel, sim e pnad) -- sem rede
+	$(PYTHON) scripts/h4.py
+
+codificacao: ## mudanca de codificacao coincidente (secao 7, D-059): rebaixa os RD completos so para contar -- horas
+	$(PYTHON) scripts/codificacao.py
 
 lint:
 	ruff check . && ruff format --check .

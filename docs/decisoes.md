@@ -474,3 +474,371 @@ Rappi e Uber Eats sempre operaram com entregador próprio (seção 1), então a 
 **Motivo:** quantificar as duas ameaças ao grupo de comparação que a exploração do tratamento levantou — `sem_quebra` com tratados não detectados e desbalanço regional — antes da estimação, e não depois dela.
 **Leitura:** (1) a simulação confirma de forma independente o corte de 100 mil do D-040: abaixo dele o falso positivo é ruído de contagem; acima, há aceleração local real que a regra não separa da plataforma. (2) A regra é conservadora: os `sem_quebra` contêm tratados, o que atenua o efeito — mais uma razão de piso, além das de D-001, D-021 e D-027. (3) A seleção regional não se explica por porte nem por formalização prévia.
 **Consequência:** nenhuma mudança no plano. Para a estimação, ficam propostas como **exploratórias declaradas**: Callaway & Sant'Anna com efeitos fixos de região × mês (comparação dentro da grande região) e a estimação restrita a Sul e Sudeste. O estimando principal, o grupo de comparação e os testes de falha continuam os da seção 5 e 6 do plano.
+
+## D-047 · A estimação do V2 roda antes do veredito da auditoria, e o que o plano não fixava na operacionalização
+**Data:** 2026-10-14
+**Decisão:** a estimação (`make did`: `scripts/did_painel.py` → `scripts/did_estimar.R`, motor em `src/vcemal/analyze/did.R`) roda depois do depósito no OSF (DOI 10.17605/OSF.IO/V82JE) e **antes** do veredito da auditoria do tratamento. Registrado aqui antes da primeira execução sobre o desfecho real.
+**Por que antes da auditoria não contamina:** os codificadores são outras pessoas, sem acesso ao resultado; a cegueira ao SIH (seção 4) é deles. E o veredito só escolhe a amostra entre versões que já estão pré-declaradas: `principal` (todas as coortes), `sem_2017` (sem quebras antes de 2018-01) e `sem_pos2020` (sem quebras depois de 2020-12) rodam sempre, como robustez; quando sair o veredito, a especificação principal é escolhida mecanicamente pela regra da seção 4, sem estimar de novo.
+**Escolhas de operacionalização que o plano não fixava**, todas antes de ver o desfecho:
+- **Período-base universal** (`base_period = "universal"` no `did`): os coeficientes pré ficam todos contra `e = −1`, que é o estudo de evento que se lê. O estimando principal (pós-tratamento) é o mesmo nas duas opções.
+- **Erro-padrão agrupado analítico**, pela função de influência do `did`, em região imediata e em município a partir da mesma estimação. O `did` só agrupa no bootstrap, e só no nível passado ao `att_gt`. Para o principal, o bootstrap agrupado em região do próprio `did` sai ao lado como conferência. O teste sintético (`tests/did_sintetico.R`) confere os dois contra o bootstrap. Ele pegou um erro: o `did` ordena as unidades por coorte, e casar o cluster pela ordem do código embaralhava as regiões.
+- **Pré-tendência (teste 2):** Wald conjunto dos ATT(e), `e ∈ [−12, −2]`, com a covariância agrupada em região.
+- **Placebo (teste 1) em contagem, com a comparação num estimando só.** Ocupante de automóvel não tem denominador de frota de moto, e frota de automóvel não está no painel. Moto e automóvel entram em contagem (janela desde 2015-01, coortes de 2016-01 a 2023-12), e "indistinguível" é testado no ATT de `moto/pré_moto − auto/pré_auto`: a diferença dos efeitos percentuais, com a covariância dentro do erro-padrão. O teste falha se esse IC contém zero.
+- **H3 sobre `internacoes`**, como o plano escreve (`homem_18_39` contra `internacoes − homem_18_39`): o painel não tem o cruzamento de perfil com trânsito. A comparação usa a mesma diferença proporcional do placebo.
+- **H2 por tercil:** em cada tercil saem os tratados dos outros dois tercis, que deixam de ser também comparação. Os `sem_quebra` e as coortes depois de 2023-12 continuam como not-yet-treated, como no principal.
+- **Coortes fora da janela balanceada:** as que têm quebra antes de 2017-07 saem inteiras, nem tratadas nem comparação. As de depois de 2023-12 continuam como not-yet-treated até a quebra, e o `balance_e` as tira da agregação.
+- **`coorte_precoce` como coorte de 2018-01** na robustez que a seção 4 menciona: é o limite superior da premissa "frota própria até 2018".
+- **Sun & Abraham** (`fixest::sunab`): controle são os `sem_quebra`, só as coortes da janela, observações tratadas aparadas em `e ∈ [−12, +24]`, estimando = média simples dos coeficientes `e ∈ [0, 24]`.
+**De passagem:** o parser do Senatran não reconhecia a abreviação colada no ano (`FrotaporMunicpioeTipoJUN2024.xlsx`), e jun e jul/2024 faltavam nos denominadores. Corrigido com teste; o painel tem agora as 114 competências de 2016-07 a 2025-12.
+
+## D-048 · Poder, curva de especificação e exploratórias do V2, declaradas antes de rodar
+**Data:** 2026-10-16
+**Contexto:** a estimação do D-047 não sustenta H1. Estimando principal de +1,1% da média pré, IC de −13% a +15%, p = 0,88. T1, T2 e T3 disparam. A pergunta seguinte é se o nulo é ausência de efeito ou falta de poder, e quão sensível ele é à especificação. Nada abaixo substitui o resultado confirmatório: tudo é **análise exploratória declarada** (plano, seção 8), registrada aqui antes de rodar.
+**1. Poder.** Toda estimativa passa a sair com o efeito mínimo detectável a 80% de poder, num teste bilateral a 5%: `mde80 = (z_0,975 + z_0,80) × ep`, cerca de 2,8 erros-padrão, também em % da média pré. Já calculado sobre o D-047: principal **20,5%**; contagem e só `datado`, cerca de **13%**; Sun & Abraham, 27,5%. O nulo do principal se lê como "efeito abaixo de ~20% não detectável", não como "efeito zero".
+**2. Curva de especificação: 48 especificações, reportadas todas.** Callaway & Sant'Anna, desfecho motociclista em trânsito, janela de evento e estimando como no principal. O produto cartesiano de quatro dimensões:
+- **escala:** taxa por 100 mil motos (desde 2016-07) | contagem (desde 2015-01);
+- **comparação:** not-yet-treated `datado` + `sem_quebra` | not-yet-treated só `datado` | nunca tratados (`sem_quebra`);
+- **coortes:** todas | sem as quebras antes de 2018-01 | sem as quebras depois de 2020-12 | só 2018-01 a 2020-12;
+- **janela:** balanceada `[−12, +24]` | não balanceada.
+Nenhuma dimensão toca a regra de quebra, que está congelada, nem a definição de caso.
+**Regra de leitura, fixada antes:** sai a distribuição inteira, ordenada, com IC: mediana e amplitude do efeito em %, fração de estimativas positivas, fração com p < 0,05 de cada sinal. As 48 são fortemente correlacionadas (mesmos dados), então a fração significativa **não é um teste**, e nenhum subconjunto é citado como evidência. Uma especificação da curva com p < 0,05 não é achado. A curva responde a uma pergunta só: o sinal e a magnitude do principal dependem da especificação?
+**3. Exploratórias da seção 7 e do D-046**, sobre o principal:
+- **E1, comparação dentro da grande região.** CS separado em cada grande região e combinado com peso no número de tratados agregados. A variância soma entre regiões: as regiões imediatas, que são o cluster, estão contidas nelas. É a versão exata da proposta do D-046, "efeitos fixos de região × mês". Região com poucos tratados que não estime é reportada, não imputada.
+- **E2, só Sul e Sudeste** (D-046).
+- **E3, transbordamento (seção 7), aproximado.** Saem os `sem_quebra` de toda região imediata que tem um `datado` na janela. A versão exata seria tirar o controle só depois que o vizinho é tratado, mas exige controle que varia no tempo, e o `did` não suporta isso. Os `datado` vizinhos ainda não tratados continuam no controle.
+- **E4, o vale em `e = −1`.** No principal, todos os ATT(e) pré ficam entre +1 e +5 contra `e = −1`, e por isso o T2 dispara. Duas leituras: (a) o estimando contra a média de `e ∈ [−12, −1]`, em vez de contra `e = −1`, com o erro-padrão pela covariância agrupada dos ATT(e); (b) antecipação de 3 meses (`anticipation = 3`: a base passa a ser `g − 4`).
+**Fica para depois:** a mudança de codificação coincidente (seção 7) precisa do BigQuery e não roda aqui.
+
+## D-049 · Resultado das exploratórias do D-048, e o T3 põe a contagem como resultado principal
+**Data:** 2026-10-17
+**Poder.** O nulo do principal (+1,1%, p = 0,88) se lê como "abaixo de ~20% não detectável". A contagem detecta a partir de ~13%.
+**Curva de especificação** (`make did-exploratorio`, 48 de 48 estimadas), lida pela regra fixada no D-048:
+- **No geral:** mediana **+8,0%**, amplitude de −19,2% a +21,9%, 79% positivas, 4 de 48 com p < 0,05 positivas e nenhuma negativa, MDE mediano de 23,7%.
+- **O sinal depende da escala, e só dela:**
+  - **Taxa:** mediana +1,1%, 58% positivas, e o teste de pré-tendência rejeita em 33% das balanceadas e em 50% das não balanceadas. As negativas são todas taxa não balanceada, com MDE de 40 a 47%.
+  - **Contagem:** mediana +9,8%, amplitude de +5,9% a +20,5%, **100% positivas**, e a pré-tendência não rejeita em nenhuma.
+  - **Comparação, coortes e janela:** não mudam o sinal dentro da escala.
+- **As 4 com p < 0,05 não são achado** (D-048): duas na taxa não balanceada só com `datado`, uma delas com pré-tendência de p = 0,005, e duas na contagem sem 2017.
+- A resposta à pergunta da curva: na taxa, o sinal e a magnitude dependem da especificação; na contagem, não.
+**E1–E4** (sobre o principal, na taxa):
+- **E1, dentro da grande região:** +5,2%, IC −6,6 a +17,0. Por grande região, em internações por 100 mil motos:
+  - N −33 (19 tratados, ep 25);
+  - NE +1,7, SE +2,0, S +2,0;
+  - CO **+11,8 (35 tratados, ep 2,5)**.
+  O CO é a única região distinguível de zero. Com cinco regiões e 35 tratados, não é citado como evidência.
+- **E2, Sul e Sudeste:** +8,7%, IC −1,8 a +19,2, p = 0,10, pré-tendência p = 0,19.
+- **E3, sem controle vizinho:** −1,4%, p = 0,88.
+- **E4a, contra a média do pré:** −10,5%, IC −22,0 a +1,0, p = 0,07.
+- **E4b, antecipação de 3 meses:** −8,3%, IC −25,9 a +9,3.
+- O E4 mostra que, na taxa, a conclusão depende do mês tomado como base.
+**Consequência do T3, mecânica:** o T3 dispara. A frota sobe +1,2%, distinguível de zero, contra +1,1% nas internações por taxa. Pela seção 6 do plano, o resultado principal **passa a ser a contagem** de internações com efeito fixo de município, e a taxa vai para o anexo com a advertência.
+- **Resultado principal da contagem:** +7,8% da média pré, IC −1,4% a +17,0%, p = 0,098, pré-tendência p = 0,18, 528 tratados agregados. **H1 continua não sustentada.**
+- **Ressalva a declarar:** o T3 disparou de modo degenerado. O critério "ao menos metade do efeito percentual das internações" foi escrito pensando num efeito sobre as internações distinguível de zero. Com ele ≈ 0, qualquer movimento da frota dispara. Uma frota de +1,2% não explica, sozinha, a distância entre +1,1% e +7,8%. A regra é aplicada como está escrita, e a ressalva sai ao lado.
+- **Testes de falha na contagem:**
+  - T2 não dispara (p = 0,18);
+  - T1 já sai em contagem desde o início (D-047) e continua disparando: a diferença moto − auto é de +21 pp, mas com p = 0,069 o IC contém zero.
+
+## D-050 · Decomposição taxa × contagem na mesma amostra, declarada antes de rodar
+**Data:** 2026-10-17
+**Pergunta:** a distância entre a taxa (+1,1%) e a contagem (+7,8%) vem da amostra, da ponderação ou do denominador que varia no tempo? As duas especificações diferem em três coisas ao mesmo tempo:
+- **amostra:** a contagem entra desde 2015-01 e recupera as coortes de 2016-01 a 2017-06;
+- **escala:** a taxa pesa cada município igualmente em taxa, e a contagem pesa pelo tamanho;
+- **denominador:** a frota se move com o tratamento (T3).
+**Desenho:** quatro estimativas de CS, todas com o estimando, a comparação e a janela do principal.
+- **A.** Taxa por frota corrente, na amostra da taxa: é o principal do D-047.
+- **B.** Contagem **na amostra da taxa**, desde 2016-07 e com coortes de 2017-07 a 2023-12.
+- **C.** Contagem dividida pela **frota fixa** de 2016-07 do município, por 100 mil motos, na amostra da taxa. A frota de 2016-07 é anterior a toda coorte dessa amostra, logo predeterminada. C tem a ponderação da taxa e o denominador parado.
+- **D.** Contagem na amostra da contagem: é o resultado principal do D-049.
+**Leitura, fixada antes:**
+- **B − D** é o efeito da amostra.
+- **C − B** é o efeito da escala e da ponderação.
+- **A − C** é o efeito do denominador variar no tempo. Pelo T3, ele deve ser da ordem de −1 pp.
+Cada contraste sai como diferença dos efeitos em % da média pré, sem teste formal: as quatro estimativas compartilham dados, e a pergunta é de contabilidade, não de inferência. Como no D-048, nada aqui é confirmatório, e o resultado principal continua o do D-049.
+**Fecha o capítulo do DiD sobre o SIH.** Depois disto, o próximo passo é o SIM (H5, D-044).
+
+## D-051 · A distância entre taxa e contagem é ponderação, não amostra nem denominador; fecha o DiD sobre o SIH
+**Data:** 2026-10-17
+**Resultado da decomposição do D-050** (`make did-decomposicao`), em % da média pré:
+| | efeito | IC 95% | p | pré-tendência p |
+|---|---|---|---|---|
+| A, taxa por frota corrente | +1,1 | −13,2 a +15,5 | 0,88 | 0,035 |
+| B, contagem na amostra da taxa | +8,7 | −1,0 a +18,4 | 0,079 | 0,34 |
+| C, taxa por frota fixa de 2016-07 | −2,5 | −16,9 a +11,8 | 0,73 | 0,017 |
+| D, contagem (principal, D-049) | +7,8 | −1,4 a +17,0 | 0,098 | 0,18 |
+**Contrastes:**
+- **B − D, amostra: +1,0 pp.** As coortes de 2016 e os dados de 2015 não explicam nada.
+- **C − B, escala e ponderação: −11,2 pp.** Explica a distância inteira.
+- **A − C, denominador no tempo: +3,7 pp.** Tem o sinal contrário ao esperado pelo T3, que previa cerca de −1 pp.
+**Leitura:**
+- Mudar de contagem para taxa troca o peso de cada município. A contagem pesa pelo tamanho, e a taxa pesa cada município igualmente.
+- A contagem positiva e a taxa nula, nas mesmas unidades e meses, querem dizer que o que houver de efeito está nos municípios maiores. Nos menores, a taxa é ruído e não mostra efeito.
+- A atenuação pelo denominador que o T3 temia **não aparece**. O contraste A − C vale cerca de 1 internação por 100 mil motos, dentro de meio erro-padrão de cada uma, e não tem sinal interpretável. O T3 disparou pela regra (D-049), mas o mecanismo que ele protege não é o que separa as escalas.
+**Consequência para o artigo:**
+- **Estimando:** o resultado principal fica o da contagem (D-049), declarado como estimando ponderado pelo tamanho do município.
+- **Taxa:** vai ao anexo com duas advertências, a do T3 e a da ponderação.
+- **O que não se diz:** nada disto permite dizer "há efeito nos municípios grandes". Isso seria um subgrupo escolhido depois de ver o dado. Se for perseguido, precisa de pré-registro novo e de outra fonte, por exemplo o SIM (H5) ou um período posterior.
+**Fecha o capítulo do DiD sobre o SIH.** H1 não sustentada em nenhuma escala. O desenho não detecta efeitos abaixo de 13% (contagem) a 20% (taxa). Na escala sem pré-tendência, a contagem, o ponto fica em +8 a +10%, e o sinal é estável em toda a curva. O próximo passo é o SIM (H5, D-044).
+
+## D-052 · Hipótese sugerida pelo dado vai para próximos trabalhos, nunca para o resultado
+**Data:** 2026-10-17
+**Decisão:** toda hipótese que surge depois de ver o desfecho (subgrupo, região, faixa de tamanho, mecanismo sugerido por um padrão) entra em `docs/proximos-trabalhos.md` e, no artigo, como **sugestão de trabalho futuro**. Nunca entra como resultado, nem qualificado ("sugestivo", "há indícios"). O registro diz de onde a hipótese veio e o que seria preciso para testá-la: pré-registro próprio e dado que não a gerou.
+**Por quê:** é a fronteira que o pré-registro protege. Testar a hipótese no mesmo dado que a sugeriu confirma o que já se viu.
+**Aplicado agora:**
+- **PT-01:** concentração nos municípios maiores (D-051).
+- **PT-02:** Centro-Oeste (E1, D-049).
+**Revisa o D-051:** onde o D-051 diz "se for perseguido, precisa de pré-registro novo e de outra fonte", vale esta regra. A hipótese é a PT-01.
+
+## D-053 · O SIM vem direto do FTP do DATASUS, por UF de residência e ano, com a versão de cada arquivo registrada
+**Data:** 2026-10-17
+**Decisão:** `vcemal.extract.sim` baixa `DO<UF><AAAA>.dbc` do FTP do DATASUS, primeiro em `/dissemin/publicos/SIM/CID10/DORES/` (ano definitivo) e, se o arquivo não estiver lá (550), em `/dissemin/publicos/SIM/PRELIM/DORES/` (ano preliminar). Converte pelo PySUS, como no D-036. Fica em disco só o que cai na definição de caso (`vcemal.cid`, causa básica `CAUSABAS`), em `data/raw/sim/uf=<UF>/ano=<AAAA>/parte.parquet`. O `.dbc` inteiro é descartado. Cada arquivo baixado entra em `data/raw/sim/manifesto.csv` com diretório, tamanho, data de modificação no FTP, data da extração, total de declarações e marca de preliminar. Esse manifesto é a "versão do SIM registrada com data" que o plano (seção 1, H5) exige.
+**Por que o FTP e não o espelho do PySUS:** sondado hoje, antes de qualquer download de série.
+- O espelho tem `DO<UF>2015` a `DO<UF>2024` e **não tem 2025**.
+- No FTP, o definitivo vai até 2024 (`DOBR2024.dbc`, de 23/12/2025). O 2025 só existe em `PRELIM/` (`DOBR2025.dbc`, de 30/08/2026).
+- O espelho também não diz de que versão do arquivo veio. Ano definitivo é republicado no FTP: `DOBR2017`, `DOBR2018` e `DOBR2023` trazem data de jan/2025. E o plano pede a versão com data.
+
+Uma fonte só, com data, é mais simples que espelho mais recurso.
+**Operacionalização, fixada antes de baixar:**
+- **Caso (H5):** `CAUSABAS` em V20–V29 e em trânsito pela regra de quarto dígito de `vcemal.cid.em_transito`, a mesma do SIH.
+- **Município:** de residência (`CODMUNRES`, 6 dígitos, como o `MUNIC_RES` do SIH). Código terminado em `0000` (município ignorado) sai do painel, contado no log e no manifesto.
+- **Mês:** o do óbito (`DTOBITO`, `DDMMAAAA`).
+- **H5a:** `obitos_moto_transito`.
+- **H5b:** `obitos_moto_transito_fora_saude`, com `LOCOCOR` em {3 domicílio, 4 via pública, 5 outros, 6 aldeia indígena}. Ficam de fora 1 (hospital), 2 (outro estabelecimento de saúde), 9 e branco, como o D-044 manda: ignorado não conta como fora.
+- **H4, lado SIM:** por UF de residência e ano, entre óbitos de motociclista em trânsito de homens (`SEXO = 1`) de 18 a 39 anos (`IDADE` de 418 a 439, unidade "anos"), três contagens:
+  - o total;
+  - os de `ACIDTRAB` preenchido, que são 1 (sim) e 2 (não). 9 (ignorado) e branco não contam, pela mesma lógica do `CAR_INT` no D-008;
+  - os de `ACIDTRAB = 1`.
+- **Preliminar:** o ano que vem de `PRELIM/` é marcado na coluna `preliminar` do painel. Hoje é só 2025. Isso alimenta a robustez do plano: H5 repetida só com as coortes cuja janela termina no último ano definitivo.
+
+**Fronteira:** a extração e o painel do SIM (`make sim`) não leem o tratamento, nem o painel de estimação. O cruzamento com o tratamento é a estimação de H5, que é outro passo.
+
+## D-054 · Resultado da extração do SIM: versão de 17/10/2026, 2025 preliminar
+**Data:** 2026-10-17
+**Extração (`make sim`, D-053):** vieram as **297 UF-ano** (27 UFs, de 2015 a 2025), sem buraco. Uma falha de DNS em AC 2018 foi refeita na retomada.
+- **2015–2024:** definitivos, `CID10/DORES`.
+- **2025:** preliminar, `PRELIM/DORES`, nas 27 UFs.
+
+**Versão:** data de modificação dos arquivos no FTP, consultados em 17/10/2026. O detalhe por arquivo está em `data/raw/sim/manifesto.csv`.
+
+| Ano | Data no FTP |
+|---|---|
+| 2015–2017 | 31/01/2020 |
+| 2018 | 02/04/2020 |
+| 2019 | 06/04/2021 |
+| 2020 | 31/03 a 01/04/2022 |
+| 2021 | 28/04/2023 |
+| 2022 | 21 a 22/12/2023 |
+| 2023 | 19/12/2024 a 21/01/2025 |
+| 2024 | 23/12/2025 |
+| 2025 (preliminar) | 28 a 30/08/2026 |
+
+**Painel** (`data/painel/sim_municipio_mes.parquet`): 91.156 linhas e 5.319 municípios de residência.
+- **H5a:** 134.352 óbitos de motociclista em trânsito.
+- **H5b:** 74.337 deles fora de estabelecimento de saúde, 55%.
+- **Fora do painel:** 135 óbitos com município ignorado. Nenhum saiu por data inválida.
+- **Por ano:** de 10,7 mil a 15,3 mil, mesma ordem de grandeza da série oficial de óbitos de motociclista.
+
+**Lado SIM de H4** (`output/tabelas/h4_sim_uf_ano.csv`), em homens de 18 a 39 anos:
+- `ACIDTRAB` está preenchido em 42% a 50% dos óbitos, conforme o ano.
+- Entre os preenchidos, 5% a 11% marcam acidente de trabalho.
+- É descrição, sem teste, como fixa o plano.
+
+**Ainda não feito:** nada disso foi cruzado com o tratamento. A estimação de H5 é o próximo passo, com o estimando principal e a robustez sem 2025 que o plano exige.
+
+## D-055 · Estimação de H5: o T3 vale para a mesma frota, e a robustez sem 2025 corta o painel em 2024-12
+**Data:** 2026-10-17
+**Decisão, antes de rodar:** H5a (`obitos_moto_transito`) e H5b (`obitos_moto_transito_fora_saude`) são estimadas pelo estimando principal da seção 5. É `estimar_cs`, com a mesma janela, a mesma comparação e o mesmo cluster de H1, nas duas escalas.
+- **Taxa por 100 mil motos**, como o plano escreve: janela desde 2016-07, coortes de 2017-07 a 2023-12.
+- **Contagem com efeito fixo de município:** janela desde 2015-01, coortes de 2016-01 a 2023-12.
+
+**Qual é a leitura principal:** a **contagem**. O T3 é um teste sobre o denominador. Ele disparou sobre `frota_moto` (D-049), e H5 usa exatamente o mesmo denominador. Pela seção 6, nesse caso "a taxa não é interpretável" e o resultado principal passa a ser a contagem. Aplicar a regra a H1 e não a H5 seria escolher a escala depois. A taxa sai ao lado, no anexo, com a mesma advertência e a ressalva do disparo degenerado do D-049.
+**Critério (plano, H5):** cada uma é sustentada se o estimando for positivo e o IC de 95% excluir zero, na leitura principal. Se a taxa e a contagem divergirem na conclusão, as duas são reportadas e a divergência é dita, sem escolher.
+**Robustez sem o ano preliminar (plano, H5):** o painel é cortado em 2024-12, o período 120, nas duas escalas.
+- O `balance_e = 24` tira da agregação as coortes cuja janela passaria de 2024-12: ficam as coortes até 2022-12.
+- As coortes de 2023 seguem como not-yet-treated até a quebra, como no principal.
+- É a leitura literal de "só com as coortes cuja janela termina no último ano definitivo": 2024 é o último definitivo (D-054).
+
+**Também sai:** para cada uma, o MDE de 80% (2,8 × ep, D-048) e a pré-tendência (T2). O T2 é reportado, e não interpretado causalmente se rejeitar, como na seção 6.
+**Painel:** `did_painel.py` junta o painel do SIM (`sim_municipio_mes.parquet`) ao de estimação pelo município de residência de 6 dígitos e pelo mês. Município-mês sem óbito é zero. A taxa usa a mesma `frota_moto`.
+
+## D-056 · Resultado de H5: não sustentada em nenhuma das duas, com MDE de 25% a 46%
+**Data:** 2026-10-17
+**Execução:** `make did-h5`, com as especificações do D-055, todas estimadas. O painel de estimação tem 101.399 óbitos de motociclista em trânsito nos 1.710 municípios do universo, 54.478 deles fora de estabelecimento de saúde. Média pré dos tratados: 0,26 óbito por município-mês (H5a) e 0,14 (H5b).
+
+**Leitura principal (contagem, D-055):**
+| | Efeito (% da média pré) | IC 95% | p | MDE80 | Pré p | Tratados |
+|---|---|---|---|---|---|---|
+| H5a, mortes totais | +3,6% | −13,9 a +21,0 | 0,69 | 24,9% | 0,95 | 528 |
+| H5b, fora de estab. de saúde | +13,2% | −10,3 a +36,6 | 0,27 | 33,5% | 0,54 | 528 |
+
+**Anexo (taxa por 100 mil motos, T3 disparou):**
+- H5a: +6,7% [−16,0, +29,4], MDE 32,5%.
+- H5b: +1,7% [−28,2, +31,6], MDE 42,7%.
+
+**Robustez sem 2025 (painel até 2024-12, 474 tratados na contagem, 424 na taxa):**
+- Contagem: H5a +2,5% [−16,6, +21,5]; H5b +12,5% [−12,7, +37,7].
+- Taxa: H5a +7,2%; H5b +3,7%.
+- A conclusão não muda com o ano preliminar.
+
+**Critério (plano, H5):** **H5a e H5b não são sustentadas**, em nenhuma escala e em nenhuma versão. A conclusão não diverge entre taxa e contagem. O T2 não rejeita em nenhuma das oito (pré p de 0,54 a 1,00).
+
+**Como se lê:**
+- Pelo plano, ausência de efeito em H5 não refuta nada e não pesa contra H1.
+- O MDE diz o que o desenho alcança: abaixo de ~25% nas mortes totais e de ~34% nas fora de estabelecimento de saúde, não há como detectar.
+- As oito estimativas pontuais são positivas. Isso não é achado, pela mesma regra que vale para a curva (D-048).
+- H5b ter estimativa pontual maior que H5a não é resultado. Com ICs desse tamanho, os dois não se distinguem.
+
+## D-057 · H4: o lado SIH sai das AIH individuais, e a referência da PNAD é a fração plataformizada entre motociclistas
+**Data:** 2026-10-17
+**Decisão, antes de montar:** a tabela de H4 (`make h4`, `output/tabelas/h4_uf_ano.csv` e `h4_brasil_ano.csv`) junta os dois lados, por UF de residência e ano.
+
+**Universo:** internações (SIH) e óbitos (SIM) de motociclista em trânsito, de homens de 18 a 39 anos.
+- **SIH, recorte:** o painel municipal não tem o cruzamento trânsito × perfil × `CAR_INT`, por isso o lado SIH sai das AIH já classificadas em `data/raw/sih/`. Entra a AIH com `grupo = motociclista`, `em_transito`, `SEXO = 1` e `idade_anos` de 18 a 39, o mesmo recorte do `homem_18_39` de H3.
+- **SIH, contagens:** o denominador é `car_int_valido`, que é `CAR_INT` com código de domínio (D-008). O numerador é `nexo_ocupacional`, `CAR_INT` 03 ou 04.
+- **SIH, UF e ano:** a UF sai dos dois primeiros dígitos de `MUNIC_RES`, que é a residência, como no SIM. O ano é o da competência, como no painel do SIH.
+- **SIM:** `h4_sim_uf_ano.csv`, do D-053, com o óbito pela residência e pelo ano do óbito.
+
+**Referência da PNAD, ao lado e sem teste:** `motociclistas_plataformizados / motociclistas`, no Brasil, por rodada (2022, 2024, 2025), com o recorte do D-031: setor privado e trabalho principal. É a fração ponderada pelo peso da PNAD.
+**É um teto da participação de entregadores, e não a participação**, por três razões:
+- inclui o mototáxi por aplicativo;
+- não se restringe a homens de 18 a 39 anos;
+- é estoque de ocupados, não de quem se acidenta.
+
+O plano pede só ordem de grandeza, e a tabela o diz.
+**Leitura (plano, H4):** descritiva. A fração com nexo registrado é posta ao lado do preenchimento de cada campo e da referência da PNAD. Não é estimativa do subregistro e não tem teste.
+
+## D-058 · Resultado de H4: o SIH registra o nexo em 1 a cada 24,5 mil internações; o SIM, em 7,7% das declarações preenchidas
+**Data:** 2026-10-17
+**Execução:** `make h4`, com o D-057, sobre 3.563 competências do SIH, as 297 UF-ano do SIM e as três rodadas da PNAD (`make pnad` refeito hoje, com os números do D-031 reproduzidos). Recorte: motociclista em trânsito, homem de 18 a 39 anos, 2015–2025, Brasil.
+
+| | Registros | Campo preenchido | Com nexo de trabalho | Nexo / preenchido |
+|---|---|---|---|---|
+| SIH (`CAR_INT`) | 637.905 internações | 100% | 26 | 0,004% (1 em 24.535) |
+| SIM (`ACIDTRAB`) | 71.190 óbitos | 45,7% (42% a 50% por ano) | 2.520 | 7,7% (5,3% a 10,6% por ano) |
+
+**PNAD, teto da participação de entregadores entre motociclistas (D-057):** fração plataformizada entre motociclistas ocupados de 21,9% (4T2022), 33,5% (3T2024) e 34,4% (3T2025).
+
+**Leitura descritiva (plano, H4):**
+- **No SIH, o nexo é praticamente invisível.** O `CAR_INT` está sempre preenchido, mas com o caráter da internação (urgência), e o código de acidente de trabalho quase nunca é usado. Confirma o D-019 neste recorte.
+- **No SIM, o campo existe e é usado, mas fica em branco ou ignorado em mais da metade das declarações.** Entre as UFs, o preenchimento vai de 9% a 87%.
+- **Quanto à PNAD:** contra o teto de 22% a 34%, a fração com nexo fica três a quatro vezes abaixo no SIM e de 5 a 8 mil vezes abaixo no SIH. É ordem de grandeza, não estimativa do subregistro: o teto inclui mototáxi e não tem o mesmo recorte de idade e sexo.
+
+**Não é resultado:** a variação de ano a ano e entre UFs fica descrita, não interpretada, e não vira hipótese deste trabalho (D-052).
+
+## D-059 · Mudança de codificação coincidente: série nacional dos RD completos, sem BigQuery
+**Data:** 2026-10-17
+**Decisão, antes de rodar:** a verificação da seção 7 do plano sai do mesmo RD do desfecho, baixado de novo por `vcemal.extract.sih.baixar_ano` (espelho do PySUS, FTP para o que faltar, D-035 e D-036), de 2015-01 a 2025-12. Do arquivo completo ficam só as contagens. O RD que não estava no cache do PySUS antes é apagado depois de contado.
+**Por que não o BigQuery, que o plano cita:** o plano o cita como ferramenta disponível, não como fonte exigida, e ele tem dois problemas.
+- O espelho da Base dos Dados termina em 2024 (anexo A), e a série vai até 2025.
+- Ele diverge do RD em formato (D-018).
+
+O RD é a fonte de onde saiu o desfecho, e é ela que interessa conferir.
+**As duas séries do plano, por competência (UF do arquivo × mês, somadas no Brasil):**
+1. **Fração de AIH com código do capítulo XX de transporte (V01–V99)** em qualquer campo secundário (`DIAG_SECUN`, `DIAGSEC1`–`DIAGSEC9`), sobre o total de AIH do arquivo. Ao lado sai a fração com V em `DIAG_PRINC`, que a norma não manda usar (D-017).
+2. **Composição de `campo_causa`** entre as AIH da definição de caso: em que campo `primeira_causa_externa` achou o código. Sai das AIH já classificadas em `data/raw/sih/`, sem rede.
+
+**Leitura, descritiva, como robustez (é ameaça à medida, não ao desenho; D-026):**
+- **Saídas:**
+  - figura das duas séries com a faixa de 2017-07 a 2018-12 marcada;
+  - variação da fração em 2018 contra 2017;
+  - o maior salto entre meses consecutivos da série nacional, com o mês.
+- **O que contaria como descontinuidade:** salto de nível perto de 2018 maior que a variação entre meses do resto da série. Seria reportado ao lado de H1.
+- **Por que uma quebra nacional pesa pouco:** ela cai no mesmo mês de calendário para todos os municípios, então os efeitos de tempo do estimador a absorvem. Só pesaria se fosse correlacionada com a coorte. A série nacional não testa isso, e isso é dito.
+
+## D-060 · Mudança de codificação coincidente: sem descontinuidade perto de 2018
+**Data:** 2026-10-18
+**Cobertura:** os 297 RD completos (27 UFs × 2015–2025), 3.564 UF-meses e 136,2 milhões de AIH. Quatro UF-anos caíram por timeout de rede na primeira passada e entraram na retomada (RN 2018, SE 2019, SC 2016, SC 2017). Por isso o laço de download passou a ter 3 tentativas por UF-ano.
+**Resultado, lido pela regra do D-059:**
+- **Fração de AIH com V01–V99 em campo secundário:** 1,85% em 2017 e 1,80% em 2018, variação de −0,05 pp.
+- **Saltos entre meses consecutivos da série nacional:**
+  - Dentro da faixa marcada (2017-07 a 2018-12), o maior salto em módulo é de 0,09 pp, em 2017-07.
+  - Fora dela, o percentil 95 dos saltos é 0,15 pp, e o maior da série é −0,19 pp, em 2021-03.
+  - A mediana dos saltos é 0,04 pp.
+  - Nenhum salto perto de 2018 passa da variação do resto da série, então não há descontinuidade pelo critério do D-059.
+- **Nível:** a série sobe cerca de 0,2 pp de 2019 para 2020 e fica entre 2,0% e 2,1% até 2025. Isso fica fora da janela da pergunta e é registrado sem interpretação. Como é nacional, os efeitos de tempo do estimador o absorvem.
+- **Composição de `campo_causa`:** a definição de caso acha o código em `DIAGSEC1` em 99,4% a 99,7% das AIH em todos os anos, sem mudança perto de 2018.
+- **V em `DIAG_PRINC`:** aparece só em 2015-01 a 2015-05 (513 AIH no total) e zera daí em diante. São 329 casos da definição, 0,02% dos 1,73 milhão, todos antes da primeira coorte e longe da janela. Fica anotado como mudança de preenchimento em 2015, de peso desprezível.
+
+**Limite, como o D-059 previa:** a série é nacional. Ela não testa uma mudança de codificação correlacionada com a coorte, que é a única que viesaria o DiD.
+**Saídas:** `output/tabelas/codificacao_{brasil_mes,uf_mes,campo_causa,resumo}.csv` e `output/figuras/codificacao.png`.
+
+## D-061 · Sensibilidade às tendências paralelas (Rambachan & Roth), declarada antes de rodar
+**Data:** 2026-10-19
+**Desvio declarado:** o plano não prevê esta análise. Ela entra como robustez sobre estimativas que já existem, sem estimação nova. Responde a um limite que o teste 2 da seção 6 não cobre: não rejeitar a pré-tendência não prova tendências paralelas, porque o teste tem pouco poder e condicionar a leitura a ter passado nele distorce a inferência (Roth, 2022).
+**O que entra:** o estudo de evento de `estimar_cs`. Os ATT(e) de `e ∈ [−12, −2]` são o pré e os de `e ∈ [0, +24]` o pós. O `e = −1` é a referência (base universal, D-047). A covariância é a agrupada por região imediata, a mesma do erro-padrão principal. O alvo é o estimando principal: a média simples dos 25 ATT(e) pós (`l_vec = 1/25`). O script confere que isso reproduz o ATT reportado.
+**Especificações, quatro, todas já estimadas:**
+1. H1 contagem (`contagem`), a leitura principal desde o D-049.
+2. H1 taxa (`principal`), anexo.
+3. H5a contagem (`h5a_contagem`).
+4. H5b contagem (`h5b_contagem`).
+
+**Restrições e grades, fixadas aqui:**
+- **Magnitudes relativas (ΔRM):** a mudança da violação entre meses consecutivos no pós não passa de M̄ vezes a maior mudança observada no pré. A grade é M̄ ∈ {0; 0,25; 0,5; 0,75; 1; 1,5; 2}, com o método padrão do pacote (C-LF).
+- **Suavidade (ΔSD):** a curvatura da violação, isto é, a mudança da inclinação entre meses, não passa de M. M = 0 admite uma tendência linear extrapolada do pré. A grade é M ∈ {0; 0,025; 0,05; 0,1; 0,2}% da média pré dos tratados por mês², com o método padrão (FLCI). Com 25 meses de pós, M = 0,1% já permite um desvio médio da ordem de 10% da média pré.
+- IC de 95% em tudo. O IC convencional sai ao lado.
+
+**Leitura, fixada aqui:**
+- **Não muda veredito.** Os conjuntos robustos só alargam o IC convencional, e H1 e H5 já não são sustentadas. A análise diz quão informativo é o nulo, e só isso.
+- **Saída principal:** o limite superior do IC robusto, em % da média pré, para cada M̄ e cada M. É o maior efeito que os dados não descartam sob violações daquele tamanho.
+- **Referência da leitura:** em M̄ = 1, a violação pode ser tão grande quanto a pior do pré. Se o limite superior nesse ponto ficar perto do MDE de 80% do D-051 e do D-056, o nulo é tão informativo quanto o poder dizia. Se ficar muito acima, o nulo sob tendências paralelas fracas diz pouco, e isso é reportado.
+- **Taxa:** a pré-tendência rejeita em parte da curva (D-049), então espera-se que alargue mais que a contagem. Isso é reportado, sem reabrir a escolha de escala.
+- **Padrão novo:** um padrão que apareça aqui, como uma especificação ou região que se comporte diferente, vai para `docs/proximos-trabalhos.md` (D-052).
+
+**Validação, antes do dado:** em `tests/did_sintetico.R`, com a pré-tendência linear plantada e efeito zero, o IC convencional exclui o zero e o IC ΔSD com M = 0 o cobre.
+**Saídas:** `output/tabelas/did/honest_rm.csv`, `honest_sd.csv` e `output/figuras/did_honest.png`.
+
+## D-062 · Resultado da sensibilidade às tendências paralelas: nenhum IC robusto exclui zero; magnitudes relativas não informam com estudo de evento mensal
+**Data:** 2026-10-19
+**Ajuste técnico depois da primeira rodada, declarado:**
+- **O que aconteceu:** na primeira rodada, o IC de magnitudes relativas saiu idêntico e simétrico de M̄ = 0,5 em diante. Era a borda da grade de θ do pacote, de ±20 ep, e não um limite.
+- **O que mudou:**
+  - A grade passou a ser explícita, ±20 ep do alvo centrados no ATT, em `sensibilidade_honest(grade_ep = 20)`.
+  - A coluna `na_borda` marca o IC que encosta nela. Esse IC não é limitado dentro da grade, e o número da borda não é limite de nada.
+  - O número na borda mudou com o centro da grade (contagem: ±93,9 → −86,2 a +101,7). Fora da borda, os limites mudaram no máximo 0,3 pp, pela discretização da grade.
+- **Também sai:** `honest_original.csv`, o IC convencional, além das saídas declaradas no D-061.
+- **Avisos do solver:** 68 a 82 por especificação, todos "Solution may be inaccurate". Ficam registrados.
+
+**IC 95% em % da média pré dos tratados:**
+
+| | convencional | M̄ = 0,25 | M̄ ≥ 0,5 | SD, M = 0 | SD, M = 0,05% | SD, M = 0,1% | MDE 80% |
+|---|---|---|---|---|---|---|---|
+| H1 contagem | −1,4 a +17,0 | −58 a +74 | não limitado | −3,9 a +22,6 | −12,0 a +30,0 | −22,0 a +39,3 | 13,2 |
+| H1 taxa | −13,2 a +15,5 | −94 a +101 | não limitado | −1,8 a +30,0 | −8,9 a +37,1 | −17,3 a +47,6 | 20,5 |
+| H5a contagem | −13,9 a +21,0 | −114 a +121 | não limitado | −18,6 a +31,7 | −24,3 a +37,5 | −33,9 a +47,1 | 24,9 |
+| H5b contagem | −10,3 a +36,6 | −144 a +197 | não limitado | −9,0 a +57,2 | −13,7 a +61,8 | −22,8 a +71,0 | 33,5 |
+
+Em M̄ = 0, o IC reproduz o convencional (contagem: −1,2 a +16,7), o que confere a montagem.
+**Leitura, pela regra do D-061:**
+- **Vereditos:** nenhum IC robusto exclui zero, em nenhuma especificação nem ponto da grade. Os vereditos de H1 e H5 não mudam, como o D-061 previa.
+- **Magnitudes relativas: não informam aqui.**
+  - **Referência pedida:** em M̄ = 1, o limite superior não é limitado em nenhuma das quatro. Fica muito acima do MDE, e sob essa restrição o nulo não diz nada.
+  - **Por que é mecânico:** a referência é a maior mudança entre meses consecutivos do pré. Com ATT(e) mensais ruidosos, ela é dominada por ruído:
+    - contagem: 10,9% da média pré, contra um ep mediano de 6,1% por ATT(e);
+    - taxa: 18,3%;
+    - H5a: 15,6%;
+    - H5b: 24,1%.
+  - Com 25 meses de pós para acumular, até M̄ = 0,25 já abre ±60% a ±200%. É um limite do desenho mensal contra essa restrição, e não um sinal de violação.
+- **Suavidade: é a leitura informativa.**
+  - **Com tendência linear extrapolada do pré (M = 0):** a contagem de H1 descarta efeitos acima de 23%, a taxa acima de 30%, H5a acima de 32% e H5b acima de 57%.
+  - **Com curvatura de 0,1% da média pré por mês²:** os limites passam para 39%, 48%, 47% e 71%.
+  - **Contra o MDE:** o nulo da contagem de H1 fica menos informativo do que o poder sugeria. Sob tendências paralelas exatas ele descarta efeitos acima de 17%; admitindo uma tendência linear, só acima de 23%.
+- **Taxa:** sob suavidade, o IC da taxa sobe (M = 0: −1,8 a +30,0, contra −13,2 a +15,5 no convencional). É o que se espera quando a pré-tendência rejeita (D-049, p = 0,035 nesta especificação), e não reabre a escolha de escala. Fica reportado sem leitura causal.
+
+**Saídas:** `output/tabelas/did/honest_{original,rm,sd}.csv` e `output/figuras/did_honest.png`.
+
+## D-063 · Fecha a rodada do V2: o que ficou feito e o que fica de fora
+**Data:** 2026-10-23
+**Feito nesta rodada:**
+- **DiD sobre o SIH (D-047 a D-052):** H1 não sustentada.
+- **SIM extraído (D-053, D-054).**
+- **H5 (D-055, D-056):** não sustentada.
+- **H4 (D-057, D-058):** tabela descritiva.
+- **Mudança de codificação (D-059, D-060):** sem descontinuidade perto de 2018.
+- **Sensibilidade às tendências paralelas (D-061, D-062):** nenhum IC robusto exclui zero.
+- **Todas as especificações** foram declaradas antes de rodar. Os desvios do plano estão nas entradas respectivas.
+
+**Considerado e não rodado, como sugestão metodológica para trabalho futuro, sem leitura sobre o resultado:**
+- **DiD sintético (Arkhangelsky et al., 2021) com adoção escalonada:** seria uma segunda via que não depende de tendências paralelas incondicionais. Ficou de fora porque seria um método escolhido depois de ver H1 e H5 nulas, e pela esparsidade do desfecho por município-mês, que exigiria uma agregação nova.
+- **Magnitudes relativas sobre um estudo de evento agregado (trimestral, por exemplo):** o D-062 mostra que, com ATT(e) mensais, a referência do pré é dominada por ruído. A agregação teria de ser fixada antes, num pré-registro próprio.
+- **O controle sintético clássico foi descartado:** é feito para poucos tratados, e aqui são 528 em coortes escalonadas.
+
+**Reproduzir:** `make sim`, `make did`, `make did-exploratorio`, `make did-decomposicao`, `make did-h5`, `make h4`, `make codificacao`, `make did-honest`.

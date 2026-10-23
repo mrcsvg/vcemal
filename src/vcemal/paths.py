@@ -11,6 +11,8 @@ DATA = RAIZ / "data"
 RAW_SIH = DATA / "raw" / "sih"
 #: RD que faltam no espelho do PySUS, baixados do FTP do DATASUS (D-036).
 RAW_SIH_ORIGEM = DATA / "raw" / "sih_origem"
+#: Declaracoes de obito do SIM ja filtradas pela definicao de caso (D-053).
+RAW_SIM = DATA / "raw" / "sim"
 #: Dados abertos do CNPJ da Receita, uma pasta por publicacao mensal (D-040).
 RAW_CNPJ = DATA / "raw" / "cnpj"
 INTERIM = DATA / "interim"
@@ -27,6 +29,9 @@ FONTE_IFOOD_PROSUS = FONTES / "ifood_prosus.csv"
 
 #: Painel municipio x mes produzido por `scripts/sih_pipeline.py`.
 PAINEL_MUNICIPIO_MES = PAINEL / "painel_municipio_mes.parquet"
+
+#: Painel municipio x mes de obitos do SIM, produzido por `scripts/sim_pipeline.py`.
+PAINEL_SIM_MUNICIPIO_MES = PAINEL / "sim_municipio_mes.parquet"
 
 
 def garantir(*caminhos: Path) -> None:

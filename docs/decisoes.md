@@ -842,3 +842,38 @@ Em M̄ = 0, o IC reproduz o convencional (contagem: −1,2 a +16,7), o que confe
 - **O controle sintético clássico foi descartado:** é feito para poucos tratados, e aqui são 528 em coortes escalonadas.
 
 **Reproduzir:** `make sim`, `make did`, `make did-exploratorio`, `make did-decomposicao`, `make did-h5`, `make h4`, `make codificacao`, `make did-honest`.
+
+## D-064 · Atendimento sem internação: nenhum arquivo do DATASUS testado mede o total, e o SINAN entra só como próximo trabalho
+**Data:** 2026-11-09
+**Pergunta:** o SIH só vê internações. Algum arquivo do DATASUS mostra a pressão dos atendimentos de motociclista que não viram AIH?
+**Como foi checado:** em 08/11/2026, um arquivo de cada fonte, baixado do FTP do DATASUS. Nada foi cruzado com o tratamento, e nada muda em H1 a H5 nem no plano. É uma checagem avulsa, com scripts fora do repositório, e não um extrator.
+
+| Arquivo | Recorte | V20–V29 | Leitura |
+|---|---|---|---|
+| SIA `PAPR2301` | PR, 2023-01 | 196 procedimentos | Não identifica motociclista na urgência |
+| SIA `BIPR2301` | PR, 2023-01 | 189 linhas | As mesmas do `PA` |
+| CIHA `CIHAPR2301` | PR, 2023-01 | 33 linhas | Poucos casos; 49% das linhas têm diagnóstico |
+| CMD | pasta do FTP | — | Pastas `Dados` vazias |
+| SINAN `ACGRBR22` | Brasil, 2022 | 27.262 notificações | Só acidente de trabalho |
+
+**SIA, urgência (subgrupo `030106`, definido de memória da tabela SIGTAP):** 1.168.643 procedimentos, 64,5% consolidados, sem CID, sexo ou município do paciente, 3,3% com CID principal e 111 com código V. Para comparar, são 537 AIH de motociclista no mesmo mês e UF (D-034).
+**SINAN, entre as notificações de motociclista:**
+- `REGIME`: 48,4% código 1, 38,4% código 2 e 8,4% código 3.
+- `TIPO_ACID`: 80,6% código 2 e 18,1% código 1.
+- `SIT_TRAB`: 63,6% código 01, 16,1% código 03 e 7,2% código 02.
+- `ID_OCUPA_N`: preenchido em 99,2%, com 3.676 casos (13%) no CBO 519110.
+- **Cobertura:** Roraima 1.091, Minas Gerais 920 e São Paulo 34% do total.
+
+**Não conferido:** o significado dos códigos acima, lido de memória como hospitalar, ambulatorial e ambos em `REGIME`, trajeto e típico em `TIPO_ACID`, carteira, sem registro e autônomo em `SIT_TRAB`, e motoboy no CBO 519110. Conferir no dicionário antes de citar. Um único arquivo por fonte não generaliza para outras UFs nem anos.
+
+**Decisão:**
+- **O desfecho continua o do plano.** O SIA não permite separar o motociclista, e a cobertura desigual do SINAN continua sendo o confundidor do D-001.
+- **O valor do SUS segue como piso.** O atendimento sem internação fica fora, sem estimativa do tamanho.
+- **Hipóteses novas:** PT-03 e PT-04, em `docs/proximos-trabalhos.md` (D-052).
+- **Inventário:** ganha SIA, CIHA e CMD, e a seção do SINAN ganha o que foi medido.
+
+**O que isto põe em dúvida, sem reescrever a história:**
+- **D-002** chama o SINAN de "estruturalmente cego" por pressupor registro formal, e o inventário diz que ele não exige vínculo. O arquivo de 2022 traz notificações em códigos que seriam de trabalhador sem carteira. A leitura do D-002 fica a confirmar depois de conferir o dicionário.
+- **D-001** cita completude de CBO ruim. Em 2022, entre motociclistas, o campo vem preenchido, o que não prova que esteja certo.
+
+**A corrigir quando o artigo for reescrito:** a seção 4 diz que "o sistema de informação em saúde vê o trabalho em uma internação a cada 15.576". O número é do SIH e vale para internações, mas a frase pode ser lida como se o sistema de saúde inteiro quase não visse o trabalho, enquanto o SINAN notificou 27.262 acidentes de trabalho de motociclista em um ano. A frase deve nomear o SIH e citar o SINAN ao lado, com a ressalva de cobertura. O texto do artigo não foi alterado.

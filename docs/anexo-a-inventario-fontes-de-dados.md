@@ -98,11 +98,35 @@ Campo `ACIDTRAB` indica óbito relacionado a acidente de trabalho — mesmo prob
 
 Vantagem: ao contrário da CAT, o SINAN **não exige vínculo empregatício** — a notificação é do sistema de saúde. É a única base pública que, em tese, enxerga o entregador informal. Na prática, depende de busca ativa municipal, então a cobertura é heterogênea entre cidades. Isso é confundidor sério num painel município × mês; use como fonte descritiva e de validação, não como desfecho principal.
 
+**Medido no arquivo `ACGRBR22`, nov/2026 (D-064), e o que muda nas ressalvas acima:**
+- **Espírito Santo:** há 717 notificações de motociclista com residência no ES em 2022. A ressalva 1 precisa ser reconferida; não vale como regra para toda a série.
+- **CBO:** entre as notificações de motociclista, `ID_OCUPA_N` está preenchido em 99,2%. Isso mede preenchimento, não acerto, e vale só para esse recorte e ano. Os demais anos não foram medidos.
+- **Heterogeneidade, confirmada:** Roraima tem 1.091 notificações de motociclista, mais que Minas Gerais (920), e São Paulo concentra 34% do total.
+- **Arquivos:** `FINAIS` vai até 2022 e `PRELIM` traz 2023 a 2026, no FTP `/dissemin/publicos/SINAN/DADOS/`. O tamanho cresce de 5,1 MB (2018) para 34,0 MB (2025), o que pode ser notificação, e não risco.
+
 ---
 
 ### 1.4 CNES — Cadastro Nacional de Estabelecimentos de Saúde · **A**
 
 Leitos SUS, leitos de UTI e habilitação em trauma por município-mês. Serve de controle de oferta. `.dbc` mensal no FTP do DATASUS.
+
+---
+
+### 1.5 SIA/SUS — Produção ambulatorial (`PA` e `BI`) · **A**
+
+Microdado mensal por UF no FTP (`/dissemin/publicos/SIASUS/200801_/Dados/`). **Não identifica motociclista na urgência** no único arquivo testado (PR, jan/2023, D-064): dos 1,17 milhão de procedimentos do subgrupo `030106`, 64,5% são consolidados, sem CID nem município do paciente, e só 3,3% têm CID principal. V20–V29 aparece em 196 procedimentos no arquivo inteiro, contra 537 AIH de motociclista no mesmo mês e UF. O `BI` traz as mesmas 189 linhas com V20–V29 do `PA`. Conta procedimentos, não pessoas.
+
+---
+
+### 1.6 CIHA — Comunicação de Informação Hospitalar e Ambulatorial · **A**
+
+Microdado mensal por UF no FTP (`/dissemin/publicos/CIHA/201101_/Dados/`), com o mesmo tipo de campo do SIH (`DIAG_PRINC`, `MUNIC_RES`, `MODALIDADE`). Serve para atendimento fora do SUS. **Rende pouco** no único arquivo testado (PR, jan/2023, D-064): 137.746 linhas, 49% com diagnóstico principal e 33 com V20–V29. O significado de `MODALIDADE` e a completude do envio não foram conferidos.
+
+---
+
+### 1.7 CMD — Conjunto Mínimo de Dados · **sem microdado no FTP**
+
+A pasta `/dissemin/publicos/CMD/` só traz documentação e tabelas auxiliares; as pastas `Dados` estavam vazias em nov/2026 (D-064). Não verificado se o dado é acessível por outra via.
 
 ---
 
@@ -337,6 +361,9 @@ Matriz insumo-produto encomendada pela empresa. É o número que o iFood usa pub
 | 1.2 | SIM | Sim | Município | Anual | 1996– | A | Severidade / óbito pré-hospitalar |
 | 1.3 | SINAN ACGR | Sim | Município | Contínuo | 2007– | A | Nexo ocupacional (frágil) |
 | 1.4 | CNES | Sim | Estabelecimento | Mensal | 2005– | A | Controle de oferta |
+| 1.5 | SIA (`PA`, `BI`) | Sim | Município (parcial) | Mensal | 2008– | A | Fora do desenho: não identifica motociclista na urgência (D-064) |
+| 1.6 | CIHA | Sim | Município | Mensal | 2011– | A | Fora do desenho: poucos casos (D-064) |
+| 1.7 | CMD | Não no FTP | — | — | — | Sem microdado | Fora do desenho (D-064) |
 | 2.1 | INSS benefícios concedidos | Sim | UF (município em código próprio) | Mensal | dez/2018– mensal; 2012–2018 anual | A | **Lacuna SIH × INSS (P3b)** — `make lacuna` |
 | 2.2 | INSS CAT | Sim | UF (acidente) | Mensal | jun/2023– (legado antes) | A | Subnotificação |
 | 2.3 | AEAT / AEPS | Não | Município | Anual | Longa | A- | Validação |

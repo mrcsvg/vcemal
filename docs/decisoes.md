@@ -990,3 +990,17 @@ Só M̄ = 0, que supõe tendências paralelas exatas no pós, exclui zero. Admit
 - O veredito tem as consequências do D-041, mas é reportado como **"auditoria por agentes, D-067"**, com o desvio dito.
 - Uma auditoria humana posterior, se houver, é registrada como nova entrada e não reescreve esta.
 - Estrato inconclusivo continua sendo não auditado (D-045).
+
+**Adendo ao D-067 (2026-11-12, mesma noite), antes de qualquer comparação.** A primeira rodada parou por um limite da ferramenta, não do protocolo.
+- **O limite:** a busca na web tem cota de 200 consultas por sessão, compartilhada por todos os agentes.
+- **Como terminou:**
+  - O codificador B, mais rápido, terminou os lotes 1, 2, 3 e 5 com 1 a 2 buscas por par. Vários municípios pequenos não tiveram nenhuma busca que nomeasse o município.
+  - O codificador A esgotou a cota no 3º município do lote 1. Os lotes A2 a A5 e B4 foram interrompidos.
+- **O que se comparou:** nada. A e B não foram comparados entre si, e nada foi cruzado com a chave do MEI.
+- **Decisão:** a rodada 1 vira **piloto** e não entra no veredito. As planilhas ficam arquivadas como estão (`scratchpad`, fora do git; contagens neste adendo).
+- **O que fica, e por quê:** o piloto mostra duas coisas. A busca do iFood não achou nenhuma data fina, só o intervalo do Wayback. E a cota de busca torna inviável fazer, numa sessão só, os 750 pares com o esforço que o protocolo prevê.
+- **Para a rodada válida:** só começa com cota de busca suficiente para os dois codificadores em igualdade, e com a mesma ordem de lotes. Os pisos de esforço ficam assim:
+  - Ao menos 1 busca nomeando o município por par.
+  - Ao menos 3 buscas no iFood.
+  - Ficam mantidos os tetos de 6 buscas por par e 10 no iFood.
+- **Pastas fora do lote:** o codificador A gravou dois scripts auxiliares (`saidas.py`, `upd.py`) na raiz do scratchpad, fora da pasta do lote. Não leu outros lotes, mas na rodada válida cada agente escreve só no próprio diretório.

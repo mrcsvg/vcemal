@@ -877,3 +877,72 @@ Em M̄ = 0, o IC reproduz o convencional (contagem: −1,2 a +16,7), o que confe
 - **D-001** cita completude de CBO ruim. Em 2022, entre motociclistas, o campo vem preenchido, o que não prova que esteja certo.
 
 **A corrigir quando o artigo for reescrito:** a seção 4 diz que "o sistema de informação em saúde vê o trabalho em uma internação a cada 15.576". O número é do SIH e vale para internações, mas a frase pode ser lida como se o sistema de saúde inteiro quase não visse o trabalho, enquanto o SINAN notificou 27.262 acidentes de trabalho de motociclista em um ano. A frase deve nomear o SIH e citar o SINAN ao lado, com a ressalva de cobertura. O texto do artigo não foi alterado.
+
+## D-065 · Testes na contagem sem as quebras de 2017, declarados antes de rodar
+**Data:** 2026-11-09
+**Contexto:** a auditoria (seção 4) não começou, e o estrato `2017` pode falhar. Se falhar, as quebras anteriores a 2018-01 saem da estimação principal. Na contagem, leitura principal desde o D-049, essa versão dá +9,95%, IC +0,10 a +19,8, p = 0,048, com pré-tendência de p = 0,45 (curva do D-048). Nessa amostra só existem o efeito e a pré-tendência; os demais testes não foram rodados.
+**Por que agora:** para saber o que o veredito da auditoria significaria. A motivação veio depois de ver a estimativa, então isto é **análise exploratória declarada** (plano, seção 8), e não um novo resultado confirmatório.
+
+**O que roda (`make did-sem2017`, `scripts/did_sem2017.R`):** Callaway & Sant'Anna como no D-047, com not-yet-treated `datado` + `sem_quebra`, janela balanceada `[−12, +24]` e erro-padrão agrupado em região imediata. Todas as especificações usam `drop_g_lt = 37`, ou seja, sem quebras antes de 2018-01:
+1. **Conferência:** `contagem_sem2017` e `taxa_sem2017` têm de reproduzir a curva do D-048. Se não reproduzirem, o script para.
+2. **T1, placebo:** ATT de ocupante de automóvel em contagem e ATT de `moto/pré_moto − auto/pré_auto`, com a construção do D-047.
+3. **T3, denominador:** `frota_moto` como desfecho, desde 2016-07.
+4. **Sun & Abraham**, com os `sem_quebra` como controle, como no D-047: contagem sem 2017, taxa sem 2017 e contagem com todas as coortes. Esta última é nova e entra só para comparação, porque o D-047 rodou Sun & Abraham apenas na taxa.
+5. **HonestDiD** sobre `contagem_sem2017`, com as grades e os métodos do D-061 e a grade de θ do D-062 (±20 ep).
+
+**Regra de leitura, fixada aqui:**
+- **H1 continua não sustentada.** Nada aqui muda o veredito atual nem a especificação principal. Só o veredito da auditoria pode mudar a amostra principal, pela regra da seção 4.
+- **Se o estrato `2017` falhar na auditoria:** aplicam-se à contagem sem 2017 o critério de H1 (estimando positivo e IC de 95% exclui zero) e os testes da seção 6. Os números daqui ficam registrados para isso, sem nova escolha.
+- **T1:** dispara se o IC da diferença moto − auto contiver zero, como no D-047. Se disparar, o plano manda não ler a estimativa como efeito causal da plataforma, mesmo com o critério de H1 atendido.
+- **T2:** dispara se o Wald de `e ∈ [−12, −2]` rejeitar a 5%.
+- **T3:** aplica-se como escrito, comparando a frota com a taxa sem 2017. Sai ao lado a comparação com a contagem sem 2017, sem efeito mecânico, pela ressalva de degeneração do D-049.
+- **Agrupamento por município:** sai ao lado. Um efeito que só exclua zero num dos agrupamentos é reportado como frágil.
+- **Sun & Abraham:** é robustez e não decide nada. Sai o sinal, a magnitude e o IC, ao lado da versão com todas as coortes.
+- **HonestDiD:** como no D-061, não muda veredito. A saída principal é o limite do IC robusto em % da média pré, e o IC que encostar na borda da grade é dito não limitado.
+- **Sem seleção:** tudo é reportado, seja qual for o sinal. Um padrão novo vai para `docs/proximos-trabalhos.md` (D-052).
+
+**Fora de escopo:** H2, H3, H5, o E1–E4 e qualquer outro corte de amostra.
+**Saídas:** `output/tabelas/did/sem2017_{estimativas,estudo_evento,testes,honest_original,honest_rm,honest_sd}.csv`. As saídas existentes não são sobrescritas.
+
+## D-066 · Resultado do D-065: sem 2017, o critério de H1 é atendido por pouco, mas o placebo dispara
+**Data:** 2026-11-09
+**Execução:** `make did-sem2017`, de 12:38 a 12:52 (−03:00), sem erro. As duas conferências reproduziram a curva do D-048 (+9,954% e +1,117%).
+**Ordem entre declaração e estimação:** o D-065 foi escrito antes de rodar, mas não foi commitado antes. O registro é `data/interim/sem2017.log`, fora do git: SHA-256 de `docs/decisoes.md` antes desta entrada `f93b2871…43dadfc`, de `scripts/did_sem2017.R` `c3b9cfd3…112448d85`, sobre o commit `b5aeb0d`. O log é local, então é um registro mais fraco que um commit anterior à execução.
+
+**Em % da média pré, com agrupamento em região imediata:**
+
+| | Sem 2017 | IC 95% | p | Todas as coortes |
+|---|---|---|---|---|
+| Contagem, moto | +9,95 | +0,10 a +19,81 | 0,048 | +7,76 (p = 0,098) |
+| Taxa, moto | +1,12 | −13,83 a +16,06 | 0,88 | +1,15 (p = 0,88) |
+| T1, automóvel | −8,74 | −29,34 a +11,86 | 0,41 | −13,57 (p = 0,20) |
+| T1, diferença moto − auto, em pp | +18,69 | −3,79 a +41,17 | 0,10 | +21,33 (p = 0,069) |
+| T3, frota | +1,19 | +0,82 a +1,56 | < 0,001 | +1,25 |
+| Sun & Abraham, contagem | +9,97 | −5,93 a +25,86 | 0,22 | +7,85 (p = 0,35) |
+| Sun & Abraham, taxa | −0,94 | −21,33 a +19,45 | 0,93 | −0,69 (p = 0,94) |
+
+**Leitura, pela regra do D-065:**
+- **H1 continua não sustentada.** A especificação principal não mudou.
+- **Se o estrato `2017` falhar na auditoria:** o critério de H1 é atendido na contagem, mas **o T1 dispara**, e a estimativa não se lê como efeito causal da plataforma.
+- **T1:** o IC da diferença contém zero. Automóvel tem estimativa negativa, então o disparo vem da imprecisão, e não de um aumento em automóvel igual ao de moto. A regra se aplica como está escrita. A diferença tem ep de cerca de 11,5 pp, MDE de cerca de 32 pp. O `mde80_pct` do CSV não se aplica a essa linha, porque a média do desfecho é próxima de zero. O Wald pré da diferença rejeita (p = 0,0015), e o de automóvel também (p = 0,014).
+- **T2:** não dispara na contagem (p = 0,45). Na taxa, rejeita (p = 0,031).
+- **T3:** dispara como escrito contra a taxa (+1,19% contra +1,12%), com a mesma degeneração do D-049. Contra a contagem, não dispara. O Wald pré da frota rejeita (p < 0,001).
+- **Agrupamento por município:** p = 0,051. O efeito só exclui zero no agrupamento por região, e por isso é reportado como frágil.
+- **Sun & Abraham:** magnitude igual e IC mais largo, que contém zero.
+
+**HonestDiD, contagem sem 2017 (81 avisos "Solution may be inaccurate"):**
+
+| Restrição | IC 95% | Com todas as coortes (D-062) |
+|---|---|---|
+| Convencional | +0,1 a +19,8 | −1,4 a +17,0 |
+| M̄ = 0 | +0,4 a +19,5 | −1,2 a +16,7 |
+| M̄ = 0,25 | −58,8 a +85,4 | −58 a +74 |
+| M̄ ≥ 0,5 | não limitado | não limitado |
+| Suavidade, M = 0 | −6,4 a +23,3 | −3,9 a +22,6 |
+| Suavidade, M = 0,05% | −13,5 a +31,0 | −12,0 a +30,0 |
+| Suavidade, M = 0,1% | −22,8 a +41,0 | −22,0 a +39,3 |
+| Suavidade, M = 0,2% | −40,5 a +60,8 | −41,6 a +57,1 |
+
+Só M̄ = 0, que supõe tendências paralelas exatas no pós, exclui zero. Admitindo uma tendência linear extrapolada do pré (M = 0), o IC já contém zero.
+**Consequência:** o veredito da auditoria continua pendente e continua decidindo a amostra principal, inclusive a leitura de "efeito da plataforma" se o estrato `2018-2020` falhar. O D-063 não lista essa pendência, e este registro a explicita. Excluir 2017 não produz, sozinho, uma leitura causal: o T1 dispara com e sem 2017.
+**Saídas:** `output/tabelas/did/sem2017_{estimativas,estudo_evento,testes,honest_original,honest_rm,honest_sd}.csv`.

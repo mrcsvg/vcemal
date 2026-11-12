@@ -1,4 +1,4 @@
-.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria did did-exploratorio did-decomposicao did-h5 did-honest sim h4 codificacao lint test limpar
+.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria did did-exploratorio did-decomposicao did-h5 did-honest did-sem2017 sim h4 codificacao lint test limpar
 
 PYTHON ?= python
 
@@ -70,6 +70,9 @@ did-h5: ## H5: obitos do SIM pelo estimando principal, contagem e taxa, com e se
 
 did-honest: ## V2: sensibilidade as tendencias paralelas (HonestDiD), declarada no D-061 (depois de make did e make sim) -- sem rede
 	Rscript scripts/did_honest.R
+
+did-sem2017: ## V2: T1, T3, Sun & Abraham e HonestDiD na contagem sem as quebras de 2017, declarados no D-065 (depois de make did e make did-exploratorio) -- sem rede
+	Rscript scripts/did_sem2017.R
 
 sim: ## H5 e H4: obitos do SIM por municipio x mes, direto do FTP do DATASUS (D-053) -- ~1,5 GB de FTP
 	$(PYTHON) scripts/sim_pipeline.py

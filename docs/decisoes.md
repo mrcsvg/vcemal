@@ -946,3 +946,47 @@ Em M̄ = 0, o IC reproduz o convencional (contagem: −1,2 a +16,7), o que confe
 Só M̄ = 0, que supõe tendências paralelas exatas no pós, exclui zero. Admitindo uma tendência linear extrapolada do pré (M = 0), o IC já contém zero.
 **Consequência:** o veredito da auditoria continua pendente e continua decidindo a amostra principal, inclusive a leitura de "efeito da plataforma" se o estrato `2018-2020` falhar. O D-063 não lista essa pendência, e este registro a explicita. Excluir 2017 não produz, sozinho, uma leitura causal: o T1 dispara com e sem 2017.
 **Saídas:** `output/tabelas/did/sem2017_{estimativas,estudo_evento,testes,honest_original,honest_rm,honest_sd}.csv`.
+
+## D-067 · A auditoria é codificada por agentes de IA, com verificação mecânica da evidência, declarada antes da primeira linha
+**Data:** 2026-11-12
+**Contexto:** a auditoria do D-041/D-042 não começou porque não havia dois codificadores humanos. O protocolo 1.1 estima cerca de 94 horas por codificador. O tratamento do MEI continua congelado (SHA-256 `128999bd…7654a2`). Nenhuma linha foi codificada, e as planilhas `auditoria_{a,b}.csv` estão vazias.
+**Decisão:** os codificadores A e B e o adjudicador passam a ser agentes de IA (subagentes do Claude Code), e o protocolo sobe para a versão 1.2. **É desvio do plano depositado no OSF**, e o artigo diz isso onde reportar a auditoria. Amostra, regras de evento, evidência, confiança, desempate, regra do veredito e consequências continuam como estão (D-041, D-042, D-045).
+
+**Quem codifica:**
+- **Codificador A:** Claude Opus 5.5. **Codificador B:** Claude Sonnet 5.5. Modelos diferentes, para que A e B não sejam o mesmo leitor duas vezes.
+- **Adjudicador:** Claude Opus 5.5, num contexto novo, que vê só as linhas pendentes de A e B.
+- **Lotes:** cada codificador recebe os 75 municípios em 5 lotes de 15, na ordem de `auditoria_municipios.csv`. Cada lote é um agente independente, sem acesso ao que os outros escreveram.
+- **Falha:** se um agente parar antes de terminar o lote, os municípios que faltam vão a um agente novo do mesmo modelo, antes de qualquer comparação. Cada repetição fica registrada.
+
+**Cegamento:**
+- **Material entregue:** cada agente trabalha num diretório temporário fora do repositório e recebe só o protocolo, as linhas do seu lote e as linhas de `cronologia_wayback.csv` dos seus municípios, que já são insumo permitido pela seção 4 do protocolo.
+- **Proibições:** a instrução proíbe abrir o repositório, o SIH, o painel e os arquivos do MEI.
+- **Limite:** o cegamento é **por instrução**, não por permissão de sistema. Os agentes têm acesso de leitura ao disco, e isso fica declarado.
+
+**Limite de esforço:** no lugar dos 15 minutos por par, até 6 buscas por par e até 10 no iFood, registradas em `buscas` quando o resultado for `N`.
+**Data sem fonte não entra:** o agente não pode registrar data tirada do próprio conhecimento. Linha encontrada sem URL e sem trecho (tipos 1, 2 e 4) é inválida pela seção 5.
+
+**Verificação mecânica, nova, antes da consolidação** (`scripts/auditoria_verificar.py`, `vcemal.verificacao`):
+- **O que se verifica:** cada linha encontrada (A a D) tem a URL baixada pelo script. O trecho, cortado nas reticências e normalizado (sem acento, caixa ou pontuação), tem de estar na página. Sem trecho (tipos 3 e 5), o nome do município tem de estar.
+- **Quando a URL não abre:** tenta-se a cópia mais recente no Wayback.
+- **Status:**
+  - `wayback_script`: mesma URL, município e plataforma de `cronologia_wayback.csv`.
+  - `confirmado`.
+  - `trecho_ausente`: a página abriu e o trecho não estava nela.
+  - `inacessivel`.
+- **Versão principal:** ficam só `wayback_script` e `confirmado`. A entrada que não passa vira `N`, e as saídas do mesmo par saem junto.
+- **Sensibilidade:** as `inacessivel` também ficam, e o veredito sai ao lado. `trecho_ausente` nunca fica.
+- **Wayback:** nesta data ele não responde da máquina que roda a verificação, nem fora do sandbox. Por isso as linhas tipo 3 que não vieram do `make wayback` tendem a cair em `inacessivel`. A verificação é feita uma vez, antes da consolidação, e não se refaz depois do veredito.
+
+**O que o kappa mede aqui:** concordância entre dois modelos da mesma família, que podem compartilhar o mesmo erro. Kappa e concordância de datas saem como na seção 8 do protocolo, mas não equivalem à confiabilidade entre humanos. A regra da seção 8 continua valendo: com kappa < 0,70 ou menos de 80% de datas concordantes, todas as discordâncias vão para adjudicação.
+
+**Arquivos:**
+- **Planilhas dos agentes:** `docs/fontes/cronologia/auditoria_{a,b}.csv`.
+- **Planilhas verificadas:** `auditoria_{a,b}_verificada.csv` e `_verificada_sens.csv`.
+- **Status de cada linha:** `output/auditoria/verificacao.csv`.
+- **Veredito:** `make auditoria` passa a consolidar as planilhas verificadas. A sensibilidade sai em `output/auditoria_sens/`.
+
+**Regra de leitura:**
+- O veredito tem as consequências do D-041, mas é reportado como **"auditoria por agentes, D-067"**, com o desvio dito.
+- Uma auditoria humana posterior, se houver, é registrada como nova entrada e não reescreve esta.
+- Estrato inconclusivo continua sendo não auditado (D-045).

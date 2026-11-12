@@ -1,6 +1,6 @@
 # Protocolo de codificação — cronologia de entrada das plataformas (F3)
 
-**Versão 1.1 · 2026-10-11 · estado: auditoria do tratamento do MEI.** Este documento é
+**Versão 1.2 · 2026-11-12 · estado: auditoria do tratamento do MEI, por agentes de IA (D-067).** Este documento é
 congelado antes da primeira linha codificada. Toda mudança depois disso vira
 versão nova, com a data e o motivo registrados na seção 14, e a concordância
 é recalculada a partir do bloco em que a mudança entrou. As regras
@@ -15,6 +15,14 @@ onde o texto e o código divergirem, o código é o que vale e o texto está err
 > página do entregador era do consumidor (seção 3). As regras de evento,
 > evidência, confiança e desempate (seções 1, 3 a 7 e 9) não mudam. A versão 1.0
 > está no histórico do git (commit `1b6fb6f`).
+
+> **O que mudou na 1.2 (D-067).** Os codificadores A e B e o adjudicador são
+> agentes de IA (A: Claude Opus 5.5; B: Claude Sonnet 5.5; adjudicador: Opus em
+> contexto novo), em lotes de 15 municípios. O limite de 15 minutos vira até 6
+> buscas por par (10 no iFood). Toda linha encontrada passa pela verificação
+> mecânica de `scripts/auditoria_verificar.py` antes da consolidação: URL
+> baixada, trecho conferido na página. A linha que não passa vira `N`. Nada
+> mais muda.
 
 ## 0. Em uma frase
 
@@ -336,4 +344,5 @@ aceitável (C/D) quando a busca fina não render nada em 15 minutos.
 | Versão | Data | Mudança |
 |---|---|---|
 | 1.0 | 2026-09-20 | Versão inicial, antes do piloto |
+| 1.2 | 2026-11-12 | Codificadores e adjudicador viram agentes de IA; limite por buscas; verificação mecânica da URL e do trecho antes da consolidação (D-067) |
 | 1.1 | 2026-10-11 | Codificação vira auditoria de 75 municípios do tratamento do MEI — 48 sorteados por estrato de ano × faixa e as 27 capitais (D-040, D-041, D-042); lista do iFood corrigida para o lado do entregador e regra "página só entra depois de lida" (D-039); cegamento estendido aos arquivos do MEI; James Delivery fora |

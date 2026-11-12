@@ -1,4 +1,4 @@
-.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria did did-exploratorio did-decomposicao did-h5 did-honest did-sem2017 sim h4 codificacao lint test limpar
+.PHONY: help setup painel diagnostico denominadores custo lacuna pnad lucro contraste cronologia wayback mei auditoria-verificar auditoria did did-exploratorio did-decomposicao did-h5 did-honest did-sem2017 sim h4 codificacao lint test limpar
 
 PYTHON ?= python
 
@@ -50,10 +50,16 @@ mei: ## F3: mes de chegada do entregador pela quebra nas aberturas de MEI de ent
 	$(PYTHON) scripts/mei.py $(ARGS)
 
 AUD = docs/fontes/cronologia
-auditoria: ## F3: consolida as planilhas da auditoria do MEI e da o veredito por estrato (D-041) -- sem rede
-	$(PYTHON) scripts/cronologia.py consolidar $(AUD)/auditoria_a.csv $(AUD)/auditoria_b.csv \
+auditoria-verificar: ## F3: baixa cada URL citada na auditoria e confere o trecho; escreve as planilhas verificadas (D-067) -- HTTPS
+	$(PYTHON) scripts/auditoria_verificar.py $(AUD)/auditoria_a.csv $(AUD)/auditoria_b.csv
+
+auditoria: ## F3: consolida as planilhas verificadas da auditoria do MEI e da o veredito por estrato, com a sensibilidade (D-041, D-067) -- sem rede
+	$(PYTHON) scripts/cronologia.py consolidar $(AUD)/auditoria_a_verificada.csv $(AUD)/auditoria_b_verificada.csv \
 		--desempates $(AUD)/auditoria_desempates.csv --saida output/auditoria
 	$(PYTHON) scripts/cronologia.py auditoria-avaliar output/auditoria/tratamento_municipio.csv
+	$(PYTHON) scripts/cronologia.py consolidar $(AUD)/auditoria_a_verificada_sens.csv $(AUD)/auditoria_b_verificada_sens.csv \
+		--desempates $(AUD)/auditoria_desempates.csv --saida output/auditoria_sens
+	$(PYTHON) scripts/cronologia.py auditoria-avaliar output/auditoria_sens/tratamento_municipio.csv --saida output/auditoria_sens
 
 did: ## V2: painel de estimacao e Callaway & Sant'Anna das especificacoes do plano (R: did, fixest) -- sem rede
 	$(PYTHON) scripts/did_painel.py

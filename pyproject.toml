@@ -32,6 +32,8 @@ where = ["src"]
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+# registro das ferramentas da auditoria por agentes, como rodaram (D-068); nao e codigo do pacote
+extend-exclude = ["docs/fontes/cronologia/auditoria_r2"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]

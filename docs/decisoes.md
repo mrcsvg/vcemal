@@ -1004,3 +1004,10 @@ Só M̄ = 0, que supõe tendências paralelas exatas no pós, exclui zero. Admit
   - Ao menos 3 buscas no iFood.
   - Ficam mantidos os tetos de 6 buscas por par e 10 no iFood.
 - **Pastas fora do lote:** o codificador A gravou dois scripts auxiliares (`saidas.py`, `upd.py`) na raiz do scratchpad, fora da pasta do lote. Não leu outros lotes, mas na rodada válida cada agente escreve só no próprio diretório.
+
+**Segundo adendo ao D-067 (2026-11-14), antes da rodada 2.** A ferramenta de busca da rodada válida é o **Parallel Search** (conector MCP, `web_search` e `web_fetch`), autenticado pelo autor nesta data.
+- **Ferramenta:** a busca embutida (`WebSearch`), que tem o limite de 200 consultas, fica proibida aos dois codificadores. Os dois usam a mesma ferramenta, e cada agente tem o próprio `session_id`. Um teste antes da rodada (uma consulta do orquestrador e uma de um subagente, sem relação com a amostra) voltou sem aviso de limite.
+- **O que conta como busca:** cada consulta da lista `search_queries` conta como uma busca. Tetos (6 por par, 10 no iFood) e pisos do primeiro adendo valem por consulta, e todas as consultas vão para `buscas`, inclusive quando o par é achado.
+- **Trecho literal:** preferência por `curl` (como na rodada 1). O `web_fetch` do Parallel devolve trechos da página, e o trecho copiado dali passa pela mesma verificação mecânica.
+- **Rodada 2:** pastas novas (`scratchpad/auditoria_r2/{A,B}/lote_k`), planilhas vazias, mesma ordem de lotes. Os 10 lotes rodam ao mesmo tempo, em igualdade. `data_acesso` = data da rodada.
+- **Se o Parallel limitar ou falhar no meio:** vale a regra de falha do D-067. Os municípios que faltam vão a um agente novo do mesmo modelo antes de qualquer comparação, e a repetição fica registrada.

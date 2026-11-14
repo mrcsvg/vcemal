@@ -1011,3 +1011,55 @@ Só M̄ = 0, que supõe tendências paralelas exatas no pós, exclui zero. Admit
 - **Trecho literal:** preferência por `curl` (como na rodada 1). O `web_fetch` do Parallel devolve trechos da página, e o trecho copiado dali passa pela mesma verificação mecânica.
 - **Rodada 2:** pastas novas (`scratchpad/auditoria_r2/{A,B}/lote_k`), planilhas vazias, mesma ordem de lotes. Os 10 lotes rodam ao mesmo tempo, em igualdade. `data_acesso` = data da rodada.
 - **Se o Parallel limitar ou falhar no meio:** vale a regra de falha do D-067. Os municípios que faltam vão a um agente novo do mesmo modelo antes de qualquer comparação, e a repetição fica registrada.
+
+## D-068 · Resultado da auditoria por agentes (rodada 2): 2017 e capitais passam pela regra, 2018-2020 e 2021-2025 inconclusivos; o "passa" de 2017 não é informativo
+**Data:** 2026-11-14
+**Contexto:** rodada válida do D-067, com a busca do Parallel Search (segundo adendo). O tratamento do MEI continua congelado (SHA-256 `128999bd…7654a2`). A comparação com a chave só foi feita depois da verificação mecânica e da adjudicação.
+
+**Como a rodada correu (desvios operacionais, todos antes de qualquer comparação):**
+- **Lotes:** dos 10 lotes, 4 do codificador B pararam por falta de contexto do agente, porque cada busca do Parallel devolve de 12 a 25 mil tokens. Os 5 lotes do codificador A e o lote B5 terminaram.
+- **Repetições:** pela regra de falha do D-067, os pares não terminados foram para 14 agentes novos do mesmo modelo, em pedaços de até 3 municípios. "Não terminado" quer dizer linha vazia ou abaixo do piso de buscas do primeiro adendo.
+  - A repetição busca o par do zero.
+  - O briefing das repetições ganhou uma nota operacional: o Parallel executa só as 5 primeiras consultas de cada chamada, e o agente deve economizar contexto.
+  - Ferramentas e briefing estão em `docs/fontes/cronologia/auditoria_r2/` (`repartir.py`, `juntar.py`, `desempatar.py`, `prompt_modelo.md`).
+- **Mesma `data_min` duas vezes:** quando um par e evento tinham duas linhas com a mesma `data_min`, o validador recusava a planilha. O briefing já mandava ficar com a evidência mais forte, e o desempate foi feito depois de calcular o status de verificação (`desempatar.py`):
+  - critério: primeiro a linha que passou, depois o melhor grau, depois o intervalo mais estreito;
+  - foram 8 linhas descartadas em A e 1 em B, todas intervalos do Wayback ao lado de uma linha de imprensa, e as duas linhas passavam na verificação.
+- **Verificação mecânica (`make auditoria-verificar`):**
+  - A: 108 linhas `confirmado`, 59 `wayback_script` e 2 `inacessivel`.
+  - B: 65 `confirmado`, 92 `wayback_script` e 1 `inacessivel`.
+  - Nenhuma linha `trecho_ausente`.
+- **Concordância (versão principal):** kappa 0,897; 91,5% de datas concordantes (±1 mês) em 142. A seção 8 não manda todas as discordâncias para adjudicação, então só as 8 pendências das regras R1 a R3 foram ao adjudicador C (Opus, contexto novo, só as linhas pendentes).
+- **Decisões do adjudicador:**
+  - Saída nacional da 99Food: um mês só, 2023-02 (Extra, 05/01/2023, fim da entrega própria em 28/02/2023), aplicado a todos os municípios.
+  - Uma das fontes dele (blog da Uber, Uber Eats em BH, 2017-07) não abre para o script de verificação. Pela regra do D-067, na versão principal esse item fica com a linha verificada de B (Wayback, 2016-12 a 2020-03, D). A decisão original fica na sensibilidade (`auditoria_desempates_sens.csv`).
+  - As demais fontes do adjudicador abriram.
+
+**Veredito pela regra congelada (D-041), igual na versão principal e na sensibilidade:**
+
+| Estrato | Auditados | Achados | Concordantes | Coincidência | Veredito |
+|---|---|---|---|---|---|
+| 2017 | 12 | 6 | 4 | 66,7% (IC95 0,30–0,90) | passa |
+| 2018-2020 | 12 | 4 | 4 | 100% | inconclusivo (< 6 achados) |
+| 2021-2025 | 12 | 3 | 3 | 100% | inconclusivo (< 6 achados) |
+| capitais | 27 | 27 | 23 | 85,2% (IC95 0,68–0,94) | passa |
+| iscas | 12 | 2 | — | — | — |
+
+**Leitura (o que o veredito não diz):**
+- **2017 passa no limite:** 4 de 6 está exatamente no piso de 2/3, e um achado a menos inverte o resultado.
+- **O "passa" de 2017 não é informativo.** Os 4 achados concordantes de 2017 e todos os achados de 2018-2020 e 2021-2025 são o intervalo do Wayback para o iFood (2018-01 a 2023-12, confiança D, 71 meses de incerteza). Com a janela de ±6 meses, esse intervalo concorda com qualquer quebra entre meados de 2017 e meados de 2024. A regra do D-041 não pondera a largura do intervalo; isso ficou de fora quando ela foi escrita e não se corrige agora.
+- **Exploratório, declarado aqui como post-hoc (D-052), contando só achados com incerteza ≤ 12 meses:**
+  - Estratos datados: 1 achado (Esteio, 2017), que não concorda.
+  - Capitais: 12 de 16 concordam (75%).
+  - Nos municípios de 20 a 100 mil habitantes, a busca não achou data fina de chegada de nenhuma plataforma. A auditoria, portanto, não consegue testar a regra do MEI onde está a maior parte do tratamento.
+- **Iscas:** 2 iscas (sem quebra no MEI) têm entrada codificada. Isso indica que o MEI pode deixar chegadas passar; o número é descritivo.
+
+**Consequências (D-041, D-045):**
+- Nenhum estrato reprovou, então nenhuma quebra sai da estimação principal por causa da auditoria.
+- 2018-2020 e 2021-2025 contam como **não auditados**.
+- No artigo, o resultado é reportado como "auditoria por agentes, D-067", com:
+  - o desvio do plano depositado no OSF;
+  - o limite de que o "passa" de 2017 vem de intervalos largos;
+  - o recorte exploratório ao lado, rotulado como tal.
+- A validação da regra do MEI fica sustentada pelas capitais e pelos testes de falsificação já feitos, não pela auditoria dos municípios pequenos.
+- **Próximo trabalho:** uma auditoria com fontes que datem a chegada em municípios pequenos (dados do iFood por município, pedido via LAI às prefeituras ou entrevistas) vira PT-05 em `docs/proximos-trabalhos.md`.

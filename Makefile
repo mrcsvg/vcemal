@@ -58,7 +58,7 @@ auditoria: ## F3: consolida as planilhas verificadas da auditoria do MEI e da o 
 		--desempates $(AUD)/auditoria_desempates.csv --saida output/auditoria
 	$(PYTHON) scripts/cronologia.py auditoria-avaliar output/auditoria/tratamento_municipio.csv
 	$(PYTHON) scripts/cronologia.py consolidar $(AUD)/auditoria_a_verificada_sens.csv $(AUD)/auditoria_b_verificada_sens.csv \
-		--desempates $(AUD)/auditoria_desempates.csv --saida output/auditoria_sens
+		--desempates $(AUD)/auditoria_desempates_sens.csv --saida output/auditoria_sens
 	$(PYTHON) scripts/cronologia.py auditoria-avaliar output/auditoria_sens/tratamento_municipio.csv --saida output/auditoria_sens
 
 did: ## V2: painel de estimacao e Callaway & Sant'Anna das especificacoes do plano (R: did, fixest) -- sem rede

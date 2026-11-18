@@ -1063,3 +1063,47 @@ Só M̄ = 0, que supõe tendências paralelas exatas no pós, exclui zero. Admit
   - o recorte exploratório ao lado, rotulado como tal.
 - A validação da regra do MEI fica sustentada pelas capitais e pelos testes de falsificação já feitos, não pela auditoria dos municípios pequenos.
 - **Próximo trabalho:** uma auditoria com fontes que datem a chegada em municípios pequenos (dados do iFood por município, pedido via LAI às prefeituras ou entrevistas) vira PT-05 em `docs/proximos-trabalhos.md`.
+
+## D-069 · O tratamento é a plataformização do trabalho de entrega, não a chegada do iFood; a exigência de MEI no cadastro entra como mecanismo, declarada depois do D-068
+**Data:** 2026-11-15
+**Contexto:** depois do D-068, a busca na web não data a chegada nos municípios pequenos. A pergunta passou a ser outra: por que uma quebra nas aberturas de MEI de entrega marca a chegada do trabalho por plataforma? Esta decisão vem **depois** de ver o resultado da auditoria e é declarada como tal (D-052).
+
+**O que não muda:**
+- A regra do D-040, o hash (`128999bd…7654a2`), a amostra, as estimativas e os vereditos do D-068 não mudam.
+- Nada é reestimado.
+
+**O que muda: o nome e a leitura do tratamento.**
+- No artigo e na documentação, o tratamento passa a ser "chegada da entrega por plataforma (oferta de entregador formalizado)", sem nomear uma empresa.
+- O iFood continua citado onde é fonte de dado: lista de cidades no Wayback, Prosus e o contraste de lucro.
+- Isso só torna explícito o que o D-040 já declarava ("chegada de oferta de entregador formalizado, não a entrada da plataforma X").
+
+**O que a consulta aos requisitos de cadastro mostrou** (`docs/fontes/requisitos_cadastro_plataformas.csv`, acesso em 2026-11-15):
+- **Exigem MEI com CNAE de entrega (5320-2/02 entre os aceitos):**
+  - Loggi;
+  - Shopee (Motorista Parceiro de Entrega);
+  - Mercado Livre (Envios Extra, desde 2021-08);
+  - Amazon Flex (desde 2025-06; só aceita o 5320-2/02).
+- **Aceitam CPF:** iFood no cadastro direto, Lalamove e, segundo fonte secundária, Rappi, 99 e Uber Flash.
+- **Desconhecido:** a exigência dos Operadores Logísticos (OL) do iFood e as datas de início das exigências da Loggi e da Shopee. A consulta ao Wayback não respondeu.
+- **Portal de Dados do iFood** (JSON de 2026-08-25):
+  - não tem dado por município, nem sobre MEI, CNPJ, OL ou acidentes;
+  - só serve de contexto nacional: pedidos por mês de 1 milhão (2015) a 20 milhões (2019);
+  - cerca de 60% das entregas pedidas pelo iFood em 2022-2025 são feitas pelo próprio estabelecimento, e o glossário ainda precisa confirmar se "Estabelecimento" quer dizer entregador do próprio restaurante.
+
+**Leitura, com os limites:**
+- **Quebras de 2021 em diante:** a exigência de MEI pelas plataformas de encomendas é um mecanismo documentado. O D-040 tratava esse canal como possível contaminação ("pesa mais nas quebras tardias"); com o tratamento generalizado, ele faz parte do tratamento. É uma reinterpretação feita depois do D-068 e declarada aqui.
+- **Quebras de 2017-2020:** a exigência de MEI no cadastro **não** explica estas quebras pelo que foi documentado. As plataformas de comida aceitam CPF, e as de encomendas que exigem MEI começam em 2021 ou têm início desconhecido.
+  - Candidatos não verificados: OL que contratam o entregador como MEI, restaurantes que contratam como pessoa jurídica e formalização voluntária.
+  - Isso vira PT-06, não resultado.
+
+**Proteção previdenciária, como contexto institucional (não é hipótese testada):**
+- O MEI é contribuinte individual (Decreto 3.048/1999, art. 9º, V, "p").
+- O auxílio-acidente cabe só aos segurados dos incisos I, II, VI e VII do art. 11 (Lei 8.213/1991, art. 18, §1º, redação da LC 150/2015): empregado, doméstico, avulso e segurado especial.
+- O INSS lista o contribuinte individual entre quem não tem direito (gov.br/inss, página do auxílio-acidente, 2023-10-04). A TNU firmou o mesmo entendimento no Tema 201 (2019).
+- A página "Previdência para MEI" do Portal do Empreendedor lista o auxílio-acidente, segundo o Âmbito Jurídico (2026-03-20). No artigo, vale a lei, e a divergência é citada.
+- Leitura para o artigo: quando a plataforma exige MEI, o entregador acidentado com sequela permanente fica sem auxílio-acidente. Ele mantém o auxílio por incapacidade, mas o custo da sequela fica com ele e com o SUS. É um argumento de desenho institucional, ao lado de H4 (D-058), sem número novo.
+
+**Consequências:**
+- Artigo: o tratamento é renomeado; o dossiê de requisitos entra como evidência de mecanismo para as quebras tardias, com o limite de 2017-2020 escrito; o auxílio-acidente entra na discussão.
+- PT-06 em `docs/proximos-trabalhos.md`.
+- A nota de desvio no OSF passa a citar o D-067, o D-068 e o D-069.

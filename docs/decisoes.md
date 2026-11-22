@@ -878,6 +878,15 @@ Em M̄ = 0, o IC reproduz o convencional (contagem: −1,2 a +16,7), o que confe
 
 **A corrigir quando o artigo for reescrito:** a seção 4 diz que "o sistema de informação em saúde vê o trabalho em uma internação a cada 15.576". O número é do SIH e vale para internações, mas a frase pode ser lida como se o sistema de saúde inteiro quase não visse o trabalho, enquanto o SINAN notificou 27.262 acidentes de trabalho de motociclista em um ano. A frase deve nomear o SIH e citar o SINAN ao lado, com a ressalva de cobertura. O texto do artigo não foi alterado.
 
+**Adendo (2026-11-22): códigos conferidos.**
+- **Fonte:** dicionário de dados do agravo "DRT Acidente de Trabalho Grave", SINAN NET versão 5.0, revisado em julho de 2010 (`ACGRN_DIC_DADOS.pdf`, dentro de `Docs_TAB_SINAN.zip`, em `ftp.datasus.gov.br/dissemin/publicos/SINAN/DOCS/`, baixado em 2026-11-22).
+- **`REGIME` (campo 65):** 1 hospitalar, 2 ambulatório, 3 ambos, 9 ignorado. A leitura de memória estava certa: 38,4% das notificações de motociclista são só ambulatoriais.
+- **`TIPO_ACID` (campo 55):** 1 típico, 2 trajeto, 9 ignorado. Certa: 80,6% são de trajeto.
+- **`SIT_TRAB` (campo 32):** 01 empregado registrado com carteira, 02 empregado não registrado, 03 autônomo/conta própria; vai até 12, mais 99 ignorado. Certa.
+- **CBO 519110:** "Motofretista", na família 5191, "Motociclistas e ciclistas de entregas rápidas". A fonte é secundária (ocupacoes.com.br, que reproduz a CBO do MTE), porque a busca do site da CBO não responde a consulta automática.
+- **Consequência para o D-002:** o SINAN não é "estruturalmente cego" ao trabalhador sem carteira. A ficha tem as categorias de empregado não registrado e de autônomo, e o arquivo de 2022 as usa (7,2% e 16,1% das notificações de motociclista). O limite que sobra é o da cobertura, desigual entre municípios, que é o confundidor do D-001. O D-002 não é reescrito; esta nota o corrige.
+- **Artigo:** a frase da seção 4 foi corrigida em 2026-11-22, junto com as mudanças do D-069. Ela nomeia o SIH e cita o SINAN ao lado, com a ressalva de cobertura.
+
 ## D-065 · Testes na contagem sem as quebras de 2017, declarados antes de rodar
 **Data:** 2026-11-09
 **Contexto:** a auditoria (seção 4) não começou, e o estrato `2017` pode falhar. Se falhar, as quebras anteriores a 2018-01 saem da estimação principal. Na contagem, leitura principal desde o D-049, essa versão dá +9,95%, IC +0,10 a +19,8, p = 0,048, com pré-tendência de p = 0,45 (curva do D-048). Nessa amostra só existem o efeito e a pré-tendência; os demais testes não foram rodados.
@@ -1107,3 +1116,16 @@ Só M̄ = 0, que supõe tendências paralelas exatas no pós, exclui zero. Admit
 - Artigo: o tratamento é renomeado; o dossiê de requisitos entra como evidência de mecanismo para as quebras tardias, com o limite de 2017-2020 escrito; o auxílio-acidente entra na discussão.
 - PT-06 em `docs/proximos-trabalhos.md`.
 - A nota de desvio no OSF passa a citar o D-067, o D-068 e o D-069.
+
+**Adendo ao D-069 (2026-11-22): Wayback e artigo.**
+- **Wayback:** respondeu nesta data, fora do sandbox.
+  - **Loggi:** a página de requisitos (artigo de ajuda 4409962774413) já exige MEI com CNAE de entrega na captura mais antiga, de 2021-10-18. As páginas `loggi.com/entregadores` de 2019-05 e 2020-05 renderizam por JavaScript e não mostram requisitos no arquivo. O início da exigência continua desconhecido, com limite superior em 2021-10.
+  - **Shopee:** nenhuma captura da página de requisitos.
+  - O dossiê (`requisitos_cadastro_plataformas.csv`) e o PT-06 registram isso.
+- **Artigo (`artigo/artigo.tex`), aplicadas as consequências deste registro:**
+  - o tratamento passa a ser a chegada da entrega por plataforma, de qualquer empresa (seções 1 e 2.3);
+  - a seção 2.3 ganha o parágrafo dos requisitos de cadastro, com o limite de 2017-2020 e a declaração de que a leitura é posterior ao plano;
+  - a legenda da Figura 1 e a seção 4 deixam de chamar as quebras de 2021+ de contaminação;
+  - a seção 4 ganha o auxílio-acidente, como argumento de desenho institucional. A fonte do INSS foi conferida nesta data na página de 2023-10-04, que lista o contribuinte individual entre quem não tem direito.
+- **Nota de desvios do OSF:** rascunho em `docs/pre-registro/nota-desvios-osf.md`, com o D-046 ao D-069, para o autor enviar.
+- **O que o artigo ainda não tem:** ele continua sendo a versão prévia de 2026-10-13, sem os resultados do D-047 ao D-068: estimação, H5, H4, sensibilidade e auditoria. A seção 2.5 ainda descreve codificadores humanos e a auditoria no futuro. Reescrever o artigo com os resultados é a próxima etapa, e não foi feita aqui.

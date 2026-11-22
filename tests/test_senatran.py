@@ -40,6 +40,13 @@ def test_abreviacao_so_casa_como_token_inteiro():
     assert senatran.mes_do_arquivo("frota_marcas_2020.xls") is None
 
 
+def test_abreviacao_colada_no_ano():
+    """jun e jul/2024 vem como `copy_of_FrotaporMunicpioeTipoJUN2024.xlsx`."""
+    assert senatran.mes_do_arquivo("copy_of_FrotaporMunicpioeTipoJUN2024.xlsx") == 6
+    assert senatran.mes_do_arquivo("copy_of_FrotaporMunicpioeTipoJUL2024.xlsx") == 7
+    assert senatran.mes_do_arquivo("frota_marcas2020.xls") is None
+
+
 def test_ano_confere_descarta_arquivo_de_outro_ano():
     """`Frota_Munic_Modelo_Fevereiro_20241.xls` aparece solto na pagina de 2025."""
     assert not senatran.ano_confere("Frota_Munic_Modelo_Fevereiro_20241.xls", 2025)

@@ -13,6 +13,7 @@
 Lê só `docs/fontes/cronologia/tratamento_mei_municipio.csv`. Uso:
 python artigo/modelos_artigo.py
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -39,8 +40,15 @@ SEMENTE = 20261013
 REGIAO = {"1": "Norte", "2": "Nordeste", "3": "Sudeste", "4": "Sul", "5": "Centro-Oeste"}
 FAIXAS = ["20-50 mil", "50-100 mil", "100-250 mil", "250 mil+"]
 PISO = 0.5 / 24  # o mesmo piso de meia abertura em 24 meses da regra
-plt.rcParams.update({"font.size": 9, "axes.spines.top": False, "axes.spines.right": False,
-                     "figure.dpi": 150, "savefig.bbox": "tight"})
+plt.rcParams.update(
+    {
+        "font.size": 9,
+        "axes.spines.top": False,
+        "axes.spines.right": False,
+        "figure.dpi": 150,
+        "savefig.bbox": "tight",
+    }
+)
 
 
 def carregar() -> pd.DataFrame:
@@ -51,8 +59,14 @@ def carregar() -> pd.DataFrame:
     return t
 
 
-def simular(lam: np.ndarray, n_meses: int, rng, salto: float = 1.0, mes_salto: int | None = None,
-            dispersao: float = 0.0) -> np.ndarray:
+def simular(
+    lam: np.ndarray,
+    n_meses: int,
+    rng,
+    salto: float = 1.0,
+    mes_salto: int | None = None,
+    dispersao: float = 0.0,
+) -> np.ndarray:
     """Contagens municipio x mes ~ Poisson(lam), com salto multiplicativo opcional.
 
     `dispersao` > 0 é a variância relativa de um choque gama mensal (gama-Poisson),
@@ -80,7 +94,9 @@ def monte_carlo(t: pd.DataFrame, rng, reps: int = 200) -> tuple[pd.DataFrame, pd
             linhas.append({"dispersao": disp, "faixa": f, "falso_positivo_pct": round(fp[f], 2)})
     obs = t.groupby("faixa")["placebo_2016"].mean() * 100
     for f in FAIXAS:
-        linhas.append({"dispersao": "observado", "faixa": f, "falso_positivo_pct": round(obs[f], 2)})
+        linhas.append(
+            {"dispersao": "observado", "faixa": f, "falso_positivo_pct": round(obs[f], 2)}
+        )
     fp = pd.DataFrame(linhas)
 
     # (b) Poder: salto de r vezes em 2019-01, série 2015-01 a 2025-12, sem dispersão
@@ -104,11 +120,22 @@ def monte_carlo(t: pd.DataFrame, rng, reps: int = 200) -> tuple[pd.DataFrame, pd
             atrasos.extend((q[ok] - m0).tolist())
         for f in ["20-50 mil", "50-100 mil"]:
             sel = (pequenos["faixa"] == f).to_numpy()
-            linhas.append({"salto": r, "faixa": f,
-                           "poder_pct": round(100 * acerto[sel].mean() / (reps // 4), 1),
-                           "quebra_antes_do_salto_pct": round(100 * precoce[sel].mean() / (reps // 4), 1)})
-        linhas.append({"salto": r, "faixa": "atraso mediano (meses)", "poder_pct": float(np.median(atrasos)) if atrasos else np.nan,
-                       "quebra_antes_do_salto_pct": np.nan})
+            linhas.append(
+                {
+                    "salto": r,
+                    "faixa": f,
+                    "poder_pct": round(100 * acerto[sel].mean() / (reps // 4), 1),
+                    "quebra_antes_do_salto_pct": round(100 * precoce[sel].mean() / (reps // 4), 1),
+                }
+            )
+        linhas.append(
+            {
+                "salto": r,
+                "faixa": "atraso mediano (meses)",
+                "poder_pct": float(np.median(atrasos)) if atrasos else np.nan,
+                "quebra_antes_do_salto_pct": np.nan,
+            }
+        )
     return fp, pd.DataFrame(linhas)
 
 
@@ -117,27 +144,57 @@ def selecao(t: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     d["y"] = (d["grupo"] == "datado").astype(int)
     d["log_pop"] = np.log(d["populacao_2022"] / 1000)
     d["log_base"] = np.log(d["lam"] * 12)  # aberturas por ano em 2015-2016, com piso
-    d["regiao"] = pd.Categorical(d["regiao"], ["Sudeste", "Sul", "Centro-Oeste", "Nordeste", "Norte"])
+    d["regiao"] = pd.Categorical(
+        d["regiao"], ["Sudeste", "Sul", "Centro-Oeste", "Nordeste", "Norte"]
+    )
     formulas = {
         "M1 população": "y ~ log_pop",
         "M2 + região": "y ~ log_pop + C(regiao)",
         "M3 + propensão pré-plataforma": "y ~ log_pop + C(regiao) + log_base",
     }
     coefs, ajuste = [], []
-    X_all = pd.get_dummies(d[["log_pop", "regiao", "log_base"]], columns=["regiao"], drop_first=True, dtype=float)
-    colunas = {"M1 população": ["log_pop"],
-               "M2 + região": ["log_pop"] + [c for c in X_all if c.startswith("regiao_")],
-               "M3 + propensão pré-plataforma": list(X_all.columns)}
+    X_all = pd.get_dummies(
+        d[["log_pop", "regiao", "log_base"]], columns=["regiao"], drop_first=True, dtype=float
+    )
+    colunas = {
+        "M1 população": ["log_pop"],
+        "M2 + região": ["log_pop"] + [c for c in X_all if c.startswith("regiao_")],
+        "M3 + propensão pré-plataforma": list(X_all.columns),
+    }
     cv = RepeatedStratifiedKFold(n_splits=5, n_repeats=10, random_state=SEMENTE)
     for nome, f in formulas.items():
-        m = smf.logit(f, d).fit(disp=0, cov_type="cluster", cov_kwds={"groups": d["uf"].astype("category").cat.codes})
+        m = smf.logit(f, d).fit(
+            disp=0, cov_type="cluster", cov_kwds={"groups": d["uf"].astype("category").cat.codes}
+        )
         ci = m.conf_int()
         for v in m.params.index.drop("Intercept"):
-            coefs.append({"modelo": nome, "variavel": v, "odds_ratio": np.exp(m.params[v]),
-                          "ic95_inf": np.exp(ci.loc[v, 0]), "ic95_sup": np.exp(ci.loc[v, 1]), "p": m.pvalues[v]})
-        auc = cross_val_score(LogisticRegression(max_iter=1000), X_all[colunas[nome]], d["y"], cv=cv, scoring="roc_auc")
-        ajuste.append({"modelo": nome, "auc_cv_media": auc.mean(), "auc_cv_dp": auc.std(),
-                       "pseudo_r2": m.prsquared, "aic": m.aic, "n": int(m.nobs)})
+            coefs.append(
+                {
+                    "modelo": nome,
+                    "variavel": v,
+                    "odds_ratio": np.exp(m.params[v]),
+                    "ic95_inf": np.exp(ci.loc[v, 0]),
+                    "ic95_sup": np.exp(ci.loc[v, 1]),
+                    "p": m.pvalues[v],
+                }
+            )
+        auc = cross_val_score(
+            LogisticRegression(max_iter=1000),
+            X_all[colunas[nome]],
+            d["y"],
+            cv=cv,
+            scoring="roc_auc",
+        )
+        ajuste.append(
+            {
+                "modelo": nome,
+                "auc_cv_media": auc.mean(),
+                "auc_cv_dp": auc.std(),
+                "pseudo_r2": m.prsquared,
+                "aic": m.aic,
+                "n": int(m.nobs),
+            }
+        )
     return pd.DataFrame(coefs).round(4), pd.DataFrame(ajuste).round(3)
 
 
@@ -145,10 +202,18 @@ def figuras(fp: pd.DataFrame, poder: pd.DataFrame, coefs: pd.DataFrame) -> None:
     # Figura 5: falso positivo simulado x observado, e poder por salto
     fig, axs = plt.subplots(1, 2, figsize=(6.8, 2.9))
     x = np.arange(len(FAIXAS))
-    estilos = [(0.0, "Poisson puro", "#BBBBBB"), (0.5, "superdispersão 0,5", "#8DA0CB"),
-               (1.0, "superdispersão 1,0", "#4C72B0"), ("observado", "placebo observado", "#C44E52")]
+    estilos = [
+        (0.0, "Poisson puro", "#BBBBBB"),
+        (0.5, "superdispersão 0,5", "#8DA0CB"),
+        (1.0, "superdispersão 1,0", "#4C72B0"),
+        ("observado", "placebo observado", "#C44E52"),
+    ]
     for k, (disp, rot, cor) in enumerate(estilos):
-        v = fp[fp["dispersao"].astype(str) == str(disp)].set_index("faixa").loc[FAIXAS, "falso_positivo_pct"]
+        v = (
+            fp[fp["dispersao"].astype(str) == str(disp)]
+            .set_index("faixa")
+            .loc[FAIXAS, "falso_positivo_pct"]
+        )
         axs[0].bar(x + (k - 1.5) * 0.2, v, 0.2, label=rot, color=cor)
     axs[0].set_xticks(x, FAIXAS, fontsize=7)
     axs[0].set_ylabel("% com quebra em jan–jun/2016")
@@ -172,7 +237,9 @@ def figuras(fp: pd.DataFrame, poder: pd.DataFrame, coefs: pd.DataFrame) -> None:
     # Figura 6: razões de chance de região, M2 contra M3
     fig, ax = plt.subplots(figsize=(6.3, 2.6))
     regioes = ["Sul", "Centro-Oeste", "Nordeste", "Norte"]
-    for k, (mod, cor) in enumerate([("M2 + região", "#8DA0CB"), ("M3 + propensão pré-plataforma", "#4C72B0")]):
+    for k, (mod, cor) in enumerate(
+        [("M2 + região", "#8DA0CB"), ("M3 + propensão pré-plataforma", "#4C72B0")]
+    ):
         s = coefs[coefs["modelo"] == mod].set_index("variavel")
         for i, r in enumerate(regioes):
             v = s.loc[f"C(regiao)[T.{r}]"]
@@ -183,7 +250,11 @@ def figuras(fp: pd.DataFrame, poder: pd.DataFrame, coefs: pd.DataFrame) -> None:
     ax.set_xscale("log")
     ax.set_yticks(range(len(regioes)), regioes)
     ax.set_xlabel("Razão de chances de ter quebra (ref.: Sudeste), IC 95%")
-    ax.set_title("Quem recebe data: região, antes e depois da propensão pré-plataforma", loc="left", fontsize=9)
+    ax.set_title(
+        "Quem recebe data: região, antes e depois da propensão pré-plataforma",
+        loc="left",
+        fontsize=9,
+    )
     ax.legend(frameon=False, fontsize=7, loc="upper right")
     fig.savefig(FIG / "fig6_selecao.png")
     plt.close(fig)
